@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package caffe.eas;
+option java_package = "com.aliyun.openservices.eas.predict.proto";
+option java_outer_classname = "CaffePredictProtos";
+
+message ArrayShape {
+  repeated int64 dim = 1 [packed = true];
+}
+
+message ArrayProto {
+  optional ArrayShape shape = 1;
+  repeated float data = 2 [packed = true];
+}
+
+message PredictRequest {
+  repeated string input_name = 1;
+  repeated ArrayProto input_data = 2;
+  repeated string output_filter = 3;
+}
+
+message PredictResponse {
+  repeated string output_name = 1;
+  repeated ArrayProto output_data = 2;
+}
