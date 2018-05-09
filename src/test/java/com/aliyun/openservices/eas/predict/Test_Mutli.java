@@ -66,16 +66,13 @@ class ThreadClient implements Runnable {
 		JsonResponse model1_response = new JsonResponse();
 		try {
 			model1_response = client
-									.createChlidClient(model1_token, model1_endpoint, model1_name)
-									.predict(model1_request);
+								.createChlidClient(model1_token, model1_endpoint, model1_name)
+								.predict(model1_request);
 		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -105,7 +102,7 @@ public class Test_Mutli {
         long startTime = System.currentTimeMillis();
 
         ArrayList<Thread> thread_list = new ArrayList<Thread>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             Thread t = new Thread(new ThreadClient(i + 1, client));
             t.start();
             thread_list.add(t);
