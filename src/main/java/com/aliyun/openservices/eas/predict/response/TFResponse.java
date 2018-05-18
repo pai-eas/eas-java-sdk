@@ -2,8 +2,10 @@ package com.aliyun.openservices.eas.predict.response;
 
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto;
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
+import shade.protobuf
+.ByteString;
+import shade.protobuf
+.InvalidProtocolBufferException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -2,7 +2,8 @@ package com.aliyun.openservices.eas.predict.response;
 
 import com.aliyun.openservices.eas.predict.proto.CaffePredictProtos.PredictResponse;
 import com.aliyun.openservices.eas.predict.proto.CaffePredictProtos.ArrayProto;
-import com.google.protobuf.InvalidProtocolBufferException;
+import shade.protobuf
+.InvalidProtocolBufferException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

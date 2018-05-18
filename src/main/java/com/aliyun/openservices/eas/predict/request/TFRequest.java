@@ -4,7 +4,7 @@ import com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape;
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType;
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto;
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest;
-import com.google.protobuf.ByteString;
+import shade.protobuf.ByteString;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

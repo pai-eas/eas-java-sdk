@@ -152,8 +152,6 @@ public class PredictClient {
 				"EAS " + signature.computeSignature(token, auth));
 	}
 
-	// HttpRequestBase
-
 	private byte[] getContent(HttpPost request) throws IOException,
 			InterruptedException, ExecutionException {
 		byte[] content = null;

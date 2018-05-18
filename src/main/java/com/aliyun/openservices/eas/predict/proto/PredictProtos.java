@@ -6,19 +6,23 @@ package com.aliyun.openservices.eas.predict.proto;
 public final class PredictProtos {
   private PredictProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+      shade.protobuf
+.ExtensionRegistryLite registry) {
   }
 
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+      shade.protobuf
+.ExtensionRegistry registry) {
     registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+        (shade.protobuf
+.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code ArrayDataType}
    */
   public enum ArrayDataType
-      implements com.google.protobuf.ProtocolMessageEnum {
+      implements shade.protobuf
+.ProtocolMessageEnum {
     /**
      * <pre>
      * Not a legal value for DataType. Used to indicate a DataType field
@@ -336,27 +340,33 @@ public final class PredictProtos {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<ArrayDataType>
+    public static shade.protobuf
+.Internal.EnumLiteMap<ArrayDataType>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
+    private static final shade.protobuf
+.Internal.EnumLiteMap<
         ArrayDataType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ArrayDataType>() {
+          new shade.protobuf
+.Internal.EnumLiteMap<ArrayDataType>() {
             public ArrayDataType findValueByNumber(int number) {
               return ArrayDataType.forNumber(number);
             }
           };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+    public final shade.protobuf
+.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
+    public final shade.protobuf
+.Descriptors.EnumDescriptor
         getDescriptorForType() {
       return getDescriptor();
     }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
+    public static final shade.protobuf
+.Descriptors.EnumDescriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.getDescriptor().getEnumTypes().get(0);
     }
@@ -364,7 +374,8 @@ public final class PredictProtos {
     private static final ArrayDataType[] VALUES = values();
 
     public static ArrayDataType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        shade.protobuf
+.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
@@ -386,7 +397,8 @@ public final class PredictProtos {
 
   public interface ArrayShapeOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ArrayShape)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf
+.MessageOrBuilder {
 
     /**
      * <code>repeated int64 dim = 1 [packed = true];</code>
@@ -409,11 +421,14 @@ public final class PredictProtos {
    * Protobuf type {@code ArrayShape}
    */
   public  static final class ArrayShape extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf
+.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ArrayShape)
       ArrayShapeOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ArrayShape.newBuilder() to construct.
-    private ArrayShape(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ArrayShape(shade.protobuf
+.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ArrayShape() {
@@ -421,16 +436,24 @@ public final class PredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf
+.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ArrayShape(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      shade.protobuf
+.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf
+.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -440,7 +463,8 @@ public final class PredictProtos {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -468,24 +492,29 @@ public final class PredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf
+.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           dim_ = java.util.Collections.unmodifiableList(dim_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf
+.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayShape_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayShape_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -525,7 +554,8 @@ public final class PredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf
+.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (getDimList().size() > 0) {
@@ -535,6 +565,7 @@ public final class PredictProtos {
       for (int i = 0; i < dim_.size(); i++) {
         output.writeInt64NoTag(dim_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -545,22 +576,24 @@ public final class PredictProtos {
       {
         int dataSize = 0;
         for (int i = 0; i < dim_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
+          dataSize += shade.protobuf
+.CodedOutputStream
             .computeInt64SizeNoTag(dim_.get(i));
         }
         size += dataSize;
         if (!getDimList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf
+.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         dimMemoizedSerializedSize = dataSize;
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -574,6 +607,7 @@ public final class PredictProtos {
       boolean result = true;
       result = result && getDimList()
           .equals(other.getDimList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -583,7 +617,7 @@ public final class PredictProtos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getDimCount() > 0) {
         hash = (37 * hash) + DIM_FIELD_NUMBER;
         hash = (53 * hash) + getDimList().hashCode();
@@ -594,61 +628,94 @@ public final class PredictProtos {
     }
 
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
+        shade.protobuf
+.ByteString data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
+        shade.protobuf
+.ByteString data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf
+.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -666,7 +733,8 @@ public final class PredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -678,15 +746,18 @@ public final class PredictProtos {
      * Protobuf type {@code ArrayShape}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf
+.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:ArrayShape)
         com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf
+.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayShape_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayShape_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -699,12 +770,14 @@ public final class PredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf
+.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -715,7 +788,8 @@ public final class PredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf
+.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayShape_descriptor;
       }
@@ -748,29 +822,35 @@ public final class PredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf
+.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf
+.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape)other);
         } else {
@@ -791,6 +871,7 @@ public final class PredictProtos {
           }
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -800,13 +881,16 @@ public final class PredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -869,7 +953,8 @@ public final class PredictProtos {
       public Builder addAllDim(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureDimIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, dim_);
         onChanged();
         return this;
@@ -884,13 +969,15 @@ public final class PredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -907,22 +994,29 @@ public final class PredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ArrayShape>
-        PARSER = new com.google.protobuf.AbstractParser<ArrayShape>() {
+    private static final shade.protobuf
+.Parser<ArrayShape>
+        PARSER = new shade.protobuf
+.AbstractParser<ArrayShape>() {
       public ArrayShape parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf
+.InvalidProtocolBufferException {
           return new ArrayShape(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ArrayShape> parser() {
+    public static shade.protobuf
+.Parser<ArrayShape> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ArrayShape> getParserForType() {
+    public shade.protobuf
+.Parser<ArrayShape> getParserForType() {
       return PARSER;
     }
 
@@ -934,14 +1028,15 @@ public final class PredictProtos {
 
   public interface ArrayProtoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ArrayProto)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf
+.MessageOrBuilder {
 
     /**
      * <pre>
      * Data Type.
      * </pre>
      *
-     * <code>optional .ArrayDataType dtype = 1;</code>
+     * <code>.ArrayDataType dtype = 1;</code>
      */
     int getDtypeValue();
     /**
@@ -949,7 +1044,7 @@ public final class PredictProtos {
      * Data Type.
      * </pre>
      *
-     * <code>optional .ArrayDataType dtype = 1;</code>
+     * <code>.ArrayDataType dtype = 1;</code>
      */
     com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType getDtype();
 
@@ -958,7 +1053,7 @@ public final class PredictProtos {
      * Shape of the array.
      * </pre>
      *
-     * <code>optional .ArrayShape array_shape = 2;</code>
+     * <code>.ArrayShape array_shape = 2;</code>
      */
     boolean hasArrayShape();
     /**
@@ -966,7 +1061,7 @@ public final class PredictProtos {
      * Shape of the array.
      * </pre>
      *
-     * <code>optional .ArrayShape array_shape = 2;</code>
+     * <code>.ArrayShape array_shape = 2;</code>
      */
     com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape getArrayShape();
     /**
@@ -974,7 +1069,7 @@ public final class PredictProtos {
      * Shape of the array.
      * </pre>
      *
-     * <code>optional .ArrayShape array_shape = 2;</code>
+     * <code>.ArrayShape array_shape = 2;</code>
      */
     com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder getArrayShapeOrBuilder();
 
@@ -1060,7 +1155,8 @@ public final class PredictProtos {
      *
      * <code>repeated bytes string_val = 6;</code>
      */
-    java.util.List<com.google.protobuf.ByteString> getStringValList();
+    java.util.List<shade.protobuf
+.ByteString> getStringValList();
     /**
      * <pre>
      * DT_STRING.
@@ -1076,7 +1172,8 @@ public final class PredictProtos {
      *
      * <code>repeated bytes string_val = 6;</code>
      */
-    com.google.protobuf.ByteString getStringVal(int index);
+    shade.protobuf
+.ByteString getStringVal(int index);
 
     /**
      * <pre>
@@ -1136,11 +1233,14 @@ public final class PredictProtos {
    * Protobuf type {@code ArrayProto}
    */
   public  static final class ArrayProto extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf
+.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ArrayProto)
       ArrayProtoOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ArrayProto.newBuilder() to construct.
-    private ArrayProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ArrayProto(shade.protobuf
+.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ArrayProto() {
@@ -1154,16 +1254,24 @@ public final class PredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf
+.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private ArrayProto(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      shade.protobuf
+.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf
+.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1173,7 +1281,8 @@ public final class PredictProtos {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1262,7 +1371,8 @@ public final class PredictProtos {
             }
             case 50: {
               if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                stringVal_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                stringVal_ = new java.util.ArrayList<shade.protobuf
+.ByteString>();
                 mutable_bitField0_ |= 0x00000020;
               }
               stringVal_.add(input.readBytes());
@@ -1312,10 +1422,12 @@ public final class PredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf
+.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
@@ -1336,15 +1448,18 @@ public final class PredictProtos {
         if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           boolVal_ = java.util.Collections.unmodifiableList(boolVal_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf
+.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayProto_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1359,7 +1474,7 @@ public final class PredictProtos {
      * Data Type.
      * </pre>
      *
-     * <code>optional .ArrayDataType dtype = 1;</code>
+     * <code>.ArrayDataType dtype = 1;</code>
      */
     public int getDtypeValue() {
       return dtype_;
@@ -1369,7 +1484,7 @@ public final class PredictProtos {
      * Data Type.
      * </pre>
      *
-     * <code>optional .ArrayDataType dtype = 1;</code>
+     * <code>.ArrayDataType dtype = 1;</code>
      */
     public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType getDtype() {
       com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType result = com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType.valueOf(dtype_);
@@ -1383,7 +1498,7 @@ public final class PredictProtos {
      * Shape of the array.
      * </pre>
      *
-     * <code>optional .ArrayShape array_shape = 2;</code>
+     * <code>.ArrayShape array_shape = 2;</code>
      */
     public boolean hasArrayShape() {
       return arrayShape_ != null;
@@ -1393,7 +1508,7 @@ public final class PredictProtos {
      * Shape of the array.
      * </pre>
      *
-     * <code>optional .ArrayShape array_shape = 2;</code>
+     * <code>.ArrayShape array_shape = 2;</code>
      */
     public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape getArrayShape() {
       return arrayShape_ == null ? com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape.getDefaultInstance() : arrayShape_;
@@ -1403,7 +1518,7 @@ public final class PredictProtos {
      * Shape of the array.
      * </pre>
      *
-     * <code>optional .ArrayShape array_shape = 2;</code>
+     * <code>.ArrayShape array_shape = 2;</code>
      */
     public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder getArrayShapeOrBuilder() {
       return getArrayShape();
@@ -1515,7 +1630,8 @@ public final class PredictProtos {
     private int intValMemoizedSerializedSize = -1;
 
     public static final int STRING_VAL_FIELD_NUMBER = 6;
-    private java.util.List<com.google.protobuf.ByteString> stringVal_;
+    private java.util.List<shade.protobuf
+.ByteString> stringVal_;
     /**
      * <pre>
      * DT_STRING.
@@ -1523,7 +1639,8 @@ public final class PredictProtos {
      *
      * <code>repeated bytes string_val = 6;</code>
      */
-    public java.util.List<com.google.protobuf.ByteString>
+    public java.util.List<shade.protobuf
+.ByteString>
         getStringValList() {
       return stringVal_;
     }
@@ -1544,7 +1661,8 @@ public final class PredictProtos {
      *
      * <code>repeated bytes string_val = 6;</code>
      */
-    public com.google.protobuf.ByteString getStringVal(int index) {
+    public shade.protobuf
+.ByteString getStringVal(int index) {
       return stringVal_.get(index);
     }
 
@@ -1628,7 +1746,8 @@ public final class PredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf
+.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (dtype_ != com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType.DT_INVALID.getNumber()) {
@@ -1675,6 +1794,7 @@ public final class PredictProtos {
       for (int i = 0; i < boolVal_.size(); i++) {
         output.writeBoolNoTag(boolVal_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1683,11 +1803,13 @@ public final class PredictProtos {
 
       size = 0;
       if (dtype_ != com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType.DT_INVALID.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf
+.CodedOutputStream
           .computeEnumSize(1, dtype_);
       }
       if (arrayShape_ != null) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf
+.CodedOutputStream
           .computeMessageSize(2, getArrayShape());
       }
       {
@@ -1696,7 +1818,8 @@ public final class PredictProtos {
         size += dataSize;
         if (!getFloatValList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf
+.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         floatValMemoizedSerializedSize = dataSize;
@@ -1707,7 +1830,8 @@ public final class PredictProtos {
         size += dataSize;
         if (!getDoubleValList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf
+.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         doubleValMemoizedSerializedSize = dataSize;
@@ -1715,13 +1839,15 @@ public final class PredictProtos {
       {
         int dataSize = 0;
         for (int i = 0; i < intVal_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
+          dataSize += shade.protobuf
+.CodedOutputStream
             .computeInt32SizeNoTag(intVal_.get(i));
         }
         size += dataSize;
         if (!getIntValList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf
+.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         intValMemoizedSerializedSize = dataSize;
@@ -1729,7 +1855,8 @@ public final class PredictProtos {
       {
         int dataSize = 0;
         for (int i = 0; i < stringVal_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
+          dataSize += shade.protobuf
+.CodedOutputStream
             .computeBytesSizeNoTag(stringVal_.get(i));
         }
         size += dataSize;
@@ -1738,13 +1865,15 @@ public final class PredictProtos {
       {
         int dataSize = 0;
         for (int i = 0; i < int64Val_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
+          dataSize += shade.protobuf
+.CodedOutputStream
             .computeInt64SizeNoTag(int64Val_.get(i));
         }
         size += dataSize;
         if (!getInt64ValList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf
+.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         int64ValMemoizedSerializedSize = dataSize;
@@ -1755,16 +1884,17 @@ public final class PredictProtos {
         size += dataSize;
         if (!getBoolValList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf
+.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         boolValMemoizedSerializedSize = dataSize;
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1794,6 +1924,7 @@ public final class PredictProtos {
           .equals(other.getInt64ValList());
       result = result && getBoolValList()
           .equals(other.getBoolValList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -1803,7 +1934,7 @@ public final class PredictProtos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + DTYPE_FIELD_NUMBER;
       hash = (53 * hash) + dtype_;
       if (hasArrayShape()) {
@@ -1840,61 +1971,94 @@ public final class PredictProtos {
     }
 
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
+        shade.protobuf
+.ByteString data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
+        shade.protobuf
+.ByteString data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf
+.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -1912,7 +2076,8 @@ public final class PredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1924,15 +2089,18 @@ public final class PredictProtos {
      * Protobuf type {@code ArrayProto}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf
+.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:ArrayProto)
         com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProtoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf
+.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayProto_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1945,12 +2113,14 @@ public final class PredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf
+.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -1979,7 +2149,8 @@ public final class PredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf
+.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_ArrayProto_descriptor;
       }
@@ -2045,29 +2216,35 @@ public final class PredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf
+.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf
+.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto)other);
         } else {
@@ -2144,6 +2321,7 @@ public final class PredictProtos {
           }
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -2153,13 +2331,16 @@ public final class PredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -2177,7 +2358,7 @@ public final class PredictProtos {
        * Data Type.
        * </pre>
        *
-       * <code>optional .ArrayDataType dtype = 1;</code>
+       * <code>.ArrayDataType dtype = 1;</code>
        */
       public int getDtypeValue() {
         return dtype_;
@@ -2187,7 +2368,7 @@ public final class PredictProtos {
        * Data Type.
        * </pre>
        *
-       * <code>optional .ArrayDataType dtype = 1;</code>
+       * <code>.ArrayDataType dtype = 1;</code>
        */
       public Builder setDtypeValue(int value) {
         dtype_ = value;
@@ -2199,7 +2380,7 @@ public final class PredictProtos {
        * Data Type.
        * </pre>
        *
-       * <code>optional .ArrayDataType dtype = 1;</code>
+       * <code>.ArrayDataType dtype = 1;</code>
        */
       public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType getDtype() {
         com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType result = com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType.valueOf(dtype_);
@@ -2210,7 +2391,7 @@ public final class PredictProtos {
        * Data Type.
        * </pre>
        *
-       * <code>optional .ArrayDataType dtype = 1;</code>
+       * <code>.ArrayDataType dtype = 1;</code>
        */
       public Builder setDtype(com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayDataType value) {
         if (value == null) {
@@ -2226,7 +2407,7 @@ public final class PredictProtos {
        * Data Type.
        * </pre>
        *
-       * <code>optional .ArrayDataType dtype = 1;</code>
+       * <code>.ArrayDataType dtype = 1;</code>
        */
       public Builder clearDtype() {
         
@@ -2236,14 +2417,15 @@ public final class PredictProtos {
       }
 
       private com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape arrayShape_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf
+.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape.Builder, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder> arrayShapeBuilder_;
       /**
        * <pre>
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public boolean hasArrayShape() {
         return arrayShapeBuilder_ != null || arrayShape_ != null;
@@ -2253,7 +2435,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape getArrayShape() {
         if (arrayShapeBuilder_ == null) {
@@ -2267,7 +2449,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public Builder setArrayShape(com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape value) {
         if (arrayShapeBuilder_ == null) {
@@ -2287,7 +2469,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public Builder setArrayShape(
           com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape.Builder builderForValue) {
@@ -2305,7 +2487,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public Builder mergeArrayShape(com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape value) {
         if (arrayShapeBuilder_ == null) {
@@ -2327,7 +2509,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public Builder clearArrayShape() {
         if (arrayShapeBuilder_ == null) {
@@ -2345,7 +2527,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape.Builder getArrayShapeBuilder() {
         
@@ -2357,7 +2539,7 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
       public com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder getArrayShapeOrBuilder() {
         if (arrayShapeBuilder_ != null) {
@@ -2372,13 +2554,15 @@ public final class PredictProtos {
        * Shape of the array.
        * </pre>
        *
-       * <code>optional .ArrayShape array_shape = 2;</code>
+       * <code>.ArrayShape array_shape = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf
+.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape.Builder, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder> 
           getArrayShapeFieldBuilder() {
         if (arrayShapeBuilder_ == null) {
-          arrayShapeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          arrayShapeBuilder_ = new shade.protobuf
+.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShape.Builder, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayShapeOrBuilder>(
                   getArrayShape(),
                   getParentForChildren(),
@@ -2463,7 +2647,8 @@ public final class PredictProtos {
       public Builder addAllFloatVal(
           java.lang.Iterable<? extends java.lang.Float> values) {
         ensureFloatValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, floatVal_);
         onChanged();
         return this;
@@ -2557,7 +2742,8 @@ public final class PredictProtos {
       public Builder addAllDoubleVal(
           java.lang.Iterable<? extends java.lang.Double> values) {
         ensureDoubleValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, doubleVal_);
         onChanged();
         return this;
@@ -2651,7 +2837,8 @@ public final class PredictProtos {
       public Builder addAllIntVal(
           java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureIntValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, intVal_);
         onChanged();
         return this;
@@ -2670,10 +2857,12 @@ public final class PredictProtos {
         return this;
       }
 
-      private java.util.List<com.google.protobuf.ByteString> stringVal_ = java.util.Collections.emptyList();
+      private java.util.List<shade.protobuf
+.ByteString> stringVal_ = java.util.Collections.emptyList();
       private void ensureStringValIsMutable() {
         if (!((bitField0_ & 0x00000020) == 0x00000020)) {
-          stringVal_ = new java.util.ArrayList<com.google.protobuf.ByteString>(stringVal_);
+          stringVal_ = new java.util.ArrayList<shade.protobuf
+.ByteString>(stringVal_);
           bitField0_ |= 0x00000020;
          }
       }
@@ -2684,7 +2873,8 @@ public final class PredictProtos {
        *
        * <code>repeated bytes string_val = 6;</code>
        */
-      public java.util.List<com.google.protobuf.ByteString>
+      public java.util.List<shade.protobuf
+.ByteString>
           getStringValList() {
         return java.util.Collections.unmodifiableList(stringVal_);
       }
@@ -2705,7 +2895,8 @@ public final class PredictProtos {
        *
        * <code>repeated bytes string_val = 6;</code>
        */
-      public com.google.protobuf.ByteString getStringVal(int index) {
+      public shade.protobuf
+.ByteString getStringVal(int index) {
         return stringVal_.get(index);
       }
       /**
@@ -2716,7 +2907,8 @@ public final class PredictProtos {
        * <code>repeated bytes string_val = 6;</code>
        */
       public Builder setStringVal(
-          int index, com.google.protobuf.ByteString value) {
+          int index, shade.protobuf
+.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2732,7 +2924,8 @@ public final class PredictProtos {
        *
        * <code>repeated bytes string_val = 6;</code>
        */
-      public Builder addStringVal(com.google.protobuf.ByteString value) {
+      public Builder addStringVal(shade.protobuf
+.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2749,9 +2942,11 @@ public final class PredictProtos {
        * <code>repeated bytes string_val = 6;</code>
        */
       public Builder addAllStringVal(
-          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+          java.lang.Iterable<? extends shade.protobuf
+.ByteString> values) {
         ensureStringValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, stringVal_);
         onChanged();
         return this;
@@ -2845,7 +3040,8 @@ public final class PredictProtos {
       public Builder addAllInt64Val(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureInt64ValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, int64Val_);
         onChanged();
         return this;
@@ -2939,7 +3135,8 @@ public final class PredictProtos {
       public Builder addAllBoolVal(
           java.lang.Iterable<? extends java.lang.Boolean> values) {
         ensureBoolValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, boolVal_);
         onChanged();
         return this;
@@ -2958,13 +3155,15 @@ public final class PredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -2981,22 +3180,29 @@ public final class PredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ArrayProto>
-        PARSER = new com.google.protobuf.AbstractParser<ArrayProto>() {
+    private static final shade.protobuf
+.Parser<ArrayProto>
+        PARSER = new shade.protobuf
+.AbstractParser<ArrayProto>() {
       public ArrayProto parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf
+.InvalidProtocolBufferException {
           return new ArrayProto(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ArrayProto> parser() {
+    public static shade.protobuf
+.Parser<ArrayProto> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ArrayProto> getParserForType() {
+    public shade.protobuf
+.Parser<ArrayProto> getParserForType() {
       return PARSER;
     }
 
@@ -3008,7 +3214,8 @@ public final class PredictProtos {
 
   public interface PredictRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:PredictRequest)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf
+.MessageOrBuilder {
 
     /**
      * <pre>
@@ -3016,7 +3223,7 @@ public final class PredictProtos {
      * will be used
      * </pre>
      *
-     * <code>optional string signature_name = 1;</code>
+     * <code>string signature_name = 1;</code>
      */
     java.lang.String getSignatureName();
     /**
@@ -3025,9 +3232,10 @@ public final class PredictProtos {
      * will be used
      * </pre>
      *
-     * <code>optional string signature_name = 1;</code>
+     * <code>string signature_name = 1;</code>
      */
-    com.google.protobuf.ByteString
+    shade.protobuf
+.ByteString
         getSignatureNameBytes();
 
     /**
@@ -3165,7 +3373,8 @@ public final class PredictProtos {
      *
      * <code>repeated string output_filter = 3;</code>
      */
-    com.google.protobuf.ByteString
+    shade.protobuf
+.ByteString
         getOutputFilterBytes(int index);
   }
   /**
@@ -3178,29 +3387,41 @@ public final class PredictProtos {
    * Protobuf type {@code PredictRequest}
    */
   public  static final class PredictRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf
+.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PredictRequest)
       PredictRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PredictRequest.newBuilder() to construct.
-    private PredictRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private PredictRequest(shade.protobuf
+.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private PredictRequest() {
       signatureName_ = "";
-      outputFilter_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      outputFilter_ = shade.protobuf
+.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf
+.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private PredictRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      shade.protobuf
+.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf
+.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3210,7 +3431,8 @@ public final class PredictProtos {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -3223,20 +3445,24 @@ public final class PredictProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                inputs_ = com.google.protobuf.MapField.newMapField(
+                inputs_ = shade.protobuf
+.MapField.newMapField(
                     InputsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
-              inputs = input.readMessage(
+              shade.protobuf
+.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+              inputs__ = input.readMessage(
                   InputsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              inputs_.getMutableMap().put(inputs.getKey(), inputs.getValue());
+              inputs_.getMutableMap().put(
+                  inputs__.getKey(), inputs__.getValue());
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                outputFilter_ = new com.google.protobuf.LazyStringArrayList();
+                outputFilter_ = new shade.protobuf
+.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000004;
               }
               outputFilter_.add(s);
@@ -3244,25 +3470,30 @@ public final class PredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf
+.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           outputFilter_ = outputFilter_.getUnmodifiableView();
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf
+.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictRequest_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf
+.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 2:
@@ -3272,7 +3503,8 @@ public final class PredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -3288,15 +3520,17 @@ public final class PredictProtos {
      * will be used
      * </pre>
      *
-     * <code>optional string signature_name = 1;</code>
+     * <code>string signature_name = 1;</code>
      */
     public java.lang.String getSignatureName() {
       java.lang.Object ref = signatureName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        shade.protobuf
+.ByteString bs = 
+            (shade.protobuf
+.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         signatureName_ = s;
         return s;
@@ -3308,40 +3542,51 @@ public final class PredictProtos {
      * will be used
      * </pre>
      *
-     * <code>optional string signature_name = 1;</code>
+     * <code>string signature_name = 1;</code>
      */
-    public com.google.protobuf.ByteString
+    public shade.protobuf
+.ByteString
         getSignatureNameBytes() {
       java.lang.Object ref = signatureName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
+        shade.protobuf
+.ByteString b = 
+            shade.protobuf
+.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         signatureName_ = b;
         return b;
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        return (shade.protobuf
+.ByteString) ref;
       }
     }
 
     public static final int INPUTS_FIELD_NUMBER = 2;
     private static final class InputsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf
+.MapEntry<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf
+.MapEntry
               .<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictRequest_InputsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf
+.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  shade.protobuf
+.WireFormat.FieldType.MESSAGE,
                   com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto.getDefaultInstance());
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf
+.MapField<
         java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> inputs_;
-    private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+    private shade.protobuf
+.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
     internalGetInputs() {
       if (inputs_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf
+.MapField.emptyMapField(
             InputsDefaultEntryHolder.defaultEntry);
       }
       return inputs_;
@@ -3437,7 +3682,8 @@ public final class PredictProtos {
     }
 
     public static final int OUTPUT_FILTER_FIELD_NUMBER = 3;
-    private com.google.protobuf.LazyStringList outputFilter_;
+    private shade.protobuf
+.LazyStringList outputFilter_;
     /**
      * <pre>
      * Output filter.
@@ -3451,7 +3697,8 @@ public final class PredictProtos {
      *
      * <code>repeated string output_filter = 3;</code>
      */
-    public com.google.protobuf.ProtocolStringList
+    public shade.protobuf
+.ProtocolStringList
         getOutputFilterList() {
       return outputFilter_;
     }
@@ -3500,7 +3747,8 @@ public final class PredictProtos {
      *
      * <code>repeated string output_filter = 3;</code>
      */
-    public com.google.protobuf.ByteString
+    public shade.protobuf
+.ByteString
         getOutputFilterBytes(int index) {
       return outputFilter_.getByteString(index);
     }
@@ -3515,23 +3763,25 @@ public final class PredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf
+.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getSignatureNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, signatureName_);
+        shade.protobuf
+.GeneratedMessageV3.writeString(output, 1, signatureName_);
       }
-      for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> entry
-           : internalGetInputs().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
-        inputs = InputsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(2, inputs);
-      }
+      shade.protobuf
+.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetInputs(),
+          InputsDefaultEntryHolder.defaultEntry,
+          2);
       for (int i = 0; i < outputFilter_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, outputFilter_.getRaw(i));
+        shade.protobuf
+.GeneratedMessageV3.writeString(output, 3, outputFilter_.getRaw(i));
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -3540,17 +3790,20 @@ public final class PredictProtos {
 
       size = 0;
       if (!getSignatureNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, signatureName_);
+        size += shade.protobuf
+.GeneratedMessageV3.computeStringSize(1, signatureName_);
       }
       for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> entry
            : internalGetInputs().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
-        inputs = InputsDefaultEntryHolder.defaultEntry.newBuilderForType()
+        shade.protobuf
+.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+        inputs__ = InputsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, inputs);
+        size += shade.protobuf
+.CodedOutputStream
+            .computeMessageSize(2, inputs__);
       }
       {
         int dataSize = 0;
@@ -3560,11 +3813,11 @@ public final class PredictProtos {
         size += dataSize;
         size += 1 * getOutputFilterList().size();
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -3582,6 +3835,7 @@ public final class PredictProtos {
           other.internalGetInputs());
       result = result && getOutputFilterList()
           .equals(other.getOutputFilterList());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -3591,7 +3845,7 @@ public final class PredictProtos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SIGNATURE_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getSignatureName().hashCode();
       if (!internalGetInputs().getMap().isEmpty()) {
@@ -3608,61 +3862,94 @@ public final class PredictProtos {
     }
 
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
+        shade.protobuf
+.ByteString data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
+        shade.protobuf
+.ByteString data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf
+.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -3680,7 +3967,8 @@ public final class PredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3694,16 +3982,19 @@ public final class PredictProtos {
      * Protobuf type {@code PredictRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf
+.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:PredictRequest)
         com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf
+.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictRequest_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf
+.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 2:
@@ -3714,7 +4005,8 @@ public final class PredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf
+.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 2:
@@ -3724,7 +4016,8 @@ public final class PredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3737,12 +4030,14 @@ public final class PredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf
+.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -3751,12 +4046,14 @@ public final class PredictProtos {
         signatureName_ = "";
 
         internalGetMutableInputs().clear();
-        outputFilter_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        outputFilter_ = shade.protobuf
+.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf
+.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictRequest_descriptor;
       }
@@ -3794,29 +4091,35 @@ public final class PredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf
+.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf
+.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest)other);
         } else {
@@ -3843,6 +4146,7 @@ public final class PredictProtos {
           }
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -3852,13 +4156,16 @@ public final class PredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -3877,13 +4184,15 @@ public final class PredictProtos {
        * will be used
        * </pre>
        *
-       * <code>optional string signature_name = 1;</code>
+       * <code>string signature_name = 1;</code>
        */
       public java.lang.String getSignatureName() {
         java.lang.Object ref = signatureName_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          shade.protobuf
+.ByteString bs =
+              (shade.protobuf
+.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           signatureName_ = s;
           return s;
@@ -3897,19 +4206,23 @@ public final class PredictProtos {
        * will be used
        * </pre>
        *
-       * <code>optional string signature_name = 1;</code>
+       * <code>string signature_name = 1;</code>
        */
-      public com.google.protobuf.ByteString
+      public shade.protobuf
+.ByteString
           getSignatureNameBytes() {
         java.lang.Object ref = signatureName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
+          shade.protobuf
+.ByteString b = 
+              shade.protobuf
+.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           signatureName_ = b;
           return b;
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          return (shade.protobuf
+.ByteString) ref;
         }
       }
       /**
@@ -3918,7 +4231,7 @@ public final class PredictProtos {
        * will be used
        * </pre>
        *
-       * <code>optional string signature_name = 1;</code>
+       * <code>string signature_name = 1;</code>
        */
       public Builder setSignatureName(
           java.lang.String value) {
@@ -3936,7 +4249,7 @@ public final class PredictProtos {
        * will be used
        * </pre>
        *
-       * <code>optional string signature_name = 1;</code>
+       * <code>string signature_name = 1;</code>
        */
       public Builder clearSignatureName() {
         
@@ -3950,10 +4263,11 @@ public final class PredictProtos {
        * will be used
        * </pre>
        *
-       * <code>optional string signature_name = 1;</code>
+       * <code>string signature_name = 1;</code>
        */
       public Builder setSignatureNameBytes(
-          com.google.protobuf.ByteString value) {
+          shade.protobuf
+.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3964,21 +4278,26 @@ public final class PredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf
+.MapField<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> inputs_;
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+      private shade.protobuf
+.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
       internalGetInputs() {
         if (inputs_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf
+.MapField.emptyMapField(
               InputsDefaultEntryHolder.defaultEntry);
         }
         return inputs_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+      private shade.protobuf
+.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
       internalGetMutableInputs() {
         onChanged();;
         if (inputs_ == null) {
-          inputs_ = com.google.protobuf.MapField.newMapField(
+          inputs_ = shade.protobuf
+.MapField.newMapField(
               InputsDefaultEntryHolder.defaultEntry);
         }
         if (!inputs_.isMutable()) {
@@ -4077,7 +4396,8 @@ public final class PredictProtos {
       }
 
       public Builder clearInputs() {
-        getMutableInputs().clear();
+        internalGetMutableInputs().getMutableMap()
+            .clear();
         return this;
       }
       /**
@@ -4096,7 +4416,8 @@ public final class PredictProtos {
       public Builder removeInputs(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        getMutableInputs().remove(key);
+        internalGetMutableInputs().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
@@ -4124,7 +4445,8 @@ public final class PredictProtos {
           com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
-        getMutableInputs().put(key, value);
+        internalGetMutableInputs().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
@@ -4142,14 +4464,18 @@ public final class PredictProtos {
 
       public Builder putAllInputs(
           java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> values) {
-        getMutableInputs().putAll(values);
+        internalGetMutableInputs().getMutableMap()
+            .putAll(values);
         return this;
       }
 
-      private com.google.protobuf.LazyStringList outputFilter_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private shade.protobuf
+.LazyStringList outputFilter_ = shade.protobuf
+.LazyStringArrayList.EMPTY;
       private void ensureOutputFilterIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          outputFilter_ = new com.google.protobuf.LazyStringArrayList(outputFilter_);
+          outputFilter_ = new shade.protobuf
+.LazyStringArrayList(outputFilter_);
           bitField0_ |= 0x00000004;
          }
       }
@@ -4166,7 +4492,8 @@ public final class PredictProtos {
        *
        * <code>repeated string output_filter = 3;</code>
        */
-      public com.google.protobuf.ProtocolStringList
+      public shade.protobuf
+.ProtocolStringList
           getOutputFilterList() {
         return outputFilter_.getUnmodifiableView();
       }
@@ -4215,7 +4542,8 @@ public final class PredictProtos {
        *
        * <code>repeated string output_filter = 3;</code>
        */
-      public com.google.protobuf.ByteString
+      public shade.protobuf
+.ByteString
           getOutputFilterBytes(int index) {
         return outputFilter_.getByteString(index);
       }
@@ -4281,7 +4609,8 @@ public final class PredictProtos {
       public Builder addAllOutputFilter(
           java.lang.Iterable<java.lang.String> values) {
         ensureOutputFilterIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf
+.AbstractMessageLite.Builder.addAll(
             values, outputFilter_);
         onChanged();
         return this;
@@ -4300,7 +4629,8 @@ public final class PredictProtos {
        * <code>repeated string output_filter = 3;</code>
        */
       public Builder clearOutputFilter() {
-        outputFilter_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        outputFilter_ = shade.protobuf
+.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
@@ -4319,7 +4649,8 @@ public final class PredictProtos {
        * <code>repeated string output_filter = 3;</code>
        */
       public Builder addOutputFilterBytes(
-          com.google.protobuf.ByteString value) {
+          shade.protobuf
+.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -4330,13 +4661,15 @@ public final class PredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -4353,22 +4686,29 @@ public final class PredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PredictRequest>
-        PARSER = new com.google.protobuf.AbstractParser<PredictRequest>() {
+    private static final shade.protobuf
+.Parser<PredictRequest>
+        PARSER = new shade.protobuf
+.AbstractParser<PredictRequest>() {
       public PredictRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf
+.InvalidProtocolBufferException {
           return new PredictRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PredictRequest> parser() {
+    public static shade.protobuf
+.Parser<PredictRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PredictRequest> getParserForType() {
+    public shade.protobuf
+.Parser<PredictRequest> getParserForType() {
       return PARSER;
     }
 
@@ -4380,7 +4720,8 @@ public final class PredictProtos {
 
   public interface PredictResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:PredictResponse)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf
+.MessageOrBuilder {
 
     /**
      * <pre>
@@ -4444,27 +4785,38 @@ public final class PredictProtos {
    * Protobuf type {@code PredictResponse}
    */
   public  static final class PredictResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf
+.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PredictResponse)
       PredictResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PredictResponse.newBuilder() to construct.
-    private PredictResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private PredictResponse(shade.protobuf
+.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private PredictResponse() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf
+.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private PredictResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      shade.protobuf
+.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf
+.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4474,41 +4826,50 @@ public final class PredictProtos {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                outputs_ = com.google.protobuf.MapField.newMapField(
+                outputs_ = shade.protobuf
+.MapField.newMapField(
                     OutputsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
-              outputs = input.readMessage(
+              shade.protobuf
+.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+              outputs__ = input.readMessage(
                   OutputsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              outputs_.getMutableMap().put(outputs.getKey(), outputs.getValue());
+              outputs_.getMutableMap().put(
+                  outputs__.getKey(), outputs__.getValue());
               break;
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf
+.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf
+.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictResponse_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf
+.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -4518,7 +4879,8 @@ public final class PredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -4527,22 +4889,29 @@ public final class PredictProtos {
 
     public static final int OUTPUTS_FIELD_NUMBER = 1;
     private static final class OutputsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf
+.MapEntry<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf
+.MapEntry
               .<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictResponse_OutputsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf
+.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  shade.protobuf
+.WireFormat.FieldType.MESSAGE,
                   com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto.getDefaultInstance());
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf
+.MapField<
         java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> outputs_;
-    private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+    private shade.protobuf
+.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
     internalGetOutputs() {
       if (outputs_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf
+.MapField.emptyMapField(
             OutputsDefaultEntryHolder.defaultEntry);
       }
       return outputs_;
@@ -4627,17 +4996,17 @@ public final class PredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf
+.CodedOutputStream output)
                         throws java.io.IOException {
-      for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> entry
-           : internalGetOutputs().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
-        outputs = OutputsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        output.writeMessage(1, outputs);
-      }
+      shade.protobuf
+.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetOutputs(),
+          OutputsDefaultEntryHolder.defaultEntry,
+          1);
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -4647,19 +5016,21 @@ public final class PredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> entry
            : internalGetOutputs().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
-        outputs = OutputsDefaultEntryHolder.defaultEntry.newBuilderForType()
+        shade.protobuf
+.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+        outputs__ = OutputsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, outputs);
+        size += shade.protobuf
+.CodedOutputStream
+            .computeMessageSize(1, outputs__);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -4673,6 +5044,7 @@ public final class PredictProtos {
       boolean result = true;
       result = result && internalGetOutputs().equals(
           other.internalGetOutputs());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -4682,7 +5054,7 @@ public final class PredictProtos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (!internalGetOutputs().getMap().isEmpty()) {
         hash = (37 * hash) + OUTPUTS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetOutputs().hashCode();
@@ -4693,61 +5065,94 @@ public final class PredictProtos {
     }
 
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
+        shade.protobuf
+.ByteString data)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
+        shade.protobuf
+.ByteString data,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf
+.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf
+.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf
+.CodedInputStream input,
+        shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf
+.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -4765,7 +5170,8 @@ public final class PredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -4777,16 +5183,19 @@ public final class PredictProtos {
      * Protobuf type {@code PredictResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf
+.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:PredictResponse)
         com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf
+.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictResponse_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf
+.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -4797,7 +5206,8 @@ public final class PredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf
+.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -4807,7 +5217,8 @@ public final class PredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -4820,12 +5231,14 @@ public final class PredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf
+.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf
+.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -4835,7 +5248,8 @@ public final class PredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf
+.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.PredictProtos.internal_static_PredictResponse_descriptor;
       }
@@ -4865,29 +5279,35 @@ public final class PredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf
+.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          shade.protobuf
+.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf
+.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse)other);
         } else {
@@ -4900,6 +5320,7 @@ public final class PredictProtos {
         if (other == com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse.getDefaultInstance()) return this;
         internalGetMutableOutputs().mergeFrom(
             other.internalGetOutputs());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -4909,13 +5330,16 @@ public final class PredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf
+.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -4927,21 +5351,26 @@ public final class PredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf
+.MapField<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> outputs_;
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+      private shade.protobuf
+.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
       internalGetOutputs() {
         if (outputs_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf
+.MapField.emptyMapField(
               OutputsDefaultEntryHolder.defaultEntry);
         }
         return outputs_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
+      private shade.protobuf
+.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto>
       internalGetMutableOutputs() {
         onChanged();;
         if (outputs_ == null) {
-          outputs_ = com.google.protobuf.MapField.newMapField(
+          outputs_ = shade.protobuf
+.MapField.newMapField(
               OutputsDefaultEntryHolder.defaultEntry);
         }
         if (!outputs_.isMutable()) {
@@ -5020,7 +5449,8 @@ public final class PredictProtos {
       }
 
       public Builder clearOutputs() {
-        getMutableOutputs().clear();
+        internalGetMutableOutputs().getMutableMap()
+            .clear();
         return this;
       }
       /**
@@ -5034,7 +5464,8 @@ public final class PredictProtos {
       public Builder removeOutputs(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        getMutableOutputs().remove(key);
+        internalGetMutableOutputs().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
@@ -5057,7 +5488,8 @@ public final class PredictProtos {
           com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
-        getMutableOutputs().put(key, value);
+        internalGetMutableOutputs().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
@@ -5070,17 +5502,20 @@ public final class PredictProtos {
 
       public Builder putAllOutputs(
           java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto> values) {
-        getMutableOutputs().putAll(values);
+        internalGetMutableOutputs().getMutableMap()
+            .putAll(values);
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+          final shade.protobuf
+.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -5097,22 +5532,29 @@ public final class PredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PredictResponse>
-        PARSER = new com.google.protobuf.AbstractParser<PredictResponse>() {
+    private static final shade.protobuf
+.Parser<PredictResponse>
+        PARSER = new shade.protobuf
+.AbstractParser<PredictResponse>() {
       public PredictResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf
+.CodedInputStream input,
+          shade.protobuf
+.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf
+.InvalidProtocolBufferException {
           return new PredictResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PredictResponse> parser() {
+    public static shade.protobuf
+.Parser<PredictResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PredictResponse> getParserForType() {
+    public shade.protobuf
+.Parser<PredictResponse> getParserForType() {
       return PARSER;
     }
 
@@ -5122,42 +5564,56 @@ public final class PredictProtos {
 
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf
+.Descriptors.Descriptor
     internal_static_ArrayShape_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
       internal_static_ArrayShape_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf
+.Descriptors.Descriptor
     internal_static_ArrayProto_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
       internal_static_ArrayProto_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf
+.Descriptors.Descriptor
     internal_static_PredictRequest_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
       internal_static_PredictRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf
+.Descriptors.Descriptor
     internal_static_PredictRequest_InputsEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
       internal_static_PredictRequest_InputsEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf
+.Descriptors.Descriptor
     internal_static_PredictResponse_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
       internal_static_PredictResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf
+.Descriptors.Descriptor
     internal_static_PredictResponse_OutputsEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable
       internal_static_PredictResponse_OutputsEntry_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
+  public static shade.protobuf
+.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static  shade.protobuf
+.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -5187,52 +5643,64 @@ public final class PredictProtos {
       "liyun.openservices.eas.predict.protoB\rPr" +
       "edictProtos\370\001\001b\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
+    shade.protobuf
+.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new shade.protobuf
+.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public shade.protobuf
+.ExtensionRegistry assignDescriptors(
+              shade.protobuf
+.Descriptors.FileDescriptor root) {
             descriptor = root;
             return null;
           }
         };
-    com.google.protobuf.Descriptors.FileDescriptor
+    shade.protobuf
+.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        new shade.protobuf
+.Descriptors.FileDescriptor[] {
         }, assigner);
     internal_static_ArrayShape_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_ArrayShape_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ArrayShape_descriptor,
         new java.lang.String[] { "Dim", });
     internal_static_ArrayProto_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ArrayProto_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ArrayProto_descriptor,
         new java.lang.String[] { "Dtype", "ArrayShape", "FloatVal", "DoubleVal", "IntVal", "StringVal", "Int64Val", "BoolVal", });
     internal_static_PredictRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PredictRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PredictRequest_descriptor,
         new java.lang.String[] { "SignatureName", "Inputs", "OutputFilter", });
     internal_static_PredictRequest_InputsEntry_descriptor =
       internal_static_PredictRequest_descriptor.getNestedTypes().get(0);
     internal_static_PredictRequest_InputsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PredictRequest_InputsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_PredictResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PredictResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PredictResponse_descriptor,
         new java.lang.String[] { "Outputs", });
     internal_static_PredictResponse_OutputsEntry_descriptor =
       internal_static_PredictResponse_descriptor.getNestedTypes().get(0);
     internal_static_PredictResponse_OutputsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf
+.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PredictResponse_OutputsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
