@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/06/13.
+ * Created by xiping.zk on 2018/06/14.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -247,14 +247,20 @@ public class PredictClient {
             throws JsonGenerationException, JsonMappingException, IOException {
         byte[] result = predict(defaultObjectMapper
                 .writeValueAsBytes(requestContent));
-
-        return defaultObjectMapper.readValue(result, 0, result.length,
-                JsonResponse.class);
+        JsonResponse jsonResponse = null;
+        if (result != null) {
+            jsonResponse = defaultObjectMapper.readValue(result, 0, result.length,
+                    JsonResponse.class);
+        }
+        return jsonResponse;
     }
 
     public String predict(String requestContent) {
         byte[] result = predict(requestContent.getBytes());
-        return new String(result);
+        if (result != null) {
+            return new String(result);
+        }
+        return null;
     }
 
     public byte[] predict(byte[] requestContent) {
