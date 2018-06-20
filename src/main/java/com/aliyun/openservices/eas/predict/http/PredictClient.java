@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/06/19.
+ * Created by xiping.zk on 2018/06/20.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -52,7 +52,9 @@ public class PredictClient {
     private int configCount = -1;
     private int heartCount = 0;
     private int heartLimit = 1000;
-    private String contentType= "application/octet-stream";
+    private String contentType = "application/octet-stream";
+    private int errorCode = 0;
+    private String errorMessage;
     ObjectMapper defaultObjectMapper = new ObjectMapper();
     
     public PredictClient() {
@@ -142,10 +144,17 @@ public class PredictClient {
         return this;
     }
     
-    public PredictClient setContentType(String contentType)
-    {
+    public PredictClient setContentType(String contentType) {
         this.contentType = contentType;
         return this;
+    }
+    
+    public int getErrorCode() {
+        return errorCode;
+    }
+    
+    public String getErrorMessage() {
+        return errorMessage;
     }
     
     public PredictClient createChlidClient(String token, String endpoint,
@@ -196,7 +205,6 @@ public class PredictClient {
     private byte[] getContent(HttpPost request) throws IOException,
             InterruptedException, ExecutionException {
         byte[] content = null;
-        int status = 0;
         HttpResponse response = null;
         Future<HttpResponse> future = httpclient.execute(request, null);
         response = future.get();
@@ -208,18 +216,21 @@ public class PredictClient {
         }
         if (future.isDone()) {
             try {
-                status = response.getStatusLine().getStatusCode();
-                if (status == 200) {
+                errorCode = response.getStatusLine().getStatusCode();
+                errorMessage = "";
+                
+                if (errorCode == 200) {
                     content = IOUtils.toByteArray(response.getEntity()
                             .getContent());
                     if (isCompressed)
                         content = Snappy.uncompress(content);
                 } else {
+                    errorMessage = IOUtils.toString(response.getEntity()
+                            .getContent(), "UTF-8");
                     throw new IOException("Status Code: "
-                            + status
+                            + errorCode
                             + " Predict Failed: "
-                            + IOUtils.toString(response.getEntity()
-                                    .getContent(), "UTF-8"));
+                            + errorMessage);
                 }
             } catch (IllegalStateException e) {
                 log.error("Illegal State", e);
