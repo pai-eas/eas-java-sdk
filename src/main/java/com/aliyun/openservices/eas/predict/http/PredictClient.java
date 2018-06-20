@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/06/14.
+ * Created by xiping.zk on 2018/06/19.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -52,8 +52,9 @@ public class PredictClient {
     private int configCount = -1;
     private int heartCount = 0;
     private int heartLimit = 1000;
+    private String contentType= "application/octet-stream";
     ObjectMapper defaultObjectMapper = new ObjectMapper();
-
+    
     public PredictClient() {
     }
 
@@ -140,7 +141,13 @@ public class PredictClient {
         this.heartLimit = heartLimit;
         return this;
     }
-
+    
+    public PredictClient setContentType(String contentType)
+    {
+        this.contentType = contentType;
+        return this;
+    }
+    
     public PredictClient createChlidClient(String token, String endpoint,
             String modelname) {
         PredictClient client = new PredictClient();
@@ -172,7 +179,7 @@ public class PredictClient {
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         String currentTime = dateFormat.format(now) + " GMT";
         request.addHeader(HttpHeaders.DATE, currentTime);
-        request.addHeader(HttpHeaders.CONTENT_TYPE, "application/octet-stream");
+        request.addHeader(HttpHeaders.CONTENT_TYPE, contentType);
 
         if (mapHeader != null)
             request.addHeader("Client-Timestamp",
