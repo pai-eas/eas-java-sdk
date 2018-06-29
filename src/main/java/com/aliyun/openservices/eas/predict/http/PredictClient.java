@@ -7,6 +7,8 @@ import com.aliyun.openservices.eas.predict.request.TFRequest;
 import com.aliyun.openservices.eas.predict.response.CaffeResponse;
 import com.aliyun.openservices.eas.predict.response.JsonResponse;
 import com.aliyun.openservices.eas.predict.response.TFResponse;
+import com.taobao.vipserver.client.core.Host;
+import com.taobao.vipserver.client.core.VIPClient;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -31,13 +33,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/06/20.
+ * Created by xiping.zk on 2018/06/28.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -55,8 +59,9 @@ public class PredictClient {
     private String contentType = "application/octet-stream";
     private int errorCode = 0;
     private String errorMessage;
+    List<Host> vipHosts = null;
     ObjectMapper defaultObjectMapper = new ObjectMapper();
-    
+
     public PredictClient() {
     }
 
@@ -114,6 +119,20 @@ public class PredictClient {
         return this;
     }
 
+    public PredictClient setVIPEndPoint(String EndPoint) {
+        try {
+            vipHosts = VIPClient.srvHosts(EndPoint);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public PredictClient setVIPHosts(List<Host> vipHosts) {
+        this.vipHosts = vipHosts;
+        return this;
+    }
+
     public PredictClient setIsCompressed(boolean isCompressed) {
         this.isCompressed = isCompressed;
         return this;
@@ -135,7 +154,7 @@ public class PredictClient {
         changeConfig(configCount);
         return this;
     }
-    
+
     public PredictClient setMultiConfig(String[][] configs, int heartLimit) {
         this.configs = configs.clone();
         this.configCount = 0;
@@ -143,25 +162,37 @@ public class PredictClient {
         this.heartLimit = heartLimit;
         return this;
     }
-    
+
     public PredictClient setContentType(String contentType) {
         this.contentType = contentType;
         return this;
     }
-    
+
     public int getErrorCode() {
         return errorCode;
     }
-    
+
     public String getErrorMessage() {
         return errorMessage;
     }
-    
-    public PredictClient createChlidClient(String token, String endpoint,
-            String modelname) {
+
+    public PredictClient createChlidClient(String token, String endPoint,
+            String modelName) {
         PredictClient client = new PredictClient();
-        client.setHttp(this.httpclient).setToken(token).setEndpoint(endpoint)
-                .setModelName(modelname);
+        client.setHttp(this.httpclient).setToken(token).setEndpoint(endPoint)
+                .setModelName(modelName);
+        return client;
+    }
+
+    public PredictClient createChlidClient() {
+        PredictClient client = new PredictClient();
+        client.setHttp(this.httpclient).setToken(this.token)
+                .setModelName(this.modelName);
+        if (this.vipHosts != null) {
+            client.setVIPHosts(this.vipHosts);
+        } else {
+            client.setEndpoint(this.endpoint);
+        }
         return client;
     }
 
@@ -170,6 +201,11 @@ public class PredictClient {
     }
 
     private HttpPost generateSignature(byte[] requestContent) {
+        if (vipHosts != null) {
+            Random rand = new Random();
+            setEndpoint(vipHosts.get(rand.nextInt(vipHosts.size()))
+                    .toInetAddr());
+        }
         HttpPost request = new HttpPost(buildUri());
         request.setEntity(new NByteArrayEntity(requestContent));
         if (isCompressed) {
@@ -197,8 +233,10 @@ public class PredictClient {
         String auth = "POST" + "\n" + md5Content + "\n"
                 + "application/octet-stream" + "\n" + currentTime + "\n"
                 + "/api/predict/" + modelName;
-        request.addHeader(HttpHeaders.AUTHORIZATION,
-                "EAS " + signature.computeSignature(token, auth));
+        if (token != null) {
+            request.addHeader(HttpHeaders.AUTHORIZATION,
+                    "EAS " + signature.computeSignature(token, auth));
+        }
         return request;
     }
 
@@ -208,6 +246,7 @@ public class PredictClient {
         HttpResponse response = null;
         Future<HttpResponse> future = httpclient.execute(request, null);
         response = future.get();
+
         if (mapHeader != null) {
             Header[] header = response.getAllHeaders();
             for (int i = 0; i < header.length; i++) {
@@ -218,7 +257,7 @@ public class PredictClient {
             try {
                 errorCode = response.getStatusLine().getStatusCode();
                 errorMessage = "";
-                
+
                 if (errorCode == 200) {
                     content = IOUtils.toByteArray(response.getEntity()
                             .getContent());
@@ -227,10 +266,8 @@ public class PredictClient {
                 } else {
                     errorMessage = IOUtils.toString(response.getEntity()
                             .getContent(), "UTF-8");
-                    throw new IOException("Status Code: "
-                            + errorCode
-                            + " Predict Failed: "
-                            + errorMessage);
+                    throw new IOException("Status Code: " + errorCode
+                            + " Predict Failed: " + errorMessage);
                 }
             } catch (IllegalStateException e) {
                 log.error("Illegal State", e);
@@ -265,10 +302,11 @@ public class PredictClient {
             throws JsonGenerationException, JsonMappingException, IOException {
         byte[] result = predict(defaultObjectMapper
                 .writeValueAsBytes(requestContent));
+
         JsonResponse jsonResponse = null;
         if (result != null) {
-            jsonResponse = defaultObjectMapper.readValue(result, 0, result.length,
-                    JsonResponse.class);
+            jsonResponse = defaultObjectMapper.readValue(result, 0,
+                    result.length, JsonResponse.class);
         }
         return jsonResponse;
     }
