@@ -41,7 +41,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/06/28.
+ * Created by xiping.zk on 2018/07/05.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -119,16 +119,16 @@ public class PredictClient {
         return this;
     }
 
-    public PredictClient setVIPEndPoint(String EndPoint) {
+    public PredictClient setVIPServerName(String name) {
         try {
-            vipHosts = VIPClient.srvHosts(EndPoint);
+            vipHosts = VIPClient.srvHosts(name);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return this;
     }
 
-    public PredictClient setVIPHosts(List<Host> vipHosts) {
+    public PredictClient setVIPServerHosts(List<Host> vipHosts) {
         this.vipHosts = vipHosts;
         return this;
     }
