@@ -116,7 +116,7 @@ public class PredictClient {
         return this;
     }
 
-    public PredictClient setVIPEndPoint(String vipSrvEndPoint) {
+    public PredictClient setVIPServer(String vipSrvEndPoint) {
         this.vipSrvEndPoint = vipSrvEndPoint;
         return this;
     }
@@ -177,7 +177,7 @@ public class PredictClient {
         client.setHttp(this.httpclient).setToken(this.token)
                 .setModelName(this.modelName);
         if (this.vipSrvEndPoint != null) {
-            client.setVIPEndPoint(this.vipSrvEndPoint);
+            client.setVIPServer(this.vipSrvEndPoint);
         } else {
             client.setEndpoint(this.endpoint);
         }
@@ -292,9 +292,6 @@ public class PredictClient {
             throws JsonGenerationException, JsonMappingException, IOException {
         byte[] result = predict(defaultObjectMapper
                 .writeValueAsBytes(requestContent));
-
-        System.out.println(defaultObjectMapper
-                .writeValueAsString(requestContent));
         
         JsonResponse jsonResponse = null;
         if (result != null) {
