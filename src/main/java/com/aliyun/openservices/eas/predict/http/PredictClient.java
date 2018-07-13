@@ -38,7 +38,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/07/10.
+ * Created by xiping.zk on 2018/07/13.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -216,10 +216,10 @@ public class PredictClient {
         request.addHeader(HttpHeaders.DATE, currentTime);
         request.addHeader(HttpHeaders.CONTENT_TYPE, contentType);
 
-        if (mapHeader != null)
+        if (mapHeader != null) {
             request.addHeader("Client-Timestamp",
                     String.valueOf(System.currentTimeMillis()));
-
+        }
         String auth = "POST" + "\n" + md5Content + "\n"
                 + "application/octet-stream" + "\n" + currentTime + "\n"
                 + "/api/predict/" + modelName;
@@ -251,8 +251,9 @@ public class PredictClient {
                 if (errorCode == 200) {
                     content = IOUtils.toByteArray(response.getEntity()
                             .getContent());
-                    if (isCompressed)
+                    if (isCompressed) {
                         content = Snappy.uncompress(content);
+                    }
                 } else {
                     errorMessage = IOUtils.toString(response.getEntity()
                             .getContent(), "UTF-8");
