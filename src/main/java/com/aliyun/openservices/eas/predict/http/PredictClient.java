@@ -29,6 +29,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,7 +39,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by xiping.zk on 2018/07/10.
+ * Created by xiping.zk on 2018/07/25.
  */
 public class PredictClient {
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -54,7 +55,7 @@ public class PredictClient {
     private int heartCount = 0;
     private int heartLimit = 1000;
     private String contentType = "application/octet-stream";
-    private int errorCode = 0;
+    private int errorCode = 400;
     private String errorMessage;
     private String vipSrvEndPoint = null;
     ObjectMapper defaultObjectMapper = new ObjectMapper();
@@ -116,7 +117,7 @@ public class PredictClient {
         return this;
     }
 
-    public PredictClient setVIPEndPoint(String vipSrvEndPoint) {
+    public PredictClient setVIPServer(String vipSrvEndPoint) {
         this.vipSrvEndPoint = vipSrvEndPoint;
         return this;
     }
@@ -177,7 +178,7 @@ public class PredictClient {
         client.setHttp(this.httpclient).setToken(this.token)
                 .setModelName(this.modelName);
         if (this.vipSrvEndPoint != null) {
-            client.setVIPEndPoint(this.vipSrvEndPoint);
+            client.setVIPServer(this.vipSrvEndPoint);
         } else {
             client.setEndpoint(this.endpoint);
         }
@@ -216,10 +217,10 @@ public class PredictClient {
         request.addHeader(HttpHeaders.DATE, currentTime);
         request.addHeader(HttpHeaders.CONTENT_TYPE, contentType);
 
-        if (mapHeader != null)
+        if (mapHeader != null) {
             request.addHeader("Client-Timestamp",
                     String.valueOf(System.currentTimeMillis()));
-
+        }
         String auth = "POST" + "\n" + md5Content + "\n"
                 + "application/octet-stream" + "\n" + currentTime + "\n"
                 + "/api/predict/" + modelName;
@@ -251,8 +252,9 @@ public class PredictClient {
                 if (errorCode == 200) {
                     content = IOUtils.toByteArray(response.getEntity()
                             .getContent());
-                    if (isCompressed)
+                    if (isCompressed) {
                         content = Snappy.uncompress(content);
+                    }
                 } else {
                     errorMessage = IOUtils.toString(response.getEntity()
                             .getContent(), "UTF-8");
@@ -292,10 +294,6 @@ public class PredictClient {
             throws JsonGenerationException, JsonMappingException, IOException {
         byte[] result = predict(defaultObjectMapper
                 .writeValueAsBytes(requestContent));
-
-        System.out.println(defaultObjectMapper
-                .writeValueAsString(requestContent));
-        
         JsonResponse jsonResponse = null;
         if (result != null) {
             jsonResponse = defaultObjectMapper.readValue(result, 0,
@@ -328,6 +326,10 @@ public class PredictClient {
         for (int i = 0; i < retryCount; i++) {
             try {
                 content = getContent(request);
+            } catch (ExecutionException e) {
+                errorCode = 400;
+            } catch (SocketTimeoutException e) {
+                    errorCode = 408;
             } catch (Exception e) {
                 if (i == retryCount - 1) {
                     if (configCount < 0 || count >= configs.length - 1) {

@@ -9,7 +9,7 @@
   </parent>  
   <groupId>com.aliyun.openservices.eas</groupId>  
   <artifactId>eas-sdk</artifactId>  
-  <version>1.0.20</version>  
+  <version>1.0.24</version>  
   <packaging>jar</packaging>  
   <name>eas-sdk</name>  
   <url>http://maven.apache.org</url>  
@@ -156,5 +156,5 @@
       </resource> 
     </resources> 
   </build>  
-  <contributors><contributor><properties><provider>xiping.zk@alibaba-inc.com</provider><codeName>null</codeName><codeUrl>git@gitlab.alibaba-inc.com:xiping.zk/eas-sdk.git commit:6549fc4</codeUrl><description>contributors added by SCM Plugin, please don't modify it!</description></properties></contributor></contributors>
+  <contributors><contributor><properties><provider>xiping.zk@alibaba-inc.com</provider><codeName>null</codeName><codeUrl>git@gitlab.alibaba-inc.com:eas/eas-java-sdk.git commit:27c3ed3</codeUrl><description>contributors added by SCM Plugin, please don't modify it!</description></properties></contributor></contributors>
 </project>
