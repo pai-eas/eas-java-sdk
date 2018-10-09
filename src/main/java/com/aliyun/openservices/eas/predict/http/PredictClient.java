@@ -37,6 +37,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by xiping.zk on 2018/07/25.
@@ -58,6 +60,7 @@ public class PredictClient {
     private int errorCode = 400;
     private String errorMessage;
     private String vipSrvEndPoint = null;
+    private int requestTimeout = 0;
     ObjectMapper defaultObjectMapper = new ObjectMapper();
 
     public PredictClient() {
@@ -70,7 +73,7 @@ public class PredictClient {
                     ioReactor);
             cm.setMaxTotal(httpConfig.getMaxConnectionCount());
             cm.setDefaultMaxPerRoute(httpConfig.getMaxConnectionPerRoute());
-
+            requestTimeout = httpConfig.getRequestTimeout();
             IOReactorConfig config = IOReactorConfig.custom()
                     .setTcpNoDelay(true)
                     .setSoTimeout(httpConfig.getReadTimeout())
@@ -81,7 +84,6 @@ public class PredictClient {
             final RequestConfig requestConfig = RequestConfig.custom()
                     .setConnectTimeout(httpConfig.getConnectTimeout())
                     .setSocketTimeout(httpConfig.getReadTimeout()).build();
-
             httpclient = HttpAsyncClients.custom().setConnectionManager(cm)
                     .setDefaultIOReactorConfig(config)
                     .setDefaultRequestConfig(requestConfig).build();
@@ -220,7 +222,8 @@ public class PredictClient {
         if (mapHeader != null) {
             request.addHeader("Client-Timestamp",
                     String.valueOf(System.currentTimeMillis()));
-        }
+		}
+
         String auth = "POST" + "\n" + md5Content + "\n"
                 + "application/octet-stream" + "\n" + currentTime + "\n"
                 + "/api/predict/" + modelName;
@@ -232,11 +235,16 @@ public class PredictClient {
     }
 
     private byte[] getContent(HttpPost request) throws IOException,
-            InterruptedException, ExecutionException {
+            InterruptedException, ExecutionException, TimeoutException {
         byte[] content = null;
         HttpResponse response = null;
+
         Future<HttpResponse> future = httpclient.execute(request, null);
-        response = future.get();
+        if (requestTimeout > 0) {
+            response = future.get(requestTimeout, TimeUnit.MILLISECONDS);
+        } else {
+            response = future.get();
+        }
 
         if (mapHeader != null) {
             Header[] header = response.getAllHeaders();
@@ -254,7 +262,7 @@ public class PredictClient {
                             .getContent());
                     if (isCompressed) {
                         content = Snappy.uncompress(content);
-                    }
+					}
                 } else {
                     errorMessage = IOUtils.toString(response.getEntity()
                             .getContent(), "UTF-8");
@@ -272,7 +280,7 @@ public class PredictClient {
         return content;
     }
 
-    public TFResponse predict(TFRequest runRequest) {
+    public TFResponse predict(TFRequest runRequest) throws Exception {
         TFResponse runResponse = new TFResponse();
         byte[] result = predict(runRequest.getRequest().toByteArray());
         if (result != null) {
@@ -281,7 +289,7 @@ public class PredictClient {
         return runResponse;
     }
 
-    public CaffeResponse predict(CaffeRequest runRequest) {
+    public CaffeResponse predict(CaffeRequest runRequest) throws Exception {
         CaffeResponse runResponse = new CaffeResponse();
         byte[] result = predict(runRequest.getRequest().toByteArray());
         if (result != null) {
@@ -291,9 +299,10 @@ public class PredictClient {
     }
 
     public JsonResponse predict(JsonRequest requestContent)
-            throws JsonGenerationException, JsonMappingException, IOException {
+            throws Exception {
         byte[] result = predict(defaultObjectMapper
                 .writeValueAsBytes(requestContent));
+
         JsonResponse jsonResponse = null;
         if (result != null) {
             jsonResponse = defaultObjectMapper.readValue(result, 0,
@@ -302,7 +311,7 @@ public class PredictClient {
         return jsonResponse;
     }
 
-    public String predict(String requestContent) {
+    public String predict(String requestContent) throws Exception{
         byte[] result = predict(requestContent.getBytes());
         if (result != null) {
             return new String(result);
@@ -310,7 +319,7 @@ public class PredictClient {
         return null;
     }
 
-    public byte[] predict(byte[] requestContent) {
+    public byte[] predict(byte[] requestContent) throws Exception{
         HttpPost request = generateSignature(requestContent);
         if (configCount >= 0) {
             heartCount++;
@@ -322,30 +331,25 @@ public class PredictClient {
             }
         }
         byte[] content = null;
-        int count = 0;
-        for (int i = 0; i < retryCount; i++) {
+        for (int i = 0; i <= retryCount; i++) {
             try {
                 content = getContent(request);
-            } catch (ExecutionException e) {
-                errorCode = 400;
-            } catch (SocketTimeoutException e) {
-                    errorCode = 408;
+                break;
             } catch (Exception e) {
-                if (i == retryCount - 1) {
-                    if (configCount < 0 || count >= configs.length - 1) {
-                        log.error("Exception Error", e);
-                    } else {
-                        configCount = ++configCount % configs.length;
-                        changeConfig(configCount);
-                        request = generateSignature(requestContent);
-                        i = -1;
-                        count++;
-                    }
+                if (configCount >= 0) {
+                    configCount = ++configCount % configs.length;
+                    changeConfig(configCount);
+                    request = generateSignature(requestContent);
                 }
-                continue;
+                if (i == retryCount) {
+                    log.error("Exception Error: " + e.getMessage());
+                    throw e;
+                } else {
+                    log.debug("Exception Error: " + e.getMessage());
+                }
             }
-            break;
         }
+
         return content;
     }
 

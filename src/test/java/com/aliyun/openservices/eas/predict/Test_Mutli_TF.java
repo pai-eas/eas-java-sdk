@@ -31,15 +31,19 @@ class ThreadClient2 implements Runnable {
 
     public void run() {
         while (true) {
-            TFResponse response = client.predict(buildPredictRequest());
-            List<Float> result = response.getFloatVals("scores");
-            System.out.print("Predict Result: [");
-            for (int j = 0; j < result.size(); j++) {
-                System.out.print(result.get(j).floatValue());
-                if (j != result.size() -1)
-                    System.out.print(", ");
+            try {
+                TFResponse response = client.predict(buildPredictRequest());
+                List<Float> result = response.getFloatVals("scores");
+                System.out.print("Predict Result: [");
+                for (int j = 0; j < result.size(); j++) {
+                    System.out.print(result.get(j).floatValue());
+                    if (j != result.size() -1)
+                        System.out.print(", ");
+                }
+                System.out.print("]\n");
+            } catch(Exception e) {
+                e.printStackTrace();
             }
-            System.out.print("]\n");
         }
     }
 }

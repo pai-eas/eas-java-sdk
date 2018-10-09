@@ -63,31 +63,35 @@ class ThreadClient implements Runnable {
 		TFRequest model3_request = buildPredictRequest();
 		
 		// 预测
-		JsonResponse model1_response = new JsonResponse();
+		JsonResponse model1_response;
 		try {
 			model1_response = client
 								.createChlidClient(model1_token, model1_endpoint, model1_name)
 								.predict(model1_request);
+			String model2_response = client
+					.createChlidClient(model2_token, model2_endpoint, model2_name)
+					.predict(model2_request);
+
+			TFResponse model3_response = client
+					.createChlidClient(model3_token, model3_endpoint, model3_name)
+					.predict(model3_request);
+			System.out.println(count
+					+ " model1:" + model1_response.getOutputs().get(0).getOutputValue()
+					+ " model2:" + model2_response
+					+ " model3:" + model3_response.getFloatVals("scores").get(0));
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		String model2_response = client
-								.createChlidClient(model2_token, model2_endpoint, model2_name)
-								.predict(model2_request);
-    	
-		TFResponse model3_response = client
-				.createChlidClient(model3_token, model3_endpoint, model3_name)
-				.predict(model3_request);
+
     		
-		System.out.println(count 
-					+ " model1:" + model1_response.getOutputs().get(0).getOutputValue()
-					+ " model2:" + model2_response
-					+ " model3:" + model3_response.getFloatVals("scores").get(0));
+
     }
 }
 

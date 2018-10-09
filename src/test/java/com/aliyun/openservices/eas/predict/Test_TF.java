@@ -9,7 +9,7 @@ import com.aliyun.openservices.eas.predict.response.TFResponse;
 
 public class Test_TF {
     public static PredictClient InitClient() {
-        return new PredictClient(new HttpConfig());
+        return new PredictClient(new HttpConfig(10, 10, 10, 10, 10, 10));
     }
 
     public static TFRequest buildPredictRequest() {
@@ -25,21 +25,26 @@ public class Test_TF {
 
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
-        client.setToken("NjZkOXFlNGIxYjE1Y2U5MzllMWJiYjEzYmUwYWYzY2M0YjIwYjRlNg==");
+        client.setToken("NGFmYzA1YTRlZmE0NDkwYjBmMGI1NjgxOGNmMzk4ODMyOGZhNjdkMg==");
         client.setEndpoint("eas-shanghai.alibaba-inc.com");
-        client.setModelName("tf_serving_test");
+        client.setModelName("tf_timeout");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
-            TFResponse response = client.predict(buildPredictRequest());
-            List<Float> result = response.getFloatVals("scores");
-            System.out.print("Predict Result: [");
-            for (int j = 0; j < result.size(); j++) {
-                System.out.print(result.get(j).floatValue());
-                if (j != result.size() -1)
-                    System.out.print(", ");
+            TFResponse response = null;
+            try {
+                response = client.predict(buildPredictRequest());
+                List<Float> result = response.getFloatVals("scores");
+                System.out.print("Predict Result: [");
+                for (int j = 0; j < result.size(); j++) {
+                    System.out.print(result.get(j).floatValue());
+                    if (j != result.size() - 1)
+                        System.out.print(", ");
+                }
+                System.out.print("]\n");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            System.out.print("]\n");
         }
         long endTime = System.currentTimeMillis();
         System.out.println("Spend Time: " + (endTime - startTime) + "ms");

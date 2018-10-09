@@ -7,6 +7,7 @@ public class HttpConfig {
     private int ioThreadNum;
     private int readTimeout;
     private int connectTimeout;
+    private int requestTimeout;
     private int maxConnectionCount;
     private int maxConnectionPerRoute;
     private boolean keepAlive;
@@ -17,6 +18,7 @@ public class HttpConfig {
         this.connectTimeout = 5000;
         this.maxConnectionCount = 1000;
         this.maxConnectionPerRoute = 1000;
+        this.requestTimeout = 0;
         this.keepAlive = true;
     }
 
@@ -29,6 +31,12 @@ public class HttpConfig {
         this.maxConnectionCount = maxConnectionCount;
         this.maxConnectionPerRoute = maxConnectionPerRoute;
         this.keepAlive = true;
+    }
+
+    public HttpConfig(int ioThreadNum, int readTimeout, int connectTimeout,
+                      int maxConnectionCount, int maxConnectionPerRoute, int requestTimeout) {
+        this(ioThreadNum, readTimeout, connectTimeout, maxConnectionCount, maxConnectionPerRoute);
+        this.requestTimeout = requestTimeout;
     }
 
     public int getIoThreadNum() {
@@ -69,6 +77,11 @@ public class HttpConfig {
 
     public void setMaxConnectionPerRoute(int maxConnectionPerRoute) {
         this.maxConnectionPerRoute = maxConnectionPerRoute;
+    }
+
+    public int getRequestTimeout() { return requestTimeout; }
+    public void setRequestTimeout(int requestTimeout) {
+        this.requestTimeout = requestTimeout;
     }
 
     public boolean isKeepAlive() {

@@ -33,15 +33,19 @@ public class CaffePredictTest {
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 100; i++) {
-            CaffeResponse response = client.predict(buildPredictRequest());
-            List<Float> result = response.getVals("prob");
-            System.out.print("Predict Result: [");
-            for (int j = 0; j < result.size(); j++) {
-                System.out.print(result.get(j).floatValue());
-                if (j != result.size() -1)
-                    System.out.print(", ");
+            try {
+                CaffeResponse response = client.predict(buildPredictRequest());
+                List<Float> result = response.getVals("prob");
+                System.out.print("Predict Result: [");
+                for (int j = 0; j < result.size(); j++) {
+                    System.out.print(result.get(j).floatValue());
+                    if (j != result.size() -1)
+                        System.out.print(", ");
+                }
+                System.out.print("]\n");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            System.out.print("]\n");
         }
         long endTime = System.currentTimeMillis();
         System.out.println("Spend Time: " + (endTime - startTime) + "ms");
