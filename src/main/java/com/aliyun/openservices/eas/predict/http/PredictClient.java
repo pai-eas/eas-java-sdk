@@ -120,7 +120,9 @@ public class PredictClient {
     }
 
     public PredictClient setVIPServer(String vipSrvEndPoint) {
-        this.vipSrvEndPoint = vipSrvEndPoint;
+        if (vipSrvEndPoint.length() > 0) {
+            this.vipSrvEndPoint = vipSrvEndPoint;
+        }
         return this;
     }
 
