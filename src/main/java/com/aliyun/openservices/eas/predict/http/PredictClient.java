@@ -109,6 +109,11 @@ public class PredictClient {
         return this;
     }
 
+    public PredictClient setRequestTimeout(int requestTimeout) {
+        this.requestTimeout = requestTimeout;
+        return this;
+    }
+
     public PredictClient setModelName(String modelName) {
         this.modelName = modelName;
         return this;
