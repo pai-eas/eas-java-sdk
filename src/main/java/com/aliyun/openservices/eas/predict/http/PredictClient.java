@@ -125,7 +125,7 @@ public class PredictClient {
     }
 
     public PredictClient setVIPServer(String vipSrvEndPoint) {
-		if ( vipSrvEndPoint == null || vipSrvEndPoint.length() > 0) {
+        if (vipSrvEndPoint == null || vipSrvEndPoint.length() > 0) {
             this.vipSrvEndPoint = vipSrvEndPoint;
         }
         return this;
@@ -273,8 +273,7 @@ public class PredictClient {
                 } else {
                     errorMessage = IOUtils.toString(response.getEntity()
                             .getContent(), "UTF-8");
-                    throw new IOException("Status Code: " + errorCode
-                            + " Predict Failed: " + errorMessage);
+                    throw new HttpException(errorCode, errorMessage);
                 }
             } catch (IllegalStateException e) {
                 log.error("Illegal State", e);
@@ -282,7 +281,7 @@ public class PredictClient {
         } else if (future.isCancelled()) {
             log.error("request cancelled!", new Exception("Request cancelled"));
         } else {
-            throw new IOException("request failed!");
+            throw new HttpException(-1, "request failed!");
         }
         return content;
     }
