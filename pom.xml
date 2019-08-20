@@ -37,7 +37,7 @@
       <groupId>com.aliyun.openservice.eas</groupId>  
       <artifactId>shade-protobuf</artifactId>  
       <version>3.4.0-SNAPSHOT</version> 
-    </dependency>  
+    </dependency>
     <dependency> 
       <groupId>commons-codec</groupId>  
       <artifactId>commons-codec</artifactId>  
