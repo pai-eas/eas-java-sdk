@@ -1,12 +1,11 @@
 package com.aliyun.openservices.eas.predict;
 
-import java.util.Map;
-
-import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.http.HttpConfig;
+import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.request.JsonFeatureValue;
 import com.aliyun.openservices.eas.predict.request.JsonRequest;
-import com.aliyun.openservices.eas.predict.response.JsonResponse;
+
+import java.util.Map;
 
 public class Test_Merge {
 	public static void main(String[] args) throws Exception {		
@@ -39,6 +38,7 @@ public class Test_Merge {
 		System.out.println("model1的输入：" + model1_request.getJSON());
 		System.out.println("model2的输入：" + model2_request);
 
+		/*
 		JsonResponse model1_response = client
 								.createChlidClient(model1_token, model1_endpoint, model1_name)
 								.predict(model1_request);
@@ -50,6 +50,7 @@ public class Test_Merge {
 		System.out.println("model1的输出："
 				+ model1_response.getOutputs().get(0).getOutputValue());
 		System.out.println("model2的输出：" + model2_response);
+		*/
 
 		// 关闭客户端
 		client.shutdown();

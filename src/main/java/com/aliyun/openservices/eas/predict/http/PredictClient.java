@@ -1,5 +1,6 @@
 package com.aliyun.openservices.eas.predict.http;
 
+import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 import com.aliyun.openservices.eas.predict.auth.HmacSha1Signature;
 import com.aliyun.openservices.eas.predict.request.CaffeRequest;
 import com.aliyun.openservices.eas.predict.request.JsonRequest;
@@ -10,7 +11,6 @@ import com.aliyun.openservices.eas.predict.response.JsonResponse;
 import com.aliyun.openservices.eas.predict.response.TFResponse;
 import com.aliyun.openservices.eas.predict.response.TorchResponse;
 import com.taobao.vipserver.client.core.VIPClient;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,13 +25,10 @@ import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
 import org.apache.http.impl.nio.reactor.IOReactorConfig;
 import org.apache.http.nio.entity.NByteArrayEntity;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
-import org.xerial.snappy.Snappy;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,6 +59,7 @@ public class PredictClient {
     private int errorCode = 400;
     private String errorMessage;
     private String vipSrvEndPoint = null;
+    private String directEndPoint = null;
     private int requestTimeout = 0;
     ObjectMapper defaultObjectMapper = new ObjectMapper();
 
@@ -133,6 +131,14 @@ public class PredictClient {
         return this;
     }
 
+    public PredictClient setDirectEndpoint(String directEndpoint) {
+        if (directEndPoint == null || directEndPoint.length() > 0) {
+            this.directEndPoint = directEndpoint;
+            System.setProperty("com.aliyun.eas.discovery", directEndpoint);
+        }
+        return this;
+    }
+
     public PredictClient setIsCompressed(boolean isCompressed) {
         this.isCompressed = isCompressed;
         return this;
@@ -190,6 +196,8 @@ public class PredictClient {
                 .setModelName(this.modelName);
         if (this.vipSrvEndPoint != null) {
             client.setVIPServer(this.vipSrvEndPoint);
+        } else if (this.directEndPoint != null) {
+            client.setDirectEndpoint(this.directEndPoint);
         } else {
             client.setEndpoint(this.endpoint);
         }
@@ -200,14 +208,13 @@ public class PredictClient {
         return "http://" + endpoint + "/api/predict/" + modelName;
     }
 
-    private HttpPost generateSignature(byte[] requestContent) {
+    private HttpPost generateSignature(byte[] requestContent) throws Exception {
         if (vipSrvEndPoint != null) {
-            try {
-                setEndpoint(VIPClient.srvHost(vipSrvEndPoint).toInetAddr());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setEndpoint(VIPClient.srvHost(vipSrvEndPoint).toInetAddr());
+        } else if (directEndPoint != null) {
+            setEndpoint(DiscoveryClient.srvHost(this.modelName).toInetAddr());
         }
+
         HttpPost request = new HttpPost(buildUri());
         request.setEntity(new NByteArrayEntity(requestContent));
         if (isCompressed) {
@@ -308,8 +315,7 @@ public class PredictClient {
 
     public JsonResponse predict(JsonRequest requestContent)
             throws Exception {
-        byte[] result = predict(defaultObjectMapper
-                .writeValueAsBytes(requestContent));
+        byte[] result = predict(defaultObjectMapper.writeValueAsString(requestContent).getBytes());
 
         JsonResponse jsonResponse = null;
         if (result != null) {

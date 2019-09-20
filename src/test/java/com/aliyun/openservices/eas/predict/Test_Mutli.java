@@ -1,19 +1,13 @@
 package com.aliyun.openservices.eas.predict;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
-
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-
-import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.http.HttpConfig;
+import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.request.JsonFeatureValue;
 import com.aliyun.openservices.eas.predict.request.JsonRequest;
 import com.aliyun.openservices.eas.predict.request.TFDataType;
 import com.aliyun.openservices.eas.predict.request.TFRequest;
-import com.aliyun.openservices.eas.predict.response.JsonResponse;
-import com.aliyun.openservices.eas.predict.response.TFResponse;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 class ThreadClient implements Runnable {
 	private int count;
@@ -63,6 +57,7 @@ class ThreadClient implements Runnable {
 		TFRequest model3_request = buildPredictRequest();
 		
 		// 预测
+      /*
 		JsonResponse model1_response;
 		try {
 			model1_response = client
@@ -79,16 +74,13 @@ class ThreadClient implements Runnable {
 					+ " model1:" + model1_response.getOutputs().get(0).getOutputValue()
 					+ " model2:" + model2_response
 					+ " model3:" + model3_response.getFloatVals("scores").get(0));
-		} catch (JsonGenerationException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+*/
 
     		
 

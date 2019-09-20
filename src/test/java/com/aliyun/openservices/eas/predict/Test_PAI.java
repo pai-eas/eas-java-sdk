@@ -1,13 +1,11 @@
 package com.aliyun.openservices.eas.predict;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.http.HttpConfig;
+import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.request.JsonFeatureValue;
 import com.aliyun.openservices.eas.predict.request.JsonRequest;
-import com.aliyun.openservices.eas.predict.response.JsonResponse;
+
+import java.util.Map;
 
 public class Test_PAI {
 	public static void main(String[] args) throws Exception {
@@ -42,7 +40,7 @@ public class Test_PAI {
 		
 		//返回为JsonResponse类型
 		
-		JsonResponse response = client.predict(request);
+		// JsonResponse response = client.predict(request);
 //		JsonResponse response = client.SetVerb("GET").predict(request);
 		
 /*		
@@ -53,7 +51,7 @@ public class Test_PAI {
 			}
 */		
 		
-		System.out.println(response.getOutputs().get(0).getOutputValue());
+		//System.out.println(response.getOutputs().get(0).getOutputValue());
 		
 		
 		//关闭客户端
