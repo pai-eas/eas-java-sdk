@@ -6,10 +6,12 @@ import com.aliyun.openservices.eas.predict.request.CaffeRequest;
 import com.aliyun.openservices.eas.predict.request.JsonRequest;
 import com.aliyun.openservices.eas.predict.request.TFRequest;
 import com.aliyun.openservices.eas.predict.request.TorchRequest;
+import com.aliyun.openservices.eas.predict.request.BladeRequest;
 import com.aliyun.openservices.eas.predict.response.CaffeResponse;
 import com.aliyun.openservices.eas.predict.response.JsonResponse;
 import com.aliyun.openservices.eas.predict.response.TFResponse;
 import com.aliyun.openservices.eas.predict.response.TorchResponse;
+import com.aliyun.openservices.eas.predict.response.BladeResponse;
 import com.taobao.vipserver.client.core.VIPClient;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -293,6 +295,15 @@ public class PredictClient {
             throw new HttpException(-1, "request failed!");
         }
         return content;
+    }
+
+    public BladeResponse predict(BladeRequest runRequest) throws Exception {
+        BladeResponse runResponse = new BladeResponse();
+        byte[] result = predict(runRequest.getRequest().toByteArray());
+        if (result != null) {
+            runResponse.setContentValues(result);
+        }
+        return runResponse;
     }
 
     public TFResponse predict(TFRequest runRequest) throws Exception {
