@@ -2,16 +2,8 @@ package com.aliyun.openservices.eas.predict.http;
 
 import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 import com.aliyun.openservices.eas.predict.auth.HmacSha1Signature;
-import com.aliyun.openservices.eas.predict.request.CaffeRequest;
-import com.aliyun.openservices.eas.predict.request.JsonRequest;
-import com.aliyun.openservices.eas.predict.request.TFRequest;
-import com.aliyun.openservices.eas.predict.request.TorchRequest;
-import com.aliyun.openservices.eas.predict.request.BladeRequest;
-import com.aliyun.openservices.eas.predict.response.CaffeResponse;
-import com.aliyun.openservices.eas.predict.response.JsonResponse;
-import com.aliyun.openservices.eas.predict.response.TFResponse;
-import com.aliyun.openservices.eas.predict.response.TorchResponse;
-import com.aliyun.openservices.eas.predict.response.BladeResponse;
+import com.aliyun.openservices.eas.predict.request.*;
+import com.aliyun.openservices.eas.predict.response.*;
 import com.taobao.vipserver.client.core.VIPClient;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -45,6 +37,7 @@ import java.util.concurrent.TimeoutException;
  * Created by xiping.zk on 2018/07/25.
  */
 public class PredictClient {
+    final private int endpointRetryCount = 10;
     private static Log log = LogFactory.getLog(PredictClient.class);
     private CloseableHttpAsyncClient httpclient = null;
     private String token = null;
@@ -53,10 +46,6 @@ public class PredictClient {
     private boolean isCompressed = false;
     HashMap<String, String> mapHeader = null;
     private int retryCount = 3;
-    private String[][] configs;
-    private int configCount = -1;
-    private int heartCount = 0;
-    private int heartLimit = 1000;
     private String contentType = "application/octet-stream";
     private int errorCode = 400;
     private String errorMessage;
@@ -100,14 +89,10 @@ public class PredictClient {
         return this;
     }
 
-    private void changeConfig(int i) {
-        this.token = configs[i][0];
-        this.endpoint = configs[i][1];
-        this.modelName = configs[i][2];
-    }
-
     public PredictClient setToken(String token) {
-        this.token = token;
+        if (token == null || token.length() > 0) {
+            this.token = token;
+        }
         return this;
     }
 
@@ -156,21 +141,6 @@ public class PredictClient {
         return this;
     }
 
-    public PredictClient setMultiConfig(String[][] configs) {
-        this.configs = configs.clone();
-        this.configCount = 0;
-        changeConfig(configCount);
-        return this;
-    }
-
-    public PredictClient setMultiConfig(String[][] configs, int heartLimit) {
-        this.configs = configs.clone();
-        this.configCount = 0;
-        changeConfig(configCount);
-        this.heartLimit = heartLimit;
-        return this;
-    }
-
     public PredictClient setContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -206,18 +176,40 @@ public class PredictClient {
         return client;
     }
 
-    private String buildUri() {
-        return "http://" + endpoint + "/api/predict/" + modelName;
+    private String getUrl(String lastUrl) throws Exception {
+        String endpoint = this.endpoint;
+        String url = "";
+        for (int i = 0; i < endpointRetryCount; i++) {
+            if (vipSrvEndPoint != null) {
+                endpoint = VIPClient.srvHost(vipSrvEndPoint).toInetAddr();
+                url = "http://" + endpoint + "/api/predict/" + modelName;
+                if (VIPClient.srvHosts(vipSrvEndPoint).size() < 2) {
+                    return url;
+                }
+                // System.out.println("URL: " + url + " LastURL: " + lastUrl);
+                if (!url.equals(lastUrl)) {
+                    return url;
+                }
+            } else if (directEndPoint != null) {
+                endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
+                url = "http://" + endpoint + "/api/predict/" + modelName;
+                // System.out.println("URL: " + url + " LastURL: " + lastUrl);
+                if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
+                    return url;
+                }
+                if (!url.equals(lastUrl)) {
+                    return url;
+                }
+            } else {
+                url = "http://" + endpoint + "/api/predict/" + modelName;
+                break;
+            }
+        }
+        return url;
     }
 
-    private HttpPost generateSignature(byte[] requestContent) throws Exception {
-        if (vipSrvEndPoint != null) {
-            setEndpoint(VIPClient.srvHost(vipSrvEndPoint).toInetAddr());
-        } else if (directEndPoint != null) {
-            setEndpoint(DiscoveryClient.srvHost(this.modelName).toInetAddr());
-        }
-
-        HttpPost request = new HttpPost(buildUri());
+    private HttpPost generateSignature(byte[] requestContent, String lastUrl) throws Exception {
+        HttpPost request = new HttpPost(getUrl(lastUrl));
         request.setEntity(new NByteArrayEntity(requestContent));
         if (isCompressed) {
             try {
@@ -240,12 +232,12 @@ public class PredictClient {
         if (mapHeader != null) {
             request.addHeader("Client-Timestamp",
                     String.valueOf(System.currentTimeMillis()));
-		}
+        }
 
-        String auth = "POST" + "\n" + md5Content + "\n"
-                + "application/octet-stream" + "\n" + currentTime + "\n"
-                + "/api/predict/" + modelName;
         if (token != null) {
+            String auth = "POST" + "\n" + md5Content + "\n"
+                    + "application/octet-stream" + "\n" + currentTime + "\n"
+                    + "/api/predict/" + modelName;
             request.addHeader(HttpHeaders.AUTHORIZATION,
                     "EAS " + signature.computeSignature(token, auth));
         }
@@ -280,7 +272,7 @@ public class PredictClient {
                             .getContent());
                     if (isCompressed) {
                         content = Snappy.uncompress(content);
-					}
+                    }
                 } else {
                     errorMessage = IOUtils.toString(response.getEntity()
                             .getContent(), "UTF-8");
@@ -336,6 +328,15 @@ public class PredictClient {
         return jsonResponse;
     }
 
+    public TorchResponse predict(TorchRequest runRequest) throws Exception {
+        TorchResponse runResponse = new TorchResponse();
+        byte[] result = predict(runRequest.getRequest().toByteArray());
+        if(result != null) {
+            runResponse.setContentValues(result);
+        }
+        return runResponse;
+    }
+
     public String predict(String requestContent) throws Exception{
         byte[] result = predict(requestContent.getBytes());
         if (result != null) {
@@ -345,32 +346,22 @@ public class PredictClient {
     }
 
     public byte[] predict(byte[] requestContent) throws Exception{
-        HttpPost request = generateSignature(requestContent);
-        if (configCount >= 0) {
-            heartCount++;
-            if (heartCount >= heartLimit) {
-                heartCount = 0;
-                configCount = 0;
-                changeConfig(configCount);
-                request = generateSignature(requestContent);
-            }
-        }
         byte[] content = null;
+        String lastUrl = "";
         for (int i = 0; i <= retryCount; i++) {
             try {
+                HttpPost request = generateSignature(requestContent, lastUrl);
+                lastUrl = request.getURI().toString();
                 content = getContent(request);
                 break;
             } catch (Exception e) {
-                if (configCount >= 0) {
-                    configCount = ++configCount % configs.length;
-                    changeConfig(configCount);
-                    request = generateSignature(requestContent);
-                }
+                String errorMesssage = "URL: " + lastUrl + ", " + e.getMessage();
                 if (i == retryCount) {
-                    log.error("Exception Error: " + e.getMessage());
-                    throw e;
+                    log.error(errorMesssage);
+                    e.printStackTrace();
+                    throw new Exception(errorMesssage);
                 } else {
-                    log.debug("Exception Error: " + e.getMessage());
+                    log.debug(errorMesssage);
                 }
             }
         }
@@ -385,15 +376,4 @@ public class PredictClient {
             e.printStackTrace();
         }
     }
-
-    public TorchResponse predict(TorchRequest runRequest) throws Exception {
-        TorchResponse runResponse = new TorchResponse();
-        byte[] result = predict(runRequest.getRequest().toByteArray());
-        if(result != null) {
-            runResponse.setContentValues(result);
-        }
-        return runResponse;
-    }
-
 }
-

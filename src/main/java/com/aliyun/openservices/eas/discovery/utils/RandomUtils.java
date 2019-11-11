@@ -44,7 +44,7 @@ public class RandomUtils {
     /**
      * <p>Returns the next pseudorandom, uniformly distributed int value
      * from the Math.random() sequence.</p>
-     * <b>N.B. All values are >= 0.<b>
+     * N.B. All values are ge 0.
      *
      * @return the random int
      */
@@ -92,7 +92,7 @@ public class RandomUtils {
     /**
      * <p>Returns the next pseudorandom, uniformly distributed long value
      * from the Math.random() sequence.</p>
-     * <b>N.B. All values are >= 0.<b>
+     * N.B. All values are ge 0.
      *
      * @return the random long
      */

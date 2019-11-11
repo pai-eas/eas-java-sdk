@@ -162,7 +162,7 @@ public final class JVMRandom extends Random {
      * from the Math.random() sequence.</p>
      * Identical to <code>nextInt(Integer.MAX_VALUE)</code>
      * <p>
-     * <b>N.B. All values are >= 0.<b>
+     * N.B. All values are ge 0.
      * </p>
      *
      * @return the random int
@@ -186,10 +186,9 @@ public final class JVMRandom extends Random {
 
     /**
      * <p>Returns the next pseudorandom, uniformly distributed long value
-     * from the Math.random() sequence.</p>
+     * from the Math.random() sequence.
      * Identical to <code>nextLong(Long.MAX_VALUE)</code>
-     * <p>
-     * <b>N.B. All values are >= 0.<b>
+     * N.B. All values are ge 0.
      * </p>
      *
      * @return the random long
