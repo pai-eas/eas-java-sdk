@@ -19,7 +19,6 @@ import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
 import org.apache.http.impl.nio.reactor.IOReactorConfig;
 import org.apache.http.nio.entity.NByteArrayEntity;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
@@ -52,7 +51,6 @@ public class PredictClient {
     private String vipSrvEndPoint = null;
     private String directEndPoint = null;
     private int requestTimeout = 0;
-    ObjectMapper defaultObjectMapper = new ObjectMapper();
 
     public PredictClient() {
     }
@@ -318,12 +316,10 @@ public class PredictClient {
 
     public JsonResponse predict(JsonRequest requestContent)
             throws Exception {
-        byte[] result = predict(defaultObjectMapper.writeValueAsString(requestContent).getBytes());
-
-        JsonResponse jsonResponse = null;
+        byte[] result = predict(requestContent.getJSON().getBytes());
+        JsonResponse jsonResponse = new JsonResponse();
         if (result != null) {
-            jsonResponse = defaultObjectMapper.readValue(result, 0,
-                    result.length, JsonResponse.class);
+            jsonResponse.setContentValues(result);
         }
         return jsonResponse;
     }
