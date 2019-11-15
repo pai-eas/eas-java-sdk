@@ -18,6 +18,7 @@ import java.util.List;
 public class TFResponse {
     private static Log log = LogFactory.getLog(TFResponse.class);
     private PredictResponse response = null;
+    private String prefix = "";
 
     public void setContentValues(byte[] content) {
         try {
@@ -29,13 +30,30 @@ public class TFResponse {
         }
     }
 
-    public List<Long> getTensorShape(String outputname) {
+    public void setPrefix(String value) {
+        this.prefix = value;
+    }
+
+    private String getOutputName(String name) {
+        String output;
+        if (prefix.isEmpty()) {
+            output = name;
+        } else if (prefix.endsWith("/")) {
+            output = prefix + name;
+        } else {
+            output = prefix + "/" + name;
+        }
+        return output;
+    }
+
+    public List<Long> getTensorShape(String outputName) {
+        String output = getOutputName(outputName);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name: " + outputname);
-                throw new RuntimeException("Not Found output name: " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name: " + output);
+                throw new RuntimeException("Not Found output name: " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             return responseProto.getArrayShape().getDimList();
         } else {
             log.error("request failed: can't get response");
@@ -43,13 +61,15 @@ public class TFResponse {
         }
     }
 
-    public List<Float> getFloatVals(String outputname) {
+    public List<Float> getFloatVals(String outputName) {
+        String output = getOutputName(outputName);
+        System.out.println("======" + output);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name : " + outputname);
-                throw new RuntimeException("Not Found output name : " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name : " + output);
+                throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             return responseProto.getFloatValList();
         } else {
             log.error("request failed: can't get response");
@@ -57,13 +77,14 @@ public class TFResponse {
         }
     }
 
-    public List<Double> getDoubleVals(String outputname) {
+    public List<Double> getDoubleVals(String outputName) {
+        String output = getOutputName(outputName);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name : " + outputname);
-                throw new RuntimeException("Not Found output name : " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name : " + output);
+                throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             return responseProto.getDoubleValList();
         } else {
             log.error("request failed: can't get response");
@@ -71,13 +92,14 @@ public class TFResponse {
         }
     }
 
-    public List<Integer> getIntVals(String outputname) {
+    public List<Integer> getIntVals(String outputName) {
+        String output = getOutputName(outputName);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name : " + outputname);
-                throw new RuntimeException("Not Found output name : " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name : " + output);
+                throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             return responseProto.getIntValList();
         } else {
             log.error("request failed: can't get response");
@@ -85,13 +107,14 @@ public class TFResponse {
         }
     }
 
-    public List<String> getStringVals(String outputname) {
+    public List<String> getStringVals(String outputName) {
+        String output = getOutputName(outputName);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name : " + outputname);
-                throw new RuntimeException("Not Found output name : " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name : " + output);
+                throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             List<ByteString> res = responseProto.getStringValList();
             List<String> result = new ArrayList<String>();
             for (int i = 0; i < res.size(); i++) {
@@ -104,13 +127,14 @@ public class TFResponse {
         }
     }
 
-    public List<Long> getInt64Vals(String outputname) {
+    public List<Long> getInt64Vals(String outputName) {
+        String output = getOutputName(outputName);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name : " + outputname);
-                throw new RuntimeException("Not Found output name : " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name : " + output);
+                throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             return responseProto.getInt64ValList();
         } else {
             log.error("request failed: can't get response");
@@ -118,13 +142,14 @@ public class TFResponse {
         }
     }
 
-    public List<Boolean> getBoolVals(String outputname) {
+    public List<Boolean> getBoolVals(String outputName) {
+        String output = getOutputName(outputName);
         if (response != null) {
-            if (!response.containsOutputs(outputname)) {
-                log.error("Not Found output name : " + outputname);
-                throw new RuntimeException("Not Found output name : " + outputname);
+            if (!response.containsOutputs(output)) {
+                log.error("Not Found output name : " + output);
+                throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(outputname);
+            ArrayProto responseProto = response.getOutputsMap().get(output);
             return responseProto.getBoolValList();
         } else {
             log.error("request failed: can't get response");

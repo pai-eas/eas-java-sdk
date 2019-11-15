@@ -14,12 +14,23 @@ import org.apache.commons.logging.LogFactory;
 public class TFRequest {
     private PredictRequest.Builder request = PredictRequest.newBuilder();
     private static Log log = LogFactory.getLog(TFRequest.class);
+    private String prefix = "";
     public void setSignatureName(String value) {
         request.setSignatureName(value);
     }
-    public void addFetch(String value) { request.addOutputFilter(value); }
+    public void setPrefix(String value) { this.prefix = value; }
 
-    public void addFeed(String inputname, TFDataType dataType, long[] shape, float[] content) {
+    public void addFetch(String value) {
+        if (prefix.isEmpty()) {
+            request.addOutputFilter(value);
+        } else if (prefix.endsWith("/")) {
+            request.addOutputFilter(prefix + value);
+        } else {
+            request.addOutputFilter(prefix + "/" + value);
+        }
+    }
+
+    public void addFeed(String inputName, TFDataType dataType, long[] shape, float[] content) {
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TFDataType.DT_FLOAT) {
             requestProto.setDtype(ArrayDataType.DT_FLOAT);
@@ -39,10 +50,16 @@ public class TFRequest {
         requestProto.mergeArrayShape(arrayShape.build());
         for (int i = 0; i < content.length; i++)
             requestProto.addFloatVal(content[i]);
-        request.putInputs(inputname, requestProto.build());
+        if (prefix.isEmpty()) {
+            request.putInputs(inputName, requestProto.build());
+        } else if (prefix.endsWith("/")) {
+            request.putInputs(prefix + inputName, requestProto.build());
+        } else {
+            request.putInputs(prefix + "/" + inputName, requestProto.build());
+        }
     }
 
-    public void addFeed(String inputname, TFDataType dataType, long[] shape, double[] content) {
+    public void addFeed(String inputName, TFDataType dataType, long[] shape, double[] content) {
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TFDataType.DT_DOUBLE) {
             requestProto.setDtype(ArrayDataType.DT_DOUBLE);
@@ -58,10 +75,16 @@ public class TFRequest {
         requestProto.mergeArrayShape(arrayShape.build());
         for (int i = 0; i < content.length; i++)
             requestProto.addDoubleVal(content[i]);
-        request.putInputs(inputname, requestProto.build());
+        if (prefix.isEmpty()) {
+            request.putInputs(inputName, requestProto.build());
+        } else if (prefix.endsWith("/")) {
+            request.putInputs(prefix + inputName, requestProto.build());
+        } else {
+            request.putInputs(prefix + "/" + inputName, requestProto.build());
+        }
     }
 
-    public void addFeed(String inputname, TFDataType dataType, long[] shape, int[] content) {
+    public void addFeed(String inputName, TFDataType dataType, long[] shape, int[] content) {
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TFDataType.DT_INT32) {
             requestProto.setDtype(ArrayDataType.DT_INT32);
@@ -94,7 +117,13 @@ public class TFRequest {
         requestProto.mergeArrayShape(arrayShape.build());
         for (int i = 0; i < content.length; i++)
             requestProto.addIntVal(content[i]);
-        request.putInputs(inputname, requestProto.build());
+        if (prefix.isEmpty()) {
+            request.putInputs(inputName, requestProto.build());
+        } else if (prefix.endsWith("/")) {
+            request.putInputs(prefix + inputName, requestProto.build());
+        } else {
+            request.putInputs(prefix + "/" + inputName, requestProto.build());
+        }
     }
 
     public void addFeed(String inputname, TFDataType dataType, long[] shape, String[] content) {
@@ -114,7 +143,7 @@ public class TFRequest {
         request.putInputs(inputname, requestProto.build());
     }
 
-    public void addFeed(String inputname, TFDataType dataType, long[] shape, long[] content) {
+    public void addFeed(String inputName, TFDataType dataType, long[] shape, long[] content) {
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TFDataType.DT_INT64) {
             requestProto.setDtype(ArrayDataType.DT_INT64);
@@ -128,10 +157,16 @@ public class TFRequest {
         requestProto.mergeArrayShape(arrayShape.build());
         for (int i = 0; i < content.length; i++)
             requestProto.addInt64Val(content[i]);
-        request.putInputs(inputname, requestProto.build());
+        if (prefix.isEmpty()) {
+            request.putInputs(inputName, requestProto.build());
+        } else if (prefix.endsWith("/")) {
+            request.putInputs(prefix + inputName, requestProto.build());
+        } else {
+            request.putInputs(prefix + "/" + inputName, requestProto.build());
+        }
     }
 
-    public void addFeed(String inputname, TFDataType dataType, long[] shape, boolean[] content) {
+    public void addFeed(String inputName, TFDataType dataType, long[] shape, boolean[] content) {
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TFDataType.DT_BOOL) {
             requestProto.setDtype(ArrayDataType.DT_BOOL);
@@ -145,7 +180,13 @@ public class TFRequest {
         requestProto.mergeArrayShape(arrayShape.build());
         for (int i = 0; i < content.length; i++)
             requestProto.addBoolVal(content[i]);
-        request.putInputs(inputname, requestProto.build());
+        if (prefix.isEmpty()) {
+            request.putInputs(inputName, requestProto.build());
+        } else if (prefix.endsWith("/")) {
+            request.putInputs(prefix + inputName, requestProto.build());
+        } else {
+            request.putInputs(prefix + "/" + inputName, requestProto.build());
+        }
     }
 
     public PredictRequest getRequest() {
