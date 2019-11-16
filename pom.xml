@@ -49,7 +49,7 @@
     </developer>
   </developers>
 
-  <distributionManagement>
+  <!-- <distributionManagement>
     <repository>
       <id>oss</id>
       <url>
@@ -64,6 +64,7 @@
       </url>
     </snapshotRepository>
   </distributionManagement>
+  -->
   <profiles>
     <profile>
       <id>release</id>
