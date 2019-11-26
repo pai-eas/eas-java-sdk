@@ -126,7 +126,7 @@ public class TFRequest {
         }
     }
 
-    public void addFeed(String inputname, TFDataType dataType, long[] shape, String[] content) {
+    public void addFeed(String inputName, TFDataType dataType, long[] shape, String[] content) {
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TFDataType.DT_STRING) {
             requestProto.setDtype(ArrayDataType.DT_STRING);
@@ -140,7 +140,13 @@ public class TFRequest {
         requestProto.mergeArrayShape(arrayShape.build());
         for (int i = 0; i < content.length; i++)
             requestProto.addStringVal(ByteString.copyFromUtf8(content[i]));
-        request.putInputs(inputname, requestProto.build());
+        if (prefix.isEmpty()) {
+            request.putInputs(inputName, requestProto.build());
+        } else if (prefix.endsWith("/")) {
+            request.putInputs(prefix + inputName, requestProto.build());
+        } else {
+            request.putInputs(prefix + "/" + inputName, requestProto.build());
+        }
     }
 
     public void addFeed(String inputName, TFDataType dataType, long[] shape, long[] content) {

@@ -63,7 +63,6 @@ public class TFResponse {
 
     public List<Float> getFloatVals(String outputName) {
         String output = getOutputName(outputName);
-        System.out.println("======" + output);
         if (response != null) {
             if (!response.containsOutputs(output)) {
                 log.error("Not Found output name : " + output);
