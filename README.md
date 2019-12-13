@@ -1,6 +1,7 @@
 
 # 添加依赖包
 编写Java客户端代码使用Maven管理项目，用户需在pom.xml文件中添加客户端所需的依赖包，名为eas-sdk，目前最新release版本为1.1.4，具体代码如下：
+
 ```
 <dependency>
   <groupId>com.aliyun.openservices.eas</groupId>
@@ -45,7 +46,9 @@
 ||getBoolVals(String outputname)|如果输出Tensor的DataType为DT_BOOL，调用该函数获得名字为ouputname的输出Tensor的data|
 
 # 程序示例
+
 ## 字符串输入输出程序示例
+
 对于自定义Processor用户而言，通常采用字符串进行服务的输入输出调用(如pmml模型服务的调用)，具体的demo程序如下：
 
 ```java
@@ -81,6 +84,7 @@ public class Test_String {
     }
 }
 ```
+
 其中：
 * 通过PredictClient创建客户端服务对象，如需在程序中使用多个服务，可创建多个client对象；
 * 在建立了PredictClient对象之后，需为其设置Token、Endpoint以及ModelName；
@@ -89,8 +93,10 @@ public class Test_String {
 
 
 ## Tensorflow输入输出程序示例
+
 TF用户可以使用TFRequest与TFResponse作为数据的输入输出格式，具体demo示例如下：
-```
+
+```java
 import java.util.List;
 import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.http.HttpConfig;
