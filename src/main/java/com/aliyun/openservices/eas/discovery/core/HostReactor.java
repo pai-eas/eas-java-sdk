@@ -211,7 +211,14 @@ public class HostReactor {
         try {
             Map<String, String> params = new HashMap<>();
 
-            String result = DiscoveryServerProxy.reqAPI("/exported/apis/eas.alibaba-inc.k8s.io/v1/upstreams/" + service, params);
+            String namespace = System.getenv("NAMESPACE");
+            String podName = System.getenv("POD_NAME");
+            String url = "/exported/apis/eas.alibaba-inc.k8s.io/v1/upstreams/" + service;
+            if (namespace != null && podName != null) {
+              url += "?internal=true";
+            }
+
+            String result = DiscoveryServerProxy.reqAPI(url, params);
             if (StringUtils.isNotEmpty(result)) {
                 Service inDom = JSON.parseObject(result, Service.class);
                 inDom.setName(service);

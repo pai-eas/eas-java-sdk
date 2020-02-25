@@ -2,14 +2,9 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.taobao</groupId>  
-    <artifactId>parent</artifactId>  
-    <version>1.0.2</version> 
-  </parent>  
-  <groupId>com.aliyun.openservices.eas</groupId>  
+  <groupId>com.aliyun.openservices.eas</groupId>
   <artifactId>eas-sdk</artifactId>  
-  <version>1.1.4</version>
+  <version>1.1.5</version>
   <packaging>jar</packaging>  
   <name>eas-sdk</name>  
   <url>http://maven.apache.org</url>  
@@ -49,7 +44,7 @@
     </developer>
   </developers>
 
-  <!-- <distributionManagement>
+  <distributionManagement>
     <repository>
       <id>oss</id>
       <url>
@@ -64,7 +59,6 @@
       </url>
     </snapshotRepository>
   </distributionManagement>
-  -->
   <profiles>
     <profile>
       <id>release</id>
@@ -184,15 +178,30 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.31</version>
     </dependency>
-    <dependency> 
-      <groupId>com.taobao.vipserver</groupId>  
-      <artifactId>vipserver-client</artifactId>  
-      <version>4.7.4</version> 
-    </dependency>  
-    <dependency> 
+    <dependency>
       <groupId>log4j</groupId>  
       <artifactId>log4j</artifactId>  
       <version>1.2.9</version> 
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.middleware</groupId>
+      <artifactId>tls-common</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.middleware</groupId>
+      <artifactId>tls-sslsocketfactory</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.middleware</groupId>
+      <artifactId>ushura</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>19.0</version>
     </dependency>
   </dependencies>
   <build> 

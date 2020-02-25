@@ -4,7 +4,6 @@ import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 import com.aliyun.openservices.eas.predict.auth.HmacSha1Signature;
 import com.aliyun.openservices.eas.predict.request.*;
 import com.aliyun.openservices.eas.predict.response.*;
-import com.taobao.vipserver.client.core.VIPClient;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -178,17 +177,7 @@ public class PredictClient {
         String endpoint = this.endpoint;
         String url = "";
         for (int i = 0; i < endpointRetryCount; i++) {
-            if (vipSrvEndPoint != null) {
-                endpoint = VIPClient.srvHost(vipSrvEndPoint).toInetAddr();
-                url = "http://" + endpoint + "/api/predict/" + modelName;
-                if (VIPClient.srvHosts(vipSrvEndPoint).size() < 2) {
-                    return url;
-                }
-                // System.out.println("URL: " + url + " LastURL: " + lastUrl);
-                if (!url.equals(lastUrl)) {
-                    return url;
-                }
-            } else if (directEndPoint != null) {
+            if (directEndPoint != null) {
                 endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
                 url = "http://" + endpoint + "/api/predict/" + modelName;
                 // System.out.println("URL: " + url + " LastURL: " + lastUrl);
