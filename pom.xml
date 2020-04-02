@@ -185,21 +185,6 @@
       <version>1.2.9</version> 
     </dependency>
     <dependency>
-      <groupId>com.alibaba.middleware</groupId>
-      <artifactId>tls-common</artifactId>
-      <version>1.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.middleware</groupId>
-      <artifactId>tls-sslsocketfactory</artifactId>
-      <version>1.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.middleware</groupId>
-      <artifactId>ushura</artifactId>
-      <version>1.0</version>
-    </dependency>
-    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>19.0</version>

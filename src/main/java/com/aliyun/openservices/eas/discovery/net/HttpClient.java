@@ -1,13 +1,10 @@
 package com.aliyun.openservices.eas.discovery.net;
 
-import com.alibaba.middleware.tls.JavaSSLSocketFactory;
-import com.alibaba.middleware.tls.util.TlsUtil;
 import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 import com.aliyun.openservices.eas.discovery.utils.IOUtils;
 import com.aliyun.openservices.eas.discovery.utils.StringUtils;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -55,15 +52,7 @@ public class HttpClient {
             String encodedContent = encodingParams(paramValues, encoding);
             url += (null == encodedContent) ? "" : ("?" + encodedContent);
 
-            if (enableHttps && url.startsWith("https")) {
-                TlsUtil.replaceHostnameVerifier();
-                SSLSocketFactory ssf = JavaSSLSocketFactory.createJavaSSLSocketFactory(null, null);
-                HttpsURLConnection httpsConn = (HttpsURLConnection) new URL(url).openConnection();
-                httpsConn.setSSLSocketFactory(ssf);
-                conn = httpsConn;
-            } else {
-                conn = (HttpURLConnection) new URL(url).openConnection();
-            }
+            conn = (HttpURLConnection) new URL(url).openConnection();
 
             conn.setConnectTimeout(connTimeout);
             conn.setReadTimeout(timeout);
