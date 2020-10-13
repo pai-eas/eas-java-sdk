@@ -11,6 +11,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
@@ -22,18 +23,80 @@ import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Created by xiping.zk on 2018/07/25.
  */
+
+class BlacklistData{
+    private long timestamp = 0L;
+    private int count = 0;
+
+    public BlacklistData(long timestamp, int count) {
+        this.timestamp = timestamp;
+        this.count = count;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+// define blacklist task
+class BlacklistTask implements Runnable {
+    private Map<String, BlacklistData> blacklist = null;
+    private ReentrantReadWriteLock rwlock = null;
+    private int blacklistTimeout = 0;
+    private static Log log = LogFactory.getLog(BlacklistTask.class);
+
+    public BlacklistTask(Map<String, BlacklistData> blacklist,
+                         ReentrantReadWriteLock rwlock, int blacklistTimeout) {
+        this.blacklist = blacklist;
+        this.rwlock = rwlock;
+        this.blacklistTimeout = blacklistTimeout;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                rwlock.writeLock().lock();
+                Iterator<Map.Entry<String, BlacklistData>> it = blacklist.entrySet().iterator();
+                long currentTimestamp = System.currentTimeMillis();
+                while (it.hasNext()) {
+                    Map.Entry<String, BlacklistData> entry = it.next();
+                    if (entry.getValue().getTimestamp() <= currentTimestamp) {
+                        log.info("Remove [" + entry.getKey() + "] from blacklist");
+                        it.remove();
+                    }
+                }
+                rwlock.writeLock().unlock();
+                Thread.sleep(blacklistTimeout * 1000);
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+}
+
 public class PredictClient {
     final private int endpointRetryCount = 10;
     private static Log log = LogFactory.getLog(PredictClient.class);
@@ -50,6 +113,12 @@ public class PredictClient {
     private String vipSrvEndPoint = null;
     private String directEndPoint = null;
     private int requestTimeout = 0;
+    private boolean enableBlacklist = false;
+    private int blacklistSize = 10;
+    private int blacklistTimeout = 30;
+    private int blacklistTimeoutCount = 10;
+    private Map<String, BlacklistData> blacklist = null;
+    private ReentrantReadWriteLock rwlock = new ReentrantReadWriteLock();
 
     public PredictClient() {
     }
@@ -143,6 +212,21 @@ public class PredictClient {
         return this;
     }
 
+    public PredictClient startBlacklistMechanism(int blacklistSize,
+                                                 int blacklistTimeout,
+                                                 int blacklistTimeoutCount) {
+        this.enableBlacklist = true;
+        this.blacklistSize = blacklistSize;
+        this.blacklistTimeout = blacklistTimeout;
+        this.blacklistTimeoutCount = blacklistTimeoutCount;
+        this.blacklist = new HashMap<String, BlacklistData>();
+        BlacklistTask task = new BlacklistTask(this.blacklist,
+                this.rwlock, this.blacklistTimeout);
+        Thread t = new Thread(task);
+        t.start();
+        return this;
+    }
+
     public int getErrorCode() {
         return errorCode;
     }
@@ -176,22 +260,55 @@ public class PredictClient {
     private String getUrl(String lastUrl) throws Exception {
         String endpoint = this.endpoint;
         String url = "";
-        for (int i = 0; i < endpointRetryCount; i++) {
-            if (directEndPoint != null) {
-                endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                url = "http://" + endpoint + "/api/predict/" + modelName;
-                // System.out.println("URL: " + url + " LastURL: " + lastUrl);
-                if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
-                    return url;
+        if (enableBlacklist) {
+            int retryCount = endpointRetryCount;
+            if (blacklistSize * 2 > endpointRetryCount) {
+                retryCount = blacklistSize * 2;
+            }
+            for (int i = 0; i < retryCount; i++) {
+                if (directEndPoint != null) {
+                    endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
+                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    // System.out.println("URL: " + url + " LastURL: " + lastUrl);
+                    if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
+                        return url;
+                    }
+                    try {
+                        rwlock.readLock().lock();
+                        if (!url.equals(lastUrl)) {
+                            if (!blacklist.containsKey(url)) {
+                                return url;
+                            } else if (blacklist.get(url).getCount() < blacklistTimeoutCount) {
+                                return url;
+                            }
+                        }
+                    } finally {
+                        rwlock.readLock().unlock();
+                    }
+                } else {
+                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    break;
                 }
-                if (!url.equals(lastUrl)) {
-                    return url;
+            }
+        } else {
+            for (int i = 0; i < endpointRetryCount; i++) {
+                if (directEndPoint != null) {
+                    endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
+                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    // System.out.println("URL: " + url + " LastURL: " + lastUrl);
+                    if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
+                        return url;
+                    }
+                    if (!url.equals(lastUrl)) {
+                        return url;
+                    }
+                } else {
+                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    break;
                 }
-            } else {
-                url = "http://" + endpoint + "/api/predict/" + modelName;
-                break;
             }
         }
+
         return url;
     }
 
@@ -330,6 +447,31 @@ public class PredictClient {
         return null;
     }
 
+    private void handleBlacklist(String key) {
+        if (blacklist.containsKey(key)) {
+            int timeoutCount = blacklist.get(key).getCount();
+            if (timeoutCount < blacklistTimeoutCount) {
+                blacklist.get(key).setCount(timeoutCount + 1);
+                log.info("Set [" + key + "] timeoutCount:"
+                        + blacklist.get(key).getCount());
+            } else {
+                long expirationTimestamp =
+                        System.currentTimeMillis() + blacklistTimeout * 1000;
+                blacklist.get(key).setTimestamp(expirationTimestamp);
+                log.info("Set [" + key + "] timestamp: " +
+                        blacklist.get(key).getTimestamp()
+                        + " timeoutCount: " + blacklist.get(key).getCount());
+            }
+        } else {
+            if (blacklist.size() < blacklistSize) {
+                long expirationTimestamp =
+                        System.currentTimeMillis() + blacklistTimeout * 1000;
+                blacklist.put(key, new BlacklistData(expirationTimestamp, 1));
+                log.info("Put [" + key + "] into blacklist");
+            }
+        }
+    }
+
     public byte[] predict(byte[] requestContent) throws Exception{
         byte[] content = null;
         String lastUrl = "";
@@ -339,6 +481,19 @@ public class PredictClient {
                 lastUrl = request.getURI().toString();
                 content = getContent(request);
                 break;
+            } catch (ConnectTimeoutException e) {
+                String errorMessage = "URL: " + lastUrl + ", " + e.getMessage();
+                if (enableBlacklist) {
+                    rwlock.writeLock().lock();
+                    handleBlacklist(lastUrl);
+                    rwlock.writeLock().unlock();
+                }
+                if (i == retryCount) {
+                    log.error(errorMessage);
+                    throw new Exception(errorMessage);
+                } else {
+                    log.debug(errorMessage);
+                }
             } catch (Exception e) {
                 String errorMesssage = "URL: " + lastUrl + ", " + e.getMessage();
                 if (i == retryCount) {
