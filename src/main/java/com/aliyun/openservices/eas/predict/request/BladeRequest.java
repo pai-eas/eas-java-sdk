@@ -39,9 +39,9 @@ public class BladeRequest {
     }
 
     private void fillStringTypeContent(byte[] content, long volume, Array.Builder requestArray) {
-        for (int i = 0; i < volume; ++i) {
-            requestArray.addStringVal(ByteString.copyFromUtf8(content.toString()));
-        }
+        // Protobuf string and bytes are compatible as long as the bytes are valid UTF-8.
+        volume = volume > content.length? content.length: volume;
+        requestArray.addStringVal(ByteString.copyFrom(content, 0, (int)volume));
     }
 
     private long getVolumeAndSetArrayShape(int batchSize, long[] shape, Shape.Builder arrayShape) {
