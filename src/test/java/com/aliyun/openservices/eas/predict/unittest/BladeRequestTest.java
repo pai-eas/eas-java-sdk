@@ -44,9 +44,9 @@ public class BladeRequestTest {
     List<shade.blade.protobuf.ByteString> bytes1st = input1st.getStringValList();
     List<shade.blade.protobuf.ByteString> bytes2nd = input2nd.getStringValList();
     List<shade.blade.protobuf.ByteString> bytes3rd = input3rd.getStringValList();
-    assertEquals("failure - lengths not correct", 1, bytes1st.size());
-    assertEquals("failure - lengths not correct", 1, bytes2nd.size());
-    assertEquals("failure - lengths not correct", 1, bytes3rd.size());
+    assertEquals("failure - lengths not correct", 11, bytes1st.size());
+    assertEquals("failure - lengths not correct", 44, bytes2nd.size());
+    assertEquals("failure - lengths not correct", 44, bytes3rd.size());
     String content = "Hello World";
     assertEquals("failure - values not equal", content, new String(bytes1st.get(0).toByteArray()));
     String ctentBatch4 = content + content + content + content;
