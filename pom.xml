@@ -94,11 +94,7 @@
               </execution>
             </executions>
             <configuration>
-              <links>
-                <link>
-                  http://docs.oracle.com/javase/${javadoc.version}/docs/api
-                </link>
-              </links>
+	      <detectJavaApiLink>false</detectJavaApiLink>
             </configuration>
           </plugin>
           <plugin>

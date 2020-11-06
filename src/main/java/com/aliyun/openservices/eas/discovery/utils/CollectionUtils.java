@@ -54,17 +54,6 @@ public class CollectionUtils {
     public CollectionUtils() {
     }
 
-    /**
-     * Returns a new {@link Collection} containing <tt><i>a</i> - <i>b</i></tt>.
-     * The cardinality of each element <i>e</i> in the returned {@link Collection}
-     * will be the cardinality of <i>e</i> in <i>a</i> minus the cardinality
-     * of <i>e</i> in <i>b</i>, or zero, whichever is greater.
-     *
-     * @param a the collection to subtract from, must not be null
-     * @param b the collection to subtract, must not be null
-     * @return a new collection with the results
-     * @see Collection#removeAll
-     */
     public static Collection subtract(final Collection a, final Collection b) {
         ArrayList list = new ArrayList(a);
         for (Iterator it = b.iterator(); it.hasNext(); ) {
@@ -98,19 +87,6 @@ public class CollectionUtils {
         return count;
     }
 
-
-    /**
-     * Returns <tt>true</tt> iff the given {@link Collection}s contain
-     * exactly the same elements with exactly the same cardinalities.
-     * <p>
-     * That is, iff the cardinality of <i>e</i> in <i>a</i> is
-     * equal to the cardinality of <i>e</i> in <i>b</i>,
-     * for each element <i>e</i> in <i>a</i> or <i>b</i>.
-     *
-     * @param a the first collection, must not be null
-     * @param b the second collection, must not be null
-     * @return <code>true</code> iff the collections contain the same elements with the same cardinalities.
-     */
     public static boolean isEqualCollection(final Collection a, final Collection b) {
         if (a.size() != b.size()) {
             return false;

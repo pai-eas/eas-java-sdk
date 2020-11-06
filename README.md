@@ -1,12 +1,12 @@
 
 # 添加依赖包
-编写Java客户端代码使用Maven管理项目，用户需在pom.xml文件中添加客户端所需的依赖包，名为eas-sdk，目前最新release版本为1.1.4，具体代码如下：
+编写Java客户端代码使用Maven管理项目，用户需在pom.xml文件中添加客户端所需的依赖包，名为eas-sdk，目前最新release版本为2.0.3，具体代码如下：
 
 ```
 <dependency>
   <groupId>com.aliyun.openservices.eas</groupId>
   <artifactId>eas-sdk</artifactId>
-  <version>2.0.1</version>
+  <version>2.0.3</version>
 </dependency>
 ```
 
@@ -57,13 +57,14 @@ import com.aliyun.openservices.eas.predict.http.HttpConfig;
 
 public class Test_String {
     public static void main(String[] args) throws Exception{
-		//启动并初始化客户端
+	// 启动并初始化客户端, client对象需要共享，千万不可每个请求都创建一个client对象。
         PredictClient client = new PredictClient(new HttpConfig());
         client.setToken("YWFlMDYyZDNmNTc3M2I3MzMwYmY0MmYwM2Y2MTYxMTY4NzBkNzdjOQ==");                         
         // 如果要使用网络直连功能，需使用setDirectEndpoint方法
         // 如 client.setDirectEndpoint("pai-eas-vpc.cn-shanghai.aliyuncs.com");
         // 网络直连需打通在EAS控制台开通，提供用于访问EAS服务的源vswitch，打通后可绕过网关以软负载的方式直接访问服务的实例，以实现更好的稳定性和性能
-        client.setEndpoint("pai-eas-vpc.cn-shanghai.aliyuncs.com");
+	// 注：普通网关访问时请使用以用户uid为开头的endpoint，在eas控制台服务的调用信息中可查到。直连访问时请使用如上的pai-eas-vpc.{region_id}.aliyuncs.com的域名进行访问。
+        client.setEndpoint("1828488879222746.vpc.cn-shanghai.pai-eas.aliyuncs.com");
         client.setModelName("scorecard_pmml_example");
 
         //输入字符串定义
@@ -122,7 +123,8 @@ public class Test_TF {
         // 如果要使用网络直连功能，需使用setDirectEndpoint方法
         // 如 client.setDirectEndpoint("pai-eas-vpc.cn-shanghai.aliyuncs.com");
         // 网络直连需打通在EAS控制台开通，提供用于访问EAS服务的源vswitch，打通后可绕过网关以软负载的方式直接访问服务的实例，以实现更好的稳定性和性能
-        client.setEndpoint("pai-eas-vpc.cn-shanghai.aliyuncs.com");
+	// 注：普通网关访问时请使用以用户uid为开头的endpoint，在eas控制台服务的调用信息中可查到。直连访问时请使用如上的pai-eas-vpc.{region_id}.aliyuncs.com的域名进行访问。
+        client.setEndpoint("1828488879222746.vpc.cn-shanghai.pai-eas.aliyuncs.com");
         client.setModelName("mnist_saved_model_example");
         client.setToken("YTg2ZjE0ZjM4ZmE3OTc0NzYxZDMyNmYzMTJjZTQ1YmU0N2FjMTAyMA==");
         long startTime = System.currentTimeMillis();
