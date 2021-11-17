@@ -98,14 +98,14 @@ class BlacklistTask implements Runnable {
 }
 
 public class PredictClient {
-    final private int endpointRetryCount = 10;
     private static Log log = LogFactory.getLog(PredictClient.class);
+    final private int endpointRetryCount = 10;
+    private HashMap<String, String> mapHeader = null;
     private CloseableHttpAsyncClient httpclient = null;
     private String token = null;
     private String modelName = null;
     private String endpoint = null;
     private boolean isCompressed = false;
-    HashMap<String, String> mapHeader = null;
     private int retryCount = 3;
     private String contentType = "application/octet-stream";
     private int errorCode = 400;
@@ -235,18 +235,27 @@ public class PredictClient {
         return errorMessage;
     }
 
-    public PredictClient createChlidClient(String token, String endPoint,
-            String modelName) {
+    public PredictClient createChildClient(String token, String endPoint,
+                                           String modelName) {
         PredictClient client = new PredictClient();
         client.setHttp(this.httpclient).setToken(token).setEndpoint(endPoint)
                 .setModelName(modelName);
         return client;
     }
 
-    public PredictClient createChlidClient() {
+    // to be compatible with old version typo
+    public PredictClient createChlidClient(String token, String endPoint,
+                                           String modelName) {
+        return createChildClient(token, endpoint, modelName);
+    }
+
+    public PredictClient createChildClient() {
         PredictClient client = new PredictClient();
-        client.setHttp(this.httpclient).setToken(this.token)
-                .setModelName(this.modelName);
+        client.setHttp(this.httpclient)
+                .setToken(this.token)
+                .setModelName(this.modelName)
+                .setRetryCount(this.retryCount)
+                .setRequestTimeout(this.requestTimeout);
         if (this.vipSrvEndPoint != null) {
             client.setVIPServer(this.vipSrvEndPoint);
         } else if (this.directEndPoint != null) {
@@ -255,6 +264,11 @@ public class PredictClient {
             client.setEndpoint(this.endpoint);
         }
         return client;
+    }
+
+    // to be compatible with old version typo
+    public PredictClient createChlidClient() {
+        return createChildClient();
     }
 
     private String getUrl(String lastUrl) throws Exception {
@@ -433,13 +447,13 @@ public class PredictClient {
     public TorchResponse predict(TorchRequest runRequest) throws Exception {
         TorchResponse runResponse = new TorchResponse();
         byte[] result = predict(runRequest.getRequest().toByteArray());
-        if(result != null) {
+        if (result != null) {
             runResponse.setContentValues(result);
         }
         return runResponse;
     }
 
-    public String predict(String requestContent) throws Exception{
+    public String predict(String requestContent) throws Exception {
         byte[] result = predict(requestContent.getBytes());
         if (result != null) {
             return new String(result);

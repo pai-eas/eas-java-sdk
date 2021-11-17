@@ -79,7 +79,10 @@ public class HttpConfig {
         this.maxConnectionPerRoute = maxConnectionPerRoute;
     }
 
-    public int getRequestTimeout() { return requestTimeout; }
+    public int getRequestTimeout() {
+        return requestTimeout;
+    }
+
     public void setRequestTimeout(int requestTimeout) {
         this.requestTimeout = requestTimeout;
     }
