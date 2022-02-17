@@ -512,8 +512,7 @@ public class PredictClient {
                 String errorMesssage = "URL: " + lastUrl + ", " + e.getMessage();
                 if (i == retryCount) {
                     log.error(errorMesssage);
-                    e.printStackTrace();
-                    throw new Exception(errorMesssage);
+                    throw e;
                 } else {
                     log.debug(errorMesssage);
                 }
