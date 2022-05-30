@@ -2,15 +2,14 @@ package com.aliyun.openservices.eas.predict.response;
 
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.ArrayProto;
 import com.aliyun.openservices.eas.predict.proto.PredictProtos.PredictResponse;
-import shade.protobuf
-.ByteString;
-import shade.protobuf
-.InvalidProtocolBufferException;
+import shade.protobuf.ByteString;
+import shade.protobuf.InvalidProtocolBufferException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yaozheng.wyz on 2017/10/24.
@@ -46,6 +45,10 @@ public class TFResponse {
         return output;
     }
 
+    public Map<String, ArrayProto> getOutputsMap() {
+        return response.getOutputsMap();
+    }
+
     public List<Long> getTensorShape(String outputName) {
         String output = getOutputName(outputName);
         if (response != null) {
@@ -53,7 +56,7 @@ public class TFResponse {
                 log.error("Not Found output name: " + output);
                 throw new RuntimeException("Not Found output name: " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             return responseProto.getArrayShape().getDimList();
         } else {
             log.error("request failed: can't get response");
@@ -68,7 +71,7 @@ public class TFResponse {
                 log.error("Not Found output name : " + output);
                 throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             return responseProto.getFloatValList();
         } else {
             log.error("request failed: can't get response");
@@ -83,7 +86,7 @@ public class TFResponse {
                 log.error("Not Found output name : " + output);
                 throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             return responseProto.getDoubleValList();
         } else {
             log.error("request failed: can't get response");
@@ -98,7 +101,7 @@ public class TFResponse {
                 log.error("Not Found output name : " + output);
                 throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             return responseProto.getIntValList();
         } else {
             log.error("request failed: can't get response");
@@ -113,7 +116,7 @@ public class TFResponse {
                 log.error("Not Found output name : " + output);
                 throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             List<ByteString> res = responseProto.getStringValList();
             List<String> result = new ArrayList<String>();
             for (int i = 0; i < res.size(); i++) {
@@ -133,7 +136,7 @@ public class TFResponse {
                 log.error("Not Found output name : " + output);
                 throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             return responseProto.getInt64ValList();
         } else {
             log.error("request failed: can't get response");
@@ -148,7 +151,7 @@ public class TFResponse {
                 log.error("Not Found output name : " + output);
                 throw new RuntimeException("Not Found output name : " + output);
             }
-            ArrayProto responseProto = response.getOutputsMap().get(output);
+            ArrayProto responseProto = getOutputsMap().get(output);
             return responseProto.getBoolValList();
         } else {
             log.error("request failed: can't get response");
