@@ -2,6 +2,7 @@ package com.aliyun.openservices.eas.predict.http;
 
 import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 import com.aliyun.openservices.eas.predict.auth.HmacSha1Signature;
+import com.aliyun.openservices.eas.predict.proto.EasyRecPredictProtos;
 import com.aliyun.openservices.eas.predict.request.*;
 import com.aliyun.openservices.eas.predict.response.*;
 import org.apache.commons.io.IOUtils;
@@ -450,6 +451,16 @@ public class PredictClient {
         if (result != null) {
             runResponse.setContentValues(result);
         }
+        return runResponse;
+    }
+
+    public EasyRecPredictProtos.PBResponse predict(EasyRecRequest runRequest) throws Exception {
+        EasyRecPredictProtos.PBResponse runResponse = null;
+        byte[] result = this.predict(runRequest.getRequest().toByteArray());
+        if (result != null) {
+            runResponse = EasyRecPredictProtos.PBResponse.parseFrom(result);
+        }
+
         return runResponse;
     }
 
