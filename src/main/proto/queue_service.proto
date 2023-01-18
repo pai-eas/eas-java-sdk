@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_package = "com.aliyun.openservices.eas.predict.proto";
+option java_outer_classname = "QueueServiceProtos";
+
+message DataFrameProto {
+  uint64                index = 1;
+  map<string, string>   tags = 2;
+  bytes                 data = 3;
+  string                message = 4;
+}
+message DataFrameListProto {
+  repeated DataFrameProto index = 1;
+}
+message AttributesProto {
+  map<string, string>  attributes = 1;
+}
