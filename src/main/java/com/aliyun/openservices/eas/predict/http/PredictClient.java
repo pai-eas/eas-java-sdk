@@ -105,6 +105,7 @@ public class PredictClient {
     private CloseableHttpAsyncClient httpclient = null;
     private String token = null;
     private String modelName = null;
+    private String requestPath = "";
     private String endpoint = null;
     private boolean isCompressed = false;
     private int retryCount = 3;
@@ -213,6 +214,20 @@ public class PredictClient {
         return this;
     }
 
+    public String getRequestPath() {
+        return requestPath;
+    }
+
+    public void setRequestPath(String requestPath) {
+        if (requestPath == null){
+            return;
+        }
+        if (requestPath.length() > 0 && requestPath.charAt(0) != '/'){
+            requestPath = "/" + requestPath;
+        }
+        this.requestPath = requestPath;
+    }
+
     public PredictClient startBlacklistMechanism(int blacklistSize,
                                                  int blacklistTimeout,
                                                  int blacklistTimeoutCount) {
@@ -283,7 +298,7 @@ public class PredictClient {
             for (int i = 0; i < retryCount; i++) {
                 if (directEndPoint != null) {
                     endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
                     // System.out.println("URL: " + url + " LastURL: " + lastUrl);
                     if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
                         return url;
@@ -301,7 +316,7 @@ public class PredictClient {
                         rwlock.readLock().unlock();
                     }
                 } else {
-                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
                     break;
                 }
             }
@@ -309,7 +324,7 @@ public class PredictClient {
             for (int i = 0; i < endpointRetryCount; i++) {
                 if (directEndPoint != null) {
                     endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
                     // System.out.println("URL: " + url + " LastURL: " + lastUrl);
                     if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
                         return url;
@@ -318,7 +333,7 @@ public class PredictClient {
                         return url;
                     }
                 } else {
-                    url = "http://" + endpoint + "/api/predict/" + modelName;
+                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
                     break;
                 }
             }
