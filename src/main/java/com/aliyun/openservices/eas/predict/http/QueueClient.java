@@ -50,6 +50,7 @@ public class QueueClient {
   private CloseableHttpAsyncClient httpclient = null;
   private int retryCount = 5;
   private boolean websocketWatch = false;
+  private String prioHeader = null;
   public ReentrantLock lock = new ReentrantLock();
   public WebSocketClient webSocketClient = null;
 
@@ -105,6 +106,17 @@ public class QueueClient {
     headers.put(HeaderRedisUid, user.getUid());
     headers.put(HeaderRedisGid, user.getGid());
     return headers;
+  }
+
+  private void withPriority(HttpUriRequest request, Long priority) throws Exception {
+    if (priority > 0) {
+      if (prioHeader == null) {
+        prioHeader = attributes().getString("meta.header.priority");
+      }
+      if (prioHeader != null) {
+        request.setHeader(prioHeader, Long.toString(priority));
+      }
+    }
   }
 
   private HttpUriRequest buildRequest(String method, Map<String, String> queryParams)
@@ -166,7 +178,7 @@ public class QueueClient {
    * common code for indexes related request
    *
    * @param indexes array of data index
-   * @param method http request method: "DELETE"¡¢"PUT"
+   * @param method http request method: "DELETE", "PUT"
    * @return content of httpResponse body
    */
   private String processIndexes(long[] indexes, String method) throws Exception {
@@ -264,14 +276,19 @@ public class QueueClient {
   }
 
   /**
-   * put data into a queue service
+   * put data into queue service
    *
-   * @param data data of byte array
+   * @param data data of String
+   * @param priority data priority
    * @param tags customized queryParams
    * @return index, requestId
    */
-  public Pair<Long, String> put(byte[] data, Map<String, String> tags) throws Exception {
+  public Pair<Long, String> put(byte[] data, long priority, Map<String, String> tags)
+      throws Exception {
     Map<String, String> queryParams = new HashMap<String, String>();
+    if (priority > 0) {
+      queryParams.put("_priority_", Long.toString(priority));
+    }
     if (tags != null && !tags.isEmpty()) {
       tags.forEach(
           (key, value) -> {
@@ -287,6 +304,7 @@ public class QueueClient {
     HttpPost request = new HttpPost(uri);
     headers.forEach(request::setHeader);
     request.setEntity(new NByteArrayEntity(data));
+    withPriority(request, priority);
 
     for (int i = 1; i <= retryCount; ++i) {
       try {
@@ -318,6 +336,17 @@ public class QueueClient {
       }
     }
     return Pair.of(0L, "");
+  }
+
+  /**
+   * put data into a queue service
+   *
+   * @param data data of byte array
+   * @param tags customized queryParams
+   * @return index, requestId
+   */
+  public Pair<Long, String> put(byte[] data, Map<String, String> tags) throws Exception {
+    return put(data, 0L, tags);
   }
 
   /**
