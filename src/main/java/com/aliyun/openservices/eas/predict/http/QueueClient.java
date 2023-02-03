@@ -50,6 +50,7 @@ public class QueueClient {
   private CloseableHttpAsyncClient httpclient = null;
   private int retryCount = 5;
   private boolean websocketWatch = false;
+  private String prioHeader = null;
   public ReentrantLock lock = new ReentrantLock();
   public WebSocketClient webSocketClient = null;
 
@@ -109,7 +110,9 @@ public class QueueClient {
 
   private void withPriority(HttpUriRequest request, Long priority) throws Exception {
     if (priority > 0) {
-      String prioHeader = attributes().getString("meta.header.priority");
+      if (prioHeader == null) {
+        prioHeader = attributes().getString("meta.header.priority");
+      }
       if (prioHeader != null) {
         request.setHeader(prioHeader, Long.toString(priority));
       }
