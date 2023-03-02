@@ -219,10 +219,10 @@ public class PredictClient {
     }
 
     public void setRequestPath(String requestPath) {
-        if (requestPath == null){
+        if (requestPath == null) {
             return;
         }
-        if (requestPath.length() > 0 && requestPath.charAt(0) != '/'){
+        if (requestPath.length() > 0 && requestPath.charAt(0) != '/') {
             requestPath = "/" + requestPath;
         }
         this.requestPath = requestPath;
