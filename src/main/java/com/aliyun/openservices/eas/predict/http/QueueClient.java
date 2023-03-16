@@ -476,7 +476,7 @@ public class QueueClient {
    * @param indexOnly the returned dataframe only contains index and tags, no data content
    * @param autoCommit automatic commit the data after consuming it
    * @param tags custom configuration parameters, support for configuring reconnect_count and
-   *     reconnect_interval
+   *     reconnect_interval, other parameters are added in queryParams
    * @return WebSocketWatcher
    */
   public WebSocketWatcher watch(
@@ -495,13 +495,19 @@ public class QueueClient {
     int reConnectCnt = 3;
     int reConnectInterval = 5;
     if (tags != null && !tags.isEmpty()) {
-      if (tags.containsKey("reconnect_count")
-          && StringUtils.isNumeric(tags.get("reconnect_count"))) {
-        reConnectCnt = Integer.parseInt(tags.get("reconnect_count"));
+      if (tags.containsKey("reconnect_count")) {
+        if (StringUtils.isNumeric(tags.get("reconnect_count"))) {
+          reConnectCnt = Integer.parseInt(tags.get("reconnect_count"));
+        }
+        tags.remove("reconnect_count");
       }
       if (tags.containsKey("reconnect_interval")) {
-        reConnectInterval = Integer.parseInt(tags.get("reconnect_interval"));
+        if (StringUtils.isNumeric(tags.get("reconnect_interval"))) {
+          reConnectCnt = Integer.parseInt(tags.get("reconnect_interval"));
+        }
+        tags.remove("reconnect_interval");
       }
+      queryParams.putAll(tags);
     }
     URIBuilder ub = new URIBuilder(baseUrl);
     queryParams.forEach(ub::addParameter);
