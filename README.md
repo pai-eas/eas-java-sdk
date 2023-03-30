@@ -7,11 +7,11 @@
 <dependency>
   <groupId>com.aliyun.openservices.eas</groupId>
   <artifactId>eas-sdk</artifactId>
-  <version>2.0.5</version>
+  <version>2.0.6</version>
 </dependency>
 ```
 
-如果需要使用 2.0.5 版本的 queue service 客户端功能，用户还需额外添加如下两个依赖包，并自行修改这两个依赖包至合适版本：
+如果需要使用 2.0.6 版本的 queue service 客户端功能，用户还需额外添加如下两个依赖包，并自行修改这两个依赖包至合适版本：
 
 ```
 <dependency>
