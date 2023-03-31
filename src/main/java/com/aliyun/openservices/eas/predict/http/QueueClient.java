@@ -502,7 +502,7 @@ public class QueueClient {
       }
       if (tags.containsKey("reconnect_interval")) {
         if (StringUtils.isNumeric(tags.get("reconnect_interval"))) {
-          reConnectCnt = Integer.parseInt(tags.get("reconnect_interval"));
+          reConnectInterval = Integer.parseInt(tags.get("reconnect_interval"));
         }
         tags.remove("reconnect_interval");
       }
