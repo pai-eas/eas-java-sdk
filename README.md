@@ -64,10 +64,10 @@
 | QueueClient   | QueueClient(String endpoint, String queueName, String token, HttpConfig httpConfig, QueueUser user) | QueueClient 类的构造函数。<br />[endpoint]: 服务端的endpoint地址；<br />[queueName]:服务名字；<br />[token]:服务访问的token；<br />[httpConfig]:服务请求的配置；<br />[user]: 配置 UserId（默认为随机数）与 GroupName（默认为"eas"）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |               | attributes()                                                                                        | 获取队列服务的详细信息，包含如下字段：<br />meta.maxPayloadBytes 队列中允许的每个数据项的size上限；<br />meta.name 队列名；<br />stream.approxMaxLength 队列中能够存储的数据项的数量上限；<br />stream.firstEntry 队列中第一个数据项的index；<br />stream.lastEntry 队列中最后一个数据项的index；<br />stream.length 队列中当前存储的数据项的数量                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |               | put(byte[] data, long priority, Map<String, String> tags)                                           | 将数据放入队列服务。<br />[data]: byte[] 数据 ；<br />[priority]: 数据优先级；<br />[tags]: 自定义参数                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|               | get(long index, long length, long timeout, boolean autoDelete, Map<String, String> tags)            | 获取队列服务中的数据。<br />[index]: 指定获取数据的起始index，如果为-1则读取最新的数据；<br />[length]: 获取的数据个数；<br />[timeout]: 超时时间，以秒为单位；<br />[autoDelete]: 获取数据后是否自动从队列中删除；<br />[tags]: 自定义参数，如指定 requestId                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|               | get(long index, long length, long timeout, boolean autoDelete, Map<String, String> tags)            | 获取队列服务中的数据。<br />[index]: 指定获取数据的起始index，如果为-1则读取最新的数据；<br />[length]: 获取的数据个数；<br />[timeout]: 超时时间，以秒为单位；<br />[autoDelete]: 获取数据后是否自动从队列中删除；<br />[tags]: 自定义参数，如指定 requestId <br /><br />返回类型 DataFrame<br />用于存放数据，支持如下接口：<br />long getIndex(): 获取数据索引<br /> byte[] getData(): 获取数据                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |               | truncate(Long index)                                                                                | 删除队列服务中所有索引小于指定索引的数据                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |               | delete(Long index) <br /><br />delete(Long[] index)                                                 | 删除队列服务中指定索引的数据                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|               | watch(long index, long window, boolean indexOnly, boolean autoCommit, Map<String, String> tags)     | 订阅队列服务数据流。<br /><br />[index]: 指定获取数据的起始index；如果为-1则忽略所有pending的数据而读取最新数据；<br />[window]: 指定发送窗口的大小，即最大的未commit数据长度；当QS发出了window个dataframe数据但是客户端并没有commit时，发送会停止；<br />[indexOnly]: 返回的dataframe中只包含index和tags，而不返回具体数据，从而节约带宽；<br />[autoCommit]: 指定发出数据后，直接进行commit，从而避免Commit调用。当_auto_commit设置为true时，_window_指定的参数将被忽略；<br />[tags]: 自定义参数配置，可配置订阅服务的异常重试次数与重试间隔时间；设置为 null 时，则使用默认值，重试次数默认值为3，重试间隔时间默认值为5s                                                                                                                                                                                                                                                                                                          |
+|               | watch(long index, long window, boolean indexOnly, boolean autoCommit, Map<String, String> tags)     | 订阅队列服务数据流。<br /><br />[index]: 指定获取数据的起始index；如果为-1则忽略所有pending的数据而读取最新数据；<br />[window]: 指定发送窗口的大小，即最大的未commit数据长度；当QS发出了window个dataframe数据但是客户端并没有commit时，发送会停止；<br />[indexOnly]: 返回的dataframe中只包含index和tags，而不返回具体数据，从而节约带宽；<br />[autoCommit]: 指定发出数据后，直接进行commit，从而避免Commit调用。当_auto_commit设置为true时，_window_指定的参数将被忽略；<br />[tags]: 自定义订阅请求参数                                                                                                                                                                                                                                                                                                                                                                       |
 |               | commit(Long index) <br /><br />commit(Long[] index)                                                 | 确认数据已被消费并在队列服务中删除该数据                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |               | end(boolean force)                                                                                  | 终止队列服务                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
@@ -206,33 +206,27 @@ public class TestWatch {
         String inputQueueName = "test_group.test_qservice";
         String sinkQueueName = "test_group.test_qservice/sink";
         String queueToken = "test-token";
+        /** 输入队列，往输入队列添加数据，推理服务会自动从输入队列中读取请求数据 */
         QueueClient input_queue =
                 new QueueClient(queueEndpoint, inputQueueName, queueToken, new HttpConfig(), new QueueUser());
         input_queue.clear();
+        /** 输出队列，推理服务处理输入数据后会将结果写入输出队列*/
         QueueClient sink_queue =
                 new QueueClient(queueEndpoint, sinkQueueName, queueToken, new HttpConfig(), new QueueUser());
         sink_queue.clear();
-        /** 往 input_queue 添加数据，推理服务会自动从 input_queue 中读取请求数据 */
+
+        /** 往输入队列添加数据*/
         for (int i = 0; i < 10; ++i) {
             String data = Integer.toString(i);
             input_queue.put(data.getBytes(), null);
+            /** 队列服务支持多优先级队列，可通过 put函数设置数据优先级，默认优先级为 0 */
+            //  inputQueue.put(data.getBytes(), 0L, null);
         }
 
-        /** 自定义订阅服务的重试次数与重试间隔时间，tag 为 null 时，则为默认重试次数: 3, 默认重试间隔时间: 5s */
-        Map<String, String> tag =
-                new HashMap<String, String>() {
-                    {
-                        put("reconnect_count", "5");
-                        put("reconnect_interval", "10");
-                    }
-                };
-        /** 通过 watch 函数，订阅队列服务的数据，窗口大小为5, tag 为自定义参数 */
-        WebSocketWatcher watcher = sink_queue.watch(0L, 5L, false, true, tag);
+        /** 通过 watch 函数订阅输出队列的数据，窗口大小为5 */
+        WebSocketWatcher watcher = sink_queue.watch(0L, 5L, false, true, null);
 
-        /** tag 设置为 null 时, 订阅服务的重试次数和重试间隔时间为上述默认值 */
-        //    WebSocketWatcher watcher = sink_queue.watch(0L, 5L, false, true, null);
-
-        /** 推理服务处理输入数据后会将结果写入 sink_queue，通过 watch 函数订阅 sink_queue 查看数据结果 */
+        /** 获取输出数据 */
         for (int i = 0; i < 10; ++i) {
             /** getDataFrame 函数用于获取 DataFrame 类型的数据（见 get 函数的介绍），没有数据时会被阻塞 */
             byte[] data = watcher.getDataFrame().getData();
