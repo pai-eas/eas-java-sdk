@@ -38,6 +38,7 @@
 |               | setRetryCount(boolean int retryCount)                                                               | 设置失败重试次数                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |               | setTracing(HashMap<String, String> mapHeader)                                                       | 设置http Header是否需要返回，输入为Header字典，方法执行完后会自动写入字典                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |               | setContentType(String contentType)                                                                  | 设置httpclient的content类型，默认为"application/octet-stream"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|               | setCompressor(Compressor compressor)                                                                |设置请求数据的压缩方式，目前支持Compressor.Gzip和Compressor.Zlib|
 |               | createChildClient(String token, String endpoint, String modelname)                                  | 创建子Client对象，共用父Client对象的线程池，用于多线程预测                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |               | createChildClient()                                                                                 | 创建子Client对象，共用父Client对象的线程池以及设置，用于多线程预测                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |               | predict(TFRequest runRequest)                                                                       | 向在线预测服务提交一个Tensorflow的请求                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
@@ -251,3 +252,33 @@ public class TestWatch {
 * 使用 put() 函数向输入队列中发送数据；
 * 使用 watch() 函数从输出队列中订阅数据；
 * 现实场景中发送数据和订阅数据可以由不同的线程处理，本实例中为了演示方便在同一线程中完成，先put数据，后watch结果。
+
+
+## 请求数据压缩
+对于请求数据量较大的情况，EAS支持将数据压缩之后再发送至服务端，该功能需要在服务配置中指定相应的rpc.decompressor才能生效，sdk代码示例如下：
+```java
+package com.aliyun.openservices.eas.predict;
+import com.aliyun.openservices.eas.predict.http.Compressor;
+import com.aliyun.openservices.eas.predict.http.PredictClient;
+import com.aliyun.openservices.eas.predict.http.HttpConfig;
+public class Test_String {
+    public static void main(String[] args) throws Exception{
+    		//启动并初始化客户端
+        PredictClient client = new PredictClient(new HttpConfig());
+        client.setEndpoint("eas-shanghai.alibaba-inc.com");
+        client.setModelName("echo_compress");
+        client.setToken("YzZjZjQwN2E4NGRkMDMxNDk5NzhhZDcwZDBjOTZjOGYwZDYxZGM2Mg==");
+        client.setCompressor(Compressor.Zlib);  // 或者 Compressor.Gzip
+        //输入字符串定义
+        String request = "[{\"money_credit\": 3000000}, {\"money_credit\": 10000}]";
+        System.out.println(request);
+        //通过eas返回字符串
+        String response = client.predict(request);
+        System.out.println(response);
+		//关闭客户端
+        client.shutdown();
+        return;
+    }
+}
+```
+该功能适用于任何请求形式，只需注意客户端和服务端所设置的压缩方式相同即可。
