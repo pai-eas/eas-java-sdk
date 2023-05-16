@@ -29,7 +29,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -42,21 +41,21 @@ public class QueueClient {
   public static String HeaderAuthorization = "Authorization";
   public static String HeaderRedisUid = "X-EAS-QueueService-Redis-Uid";
   public static String HeaderRedisGid = "X-EAS-QueueService-Redis-Gid";
-  public static String DefaultGroupName = "eas";
 
   private static Log log = LogFactory.getLog(QueueClient.class);
+  public ReentrantLock lock = new ReentrantLock();
+  public WebSocketClient webSocketClient = null;
   private String baseUrl = "";
   private QueueUser user = null;
   private CloseableHttpAsyncClient httpclient = null;
   private int retryCount = 5;
   private boolean websocketWatch = false;
   private String prioHeader = null;
-  public ReentrantLock lock = new ReentrantLock();
-  public WebSocketClient webSocketClient = null;
 
   public QueueClient() {}
 
-  public QueueClient(String endpoint, String queueName, String token, HttpConfig httpConfig) {
+  public QueueClient(
+      String endpoint, String queueName, String token, HttpConfig httpConfig, QueueUser user) {
     baseUrl = String.format("%s/api/predict/%s", endpoint, queueName);
     if (!(baseUrl.startsWith("http://") || baseUrl.startsWith("https://"))) {
       baseUrl = String.join("", "http://", baseUrl);
@@ -91,7 +90,8 @@ public class QueueClient {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    user = new QueueUser(UUID.randomUUID().toString(), DefaultGroupName, token);
+    this.user = user;
+    this.user.setToken(token);
     websocketWatch = true;
   }
 
@@ -278,7 +278,7 @@ public class QueueClient {
   /**
    * put data into queue service
    *
-   * @param data data of String
+   * @param data data of byte array
    * @param priority data priority
    * @param tags customized queryParams
    * @return index, requestId
@@ -309,18 +309,23 @@ public class QueueClient {
     for (int i = 1; i <= retryCount; ++i) {
       try {
         HttpResponse response = doRequest(request);
-
-        // get requestId
-        Header[] headerOfRequestId = response.getHeaders(HeaderRequestId);
-        if (headerOfRequestId == null || headerOfRequestId.length < 1) {
-          return Pair.of(0L, "");
-        }
-        String requestId = headerOfRequestId[0].getValue();
-
-        // judge response statusCode
+        // check response statusCode
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode == 200) {
           String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+          // get requestId from response header
+          Header[] headerOfRequestId = response.getHeaders(HeaderRequestId);
+          if (headerOfRequestId == null || headerOfRequestId.length < 1) {
+            Header[] all_headers = response.getAllHeaders();
+            log.error("Failed to get Header with Request-Id, all headers of response are:");
+            for (Header header : all_headers) {
+              log.error(header.getName() + ": " + header.getValue());
+            }
+            String errorMessage = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+            throw new HttpException(500, errorMessage);
+          }
+          String requestId = headerOfRequestId[0].getValue();
+
           return Pair.of(Long.valueOf(content), requestId);
         } else {
           String errorMessage = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
@@ -475,8 +480,8 @@ public class QueueClient {
    * @param window the size of the data sending window, that is the maximum uncommitted data length
    * @param indexOnly the returned dataframe only contains index and tags, no data content
    * @param autoCommit automatic commit the data after consuming it
-   * @param tags custom configuration parameters, support for configuring reconnect_count and
-   *     reconnect_interval
+   * @param tags custom configuration parameters, support for configuring parameters added in
+   *     queryParams
    * @return WebSocketWatcher
    */
   public WebSocketWatcher watch(
@@ -495,13 +500,7 @@ public class QueueClient {
     int reConnectCnt = 3;
     int reConnectInterval = 5;
     if (tags != null && !tags.isEmpty()) {
-      if (tags.containsKey("reconnect_count")
-          && StringUtils.isNumeric(tags.get("reconnect_count"))) {
-        reConnectCnt = Integer.parseInt(tags.get("reconnect_count"));
-      }
-      if (tags.containsKey("reconnect_interval")) {
-        reConnectInterval = Integer.parseInt(tags.get("reconnect_interval"));
-      }
+      queryParams.putAll(tags);
     }
     URIBuilder ub = new URIBuilder(baseUrl);
     queryParams.forEach(ub::addParameter);
