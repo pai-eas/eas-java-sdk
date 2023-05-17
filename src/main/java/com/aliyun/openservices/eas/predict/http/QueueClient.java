@@ -52,7 +52,8 @@ public class QueueClient {
   private boolean websocketWatch = false;
   private String prioHeader = null;
 
-  public QueueClient() {}
+  public QueueClient() {
+  }
 
   public QueueClient(
       String endpoint, String queueName, String token, HttpConfig httpConfig, QueueUser user) {
@@ -178,7 +179,7 @@ public class QueueClient {
    * common code for indexes related request
    *
    * @param indexes array of data index
-   * @param method http request method: "DELETE", "PUT"
+   * @param method  http request method: "DELETE", "PUT"
    * @return content of httpResponse body
    */
   private String processIndexes(long[] indexes, String method) throws Exception {
@@ -278,9 +279,9 @@ public class QueueClient {
   /**
    * put data into queue service
    *
-   * @param data data of byte array
+   * @param data     data of byte array
    * @param priority data priority
-   * @param tags customized queryParams
+   * @param tags     customized queryParams
    * @return index, requestId
    */
   public Pair<Long, String> put(byte[] data, long priority, Map<String, String> tags)
@@ -368,11 +369,11 @@ public class QueueClient {
   /**
    * get the data in queue service
    *
-   * @param index data index of long
-   * @param length the lengh of data to get
-   * @param timeout timeout in seconds
+   * @param index      data index of long
+   * @param length     the lengh of data to get
+   * @param timeout    timeout in seconds
    * @param autoDelete whether to delete the data after getting it
-   * @param tags customized queryParams
+   * @param tags       customized queryParams
    * @return DataFrame array
    */
   public DataFrame[] get(
@@ -476,12 +477,12 @@ public class QueueClient {
   /**
    * create a watcher to consume streaming data from queue service
    *
-   * @param index position of starting to watch
-   * @param window the size of the data sending window, that is the maximum uncommitted data length
-   * @param indexOnly the returned dataframe only contains index and tags, no data content
+   * @param index      position of starting to watch
+   * @param window     the size of the data sending window, that is the maximum uncommitted data length
+   * @param indexOnly  the returned dataframe only contains index and tags, no data content
    * @param autoCommit automatic commit the data after consuming it
-   * @param tags custom configuration parameters, support for configuring parameters added in
-   *     queryParams
+   * @param tags       custom configuration parameters, support for configuring parameters added in
+   *                   queryParams
    * @return WebSocketWatcher
    */
   public WebSocketWatcher watch(
@@ -533,7 +534,9 @@ public class QueueClient {
     return processIndexes(indexes, "PUT");
   }
 
-  /** clear all data in queue service */
+  /**
+   * clear all data in queue service
+   */
   public void clear() throws Exception {
     JSONObject attrs = this.attributes();
     if (attrs.containsKey("stream.lastEntry")) {
@@ -541,7 +544,9 @@ public class QueueClient {
     }
   }
 
-  /** close QueueClient */
+  /**
+   * close QueueClient
+   */
   public void shutdown() {
     try {
       if (httpclient != null) {
