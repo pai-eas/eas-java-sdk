@@ -121,6 +121,7 @@ public class PredictClient {
     private int blacklistTimeoutCount = 10;
     private Map<String, BlacklistData> blacklist = null;
     private ReentrantReadWriteLock rwlock = new ReentrantReadWriteLock();
+    private Compressor compressor = null;
 
     public PredictClient() {
     }
@@ -196,6 +197,10 @@ public class PredictClient {
 
     public PredictClient setIsCompressed(boolean isCompressed) {
         this.isCompressed = isCompressed;
+        return this;
+    }
+    public PredictClient setCompressor(Compressor compressor) {
+        this.compressor = compressor;
         return this;
     }
 
@@ -513,6 +518,15 @@ public class PredictClient {
     }
 
     public byte[] predict(byte[] requestContent) throws Exception{
+        if (compressor != null) {
+            if (compressor == Compressor.Gzip) {
+                requestContent = GzipUtils.compress(requestContent);
+            } else if (compressor == Compressor.Zlib) {
+                requestContent = ZlibUtils.compress(requestContent);
+            } else {
+                log.warn("Compressor are not supported!");
+            }
+        }
         byte[] content = null;
         String lastUrl = "";
         for (int i = 0; i <= retryCount; i++) {

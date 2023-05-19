@@ -1,14 +1,21 @@
 package com.aliyun.openservices.eas.predict.queue_client;
 
+import java.util.UUID;
+
 public class QueueUser {
+  public static String DefaultGroupName = "eas";
   private String uid;
   private String gid;
   private String token;
 
-  public QueueUser(String uid, String gid, String token) {
+  public QueueUser(String uid, String gid) {
     this.uid = uid;
     this.gid = gid;
-    this.token = token;
+  }
+
+  public QueueUser() {
+    this.uid = UUID.randomUUID().toString();
+    this.gid = DefaultGroupName;
   }
 
   public String getUid() {
