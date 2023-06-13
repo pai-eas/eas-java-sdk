@@ -341,7 +341,7 @@ public class PredictClient {
                         return url;
                     }
                 } else {
-                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
+                    url = endpoint + "/api/predict/" + modelName + requestPath;
                     break;
                 }
             }
