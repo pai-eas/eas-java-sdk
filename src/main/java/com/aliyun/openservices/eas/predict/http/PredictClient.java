@@ -378,7 +378,7 @@ public class PredictClient {
 
         if (token != null) {
             String auth = "POST" + "\n" + md5Content + "\n"
-                    + "application/octet-stream" + "\n" + currentTime + "\n"
+                    + contentType + "\n" + currentTime + "\n"
                     + "/api/predict/" + modelName + requestPath;
             request.addHeader(HttpHeaders.AUTHORIZATION,
                     "EAS " + signature.computeSignature(token, auth));
