@@ -197,8 +197,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.aliyun.openservices.eas.predict.http.HttpConfig;
 import com.aliyun.openservices.eas.predict.http.QueueClient;
 import com.aliyun.openservices.eas.predict.queue_client.QueueUser;
+import com.aliyun.openservices.eas.predict.queue_client.WatchConfig;
 import com.aliyun.openservices.eas.predict.queue_client.WebSocketWatcher;
-import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -207,16 +207,18 @@ public class TestWatch {
     public static void main(String[] args) throws Exception {
         /** 创建队列服务客户端 */
         String queueEndpoint = "18*******.cn-hangzhou.pai-eas.aliyuncs.com";
-        String inputQueueName = "test_group.test_qservice";
-        String sinkQueueName = "test_group.test_qservice/sink";
+        String inputQueueName = "test_qservice";
+        String sinkQueueName = "test_qservice/sink";
         String queueToken = "test-token";
+
         /** 输入队列，往输入队列添加数据，推理服务会自动从输入队列中读取请求数据 */
         QueueClient input_queue =
-                new QueueClient(queueEndpoint, inputQueueName, queueToken, new HttpConfig(), new QueueUser());
+            new QueueClient(queueEndpoint, inputQueueName, queueToken, new HttpConfig(), new QueueUser());
+        /** 清除队列数据!!! 请谨慎使用 */
         input_queue.clear();
         /** 输出队列，推理服务处理输入数据后会将结果写入输出队列*/
         QueueClient sink_queue =
-                new QueueClient(queueEndpoint, sinkQueueName, queueToken, new HttpConfig(), new QueueUser());
+            new QueueClient(queueEndpoint, sinkQueueName, queueToken, new HttpConfig(), new QueueUser());
         sink_queue.clear();
 
         /** 往输入队列添加数据*/
@@ -229,12 +231,19 @@ public class TestWatch {
 
         /** 通过 watch 函数订阅输出队列的数据，窗口大小为5 */
         WebSocketWatcher watcher = sink_queue.watch(0L, 5L, false, true, null);
+        /** WatchConfig参数可自定义重试次数、重试间隔（单位为秒）、是否无限重试；未配置WatchConfig 则默认重试次数:3，重试间隔:5 */
+        //  WebSocketWatcher watcher = sink_queue.watch(0L, 5L, false, true, null, new WatchConfig(5, 10));
+        //  WebSocketWatcher watcher = sink_queue.watch(0L, 5L, false, true, null, new WatchConfig(true, 10));
 
         /** 获取输出数据 */
         for (int i = 0; i < 10; ++i) {
-            /** getDataFrame 函数用于获取 DataFrame 数据类，没有数据时会被阻塞 */
-            byte[] data = watcher.getDataFrame().getData();
-            System.out.println("[watch] data = " + new String(data));
+            try {
+                /** getDataFrame 函数用于获取 DataFrame 数据类，没有数据时会被阻塞 */
+                byte[] data = watcher.getDataFrame().getData();
+                System.out.println("[watch] data = " + new String(data));
+            } catch (RuntimeException ex) {
+                System.out.println("[watch] error = " + ex.getMessage());
+            }
         }
         /** 关闭已经打开的watcher对象，每个客户端实例只允许存在一个watcher对象，若watcher对象不关闭，再运行时会报错 */
         watcher.close();
@@ -275,8 +284,8 @@ import com.aliyun.openservices.eas.predict.http.Compressor;
 import com.aliyun.openservices.eas.predict.http.PredictClient;
 import com.aliyun.openservices.eas.predict.http.HttpConfig;
 public class Test_String {
-    public static void main(String[] args) throws Exception{
-    		//启动并初始化客户端
+    public static void main(String[] args) throws Exception {
+        //启动并初始化客户端
         PredictClient client = new PredictClient(new HttpConfig());
         client.setEndpoint("eas-shanghai.alibaba-inc.com");
         client.setModelName("echo_compress");
@@ -288,7 +297,7 @@ public class Test_String {
         //通过eas返回字符串
         String response = client.predict(request);
         System.out.println(response);
-		//关闭客户端
+        //关闭客户端
         client.shutdown();
         return;
     }
