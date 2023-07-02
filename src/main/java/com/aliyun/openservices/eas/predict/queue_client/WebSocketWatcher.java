@@ -114,7 +114,7 @@ public class WebSocketWatcher {
             tryReconnect.set(true);
             if (queueClient.webSocketClient.isOpen()) {
                 log.warn("Prepare to Re-Connect, Close Existing WebSocket Connection");
-                queueClient.webSocketClient.closeConnection(1101, "Re-Connect Stop");
+                queueClient.webSocketClient.closeConnection(1000, "Re-Connect Stop");
             }
             queueClient.webSocketClient = null;
             createWebSocketClient();
@@ -225,7 +225,7 @@ public class WebSocketWatcher {
             needPing.set(false);
             end.set(true);
             if (queueClient.webSocketClient != null) {
-                queueClient.webSocketClient.closeConnection(1100, "Real Stop");
+                queueClient.webSocketClient.closeConnection(1000, "Real Stop");
             }
         } finally {
             queueClient.lock.unlock();
