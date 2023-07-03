@@ -293,6 +293,9 @@ public class PredictClient {
     }
 
     private String getUrl(String lastUrl) throws Exception {
+        if (this.endpoint != null && !this.endpoint.startsWith("http://") && !this.endpoint.startsWith("https://")){
+            this.endpoint = "http://" + this.endpoint;
+        }
         String endpoint = this.endpoint;
         String url = "";
         if (enableBlacklist) {
@@ -321,7 +324,7 @@ public class PredictClient {
                         rwlock.readLock().unlock();
                     }
                 } else {
-                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
+                    url = endpoint + "/api/predict/" + modelName + requestPath;
                     break;
                 }
             }
@@ -338,7 +341,7 @@ public class PredictClient {
                         return url;
                     }
                 } else {
-                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
+                    url = endpoint + "/api/predict/" + modelName + requestPath;
                     break;
                 }
             }
@@ -375,8 +378,8 @@ public class PredictClient {
 
         if (token != null) {
             String auth = "POST" + "\n" + md5Content + "\n"
-                    + "application/octet-stream" + "\n" + currentTime + "\n"
-                    + "/api/predict/" + modelName;
+                    + contentType + "\n" + currentTime + "\n"
+                    + "/api/predict/" + modelName + requestPath;
             request.addHeader(HttpHeaders.AUTHORIZATION,
                     "EAS " + signature.computeSignature(token, auth));
         }
