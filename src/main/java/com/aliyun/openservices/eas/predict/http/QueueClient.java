@@ -119,9 +119,7 @@ public class QueueClient {
 
     private HttpUriRequest buildRequest(String method, Map<String, String> queryParams)
         throws Exception {
-        URIBuilder ub = new URIBuilder(baseUrl);
-        queryParams.forEach(ub::addParameter);
-        String uri = ub.build().toString();
+        String uri = createURI(baseUrl, queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         HttpUriRequest request = null;
         if (method.equals("DELETE")) {
@@ -172,6 +170,32 @@ public class QueueClient {
         }
     }
 
+    private HttpResponse retryRequest(HttpUriRequest request) throws Exception {
+        for (int i = 1; i <= retryCount; ++i) {
+            try {
+                HttpResponse response = doRequest(request);
+                int statusCode = response.getStatusLine().getStatusCode();
+                if (statusCode == 200) {
+                    return response;
+                }
+            } catch (Exception e) {
+                if (i == retryCount) {
+                    log.error(e.getMessage());
+                    throw e;
+                } else {
+                    log.debug(e.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+
+    private String createURI(String baseUrl, Map<String, String> queryParams) throws Exception {
+        URIBuilder ub = new URIBuilder(baseUrl);
+        queryParams.forEach(ub::addParameter);
+        return ub.build().toString();
+    }
+
     /**
      * common code for indexes related request
      *
@@ -186,24 +210,7 @@ public class QueueClient {
                     put("_indexes_", StringUtils.join(ArrayUtils.toObject(indexes), ","));
                 }
             };
-        HttpResponse response = null;
-        for (int i = 1; i <= retryCount; ++i) {
-            try {
-                HttpUriRequest request = buildRequest(method, queryParams);
-                response = doRequest(request);
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    break;
-                }
-            } catch (Exception e) {
-                if (i == retryCount) {
-                    log.error(e.getMessage());
-                    throw e;
-                } else {
-                    log.debug(e.getMessage());
-                }
-            }
-        }
+        HttpResponse response = retryRequest(buildRequest(method, queryParams));
         if (response != null && response.getEntity() != null) {
             return IOUtils.toString(response.getEntity().getContent());
         }
@@ -223,23 +230,10 @@ public class QueueClient {
                 }
             };
 
-        for (int i = 1; i <= retryCount; ++i) {
-            try {
-                HttpUriRequest request = buildRequest("GET", queryParams);
-                HttpResponse response = doRequest(request);
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-                    return JSONObject.parseObject(content.trim());
-                }
-            } catch (Exception e) {
-                if (i == retryCount) {
-                    log.error(e.getMessage());
-                    throw e;
-                } else {
-                    log.debug(e.getMessage());
-                }
-            }
+        HttpResponse response = retryRequest(buildRequest("GET", queryParams));
+        if (response != null) {
+            String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+            return JSONObject.parseObject(content.trim());
         }
         return JSONObject.parseObject("{}");
     }
@@ -275,23 +269,10 @@ public class QueueClient {
             queryParams.putAll(tags);
         }
 
-        for (int i = 1; i <= retryCount; ++i) {
-            try {
-                HttpUriRequest request = buildRequest("GET", queryParams);
-                HttpResponse response = doRequest(request);
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-                    return Long.parseLong(content.trim());
-                }
-            } catch (Exception e) {
-                if (i == retryCount) {
-                    log.error(e.getMessage());
-                    throw e;
-                } else {
-                    log.debug(e.getMessage());
-                }
-            }
+        HttpResponse response = retryRequest(buildRequest("GET", queryParams));
+        if (response != null) {
+            String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+            return Long.parseLong(content.trim());
         }
         return -1L;
     }
@@ -345,9 +326,7 @@ public class QueueClient {
                     queryParams.put(key, value);
                 });
         }
-        URIBuilder ub = new URIBuilder(baseUrl);
-        queryParams.forEach(ub::addParameter);
-        String uri = ub.build().toString();
+        String uri = createURI(baseUrl, queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
 
         // create HttpPost
@@ -441,9 +420,7 @@ public class QueueClient {
         if (tags != null && !tags.isEmpty()) {
             queryParams.putAll(tags);
         }
-        URIBuilder ub = new URIBuilder(baseUrl);
-        queryParams.forEach(ub::addParameter);
-        String uri = ub.build().toString();
+        String uri = createURI(baseUrl, queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Accept", "application/vnd.google.protobuf");
 
@@ -451,28 +428,13 @@ public class QueueClient {
         HttpGet request = new HttpGet(uri);
         headers.forEach(request::setHeader);
 
-        for (int i = 1; i <= retryCount; ++i) {
-            try {
-                HttpResponse response = doRequest(request);
-
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    byte[] content = IOUtils.toByteArray(response.getEntity().getContent());
-                    return new DataFrameList().decode(content).getList();
-                } else {
-                    return new DataFrame[0];
-                }
-            } catch (Exception e) {
-                if (i == retryCount) {
-                    log.error(e.getMessage());
-                    return new DataFrame[0];
-                } else {
-                    log.debug(e.getMessage());
-                }
-            }
+        HttpResponse response = retryRequest(request);
+        if (response != null) {
+            byte[] content = IOUtils.toByteArray(response.getEntity().getContent());
+            return new DataFrameList().decode(content).getList();
+        } else {
+            return new DataFrame[0];
         }
-        log.warn("Get no data in Queue Service");
-        return new DataFrame[0];
     }
 
     /**
@@ -567,9 +529,7 @@ public class QueueClient {
         if (queueTags != null && !queueTags.isEmpty()) {
             queryParams.putAll(queueTags);
         }
-        URIBuilder ub = new URIBuilder(baseUrl);
-        queryParams.forEach(ub::addParameter);
-        String uri = ub.build().toString();
+        String uri = createURI(baseUrl, queryParams);
         uri = uri.replaceFirst("http", "ws");
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Accept", "application/vnd.google.protobuf");
@@ -643,16 +603,12 @@ public class QueueClient {
         if (reason != null && !reason.isEmpty()) {
             dataParams.put("_reason_", reason);
         }
-        URIBuilder dataUri = new URIBuilder("");
-        dataParams.forEach(dataUri::addParameter);
-        String formData = dataUri.build().toString();
+        String formData = createURI("", dataParams);
         if (formData.length() > 0) {
             formData = formData.substring(1, formData.length());
         }
 
-        URIBuilder ub = new URIBuilder(baseUrl);
-        queryParams.forEach(ub::addParameter);
-        String uri = ub.build().toString();
+        String uri = createURI(baseUrl, queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 
@@ -660,24 +616,7 @@ public class QueueClient {
         headers.forEach(request::setHeader);
         request.setEntity(new NByteArrayEntity(formData.getBytes()));
 
-        HttpResponse response = null;
-        for (int i = 1; i <= retryCount; ++i) {
-            try {
-                response = doRequest(request);
-                // check response statusCode
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    break;
-                }
-            } catch (Exception e) {
-                if (i == retryCount) {
-                    log.error(e.getMessage());
-                    throw e;
-                } else {
-                    log.debug(e.getMessage());
-                }
-            }
-        }
+        HttpResponse response = retryRequest(request);
         if (response != null && response.getEntity() != null) {
             return IOUtils.toString(response.getEntity().getContent());
         }
