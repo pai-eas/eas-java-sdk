@@ -245,6 +245,58 @@ public class QueueClient {
     }
 
     /**
+     * count the number of data in the queue
+     *
+     * @param tags customized parameters
+     * @return count
+     */
+    public long count(Map<String, String> tags) throws Exception {
+        return count(0L, tags);
+    }
+
+    /**
+     * count the number of data in the queue, support priority
+     *
+     * @param priority data priority
+     * @param tags     customized parameters
+     * @return count
+     */
+    public long count(long priority, Map<String, String> tags) throws Exception {
+        Map<String, String> queryParams =
+            new HashMap<String, String>() {
+                {
+                    put("_count_", Boolean.toString(true));
+                }
+            };
+        if (priority == 1L) {
+            queryParams.put("_priority_", Long.toString(priority));
+        }
+        if (tags != null && !tags.isEmpty()) {
+            queryParams.putAll(tags);
+        }
+
+        for (int i = 1; i <= retryCount; ++i) {
+            try {
+                HttpUriRequest request = buildRequest("GET", queryParams);
+                HttpResponse response = doRequest(request);
+                int statusCode = response.getStatusLine().getStatusCode();
+                if (statusCode == 200) {
+                    String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+                    return Long.parseLong(content.trim());
+                }
+            } catch (Exception e) {
+                if (i == retryCount) {
+                    log.error(e.getMessage());
+                    throw e;
+                } else {
+                    log.debug(e.getMessage());
+                }
+            }
+        }
+        return -1L;
+    }
+
+    /**
      * delete data whose indexes are smaller than the specified index from a queue service
      *
      * @param index data index
@@ -518,7 +570,7 @@ public class QueueClient {
         URIBuilder ub = new URIBuilder(baseUrl);
         queryParams.forEach(ub::addParameter);
         String uri = ub.build().toString();
-        uri = uri.replace("http", "ws");
+        uri = uri.replaceFirst("http", "ws");
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Accept", "application/vnd.google.protobuf");
 
@@ -553,6 +605,83 @@ public class QueueClient {
      */
     public String commit(long[] indexes) throws Exception {
         return processIndexes(indexes, "PUT");
+    }
+
+    /**
+     * negative commit data by indexes
+     *
+     * @param index data index
+     * @return the result of negative commit ,OK or other
+     */
+    public String negative(long index, String code, String reason) throws Exception {
+        long[] indexes = new long[1];
+        indexes[0] = index;
+        return negative(indexes, code, reason);
+    }
+
+    /**
+     * negative commit data by indexes
+     *
+     * @param indexes data indexes
+     * @param code    error code, see https://help.aliyun.com/zh/pai/user-guide/queue-service-subscription-push?spm=a2c4g.11186623.0.0.4ca721afPjhmQH#fcbcad2003pdm
+     * @param reason  reason of error
+     * @return the result of negative commit ,OK or other
+     */
+    public String negative(long[] indexes, String code, String reason) throws Exception {
+        Map<String, String> queryParams =
+            new HashMap<String, String>() {
+                {
+                    put("_indexes_", StringUtils.join(ArrayUtils.toObject(indexes), ","));
+                    put("_negative_", Boolean.toString(true));
+                }
+            };
+
+        Map<String, String> dataParams = new HashMap<>();
+        if (code != null && !code.isEmpty()) {
+            dataParams.put("_code_", code);
+        }
+        if (reason != null && !reason.isEmpty()) {
+            dataParams.put("_reason_", reason);
+        }
+        URIBuilder dataUri = new URIBuilder("");
+        dataParams.forEach(dataUri::addParameter);
+        String formData = dataUri.build().toString();
+        if (formData.length() > 0) {
+            formData = formData.substring(1, formData.length());
+        }
+
+        URIBuilder ub = new URIBuilder(baseUrl);
+        queryParams.forEach(ub::addParameter);
+        String uri = ub.build().toString();
+        Map<String, String> headers = withIdentity(new HashMap<String, String>());
+        headers.put("Content-Type", "application/x-www-form-urlencoded");
+
+        HttpPut request = new HttpPut(uri);
+        headers.forEach(request::setHeader);
+        request.setEntity(new NByteArrayEntity(formData.getBytes()));
+
+        HttpResponse response = null;
+        for (int i = 1; i <= retryCount; ++i) {
+            try {
+                response = doRequest(request);
+                // check response statusCode
+                int statusCode = response.getStatusLine().getStatusCode();
+                if (statusCode == 200) {
+                    break;
+                }
+            } catch (Exception e) {
+                if (i == retryCount) {
+                    log.error(e.getMessage());
+                    throw e;
+                } else {
+                    log.debug(e.getMessage());
+                }
+            }
+        }
+        if (response != null && response.getEntity() != null) {
+            return IOUtils.toString(response.getEntity().getContent());
+        }
+        return "";
     }
 
     /**
