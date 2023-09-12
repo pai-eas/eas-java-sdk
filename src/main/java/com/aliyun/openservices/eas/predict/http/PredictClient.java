@@ -107,6 +107,7 @@ public class PredictClient {
     private String modelName = null;
     private String requestPath = "";
     private String endpoint = null;
+    private String url = null;
     private boolean isCompressed = false;
     private int retryCount = 3;
     private String contentType = "application/octet-stream";
@@ -177,6 +178,11 @@ public class PredictClient {
 
     public PredictClient setEndpoint(String endpoint) {
         this.endpoint = endpoint;
+        return this;
+    }
+
+    public PredictClient setUrl(String url) {
+        this.url = url;
         return this;
     }
 
@@ -293,6 +299,9 @@ public class PredictClient {
     }
 
     private String getUrl(String lastUrl) throws Exception {
+        if (this.url != null) {
+            return this.url + this.requestPath;
+        }
         if (this.endpoint != null && !this.endpoint.startsWith("http://") && !this.endpoint.startsWith("https://")){
             this.endpoint = "http://" + this.endpoint;
         }
@@ -377,11 +386,18 @@ public class PredictClient {
         }
 
         if (token != null) {
-            String auth = "POST" + "\n" + md5Content + "\n"
+            String auth = "";
+            if (this.url == null) {
+                auth = "POST" + "\n" + md5Content + "\n"
                     + contentType + "\n" + currentTime + "\n"
                     + "/api/predict/" + modelName + requestPath;
+            } else {
+                auth = "POST" + "\n" + md5Content + "\n"
+                    + contentType + "\n" + currentTime + "\n"
+                    + requestPath;
+            }
             request.addHeader(HttpHeaders.AUTHORIZATION,
-                    "EAS " + signature.computeSignature(token, auth));
+                "EAS " + signature.computeSignature(token, auth));
         }
         return request;
     }
