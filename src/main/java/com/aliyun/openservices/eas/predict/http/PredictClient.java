@@ -23,6 +23,7 @@ import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -385,16 +386,17 @@ public class PredictClient {
                     String.valueOf(System.currentTimeMillis()));
         }
 
-        if (token != null) {
+        if (this.token != null) {
             String auth = "";
             if (this.url == null) {
                 auth = "POST" + "\n" + md5Content + "\n"
-                    + contentType + "\n" + currentTime + "\n"
-                    + "/api/predict/" + modelName + requestPath;
+                    + this.contentType + "\n" + currentTime + "\n"
+                    + "/api/predict/" + this.modelName + this.requestPath;
             } else {
+                URL u = new URL(this.url);
                 auth = "POST" + "\n" + md5Content + "\n"
-                    + contentType + "\n" + currentTime + "\n"
-                    + requestPath;
+                    + this.contentType + "\n" + currentTime + "\n"
+                    + u.getPath() + this.requestPath;
             }
             request.addHeader(HttpHeaders.AUTHORIZATION,
                 "EAS " + signature.computeSignature(token, auth));
