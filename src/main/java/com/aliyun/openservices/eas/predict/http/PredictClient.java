@@ -387,16 +387,13 @@ public class PredictClient {
         }
 
         if (this.token != null) {
-            String auth = "";
+            String auth = "POST" + "\n" + md5Content + "\n"
+                + this.contentType + "\n" + currentTime + "\n";
             if (this.url == null) {
-                auth = "POST" + "\n" + md5Content + "\n"
-                    + this.contentType + "\n" + currentTime + "\n"
-                    + "/api/predict/" + this.modelName + this.requestPath;
+                auth = auth + "/api/predict/" + this.modelName + this.requestPath;
             } else {
                 URL u = new URL(this.url);
-                auth = "POST" + "\n" + md5Content + "\n"
-                    + this.contentType + "\n" + currentTime + "\n"
-                    + u.getPath() + this.requestPath;
+                auth = auth + u.getPath() + this.requestPath;
             }
             request.addHeader(HttpHeaders.AUTHORIZATION,
                 "EAS " + signature.computeSignature(token, auth));
