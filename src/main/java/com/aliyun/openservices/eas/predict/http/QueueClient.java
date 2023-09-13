@@ -54,7 +54,12 @@ public class QueueClient {
 
     public QueueClient(
         String endpoint, String queueName, String token, HttpConfig httpConfig, QueueUser user) {
-        baseUrl = String.format("%s/api/predict/%s", endpoint, queueName);
+        this(String.format("%s/api/predict/%s", endpoint, queueName), token, httpConfig, user);
+    }
+
+    public QueueClient(
+        String url, String token, HttpConfig httpConfig, QueueUser user) {
+        baseUrl = url;
         if (!(baseUrl.startsWith("http://") || baseUrl.startsWith("https://"))) {
             baseUrl = String.join("", "http://", baseUrl);
         }
@@ -262,8 +267,11 @@ public class QueueClient {
                     put("_count_", Boolean.toString(true));
                 }
             };
-        if (priority == 1L) {
+        if (priority > 0) {
             queryParams.put("_priority_", Long.toString(priority));
+        } else if (priority < 0) {
+            log.warn("Invalid value of priority, should be a non-negative number");
+            return -1L;
         }
         if (tags != null && !tags.isEmpty()) {
             queryParams.putAll(tags);
@@ -319,6 +327,8 @@ public class QueueClient {
         Map<String, String> queryParams = new HashMap<String, String>();
         if (priority > 0) {
             queryParams.put("_priority_", Long.toString(priority));
+        } else if (priority < 0) {
+            log.warn("Invalid value of priority, should be a non-negative number, now set to normal priority: 0");
         }
         if (tags != null && !tags.isEmpty()) {
             tags.forEach(
