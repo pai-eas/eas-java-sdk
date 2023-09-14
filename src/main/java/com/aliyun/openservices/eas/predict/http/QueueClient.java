@@ -508,7 +508,7 @@ public class QueueClient {
     public WebSocketWatcher watch(
         long index, long window, boolean indexOnly, boolean autoCommit, Map<String, String> tags)
         throws Exception {
-        WatchConfig watchConfig = new WatchConfig();
+        WatchConfig watchConfig = new WatchConfig(true, 5);
         return watch(index, window, indexOnly, autoCommit, tags, watchConfig);
     }
 

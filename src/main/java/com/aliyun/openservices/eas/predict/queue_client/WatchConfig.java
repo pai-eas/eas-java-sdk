@@ -1,7 +1,7 @@
 package com.aliyun.openservices.eas.predict.queue_client;
 
 public class WatchConfig {
-    public static int DefaultReConnectCnt = 3;
+    public static int DefaultReConnectCnt = 20;
     public static int DefaultReConnectInterval = 5;
 
     private int reConCnt;
