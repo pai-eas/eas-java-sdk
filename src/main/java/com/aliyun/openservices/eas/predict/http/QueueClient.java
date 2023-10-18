@@ -182,6 +182,8 @@ public class QueueClient {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode == 200) {
                     return response;
+                } else if (i == retryCount && response != null && response.getEntity() != null) {
+                    log.warn(IOUtils.toString(response.getEntity().getContent(), "UTF-8"));
                 }
             } catch (Exception e) {
                 if (i == retryCount) {
@@ -283,6 +285,33 @@ public class QueueClient {
             return Long.parseLong(content.trim());
         }
         return -1L;
+    }
+
+    /**
+     * get the wait info of data in the queue
+     *
+     * @param index data index
+     * @return JSONObject containing 'IsPending' and 'WaitCount'
+     */
+    public JSONObject search(long index) throws Exception {
+        if (index <= 0) {
+            log.warn("Invalid search index: " + index);
+            return JSONObject.parseObject("{}");
+        }
+        Map<String, String> queryParams =
+            new HashMap<String, String>() {
+                {
+                    put("_search_", Boolean.toString(true));
+                    put("_index_", Long.toString(index));
+                }
+            };
+
+        HttpResponse response = retryRequest(buildRequest("GET", queryParams));
+        if (response != null) {
+            String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+            return JSONObject.parseObject(content.trim());
+        }
+        return JSONObject.parseObject("{}");
     }
 
     /**
