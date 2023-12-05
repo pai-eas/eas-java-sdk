@@ -124,6 +124,7 @@ public class PredictClient {
     private Map<String, BlacklistData> blacklist = null;
     private ReentrantReadWriteLock rwlock = new ReentrantReadWriteLock();
     private Compressor compressor = null;
+    private Map<String, String> extraHeaders = new HashMap<>();
 
     public PredictClient() {
     }
@@ -230,14 +231,20 @@ public class PredictClient {
         return requestPath;
     }
 
-    public void setRequestPath(String requestPath) {
+    public PredictClient setRequestPath(String requestPath) {
         if (requestPath == null) {
-            return;
+            return this;
         }
         if (requestPath.length() > 0 && requestPath.charAt(0) != '/') {
             requestPath = "/" + requestPath;
         }
         this.requestPath = requestPath;
+        return this;
+    }
+
+    public PredictClient addExtraHeaders(Map<String, String> extraHeaders) {
+        this.extraHeaders.putAll(extraHeaders);
+        return this;
     }
 
     public PredictClient startBlacklistMechanism(int blacklistSize,
@@ -372,6 +379,9 @@ public class PredictClient {
         }
         HmacSha1Signature signature = new HmacSha1Signature();
         String md5Content = signature.getMD5(requestContent);
+        for (Map.Entry<String, String> entry : this.extraHeaders.entrySet()) {
+            request.addHeader(entry.getKey(), entry.getValue());
+        }
         request.addHeader(HttpHeaders.CONTENT_MD5, md5Content);
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat(

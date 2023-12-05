@@ -6,12 +6,12 @@ public class WatchConfig {
 
     private int reConCnt;
     private int reConInterval;
-    private boolean unLimitedReCon;
+    private boolean infinityReConnect;
 
     public WatchConfig() {
         this.reConCnt = DefaultReConnectCnt;
         this.reConInterval = DefaultReConnectInterval;
-        this.unLimitedReCon = false;
+        this.infinityReConnect = false;
     }
 
     public WatchConfig(int reConCnt, int reConInterval) {
@@ -19,8 +19,8 @@ public class WatchConfig {
         this.reConInterval = reConInterval;
     }
 
-    public WatchConfig(boolean unLimitedReCon, int reConInterval) {
-        this.unLimitedReCon = unLimitedReCon;
+    public WatchConfig(boolean infinityReConnect, int reConInterval) {
+        this.infinityReConnect = infinityReConnect;
         this.reConInterval = reConInterval;
     }
 
@@ -41,10 +41,18 @@ public class WatchConfig {
     }
 
     public boolean isUnLimitedReCon() {
-        return unLimitedReCon;
+        return infinityReConnect;
     }
 
     public void setUnLimitedReCon(boolean unLimitedReCon) {
-        this.unLimitedReCon = unLimitedReCon;
+        this.infinityReConnect = unLimitedReCon;
+    }
+
+    public boolean isInfinityReConnect() {
+        return infinityReConnect;
+    }
+
+    public void setInfinityReConnect(boolean infinityReConnect) {
+        this.infinityReConnect = infinityReConnect;
     }
 }

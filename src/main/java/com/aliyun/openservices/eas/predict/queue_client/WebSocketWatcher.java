@@ -78,7 +78,7 @@ public class WebSocketWatcher {
             this.headers = new HashMap<String, String>();
             this.headers.putAll(headers);
         }
-        this.unlimitedReConnect = watchConfig.isUnLimitedReCon();
+        this.unlimitedReConnect = watchConfig.isInfinityReConnect();
         this.maxReConnectCnt = watchConfig.getReConCnt();
         this.reConnectTimes = new AtomicInteger(0);
         this.reConnectInterval = watchConfig.getReConInterval();
