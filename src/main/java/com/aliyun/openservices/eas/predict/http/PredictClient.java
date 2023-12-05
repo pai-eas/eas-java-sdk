@@ -287,16 +287,23 @@ public class PredictClient {
     public PredictClient createChildClient() {
         PredictClient client = new PredictClient();
         client.setHttp(this.httpclient)
-                .setToken(this.token)
-                .setModelName(this.modelName)
-                .setRetryCount(this.retryCount)
-                .setRequestTimeout(this.requestTimeout);
+            .setToken(this.token)
+            .setModelName(this.modelName)
+            .setRetryCount(this.retryCount)
+            .setRequestTimeout(this.requestTimeout)
+            .setIsCompressed(this.isCompressed)
+            .setContentType(this.contentType)
+            .setRequestPath(this.requestPath)
+            .addExtraHeaders(this.extraHeaders);
         if (this.vipSrvEndPoint != null) {
             client.setVIPServer(this.vipSrvEndPoint);
         } else if (this.directEndPoint != null) {
             client.setDirectEndpoint(this.directEndPoint);
         } else {
             client.setEndpoint(this.endpoint);
+        }
+        if (this.compressor != null) {
+            client.setCompressor(this.compressor);
         }
         return client;
     }
