@@ -48,6 +48,7 @@ public class QueueClient {
     private int retryCount = 5;
     private boolean websocketWatch = false;
     private String prioHeader = null;
+    private Map<String, String> extraHeaders = new HashMap<>();
 
     public QueueClient() {
     }
@@ -98,6 +99,11 @@ public class QueueClient {
         websocketWatch = true;
     }
 
+    public QueueClient addExtraHeaders(Map<String, String> extraHeaders) {
+        this.extraHeaders.putAll(extraHeaders);
+        return this;
+    }
+
     /**
      * add identity info into headers
      *
@@ -105,6 +111,9 @@ public class QueueClient {
      * @return headers with identity
      */
     private Map<String, String> withIdentity(Map<String, String> headers) {
+        for (Map.Entry<String, String> entry : this.extraHeaders.entrySet()) {
+            headers.put(entry.getKey(), entry.getValue());
+        }
         headers.put(HeaderAuthorization, user.getToken());
         headers.put(HeaderRedisUid, user.getUid());
         headers.put(HeaderRedisGid, user.getGid());
@@ -577,7 +586,7 @@ public class QueueClient {
             log.warn("Invalid value of reConnect interval. The value should be a non-negative number, set as default value: " + watchConfig.DefaultReConnectInterval);
             watchConfig.setReConInterval(watchConfig.DefaultReConnectInterval);
         }
-        if (!watchConfig.isUnLimitedReCon() && watchConfig.getReConCnt() < 0) {
+        if (!watchConfig.isInfinityReConnect() && watchConfig.getReConCnt() < 0) {
             log.warn("Invalid value of reConnect count. The value should be a non-negative number, set as default value: " + watchConfig.DefaultReConnectCnt);
             watchConfig.setReConCnt(watchConfig.DefaultReConnectCnt);
         }
