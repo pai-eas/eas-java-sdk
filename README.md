@@ -1,7 +1,6 @@
 # 添加依赖包
 
-编写Java客户端代码使用Maven管理项目，用户需在pom.xml文件中添加客户端所需的依赖包，名为eas-sdk，目前最新release版本为2.0.11,
-具体代码如下：
+编写Java客户端代码使用Maven管理项目，用户需在pom.xml文件中添加客户端所需的依赖包，名为eas-sdk，目前最新release版本的具体代码如下：
 
 ```
 <dependency>
