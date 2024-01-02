@@ -81,6 +81,7 @@ public class QueueClient {
                     .build();
             final RequestConfig requestConfig =
                 RequestConfig.custom()
+                    .setRedirectsEnabled(httpConfig.getRedirectsEnabled())
                     .setConnectTimeout(httpConfig.getConnectTimeout())
                     .setSocketTimeout(httpConfig.getReadTimeout())
                     .build();

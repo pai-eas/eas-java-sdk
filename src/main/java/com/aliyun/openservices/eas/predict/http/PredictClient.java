@@ -144,7 +144,9 @@ public class PredictClient {
                     .setConnectTimeout(httpConfig.getConnectTimeout())
                     .setIoThreadCount(httpConfig.getIoThreadNum())
                     .setSoKeepAlive(httpConfig.isKeepAlive()).build();
-            final RequestConfig requestConfig = RequestConfig.custom()
+            final RequestConfig requestConfig =
+                RequestConfig.custom()
+                    .setRedirectsEnabled(httpConfig.getRedirectsEnabled())
                     .setConnectTimeout(httpConfig.getConnectTimeout())
                     .setSocketTimeout(httpConfig.getReadTimeout()).build();
             httpclient = HttpAsyncClients.custom().setConnectionManager(cm)

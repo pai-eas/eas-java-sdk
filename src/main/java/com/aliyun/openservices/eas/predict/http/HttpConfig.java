@@ -11,6 +11,7 @@ public class HttpConfig {
     private int maxConnectionCount;
     private int maxConnectionPerRoute;
     private boolean keepAlive;
+    private boolean redirectsEnabled;
 
     public HttpConfig() {
         this.ioThreadNum = 10;
@@ -20,6 +21,7 @@ public class HttpConfig {
         this.maxConnectionPerRoute = 1000;
         this.requestTimeout = 0;
         this.keepAlive = true;
+        this.redirectsEnabled = false;
     }
 
     public HttpConfig(int ioThreadNum, int readTimeout, int connectTimeout,
@@ -31,6 +33,7 @@ public class HttpConfig {
         this.maxConnectionCount = maxConnectionCount;
         this.maxConnectionPerRoute = maxConnectionPerRoute;
         this.keepAlive = true;
+        this.redirectsEnabled = false;
     }
 
     public HttpConfig(int ioThreadNum, int readTimeout, int connectTimeout,
@@ -93,5 +96,13 @@ public class HttpConfig {
 
     public void setKeepAlive(boolean keepAlive) {
         this.keepAlive = keepAlive;
+    }
+
+    public boolean getRedirectsEnabled() {
+        return redirectsEnabled;
+    }
+
+    public void setRedirectsEnabled(boolean redirectsEnabled) {
+        this.redirectsEnabled = redirectsEnabled;
     }
 }
