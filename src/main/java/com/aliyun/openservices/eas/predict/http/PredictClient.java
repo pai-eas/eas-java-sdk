@@ -8,6 +8,7 @@ import com.aliyun.openservices.eas.predict.response.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.ConnectionClosedException;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.RequestConfig;
@@ -23,6 +24,8 @@ import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -111,6 +114,7 @@ public class PredictClient {
     private String url = null;
     private boolean isCompressed = false;
     private int retryCount = 3;
+    private EnumSet<RetryCondition> retryConditions = EnumSet.noneOf(RetryCondition.class);
     private String contentType = "application/octet-stream";
     private int errorCode = 400;
     private String errorMessage;
@@ -217,6 +221,10 @@ public class PredictClient {
     public PredictClient setRetryCount(int retryCount) {
         this.retryCount = retryCount;
         return this;
+    }
+
+    public void setRetryConditions(EnumSet<RetryCondition> retryConditions) {
+        this.retryConditions = retryConditions;
     }
 
     public PredictClient setTracing(HashMap<String, String> mapHeader) {
@@ -426,10 +434,14 @@ public class PredictClient {
         HttpResponse response = null;
 
         Future<HttpResponse> future = httpclient.execute(request, null);
-        if (requestTimeout > 0) {
-            response = future.get(requestTimeout, TimeUnit.MILLISECONDS);
-        } else {
-            response = future.get();
+        try {
+            if (requestTimeout > 0) {
+                response = future.get(requestTimeout, TimeUnit.MILLISECONDS);
+            } else {
+                response = future.get();
+            }
+        } catch (ExecutionException e) {
+            throw e;
         }
 
         if (mapHeader != null) {
@@ -554,16 +566,37 @@ public class PredictClient {
         }
     }
 
-    public byte[] predict(byte[] requestContent) throws Exception{
-        if (compressor != null) {
-            if (compressor == Compressor.Gzip) {
-                requestContent = GzipUtils.compress(requestContent);
-            } else if (compressor == Compressor.Zlib) {
-                requestContent = ZlibUtils.compress(requestContent);
-            } else {
-                log.warn("Compressor are not supported!");
-            }
+    private boolean shouldRetry(int statusCode) {
+        if (retryConditions.isEmpty()) {
+            return true;
         }
+        if (retryConditions.contains(RetryCondition.RESPONSE_4XX) && statusCode / 100 == 4) {
+            return true;
+        }
+        if (retryConditions.contains(RetryCondition.RESPONSE_5XX) && statusCode / 100 == 5) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean shouldRetry(Exception exception) {
+        if (retryConditions.isEmpty()) {
+            return true;
+        }
+        Throwable cause = exception.getCause();
+        if (retryConditions.contains(RetryCondition.CONNECTION_FAILED) && (cause instanceof ConnectException || cause instanceof ConnectionClosedException)) {
+            return true;
+        }
+        if (retryConditions.contains(RetryCondition.CONNECTION_TIMEOUT) && cause instanceof ConnectTimeoutException) {
+            return true;
+        }
+        if (retryConditions.contains(RetryCondition.READ_TIMEOUT) && cause instanceof SocketTimeoutException) {
+            return true;
+        }
+        return false;
+    }
+
+    public byte[] predict(byte[] requestContent) throws Exception {
         byte[] content = null;
         String lastUrl = "";
         for (int i = 0; i <= retryCount; i++) {
@@ -572,26 +605,22 @@ public class PredictClient {
                 lastUrl = request.getURI().toString();
                 content = getContent(request);
                 break;
-            } catch (ConnectTimeoutException e) {
-                String errorMessage = "URL: " + lastUrl + ", " + e.getMessage();
-                if (enableBlacklist) {
-                    rwlock.writeLock().lock();
-                    handleBlacklist(lastUrl);
-                    rwlock.writeLock().unlock();
-                }
-                if (i == retryCount) {
-                    log.error(errorMessage);
-                    throw new Exception(errorMessage);
-                } else {
+            } catch (HttpException e) {
+                int statusCode = e.getCode();
+                String errorMessage = String.format("URL: %s, code: %d, error: %s", lastUrl, statusCode, e.getMessage());
+                if (shouldRetry(statusCode) && i < retryCount) {
                     log.debug(errorMessage);
+                } else {
+                    log.error(errorMessage);
+                    throw e;
                 }
             } catch (Exception e) {
-                String errorMesssage = "URL: " + lastUrl + ", " + e.getMessage();
-                if (i == retryCount) {
-                    log.error(errorMesssage);
-                    throw e;
+                String errorMessage = String.format("URL: %s, error: %s", lastUrl, e.getMessage());
+                if (shouldRetry(e) && i < retryCount) {
+                    log.debug(errorMessage);
                 } else {
-                    log.debug(errorMesssage);
+                    log.error(errorMessage);
+                    throw e;
                 }
             }
         }

@@ -78,7 +78,7 @@ public class WebSocketWatcher {
             this.headers = new HashMap<String, String>();
             this.headers.putAll(headers);
         }
-        this.unlimitedReConnect = watchConfig.isInfinityReConnect();
+        this.unlimitedReConnect = watchConfig.isUnLimitedReCon();
         this.maxReConnectCnt = watchConfig.getReConCnt();
         this.reConnectTimes = new AtomicInteger(0);
         this.reConnectInterval = watchConfig.getReConInterval();
@@ -95,35 +95,38 @@ public class WebSocketWatcher {
     }
 
     private void needReconnect(String errorMessage) throws Exception {
-        Thread.sleep(reConnectInterval * 1000);
-        if (!unlimitedReConnect) {
+        while (true) {
+            Thread.sleep(reConnectInterval * 1000);
+
+            if (tryReconnect.get()) {
+                log.warn("WebSocketClient Failed to Connect to Server");
+                break;
+            }
             int cur = reConnectTimes.incrementAndGet();
-            if (cur > this.maxReConnectCnt) {
-                close();
-                log.error("WebSocketClient Re-Connect Failed, Exhausted maxReConnectCnt: " + this.maxReConnectCnt + ", error = " + errorMessage);
-                throw new Exception(errorMessage);
+            if (!unlimitedReConnect) {
+                if (cur > this.maxReConnectCnt) {
+                    close();
+                    log.error("WebSocketClient Re-Connect Failed, Exhausted maxReConnectCnt: " + this.maxReConnectCnt + ", error = " + errorMessage);
+                    throw new Exception(errorMessage);
+                }
             }
-        }
-        if (tryReconnect.get()) {
-            tryReconnect.set(false);
-            log.warn("WebSocketClient Failed to Connect to Server");
-            needReconnect(errorMessage);
-            return;
-        }
-        try {
-            tryReconnect.set(true);
-            if (queueClient.webSocketClient.isOpen()) {
-                log.warn("Prepare to Re-Connect, Close Existing WebSocket Connection");
-                queueClient.webSocketClient.closeConnection(1000, "Re-Connect Stop");
+
+            try {
+                tryReconnect.set(true);
+                if (queueClient.webSocketClient.isOpen()) {
+                    log.warn("Prepare to Re-Connect, Close Existing WebSocket Connection");
+                    queueClient.webSocketClient.closeConnection(1000, "Re-Connect Stop");
+                }
+                queueClient.webSocketClient = null;
+                createWebSocketClient();
+                if (queueClient.webSocketClient.connectBlocking()) {
+                    break;
+                }
+            } catch (Exception e) {
+                log.warn("WebSocketClient Re-Connect Error, Error: " + e.getMessage());
+            } finally {
+                tryReconnect.set(false);
             }
-            queueClient.webSocketClient = null;
-            createWebSocketClient();
-            queueClient.webSocketClient.connectBlocking();
-        } catch (Exception e) {
-            log.warn("WebSocketClient Re-Connect Error, Error: " + e.getMessage());
-            needReconnect(e.getMessage());
-        } finally {
-            tryReconnect.set(false);
         }
     }
 
@@ -159,14 +162,16 @@ public class WebSocketWatcher {
 
                     @Override
                     public void onClose(int code, String reason, boolean remote) {
-                        log.warn("WebSocketClient is Closed, Code = " + code + ", Reason = " + reason);
+                        log.warn(String.format("WebSocketClient is Closed, Code: %d, Reason: %s, Re-Connect times: %d", code, reason, reConnectTimes.get()));
                         if (end.get()) {
                             return;
                         }
-                        try {
-                            needReconnect(reason);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e.getMessage());
+                        if (tryReconnect.get() == false) {
+                            try {
+                                needReconnect(reason);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e.getMessage());
+                            }
                         }
                     }
 
