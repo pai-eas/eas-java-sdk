@@ -38,6 +38,7 @@ public class QueueClient {
     public static String HeaderAuthorization = "Authorization";
     public static String HeaderRedisUid = "X-EAS-QueueService-Redis-Uid";
     public static String HeaderRedisGid = "X-EAS-QueueService-Redis-Gid";
+    public static String HeaderAccessRear = "X-EAS-QueueService-Access-Rear";
 
     private static Log log = LogFactory.getLog(QueueClient.class);
     public ReentrantLock lock = new ReentrantLock();
@@ -180,7 +181,7 @@ public class QueueClient {
                 throw new HttpException(-1, "request failed!");
             }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.debug(e.getMessage());
             throw e;
         }
     }
@@ -197,7 +198,7 @@ public class QueueClient {
                 }
             } catch (Exception e) {
                 if (i == retryCount) {
-                    log.error(e.getMessage());
+                    log.warn(e.getMessage());
                     throw e;
                 } else {
                     log.debug(e.getMessage());
