@@ -597,6 +597,15 @@ public class PredictClient {
     }
 
     public byte[] predict(byte[] requestContent) throws Exception {
+        if (compressor != null) {
+            if (compressor == Compressor.Gzip) {
+                requestContent = GzipUtils.compress(requestContent);
+            } else if (compressor == Compressor.Zlib) {
+                requestContent = ZlibUtils.compress(requestContent);
+            } else {
+                log.warn("Compressor are not supported!");
+            }
+        }
         byte[] content = null;
         String lastUrl = "";
         for (int i = 0; i <= retryCount; i++) {
