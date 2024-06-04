@@ -13,6 +13,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
@@ -29,10 +30,7 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -142,6 +140,7 @@ public class PredictClient {
             cm.setDefaultMaxPerRoute(httpConfig.getMaxConnectionPerRoute());
             requestTimeout = httpConfig.getRequestTimeout();
             IOReactorConfig config = IOReactorConfig.custom()
+                    .setIoThreadCount(httpConfig.getIoThreadNum())
                     .setTcpNoDelay(true)
                     .setSoTimeout(httpConfig.getReadTimeout())
                     .setSoReuseAddress(true)
@@ -428,6 +427,21 @@ public class PredictClient {
         return request;
     }
 
+    private byte[] handleResponse(HttpResponse response) throws IOException, HttpException {
+        byte[] content;
+        int statusCode = response.getStatusLine().getStatusCode();
+        if (statusCode == 200) {
+            content = IOUtils.toByteArray(response.getEntity().getContent());
+            if (isCompressed) {
+                content = Snappy.uncompress(content);
+            }
+        } else {
+            String errorMsg = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+            throw new HttpException(statusCode, errorMsg);
+        }
+        return content;
+    }
+
     private byte[] getContent(HttpPost request) throws IOException,
             InterruptedException, ExecutionException, TimeoutException {
         byte[] content = null;
@@ -452,28 +466,90 @@ public class PredictClient {
         }
         if (future.isDone()) {
             try {
-                errorCode = response.getStatusLine().getStatusCode();
-                errorMessage = "";
-
-                if (errorCode == 200) {
-                    content = IOUtils.toByteArray(response.getEntity()
-                            .getContent());
-                    if (isCompressed) {
-                        content = Snappy.uncompress(content);
-                    }
-                } else {
-                    errorMessage = IOUtils.toString(response.getEntity()
-                            .getContent(), "UTF-8");
-                    throw new HttpException(errorCode, errorMessage);
-                }
-            } catch (IllegalStateException e) {
-                log.error("Illegal State", e);
+                content = handleResponse(response);
+            } catch (HttpException e) {
+                throw e;
+            } catch (Exception e) {
+                log.error("handle response error:", e);
+                throw e;
             }
         } else if (future.isCancelled()) {
             log.error("request cancelled!", new Exception("Request cancelled"));
         } else {
             throw new HttpException(-1, "request failed!");
         }
+        return content;
+    }
+
+
+    private boolean shouldRetry(Exception e) {
+        // Always need retry if there are no specific retryConditions
+        if (retryConditions.isEmpty()) {
+            return true;
+        }
+
+        if (e instanceof HttpException) {
+            int statusCode = ((HttpException) e).getCode();
+            if (retryConditions.contains(RetryCondition.RESPONSE_4XX) && statusCode / 100 == 4) {
+                return true;
+            }
+            if (retryConditions.contains(RetryCondition.RESPONSE_5XX) && statusCode / 100 == 5) {
+                return true;
+            }
+        }
+
+        Throwable cause = e.getCause();
+        if ((cause instanceof ConnectException || cause instanceof ConnectionClosedException || e instanceof ConnectException || e instanceof ConnectionClosedException) && retryConditions.contains(RetryCondition.CONNECTION_FAILED)) {
+            return true;
+        }
+        if ((cause instanceof ConnectTimeoutException || e instanceof ConnectTimeoutException) && retryConditions.contains(RetryCondition.CONNECTION_TIMEOUT)) {
+            return true;
+        }
+        if ((cause instanceof SocketTimeoutException || e instanceof SocketTimeoutException) && retryConditions.contains(RetryCondition.READ_TIMEOUT)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public byte[] predict(byte[] requestContent) throws Exception {
+        if (compressor != null) {
+            if (compressor == Compressor.Gzip) {
+                requestContent = GzipUtils.compress(requestContent);
+            } else if (compressor == Compressor.Zlib) {
+                requestContent = ZlibUtils.compress(requestContent);
+            } else {
+                log.warn("Compressor are not supported!");
+            }
+        }
+        byte[] content = null;
+        String lastUrl = "";
+        for (int currentRetry = 0; currentRetry <= retryCount; currentRetry++) {
+            try {
+                HttpPost request = generateSignature(requestContent, lastUrl);
+                lastUrl = request.getURI().toString();
+                content = getContent(request);
+                break;
+            } catch (HttpException e) {
+                int statusCode = e.getCode();
+                String errorMessage = String.format("URL: %s, Status Code:: %d, Message: %s", lastUrl, statusCode, e.getMessage());
+                if (shouldRetry(e) && currentRetry < retryCount) {
+                    log.warn(String.format("Predict failed on %dth retry, %s", currentRetry + 1, errorMessage));
+                } else {
+                    log.error(errorMessage);
+                    throw new HttpException(statusCode, errorMessage);
+                }
+            } catch (Exception e) {
+                String errorMessage = String.format("URL: %s, Message: %s", lastUrl, e.getMessage());
+                if (shouldRetry(e) && currentRetry < retryCount) {
+                    log.warn(String.format("Predict failed on %dth retry, %s", currentRetry + 1, errorMessage));
+                } else {
+                    log.error(errorMessage);
+                    throw e;
+                }
+            }
+        }
+
         return content;
     }
 
@@ -566,75 +642,199 @@ public class PredictClient {
         }
     }
 
-    private boolean shouldRetry(int statusCode) {
-        if (retryConditions.isEmpty()) {
-            return true;
+    private void handleRetryOrFailure(CompletableFuture<byte[]> futureResponse, Exception exception, int currentRetry, String url, byte[] requestData) {
+        String errorMessage;
+        if (exception instanceof HttpException) {
+            int statusCode = ((HttpException) exception).getCode();
+            errorMessage = String.format("URL: %s, Status Code:: %d, Message: %s", url, statusCode, exception.getMessage());
+        } else {
+            errorMessage = String.format("URL: %s, Message: %s", url, (exception.getMessage() == null) ? exception : exception.getMessage());
         }
-        if (retryConditions.contains(RetryCondition.RESPONSE_4XX) && statusCode / 100 == 4) {
-            return true;
+
+        if (currentRetry < retryCount && shouldRetry(exception)) {
+            log.warn(String.format("PredictAsync failed on %dth retry, %s", currentRetry + 1, errorMessage));
+            predictAsyncInternal(requestData, currentRetry + 1, url).whenComplete((result, ex) -> {
+                if (ex != null) {
+                    Throwable cause = ex.getCause();
+                    futureResponse.completeExceptionally((cause != null) ? cause : ex);
+                } else {
+                    futureResponse.complete(result);
+                }
+            });
+        } else {
+            log.error(errorMessage);
+            futureResponse.completeExceptionally(exception);
         }
-        if (retryConditions.contains(RetryCondition.RESPONSE_5XX) && statusCode / 100 == 5) {
-            return true;
-        }
-        return false;
     }
 
-    private boolean shouldRetry(Exception exception) {
-        if (retryConditions.isEmpty()) {
-            return true;
+    private CompletableFuture<byte[]> predictAsyncInternal(byte[] requestData, int currentRetry, String lastUrl) {
+        CompletableFuture<byte[]> futureResponse = new CompletableFuture<>();
+        try {
+            // Generate the HTTP POST request with signatures
+            HttpPost request = generateSignature(requestData, lastUrl);
+            httpclient.execute(request, new FutureCallback<HttpResponse>() {
+                @Override
+                public void completed(HttpResponse response) {
+                    try {
+                        byte[] responseContent = handleResponse(response);
+                        futureResponse.complete(responseContent);
+                    } catch (HttpException e) {
+                        handleRetryOrFailure(futureResponse, e, currentRetry, request.getURI().toString(), requestData);
+                    } catch (Exception e) {
+                        handleRetryOrFailure(futureResponse, e, currentRetry, request.getURI().toString(), requestData);
+                    }
+                }
+
+                @Override
+                public void failed(Exception ex) {
+                    handleRetryOrFailure(futureResponse, ex, currentRetry, request.getURI().toString(), requestData);
+                }
+
+                @Override
+                public void cancelled() {
+                    futureResponse.cancel(true);
+                }
+            });
+        } catch (Exception ex) {
+            futureResponse.completeExceptionally(ex);
         }
-        Throwable cause = exception.getCause();
-        if (retryConditions.contains(RetryCondition.CONNECTION_FAILED) && (cause instanceof ConnectException || cause instanceof ConnectionClosedException)) {
-            return true;
-        }
-        if (retryConditions.contains(RetryCondition.CONNECTION_TIMEOUT) && cause instanceof ConnectTimeoutException) {
-            return true;
-        }
-        if (retryConditions.contains(RetryCondition.READ_TIMEOUT) && cause instanceof SocketTimeoutException) {
-            return true;
-        }
-        return false;
+        return futureResponse;
     }
 
-    public byte[] predict(byte[] requestContent) throws Exception {
-        if (compressor != null) {
-            if (compressor == Compressor.Gzip) {
-                requestContent = GzipUtils.compress(requestContent);
-            } else if (compressor == Compressor.Zlib) {
-                requestContent = ZlibUtils.compress(requestContent);
-            } else {
-                log.warn("Compressor are not supported!");
-            }
-        }
-        byte[] content = null;
-        String lastUrl = "";
-        for (int i = 0; i <= retryCount; i++) {
-            try {
-                HttpPost request = generateSignature(requestContent, lastUrl);
-                lastUrl = request.getURI().toString();
-                content = getContent(request);
-                break;
-            } catch (HttpException e) {
-                int statusCode = e.getCode();
-                String errorMessage = String.format("URL: %s, code: %d, error: %s", lastUrl, statusCode, e.getMessage());
-                if (shouldRetry(statusCode) && i < retryCount) {
-                    log.debug(errorMessage);
+    public CompletableFuture<byte[]> predictAsync(byte[] requestContent) {
+        // Start the asynchronous prediction with initial retry parameters
+        return predictAsyncInternal(requestContent, 0, "");
+    }
+
+    public CompletableFuture<BladeResponse> predictAsync(BladeRequest runRequest) {
+        CompletableFuture<BladeResponse> futureResponse = new CompletableFuture<>();
+
+        predictAsync(runRequest.getRequest().toByteArray())
+            .thenApply(result -> {
+                BladeResponse runResponse = new BladeResponse();
+                runResponse.setContentValues(result);
+                return runResponse;
+            })
+            .whenComplete((res, ex) -> {
+                if (ex != null) {
+                    futureResponse.completeExceptionally(ex);
                 } else {
-                    log.error(errorMessage);
-                    throw e;
+                    futureResponse.complete(res);
                 }
-            } catch (Exception e) {
-                String errorMessage = String.format("URL: %s, error: %s", lastUrl, e.getMessage());
-                if (shouldRetry(e) && i < retryCount) {
-                    log.debug(errorMessage);
+            });
+
+        return futureResponse;
+    }
+
+    public CompletableFuture<TFResponse> predictAsync(TFRequest runRequest) {
+        CompletableFuture<TFResponse> futureResponse = new CompletableFuture<>();
+
+        predictAsync(runRequest.getRequest().toByteArray())
+            .thenApply(result -> {
+                TFResponse runResponse = new TFResponse();
+                runResponse.setContentValues(result);
+                return runResponse;
+            })
+            .whenComplete((res, ex) -> {
+                if (ex != null) {
+                    futureResponse.completeExceptionally(ex);
                 } else {
-                    log.error(errorMessage);
-                    throw e;
+                    futureResponse.complete(res);
                 }
-            }
+            });
+
+        return futureResponse;
+    }
+
+    public CompletableFuture<CaffeResponse> predictAsync(CaffeRequest runRequest) {
+        CompletableFuture<CaffeResponse> futureResponse = new CompletableFuture<>();
+
+        predictAsync(runRequest.getRequest().toByteArray())
+            .thenApply(result -> {
+                CaffeResponse runResponse = new CaffeResponse();
+                runResponse.setContentValues(result);
+                return runResponse;
+            })
+            .whenComplete((res, ex) -> {
+                if (ex != null) {
+                    futureResponse.completeExceptionally(ex);
+                } else {
+                    futureResponse.complete(res);
+                }
+            });
+
+        return futureResponse;
+    }
+
+    public CompletableFuture<JsonResponse> predictAsync(JsonRequest requestContent) {
+        CompletableFuture<JsonResponse> futureResponse = new CompletableFuture<>();
+
+        byte[] requestData;
+        try {
+            requestData = requestContent.getJSON().getBytes();
+        } catch (IOException ex) {
+            futureResponse.completeExceptionally(ex);
+            return futureResponse;
         }
 
-        return content;
+        predictAsync(requestData)
+            .thenApply(resultBytes -> {
+                JsonResponse jsonResponse = new JsonResponse();
+                try {
+                    jsonResponse.setContentValues(resultBytes);
+                    return jsonResponse;
+                } catch (Exception ex) {
+                    throw new CompletionException(ex);
+                }
+            })
+            .whenComplete((jsonResponse, throwable) -> {
+                if (throwable != null) {
+                    futureResponse.completeExceptionally(throwable.getCause());
+                } else {
+                    futureResponse.complete(jsonResponse);
+                }
+            });
+
+        return futureResponse;
+    }
+
+
+    public CompletableFuture<TorchResponse> predictAsync(TorchRequest runRequest) {
+        CompletableFuture<TorchResponse> futureResponse = new CompletableFuture<>();
+
+        predictAsync(runRequest.getRequest().toByteArray())
+            .thenApply(result -> {
+                TorchResponse runResponse = new TorchResponse();
+                runResponse.setContentValues(result);
+                return runResponse;
+            })
+            .whenComplete((res, ex) -> {
+                if (ex != null) {
+                    futureResponse.completeExceptionally(ex);
+                } else {
+                    futureResponse.complete(res);
+                }
+            });
+
+        return futureResponse;
+    }
+
+    public CompletableFuture<String> predictAsync(String requestContent) {
+        CompletableFuture<String> futureResponse = new CompletableFuture<>();
+
+        predictAsync(requestContent.getBytes())
+            .thenApply(result -> {
+                return new String(result);
+            })
+            .whenComplete((res, ex) -> {
+                if (ex != null) {
+                    futureResponse.completeExceptionally(ex);
+                } else {
+                    futureResponse.complete(res);
+                }
+            });
+
+        return futureResponse;
     }
 
     public void shutdown() {
