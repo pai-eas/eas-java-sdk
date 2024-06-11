@@ -6,7 +6,7 @@
 <dependency>
   <groupId>com.aliyun.openservices.eas</groupId>
   <artifactId>eas-sdk</artifactId>
-  <version>2.0.13</version>
+  <version>2.0.16</version>
 </dependency>
 ```
 
@@ -272,12 +272,12 @@ public class TestWatch {
 
 
 ## 请求数据压缩
-对于请求数据量较大的情况，EAS支持将数据压缩之后再发送至服务端，该功能需要在服务配置中指定相应的rpc.decompressor才能生效，目前支持 zlib 和 gzip 的两种压缩格式；
+对于请求数据量较大的情况，EAS支持将数据压缩之后再发送至服务端，该功能需要在服务配置中指定相应的rpc.decompressor才能生效，目前支持的压缩方式有: zlib, gzip, snappy, zstd, lz4；
 服务配置如下所示：
 ```json
 "metadata": {
   "rpc": {
-    "decompressor": "zlib"
+    "decompressor": "lz4"
   }
 }
 ```
