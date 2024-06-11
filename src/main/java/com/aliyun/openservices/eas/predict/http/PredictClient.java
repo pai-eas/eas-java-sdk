@@ -5,6 +5,7 @@ import com.aliyun.openservices.eas.predict.auth.HmacSha1Signature;
 import com.aliyun.openservices.eas.predict.proto.EasyRecPredictProtos;
 import com.aliyun.openservices.eas.predict.request.*;
 import com.aliyun.openservices.eas.predict.response.*;
+import com.aliyun.openservices.eas.predict.utils.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -518,6 +519,12 @@ public class PredictClient {
                 requestContent = GzipUtils.compress(requestContent);
             } else if (compressor == Compressor.Zlib) {
                 requestContent = ZlibUtils.compress(requestContent);
+            }  else if (compressor == Compressor.Snappy) {
+                requestContent = SnappyUtils.compress(requestContent);
+            }  else if (compressor == Compressor.LZ4) {
+                requestContent = LZ4Utils.compress(requestContent);
+            }  else if (compressor == Compressor.Zstd) {
+                requestContent = ZstdUtils.compress(requestContent);
             } else {
                 log.warn("Compressor are not supported!");
             }

@@ -1,4 +1,4 @@
-package com.aliyun.openservices.eas.predict.http;
+package com.aliyun.openservices.eas.predict.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
