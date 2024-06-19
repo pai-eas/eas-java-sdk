@@ -223,8 +223,9 @@ public class PredictClient {
         return this;
     }
 
-    public void setRetryConditions(EnumSet<RetryCondition> retryConditions) {
+    public PredictClient setRetryConditions(EnumSet<RetryCondition> retryConditions) {
         this.retryConditions = retryConditions;
+        return this;
     }
 
     public PredictClient setTracing(HashMap<String, String> mapHeader) {
@@ -547,7 +548,7 @@ public class PredictClient {
                     throw new HttpException(statusCode, errorMessage);
                 }
             } catch (Exception e) {
-                String errorMessage = String.format("URL: %s, Message: %s", lastUrl, e.getMessage());
+                String errorMessage = String.format("URL: %s, Message: %s", lastUrl, (e.getMessage() == null) ? e : e.getMessage());
                 if (shouldRetry(e) && currentRetry < retryCount) {
                     log.warn(String.format("Predict failed on %dth retry, %s", currentRetry + 1, errorMessage));
                 } else {

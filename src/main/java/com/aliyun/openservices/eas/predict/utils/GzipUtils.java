@@ -11,11 +11,8 @@ public class GzipUtils {
             return null;
         }
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        GZIPOutputStream gzip;
-        try {
-            gzip = new GZIPOutputStream(out);
+        try (GZIPOutputStream gzip = new GZIPOutputStream(out)) {
             gzip.write(str);
-            gzip.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

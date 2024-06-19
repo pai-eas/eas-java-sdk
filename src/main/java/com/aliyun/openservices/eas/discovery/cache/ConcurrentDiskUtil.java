@@ -94,8 +94,10 @@ public class ConcurrentDiskUtil {
      */
     public static Boolean writeFileContent(File file, String content,
                                            String charsetName) throws IOException {
-        if (!file.exists() || !file.createNewFile()) {
-            throw new FileNotFoundException("unable to find target file:" + file.getName());
+        if (!file.exists()) {
+            if (!file.createNewFile()) {
+                throw new IOException(String.format("unable to find target file:%s and failed to create this file again", file.getName()));
+            }
         }
 
         try (RandomAccessFile raf = new RandomAccessFile(file, "rw");
