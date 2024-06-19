@@ -67,7 +67,7 @@ public class DiscoveryServerProxy {
             throw new IllegalStateException("discovery server list is empty");
         }
 
-        int loopCount = EASDiscoveryServers.size();
+        int loopCount = 3;
         for (int i = 0; i < loopCount; i++) {
             for (String curServer : EASDiscoveryServers) {
                 try {
