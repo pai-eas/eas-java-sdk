@@ -141,7 +141,6 @@ public class PredictClient {
             cm.setDefaultMaxPerRoute(httpConfig.getMaxConnectionPerRoute());
             requestTimeout = httpConfig.getRequestTimeout();
             IOReactorConfig config = IOReactorConfig.custom()
-                    .setIoThreadCount(httpConfig.getIoThreadNum())
                     .setTcpNoDelay(true)
                     .setSoTimeout(httpConfig.getReadTimeout())
                     .setSoReuseAddress(true)
@@ -185,7 +184,11 @@ public class PredictClient {
     }
 
     public PredictClient setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
+        if (endpoint != null && !endpoint.startsWith("http://") && !endpoint.startsWith("https://")){
+            this.endpoint = "http://" + endpoint;
+        } else {
+            this.endpoint = endpoint;
+        }
         return this;
     }
 
@@ -301,10 +304,12 @@ public class PredictClient {
             .setToken(this.token)
             .setModelName(this.modelName)
             .setRetryCount(this.retryCount)
+            .setRetryConditions(this.retryConditions)
             .setRequestTimeout(this.requestTimeout)
             .setIsCompressed(this.isCompressed)
             .setContentType(this.contentType)
             .setRequestPath(this.requestPath)
+            .setUrl(this.url)
             .addExtraHeaders(this.extraHeaders);
         if (this.vipSrvEndPoint != null) {
             client.setVIPServer(this.vipSrvEndPoint);
@@ -327,9 +332,6 @@ public class PredictClient {
     private String getUrl(String lastUrl) throws Exception {
         if (this.url != null) {
             return this.url + this.requestPath;
-        }
-        if (this.endpoint != null && !this.endpoint.startsWith("http://") && !this.endpoint.startsWith("https://")){
-            this.endpoint = "http://" + this.endpoint;
         }
         String endpoint = this.endpoint;
         String url = "";
@@ -507,7 +509,7 @@ public class PredictClient {
         if ((cause instanceof ConnectTimeoutException || e instanceof ConnectTimeoutException) && retryConditions.contains(RetryCondition.CONNECTION_TIMEOUT)) {
             return true;
         }
-        if ((cause instanceof SocketTimeoutException || e instanceof SocketTimeoutException) && retryConditions.contains(RetryCondition.READ_TIMEOUT)) {
+        if ((cause instanceof SocketTimeoutException || cause instanceof TimeoutException || e instanceof SocketTimeoutException || e instanceof TimeoutException) && retryConditions.contains(RetryCondition.READ_TIMEOUT)) {
             return true;
         }
 
