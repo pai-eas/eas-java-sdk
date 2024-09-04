@@ -74,7 +74,7 @@ public class DiscoveryServerProxy {
                     return callServer(api, params, curServer);
                 } catch (Exception e) {
                     // continue trying next server
-                    DiscoveryClient.LOG.error("NA", "req api:" + api + " failed, server(" + curServer + ")", e);
+                    DiscoveryClient.LOG.warn("NA", "req api:" + api + " failed, server(" + curServer + ")", e);
                 }
             }
         }
