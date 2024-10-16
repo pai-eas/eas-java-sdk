@@ -1,6 +1,6 @@
 package com.aliyun.openservices.eas.predict.response;
 
-import com.aliyun.openservices.eas.predict.proto.QueueServiceProtos;
+
 import com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto;
 import com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.PredictResponse;
 import shade.protobuf

@@ -38,18 +38,11 @@ public class TorchRecPredictTest {
         innerList1.add(1.1f);
         innerList1.add(2.2f);
         innerList1.add(3.3f);
-
-        // 将内层列表添加到外层列表
         list2.add(innerList1);
-
-        // 创建另一个内部的 ArrayList<Float>
         ArrayList<Float> innerList2 = new ArrayList<>();
         innerList2.add(4.4f);
         innerList2.add(5.5f);
-
-        // 将第二个内层列表添加到外层列表
         list2.add(innerList2);
-
         TorchRecRequest.addUserFeature("click", list2,"list<list<float>>");
 
         TorchRecRequest.addContextFeature("id_2", list,"List<double>");

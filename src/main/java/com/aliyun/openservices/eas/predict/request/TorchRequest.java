@@ -128,7 +128,6 @@ public class TorchRequest {
     }
 
     public void addFeedMap(String index, TorchDataType dataType, long[] shape, float[] content) {
-        System.out.print("add feed");
         ArrayProto.Builder requestProto = ArrayProto.newBuilder();
         if (dataType == TorchDataType.DT_FLOAT) {
             requestProto.setDtype(ArrayDataType.DT_FLOAT);
