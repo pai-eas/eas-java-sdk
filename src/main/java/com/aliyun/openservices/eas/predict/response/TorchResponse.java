@@ -1,5 +1,6 @@
 package com.aliyun.openservices.eas.predict.response;
 
+
 import com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto;
 import com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.PredictResponse;
 import shade.protobuf
@@ -11,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class TorchResponse {
@@ -96,5 +98,9 @@ public class TorchResponse {
             log.error("request failed: can't get response");
             return new ArrayList<Long>();
         }
+    }
+
+    public Map<String, ArrayProto> getMapOutputs(){
+        return response.getMapOutputsMap();
     }
 }

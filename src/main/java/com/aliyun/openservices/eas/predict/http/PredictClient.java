@@ -3,6 +3,7 @@ package com.aliyun.openservices.eas.predict.http;
 import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 import com.aliyun.openservices.eas.predict.auth.HmacSha1Signature;
 import com.aliyun.openservices.eas.predict.proto.EasyRecPredictProtos;
+import com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos;
 import com.aliyun.openservices.eas.predict.request.*;
 import com.aliyun.openservices.eas.predict.response.*;
 import com.aliyun.openservices.eas.predict.utils.*;
@@ -609,11 +610,23 @@ public class PredictClient {
         return runResponse;
     }
 
+
+
     public EasyRecPredictProtos.PBResponse predict(EasyRecRequest runRequest) throws Exception {
         EasyRecPredictProtos.PBResponse runResponse = null;
         byte[] result = this.predict(runRequest.getRequest().toByteArray());
         if (result != null) {
             runResponse = EasyRecPredictProtos.PBResponse.parseFrom(result);
+        }
+
+        return runResponse;
+    }
+
+    public TorchRecPredictProtos.PBResponse predict(TorchRecRequest runRequest) throws Exception {
+        TorchRecPredictProtos.PBResponse runResponse = null;
+        byte[] result = this.predict(runRequest.getRequest().toByteArray());
+        if (result != null) {
+            runResponse = TorchRecPredictProtos.PBResponse.parseFrom(result);
         }
 
         return runResponse;
