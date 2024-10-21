@@ -152,7 +152,7 @@ public class TorchRecRequest {
                 Builder.putMapField((Long) entry.getKey(), (Integer) entry.getValue());
             }
             return featBuilder.setLongIntMap(Builder).build();
-        }else if (dtype.equals("MAP<INT64,INT64>") || dtype.equals("MAP<INT64,BIGINT>")) {
+        }else if (dtype.equals("MAP<INT64,INT64>") || dtype.equals("MAP<INT64,BIGINT>") || dtype.equals("MAP<BIGINT,INT64>") || dtype.equals("MAP<BIGINT,BIGINT>")) {
             TorchRecPredictProtos.LongLongMap.Builder Builder = TorchRecPredictProtos.LongLongMap.newBuilder();
             for (Map.Entry<Object, Object> entry : mapValue.entrySet()) {
                 Builder.putMapField((Long) entry.getKey(), (Long) entry.getValue());
