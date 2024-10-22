@@ -152,7 +152,7 @@ public class TorchRecRequest {
                 Builder.putMapField((Long) entry.getKey(), (Integer) entry.getValue());
             }
             return featBuilder.setLongIntMap(Builder).build();
-        }else if (dtype.equals("MAP<INT64,INT64>") || dtype.equals("MAP<INT64,BIGINT>")) {
+        }else if (dtype.equals("MAP<INT64,INT64>") || dtype.equals("MAP<INT64,BIGINT>") || dtype.equals("MAP<BIGINT,INT64>") || dtype.equals("MAP<BIGINT,BIGINT>")) {
             TorchRecPredictProtos.LongLongMap.Builder Builder = TorchRecPredictProtos.LongLongMap.newBuilder();
             for (Map.Entry<Object, Object> entry : mapValue.entrySet()) {
                 Builder.putMapField((Long) entry.getKey(), (Long) entry.getValue());
@@ -238,7 +238,8 @@ public class TorchRecRequest {
         List<String> validTypes = Arrays.asList(
                 "MAP<INT,INT>","MAP<INT,INT64>","MAP<INT,BIGINT>","MAP<INT,STRING>","MAP<INT,FLOAT>","MAP<INT,DOUBLE>" ,
                 "MAP<INT64,INT>","MAP<INT64,INT64>","MAP<INT64,BIGINT>","MAP<INT64,STRING>","MAP<INT64,FLOAT>","MAP<INT64,DOUBLE>" ,
-                "MAP<BIGINT,INT>","MAP<BIGINT,INT64>","MAP<BIGINT,BIGINT>","MAP<BIGINT,STRING>","MAP<BIGINT,FLOAT>","MAP<BIGINT,DOUBLE>"
+                "MAP<BIGINT,INT>","MAP<BIGINT,INT64>","MAP<BIGINT,BIGINT>","MAP<BIGINT,STRING>","MAP<BIGINT,FLOAT>","MAP<BIGINT,DOUBLE>",
+                "MAP<STRING,INT>","MAP<STRING,INT64>","MAP<STRING,BIGINT>","MAP<STRING,STRING>","MAP<STRING,FLOAT>","MAP<STRING,DOUBLE>"
         );
         return validTypes.contains(dtype);
     }
