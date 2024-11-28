@@ -101,6 +101,11 @@ public class QueueClient {
         websocketWatch = true;
     }
 
+    public QueueClient setRetryCount(int retryCount) {
+        this.retryCount = retryCount;
+        return this;
+    }
+
     public QueueClient addExtraHeaders(Map<String, String> extraHeaders) {
         this.extraHeaders.putAll(extraHeaders);
         return this;
@@ -187,7 +192,7 @@ public class QueueClient {
     }
 
     private HttpResponse retryRequest(HttpUriRequest request) throws Exception {
-        for (int i = 1; i <= retryCount; ++i) {
+        for (int i = 0; i <= retryCount; ++i) {
             try {
                 HttpResponse response = doRequest(request);
                 int statusCode = response.getStatusLine().getStatusCode();
