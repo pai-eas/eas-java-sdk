@@ -24932,7 +24932,7 @@ public final class TorchRecPredictProtos {
 
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -24940,7 +24940,7 @@ public final class TorchRecPredictProtos {
         int getUserFeaturesCount();
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -24955,7 +24955,7 @@ public final class TorchRecPredictProtos {
         getUserFeatures();
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -24964,7 +24964,7 @@ public final class TorchRecPredictProtos {
         getUserFeaturesMap();
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -24975,7 +24975,7 @@ public final class TorchRecPredictProtos {
                 com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature defaultValue);
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -25021,7 +25021,7 @@ public final class TorchRecPredictProtos {
 
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25029,7 +25029,7 @@ public final class TorchRecPredictProtos {
         int getContextFeaturesCount();
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25044,7 +25044,7 @@ public final class TorchRecPredictProtos {
         getContextFeatures();
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25053,7 +25053,7 @@ public final class TorchRecPredictProtos {
         getContextFeaturesMap();
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25064,7 +25064,7 @@ public final class TorchRecPredictProtos {
                 com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures defaultValue);
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25082,6 +25082,60 @@ public final class TorchRecPredictProtos {
          * <code>int32 faiss_neigh_num = 5;</code>
          */
         int getFaissNeighNum();
+
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+        int getItemFeaturesCount();
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+        boolean containsItemFeatures(
+                java.lang.String key);
+        /**
+         * Use {@link #getItemFeaturesMap()} instead.
+         */
+        @java.lang.Deprecated
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+        getItemFeatures();
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+        getItemFeaturesMap();
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures getItemFeaturesOrDefault(
+                java.lang.String key,
+                com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures defaultValue);
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures getItemFeaturesOrThrow(
+                java.lang.String key);
     }
     /**
      * <pre>
@@ -25174,6 +25228,19 @@ public final class TorchRecPredictProtos {
                             faissNeighNum_ = input.readInt32();
                             break;
                         }
+                        case 50: {
+                            if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                                itemFeatures_ = shade.protobuf.MapField.newMapField(
+                                        ItemFeaturesDefaultEntryHolder.defaultEntry);
+                                mutable_bitField0_ |= 0x00000020;
+                            }
+                            shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+                                    itemFeatures__ = input.readMessage(
+                                    ItemFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                            itemFeatures_.getMutableMap().put(
+                                    itemFeatures__.getKey(), itemFeatures__.getValue());
+                            break;
+                        }
                         default: {
                             if (!parseUnknownFieldProto3(
                                     input, unknownFields, extensionRegistry, tag)) {
@@ -25210,6 +25277,8 @@ public final class TorchRecPredictProtos {
                     return internalGetUserFeatures();
                 case 4:
                     return internalGetContextFeatures();
+                case 6:
+                    return internalGetItemFeatures();
                 default:
                     throw new RuntimeException(
                             "Invalid map field number: " + number);
@@ -25265,7 +25334,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -25285,7 +25354,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -25296,7 +25365,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -25312,7 +25381,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * user features
+         * user features, key is user input name
          * </pre>
          *
          * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -25402,7 +25471,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25422,7 +25491,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25433,7 +25502,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25449,7 +25518,7 @@ public final class TorchRecPredictProtos {
         }
         /**
          * <pre>
-         * context features for each item
+         * context features for each item, key is item_id
          * </pre>
          *
          * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -25478,6 +25547,98 @@ public final class TorchRecPredictProtos {
          */
         public int getFaissNeighNum() {
             return faissNeighNum_;
+        }
+
+        public static final int ITEM_FEATURES_FIELD_NUMBER = 6;
+        private static final class ItemFeaturesDefaultEntryHolder {
+            static final shade.protobuf.MapEntry<
+                    java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> defaultEntry =
+                    shade.protobuf.MapEntry
+                            .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>newDefaultInstance(
+                                    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_PBRequest_ItemFeaturesEntry_descriptor,
+                                    shade.protobuf.WireFormat.FieldType.STRING,
+                                    "",
+                                    shade.protobuf.WireFormat.FieldType.MESSAGE,
+                                    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures.getDefaultInstance());
+        }
+        private shade.protobuf.MapField<
+                java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> itemFeatures_;
+        private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+        internalGetItemFeatures() {
+            if (itemFeatures_ == null) {
+                return shade.protobuf.MapField.emptyMapField(
+                        ItemFeaturesDefaultEntryHolder.defaultEntry);
+            }
+            return itemFeatures_;
+        }
+
+        public int getItemFeaturesCount() {
+            return internalGetItemFeatures().getMap().size();
+        }
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+
+        public boolean containsItemFeatures(
+                java.lang.String key) {
+            if (key == null) { throw new java.lang.NullPointerException(); }
+            return internalGetItemFeatures().getMap().containsKey(key);
+        }
+        /**
+         * Use {@link #getItemFeaturesMap()} instead.
+         */
+        @java.lang.Deprecated
+        public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> getItemFeatures() {
+            return getItemFeaturesMap();
+        }
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+
+        public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> getItemFeaturesMap() {
+            return internalGetItemFeatures().getMap();
+        }
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+
+        public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures getItemFeaturesOrDefault(
+                java.lang.String key,
+                com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures defaultValue) {
+            if (key == null) { throw new java.lang.NullPointerException(); }
+            java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> map =
+                    internalGetItemFeatures().getMap();
+            return map.containsKey(key) ? map.get(key) : defaultValue;
+        }
+        /**
+         * <pre>
+         * item features for each item, key is item_id
+         * </pre>
+         *
+         * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+         */
+
+        public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures getItemFeaturesOrThrow(
+                java.lang.String key) {
+            if (key == null) { throw new java.lang.NullPointerException(); }
+            java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> map =
+                    internalGetItemFeatures().getMap();
+            if (!map.containsKey(key)) {
+                throw new java.lang.IllegalArgumentException();
+            }
+            return map.get(key);
         }
 
         private byte memoizedIsInitialized = -1;
@@ -25515,6 +25676,12 @@ public final class TorchRecPredictProtos {
             if (faissNeighNum_ != 0) {
                 output.writeInt32(5, faissNeighNum_);
             }
+            shade.protobuf.GeneratedMessageV3
+                    .serializeStringMapTo(
+                            output,
+                            internalGetItemFeatures(),
+                            ItemFeaturesDefaultEntryHolder.defaultEntry,
+                            6);
             unknownFields.writeTo(output);
         }
 
@@ -25560,6 +25727,16 @@ public final class TorchRecPredictProtos {
                 size += shade.protobuf.CodedOutputStream
                         .computeInt32Size(5, faissNeighNum_);
             }
+            for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> entry
+                    : internalGetItemFeatures().getMap().entrySet()) {
+                shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+                        itemFeatures__ = ItemFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
+                        .setKey(entry.getKey())
+                        .setValue(entry.getValue())
+                        .build();
+                size += shade.protobuf.CodedOutputStream
+                        .computeMessageSize(6, itemFeatures__);
+            }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
             return size;
@@ -25586,6 +25763,8 @@ public final class TorchRecPredictProtos {
                     other.internalGetContextFeatures());
             result = result && (getFaissNeighNum()
                     == other.getFaissNeighNum());
+            result = result && internalGetItemFeatures().equals(
+                    other.internalGetItemFeatures());
             result = result && unknownFields.equals(other.unknownFields);
             return result;
         }
@@ -25613,6 +25792,10 @@ public final class TorchRecPredictProtos {
             }
             hash = (37 * hash) + FAISS_NEIGH_NUM_FIELD_NUMBER;
             hash = (53 * hash) + getFaissNeighNum();
+            if (!internalGetItemFeatures().getMap().isEmpty()) {
+                hash = (37 * hash) + ITEM_FEATURES_FIELD_NUMBER;
+                hash = (53 * hash) + internalGetItemFeatures().hashCode();
+            }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -25732,6 +25915,8 @@ public final class TorchRecPredictProtos {
                         return internalGetUserFeatures();
                     case 4:
                         return internalGetContextFeatures();
+                    case 6:
+                        return internalGetItemFeatures();
                     default:
                         throw new RuntimeException(
                                 "Invalid map field number: " + number);
@@ -25745,6 +25930,8 @@ public final class TorchRecPredictProtos {
                         return internalGetMutableUserFeatures();
                     case 4:
                         return internalGetMutableContextFeatures();
+                    case 6:
+                        return internalGetMutableItemFeatures();
                     default:
                         throw new RuntimeException(
                                 "Invalid map field number: " + number);
@@ -25784,6 +25971,7 @@ public final class TorchRecPredictProtos {
                 internalGetMutableContextFeatures().clear();
                 faissNeighNum_ = 0;
 
+                internalGetMutableItemFeatures().clear();
                 return this;
             }
 
@@ -25823,6 +26011,8 @@ public final class TorchRecPredictProtos {
                 result.contextFeatures_ = internalGetContextFeatures();
                 result.contextFeatures_.makeImmutable();
                 result.faissNeighNum_ = faissNeighNum_;
+                result.itemFeatures_ = internalGetItemFeatures();
+                result.itemFeatures_.makeImmutable();
                 result.bitField0_ = to_bitField0_;
                 onBuilt();
                 return result;
@@ -25892,6 +26082,8 @@ public final class TorchRecPredictProtos {
                 if (other.getFaissNeighNum() != 0) {
                     setFaissNeighNum(other.getFaissNeighNum());
                 }
+                internalGetMutableItemFeatures().mergeFrom(
+                        other.internalGetItemFeatures());
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
@@ -25988,7 +26180,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26008,7 +26200,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26019,7 +26211,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26035,7 +26227,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26059,7 +26251,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26082,7 +26274,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26098,7 +26290,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * user features
+             * user features, key is user input name
              * </pre>
              *
              * <code>map&lt;string, .PBFeature&gt; user_features = 2;</code>
@@ -26269,7 +26461,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26289,7 +26481,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26300,7 +26492,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26316,7 +26508,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26340,7 +26532,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26363,7 +26555,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26379,7 +26571,7 @@ public final class TorchRecPredictProtos {
             }
             /**
              * <pre>
-             * context features for each item
+             * context features for each item, key is item_id
              * </pre>
              *
              * <code>map&lt;string, .ContextFeatures&gt; context_features = 4;</code>
@@ -26430,6 +26622,157 @@ public final class TorchRecPredictProtos {
 
                 faissNeighNum_ = 0;
                 onChanged();
+                return this;
+            }
+
+            private shade.protobuf.MapField<
+                    java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> itemFeatures_;
+            private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+            internalGetItemFeatures() {
+                if (itemFeatures_ == null) {
+                    return shade.protobuf.MapField.emptyMapField(
+                            ItemFeaturesDefaultEntryHolder.defaultEntry);
+                }
+                return itemFeatures_;
+            }
+            private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+            internalGetMutableItemFeatures() {
+                onChanged();;
+                if (itemFeatures_ == null) {
+                    itemFeatures_ = shade.protobuf.MapField.newMapField(
+                            ItemFeaturesDefaultEntryHolder.defaultEntry);
+                }
+                if (!itemFeatures_.isMutable()) {
+                    itemFeatures_ = itemFeatures_.copy();
+                }
+                return itemFeatures_;
+            }
+
+            public int getItemFeaturesCount() {
+                return internalGetItemFeatures().getMap().size();
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+
+            public boolean containsItemFeatures(
+                    java.lang.String key) {
+                if (key == null) { throw new java.lang.NullPointerException(); }
+                return internalGetItemFeatures().getMap().containsKey(key);
+            }
+            /**
+             * Use {@link #getItemFeaturesMap()} instead.
+             */
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> getItemFeatures() {
+                return getItemFeaturesMap();
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+
+            public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> getItemFeaturesMap() {
+                return internalGetItemFeatures().getMap();
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+
+            public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures getItemFeaturesOrDefault(
+                    java.lang.String key,
+                    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures defaultValue) {
+                if (key == null) { throw new java.lang.NullPointerException(); }
+                java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> map =
+                        internalGetItemFeatures().getMap();
+                return map.containsKey(key) ? map.get(key) : defaultValue;
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+
+            public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures getItemFeaturesOrThrow(
+                    java.lang.String key) {
+                if (key == null) { throw new java.lang.NullPointerException(); }
+                java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> map =
+                        internalGetItemFeatures().getMap();
+                if (!map.containsKey(key)) {
+                    throw new java.lang.IllegalArgumentException();
+                }
+                return map.get(key);
+            }
+
+            public Builder clearItemFeatures() {
+                internalGetMutableItemFeatures().getMutableMap()
+                        .clear();
+                return this;
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+
+            public Builder removeItemFeatures(
+                    java.lang.String key) {
+                if (key == null) { throw new java.lang.NullPointerException(); }
+                internalGetMutableItemFeatures().getMutableMap()
+                        .remove(key);
+                return this;
+            }
+            /**
+             * Use alternate mutation accessors instead.
+             */
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+            getMutableItemFeatures() {
+                return internalGetMutableItemFeatures().getMutableMap();
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+            public Builder putItemFeatures(
+                    java.lang.String key,
+                    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures value) {
+                if (key == null) { throw new java.lang.NullPointerException(); }
+                if (value == null) { throw new java.lang.NullPointerException(); }
+                internalGetMutableItemFeatures().getMutableMap()
+                        .put(key, value);
+                return this;
+            }
+            /**
+             * <pre>
+             * item features for each item, key is item_id
+             * </pre>
+             *
+             * <code>map&lt;string, .ContextFeatures&gt; item_features = 6;</code>
+             */
+
+            public Builder putAllItemFeatures(
+                    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> values) {
+                internalGetMutableItemFeatures().getMutableMap()
+                        .putAll(values);
                 return this;
             }
             @java.lang.Override
@@ -28448,6 +28791,11 @@ public final class TorchRecPredictProtos {
     shade.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_PBRequest_ContextFeaturesEntry_fieldAccessorTable;
     private static final shade.protobuf.Descriptors.Descriptor
+            internal_static_PBRequest_ItemFeaturesEntry_descriptor;
+    private static final
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_PBRequest_ItemFeaturesEntry_fieldAccessorTable;
+    private static final shade.protobuf.Descriptors.Descriptor
             internal_static_PBResponse_descriptor;
     private static final
     shade.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -28557,27 +28905,30 @@ public final class TorchRecPredictProtos {
                         "tringListsH\000\022\"\n\013float_lists\030\035 \001(\0132\013.Floa" +
                         "tListsH\000\022$\n\014double_lists\030\036 \001(\0132\014.DoubleL" +
                         "istsH\000B\007\n\005value\"/\n\017ContextFeatures\022\034\n\010fe" +
-                        "atures\030\001 \003(\0132\n.PBFeature\"\306\002\n\tPBRequest\022\023" +
+                        "atures\030\001 \003(\0132\n.PBFeature\"\302\003\n\tPBRequest\022\023" +
                         "\n\013debug_level\030\001 \001(\005\0223\n\ruser_features\030\002 \003" +
                         "(\0132\034.PBRequest.UserFeaturesEntry\022\020\n\010item" +
                         "_ids\030\003 \003(\t\0229\n\020context_features\030\004 \003(\0132\037.P" +
                         "BRequest.ContextFeaturesEntry\022\027\n\017faiss_n" +
-                        "eigh_num\030\005 \001(\005\032?\n\021UserFeaturesEntry\022\013\n\003k" +
-                        "ey\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n.PBFeature:\0028\001\032" +
-                        "H\n\024ContextFeaturesEntry\022\013\n\003key\030\001 \001(\t\022\037\n\005" +
-                        "value\030\002 \001(\0132\020.ContextFeatures:\0028\001\"\373\002\n\nPB" +
-                        "Response\0220\n\013map_outputs\030\001 \003(\0132\033.PBRespon" +
-                        "se.MapOutputsEntry\022<\n\021generate_features\030" +
-                        "\002 \003(\0132!.PBResponse.GenerateFeaturesEntry" +
-                        "\0222\n\014raw_features\030\003 \003(\0132\034.PBResponse.RawF" +
-                        "eaturesEntry\022\020\n\010item_ids\030\004 \003(\t\032J\n\017MapOut" +
-                        "putsEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002 \001(\0132\027." +
-                        "pytorch.eas.ArrayProto:\0028\001\0327\n\025GenerateFe" +
-                        "aturesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:" +
-                        "\0028\001\0322\n\020RawFeaturesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
-                        "value\030\002 \001(\t:\0028\001BN\n)com.aliyun.openservic" +
-                        "es.eas.predict.protoB\025TorchRecPredictPro" +
-                        "tosZ\n.;torchrecb\006proto3"
+                        "eigh_num\030\005 \001(\005\0223\n\ritem_features\030\006 \003(\0132\034." +
+                        "PBRequest.ItemFeaturesEntry\032?\n\021UserFeatu" +
+                        "resEntry\022\013\n\003key\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n.P" +
+                        "BFeature:\0028\001\032H\n\024ContextFeaturesEntry\022\013\n\003" +
+                        "key\030\001 \001(\t\022\037\n\005value\030\002 \001(\0132\020.ContextFeatur" +
+                        "es:\0028\001\032E\n\021ItemFeaturesEntry\022\013\n\003key\030\001 \001(\t" +
+                        "\022\037\n\005value\030\002 \001(\0132\020.ContextFeatures:\0028\001\"\373\002" +
+                        "\n\nPBResponse\0220\n\013map_outputs\030\001 \003(\0132\033.PBRe" +
+                        "sponse.MapOutputsEntry\022<\n\021generate_featu" +
+                        "res\030\002 \003(\0132!.PBResponse.GenerateFeaturesE" +
+                        "ntry\0222\n\014raw_features\030\003 \003(\0132\034.PBResponse." +
+                        "RawFeaturesEntry\022\020\n\010item_ids\030\004 \003(\t\032J\n\017Ma" +
+                        "pOutputsEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002 \001(" +
+                        "\0132\027.pytorch.eas.ArrayProto:\0028\001\0327\n\025Genera" +
+                        "teFeaturesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
+                        "\001(\t:\0028\001\0322\n\020RawFeaturesEntry\022\013\n\003key\030\001 \001(\t" +
+                        "\022\r\n\005value\030\002 \001(\t:\0028\001BZ\n)com.aliyun.opense" +
+                        "rvices.eas.predict.protoB\025TorchRecPredic" +
+                        "tProtosZ\026.;torch_predict_protosb\006proto3"
         };
         shade.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new shade.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -28849,7 +29200,7 @@ public final class TorchRecPredictProtos {
         internal_static_PBRequest_fieldAccessorTable = new
                 shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_PBRequest_descriptor,
-                new java.lang.String[] { "DebugLevel", "UserFeatures", "ItemIds", "ContextFeatures", "FaissNeighNum", });
+                new java.lang.String[] { "DebugLevel", "UserFeatures", "ItemIds", "ContextFeatures", "FaissNeighNum", "ItemFeatures", });
         internal_static_PBRequest_UserFeaturesEntry_descriptor =
                 internal_static_PBRequest_descriptor.getNestedTypes().get(0);
         internal_static_PBRequest_UserFeaturesEntry_fieldAccessorTable = new
@@ -28861,6 +29212,12 @@ public final class TorchRecPredictProtos {
         internal_static_PBRequest_ContextFeaturesEntry_fieldAccessorTable = new
                 shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_PBRequest_ContextFeaturesEntry_descriptor,
+                new java.lang.String[] { "Key", "Value", });
+        internal_static_PBRequest_ItemFeaturesEntry_descriptor =
+                internal_static_PBRequest_descriptor.getNestedTypes().get(2);
+        internal_static_PBRequest_ItemFeaturesEntry_fieldAccessorTable = new
+                shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_PBRequest_ItemFeaturesEntry_descriptor,
                 new java.lang.String[] { "Key", "Value", });
         internal_static_PBResponse_descriptor =
                 getDescriptor().getMessageTypes().get(28);
@@ -28891,4 +29248,3 @@ public final class TorchRecPredictProtos {
 
     // @@protoc_insertion_point(outer_class_scope)
 }
-
