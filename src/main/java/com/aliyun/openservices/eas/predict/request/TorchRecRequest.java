@@ -262,6 +262,19 @@ public class TorchRecRequest {
         request.putContextFeatures(key, ctxBuilder.build());
     }
 
+    public void addItemFeature(String key, Object value, String dtype) {
+        TorchRecPredictProtos.PBFeature feat = addFeature(value, dtype);
+        TorchRecPredictProtos.ContextFeatures.Builder ctxBuilder ;
+        if(request.getItemFeaturesMap().containsKey(key)){
+            ctxBuilder = request.getItemFeaturesMap().get(key).toBuilder();
+        }
+        else{
+            ctxBuilder = TorchRecPredictProtos.ContextFeatures.newBuilder();
+        }
+        ctxBuilder.addFeatures(feat);
+        request.putItemFeatures(key, ctxBuilder.build());
+    }
+
 
     public void appendItemId(String itemId) {
         request.addItemIds(itemId);

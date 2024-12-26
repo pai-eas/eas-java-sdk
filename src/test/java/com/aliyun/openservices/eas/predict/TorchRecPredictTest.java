@@ -28,10 +28,10 @@ public class TorchRecPredictTest {
         list.add(0.18137273055602343);
         TorchRecRequest.addUserFeature("raw_3", list,"List<double>");
 
-        Map<Integer,Integer> myMap =new LinkedHashMap<>();
-        myMap.put(866, 4143);
-        myMap.put(1627, 2451);
-        TorchRecRequest.addUserFeature("map_1", myMap,"map<int,int>");
+        Map<String,Integer> myMap =new LinkedHashMap<>();
+        myMap.put("866", 4143);
+        myMap.put("1627", 2451);
+        TorchRecRequest.addUserFeature("map_1", myMap,"map<string,int>");
 
         ArrayList<ArrayList<Float>> list2 = new ArrayList<>();
         ArrayList<Float> innerList1 = new ArrayList<>();
@@ -47,6 +47,12 @@ public class TorchRecPredictTest {
 
         TorchRecRequest.addContextFeature("id_2", list,"List<double>");
         TorchRecRequest.addContextFeature("id_2", list,"List<double>");
+
+        TorchRecRequest.addContextFeature("id_1", "a","string");
+        TorchRecRequest.addContextFeature("id_1", "b","string");
+
+        TorchRecRequest.addItemFeature("id_4", "a","string");
+        TorchRecRequest.addItemFeature("id_4", "b","string");
 
         System.out.println(TorchRecRequest.request);
         return TorchRecRequest;
