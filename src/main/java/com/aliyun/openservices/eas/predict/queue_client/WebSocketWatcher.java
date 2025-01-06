@@ -106,7 +106,7 @@ public class WebSocketWatcher {
             if (!unlimitedReConnect) {
                 if (cur > this.maxReConnectCnt) {
                     close();
-                    log.error("WebSocketClient Re-Connect Failed, Exhausted maxReConnectCnt: " + this.maxReConnectCnt + ", error = " + errorMessage);
+                    log.error("WebSocketClient Re-Connect Failed, Exhausted maxReConnectCnt: " + this.maxReConnectCnt + ", url: " + this.uri.toString() + ", error = " + errorMessage);
                     throw new Exception(errorMessage);
                 }
             }
@@ -123,7 +123,7 @@ public class WebSocketWatcher {
                     break;
                 }
             } catch (Exception e) {
-                log.warn("WebSocketClient Re-Connect Error, Error: " + e.getMessage());
+                log.warn("WebSocketClient Re-Connect Error, Error: " + e.getMessage() + ", Url: " + this.uri.toString());
             } finally {
                 tryReconnect.set(false);
             }
@@ -140,9 +140,7 @@ public class WebSocketWatcher {
                 new WebSocketClient(uri, headers) {
                     @Override
                     public void onOpen(ServerHandshake serverHandshake) {
-                        log.info(
-                            "WebSocketClient Successfully Connects to Server: "
-                                + getRemoteSocketAddress());
+                        log.info(String.format("WebSocketClient Successfully Connects to Server: %s, Connect Url: %s", getRemoteSocketAddress().toString(), this.uri.toString()));
                         reConnectTimes.set(0);
                         tryReconnect.set(false);
                     }
@@ -162,7 +160,7 @@ public class WebSocketWatcher {
 
                     @Override
                     public void onClose(int code, String reason, boolean remote) {
-                        log.warn(String.format("WebSocketClient is Closed, Code: %d, Reason: %s, Re-Connect times: %d", code, reason, reConnectTimes.get()));
+                        log.warn(String.format("WebSocketClient is Closed, Url: %s, Code: %d, Reason: %s, Re-Connect times: %d", this.uri.toString(), code, reason, reConnectTimes.get()));
                         if (end.get()) {
                             return;
                         }
