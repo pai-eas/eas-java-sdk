@@ -390,7 +390,7 @@ public class QueueClient {
         request.setEntity(new NByteArrayEntity(data));
         withPriority(request, priority);
 
-        for (int i = 1; i <= retryCount; ++i) {
+        for (int i = 0; i <= retryCount; ++i) {
             try {
                 HttpResponse response = doRequest(request);
                 // check response statusCode
