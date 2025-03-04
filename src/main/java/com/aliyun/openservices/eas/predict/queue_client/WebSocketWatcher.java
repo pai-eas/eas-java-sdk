@@ -96,10 +96,20 @@ public class WebSocketWatcher {
 
     private void needReconnect(String errorMessage) throws Exception {
         while (true) {
-            Thread.sleep(reConnectInterval * 1000);
-
+            if (end.get()) {
+                break;
+            }
+            try {
+                Thread.sleep(reConnectInterval * 1000);
+            } catch (InterruptedException e) {
+                log.warn("Re-Connect interrupted, error:" + e.getMessage());
+                if (end.get()) {
+                    Thread.currentThread().interrupt();
+                    throw new Exception("Re-Connect Closing", e);
+                }
+            }
             if (tryReconnect.get()) {
-                log.warn("WebSocketClient Failed to Connect to Server");
+                log.warn("WebSocketClient is trying to Re-Connect");
                 break;
             }
             int cur = reConnectTimes.incrementAndGet();
@@ -113,17 +123,17 @@ public class WebSocketWatcher {
 
             try {
                 tryReconnect.set(true);
-                if (queueClient.webSocketClient.isOpen()) {
+                if (queueClient.webSocketClient != null && queueClient.webSocketClient.isOpen()) {
                     log.warn("Prepare to Re-Connect, Close Existing WebSocket Connection");
                     queueClient.webSocketClient.closeConnection(1000, "Re-Connect Stop");
                 }
                 queueClient.webSocketClient = null;
                 createWebSocketClient();
-                if (queueClient.webSocketClient.connectBlocking()) {
+                if (queueClient.webSocketClient != null && queueClient.webSocketClient.connectBlocking()) {
                     break;
                 }
             } catch (Exception e) {
-                log.warn("WebSocketClient Re-Connect Error, Error: " + e.getMessage() + ", Url: " + this.uri.toString());
+                log.warn("WebSocketClient Re-Connect Error, Url: " + this.uri.toString() + ", Error: " + e);
             } finally {
                 tryReconnect.set(false);
             }
@@ -160,8 +170,9 @@ public class WebSocketWatcher {
 
                     @Override
                     public void onClose(int code, String reason, boolean remote) {
-                        log.warn(String.format("WebSocketClient is Closed, Url: %s, Code: %d, Reason: %s, Re-Connect times: %d", this.uri.toString(), code, reason, reConnectTimes.get()));
+                        log.warn(String.format("WebSocketClient is Closed, Url: %s, Code: %d, Reason: %s, Real Stop: %b, Re-Connect times: %d", this.uri.toString(), code, reason, end.get(), reConnectTimes.get()));
                         if (end.get()) {
+                            dataQueue.offer(new DataFrame(new Exception("WebSocketClient Closed: " + reason)));
                             return;
                         }
                         if (tryReconnect.get() == false) {
@@ -198,14 +209,14 @@ public class WebSocketWatcher {
                                 queueClient.webSocketClient.sendPing();
                             }
                         } catch (Exception e) {
-                            log.warn("PingServer Error, error = " + e.getMessage());
+                            log.warn("PingServer Error, error: " + e.getMessage());
                         } finally {
                             queueClient.lock.unlock();
                         }
                         try {
                             Thread.sleep(2000);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            log.warn("PingServer interrupted, error:" + e);
                         }
                     }
                     log.debug("PingServer is Closed");
@@ -215,21 +226,31 @@ public class WebSocketWatcher {
     }
 
     public DataFrame getDataFrame() throws Exception {
+        if (end.get()) {
+            throw new Exception("WebSocketClient Closed");
+        }
+
         DataFrame df = dataQueue.take();
         if (df.getError() != null) {
             throw df.getError();
         }
         return df;
-    }
+     }
+
+     public boolean isOpen(){
+        return queueClient.webSocketClient != null && queueClient.webSocketClient.isOpen();
+     }
 
     public void close() {
+        log.info("Closing WebSocketClient");
         try {
             queueClient.lock.lock();
             needPing.set(false);
             end.set(true);
-            if (queueClient.webSocketClient != null) {
+            if (queueClient.webSocketClient != null && queueClient.webSocketClient.isOpen()) {
                 queueClient.webSocketClient.closeConnection(1000, "Real Stop");
             }
+            queueClient.webSocketClient = null;
         } finally {
             queueClient.lock.unlock();
         }
