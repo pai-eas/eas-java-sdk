@@ -107,6 +107,9 @@ public class PredictClient {
     final private int endpointRetryCount = 10;
     private HashMap<String, String> mapHeader = null;
     private CloseableHttpAsyncClient httpclient = null;
+    private PoolingNHttpClientConnectionManager cm = null;
+    private ScheduledExecutorService scheduler = null;
+
     private String token = null;
     private String modelName = null;
     private String requestPath = "";
@@ -147,18 +150,37 @@ public class PredictClient {
                     .setSoReuseAddress(true)
                     .setConnectTimeout(httpConfig.getConnectTimeout())
                     .setIoThreadCount(httpConfig.getIoThreadNum())
-                    .setSoKeepAlive(httpConfig.isKeepAlive()).build();
-            final RequestConfig requestConfig =
-                RequestConfig.custom()
+                    .setSoKeepAlive(httpConfig.isKeepAlive())
+                    .build();
+            final RequestConfig requestConfig = RequestConfig.custom()
                     .setRedirectsEnabled(httpConfig.getRedirectsEnabled())
                     .setConnectTimeout(httpConfig.getConnectTimeout())
-                    .setSocketTimeout(httpConfig.getReadTimeout()).build();
-            httpclient = HttpAsyncClients.custom().setConnectionManager(cm)
-                    .setDefaultIOReactorConfig(config)
-                    .setDefaultRequestConfig(requestConfig).build();
+                    .setSocketTimeout(httpConfig.getReadTimeout())
+                    .build();
+
+            httpclient = HttpAsyncClients.custom()
+                .setConnectionManager(cm)
+                .setDefaultIOReactorConfig(config)
+                .setDefaultRequestConfig(requestConfig)
+                .build();
             httpclient.start();
+
+            int cleanupInterval = httpConfig.getConnectionCleanupInterval();
+            int idleTimeout = httpConfig.getIdleConnectionTimeout();
+            if (cleanupInterval > 0) {
+                scheduler = Executors.newSingleThreadScheduledExecutor();
+                scheduler.scheduleAtFixedRate(() -> {
+                    // Close all expired connections
+                    cm.closeExpiredConnections();
+                    if (idleTimeout > 0) {
+                        // Close all connections idle for longer than idleTimeout milliseconds
+                        cm.closeIdleConnections(idleTimeout, TimeUnit.MILLISECONDS);
+                    }
+                }, cleanupInterval, cleanupInterval, TimeUnit.MILLISECONDS);
+            }
+
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error initializing PredictClient", e);
         }
     }
 
@@ -862,8 +884,21 @@ public class PredictClient {
 
     public void shutdown() {
         try {
-            httpclient.close();
-        } catch (IOException e) {
+            if (scheduler != null && !scheduler.isShutdown()) {
+                scheduler.shutdown();
+                if (!scheduler.awaitTermination(5, TimeUnit.SECONDS)) {
+                    scheduler.shutdownNow();
+                }
+            }
+
+            if (httpclient != null) {
+                httpclient.close();
+            }
+
+            if (cm != null) {
+                cm.shutdown();
+            }
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

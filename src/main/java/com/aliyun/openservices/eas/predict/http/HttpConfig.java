@@ -13,6 +13,21 @@ public class HttpConfig {
     private boolean keepAlive;
     private boolean redirectsEnabled;
 
+    /**
+     * The interval for executing the automatic cleanup task (in milliseconds).
+     * Automatic cleanup is enabled when the value is greater than 0.
+     */
+    private int connectionCleanupInterval;
+
+    /**
+     * The duration after which an idle connection is considered eligible for cleanup (in milliseconds).
+     * Effective only when the automatic cleanup task is running.
+     */
+    private int idleConnectionTimeout;
+
+    /**
+     * Default constructor that initializes the default configuration.
+     */
     public HttpConfig() {
         this.ioThreadNum = 10;
         this.readTimeout = 5000;
@@ -22,6 +37,8 @@ public class HttpConfig {
         this.requestTimeout = 0;
         this.keepAlive = true;
         this.redirectsEnabled = false;
+        this.connectionCleanupInterval = 0; // By default, automatic cleanup is disabled
+        this.idleConnectionTimeout = 0;
     }
 
     public HttpConfig(int ioThreadNum, int readTimeout, int connectTimeout,
@@ -104,5 +121,45 @@ public class HttpConfig {
 
     public void setRedirectsEnabled(boolean redirectsEnabled) {
         this.redirectsEnabled = redirectsEnabled;
+    }
+
+    /**
+     * Gets the interval for executing the automatic cleanup task (milliseconds).
+     *
+     * @return connectionCleanupInterval
+     */
+    public int getConnectionCleanupInterval() {
+        return connectionCleanupInterval;
+    }
+
+    /**
+     * Sets the interval for executing the automatic cleanup task (milliseconds).
+     *
+     * @param connectionCleanupInterval Interval for executing the automatic cleanup task (milliseconds)
+     */
+    public void setConnectionCleanupInterval(int connectionCleanupInterval) {
+        this.connectionCleanupInterval = connectionCleanupInterval;
+    }
+
+    /**
+     * Gets the duration after which an idle connection is considered eligible for cleanup (milliseconds).
+     *
+     * @return idleConnectionTimeout
+     */
+    public int getIdleConnectionTimeout() {
+        return idleConnectionTimeout;
+    }
+
+    /**
+     * Sets the duration after which an idle connection is considered eligible for cleanup (milliseconds).
+     *
+     * @param idleConnectionTimeout Duration after which an idle connection is eligible for cleanup (milliseconds)
+     */
+    public void setIdleConnectionTimeout(int idleConnectionTimeout) {
+        this.idleConnectionTimeout = idleConnectionTimeout;
+
+        if (this.connectionCleanupInterval == 0) {
+            this.connectionCleanupInterval = 30000;
+        }
     }
 }
