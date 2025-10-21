@@ -131,6 +131,7 @@ public class PredictClient {
     private Map<String, BlacklistData> blacklist = null;
     private ReentrantReadWriteLock rwlock = new ReentrantReadWriteLock();
     private Compressor compressor = null;
+    private Compressor decompressor = null;
     private Map<String, String> extraHeaders = new HashMap<>();
 
     public PredictClient() {
@@ -243,6 +244,16 @@ public class PredictClient {
         this.compressor = compressor;
         return this;
     }
+    
+    /**
+     * Set decompressor for response data
+     * @param decompressor The decompression algorithm to use
+     * @return PredictClient instance
+     */
+    public PredictClient setDecompressor(Compressor decompressor) {
+        this.decompressor = decompressor;
+        return this;
+    }
 
     public PredictClient setRetryCount(int retryCount) {
         this.retryCount = retryCount;
@@ -343,6 +354,9 @@ public class PredictClient {
         }
         if (this.compressor != null) {
             client.setCompressor(this.compressor);
+        }
+        if (this.decompressor != null) {
+            client.setDecompressor(this.decompressor);
         }
         return client;
     }
@@ -461,12 +475,84 @@ public class PredictClient {
             content = IOUtils.toByteArray(response.getEntity().getContent());
             if (isCompressed) {
                 content = Snappy.uncompress(content);
+            } else if (decompressor != null) {
+                content = decompressContent(content, response);
             }
         } else {
             String errorMsg = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
             throw new HttpException(statusCode, errorMsg);
         }
         return content;
+    }
+
+    /**
+     * Decompress content based on manually set decompressor
+     * @param content The compressed content
+     * @param response HTTP response object
+     * @return Decompressed content
+     * @throws IOException
+     */
+    private byte[] decompressContent(byte[] content, HttpResponse response) throws IOException {
+        switch (decompressor) {
+            case Gzip:
+                return GzipUtils.decompressToBytes(content);
+            case Zlib:
+                return ZlibUtils.decompress(content);
+            case Snappy:
+                return SnappyUtils.decompressToBytes(content);
+            case LZ4:
+                Header lz4OriginalLength = response.getFirstHeader("X-LZ4-Original-Length");
+                if (lz4OriginalLength != null) {
+                    try {
+                        int originalLength = Integer.parseInt(lz4OriginalLength.getValue());
+                        return LZ4Utils.decompress(content, originalLength);
+                    } catch (NumberFormatException e) {
+                        log.warn("Failed to parse X-LZ4-Original-Length header: " + e.getMessage());
+                    }
+                }
+                // If no original length header, return uncompressed content
+                return content;
+            case LZ4Frame:
+                return LZ4Utils.decompressFrame(content);
+            case Zstd:
+                return ZstdUtils.decompress(content);
+            case Auto:
+                return autoDecompressContent(content, response);
+            default:
+                return content;
+        }
+    }
+
+    /**
+     * Automatically decompress content based on Content-Encoding header
+     * @param content The compressed content
+     * @param response HTTP response object
+     * @return Decompressed content
+     * @throws IOException
+     */
+    private byte[] autoDecompressContent(byte[] content, HttpResponse response) throws IOException {
+        Header contentEncodingHeader = response.getFirstHeader("Content-Encoding");
+        if (contentEncodingHeader == null) {
+            return content;
+        }
+
+        String contentEncoding = contentEncodingHeader.getValue().toLowerCase();
+        switch (contentEncoding) {
+            case "gzip":
+                return GzipUtils.decompressToBytes(content);
+            case "zlib":
+            case "deflate":
+                return ZlibUtils.decompress(content);
+            case "snappy":
+                return Snappy.uncompress(content);
+            case "zstd":
+                return ZstdUtils.decompress(content);
+            case "lz4":
+                return LZ4Utils.decompressFrame(content);
+            default:
+                log.warn("Unsupported Content-Encoding: " + contentEncoding);
+                return content;
+        }
     }
 
     private byte[] getContent(HttpPost request) throws IOException,
@@ -549,6 +635,8 @@ public class PredictClient {
                 requestContent = SnappyUtils.compress(requestContent);
             }  else if (compressor == Compressor.LZ4) {
                 requestContent = LZ4Utils.compress(requestContent);
+            }   else if (compressor == Compressor.LZ4Frame) {
+                requestContent = LZ4Utils.compressFrame(requestContent);
             }  else if (compressor == Compressor.Zstd) {
                 requestContent = ZstdUtils.compress(requestContent);
             } else {
