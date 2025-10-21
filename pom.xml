@@ -44,22 +44,6 @@
       <email>xingke.lwp@taobao.com</email>
     </developer>
   </developers>
-
-  <distributionManagement>
-    <repository>
-      <id>oss</id>
-      <url>
-        https://oss.sonatype.org/service/local/staging/deploy/maven2
-      </url>
-    </repository>
-    <snapshotRepository>
-      <id>oss</id>
-      <uniqueVersion>false</uniqueVersion>
-      <url>
-        https://oss.sonatype.org/content/repositories/snapshots
-      </url>
-    </snapshotRepository>
-  </distributionManagement>
   <profiles>
     <profile>
       <id>release</id>
@@ -110,16 +94,19 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.7.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>oss</publishingServerId>
+              <autoPublish>false</autoPublish>
+              <waitUntil>uploaded</waitUntil>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
-      <distributionManagement>
-        <repository>
-          <id>oss</id>
-          <url>
-            https://oss.sonatype.org/service/local/staging/deploy/maven2/
-          </url>
-        </repository>
-      </distributionManagement>
     </profile>
   </profiles>
 
