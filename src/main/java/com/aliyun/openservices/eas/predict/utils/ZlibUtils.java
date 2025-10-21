@@ -7,7 +7,16 @@ import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
+
+/**
+ * Utility class for ZLIB compression and decompression
+ */
 public abstract class ZlibUtils {
+    /**
+     * Compress byte array using ZLIB
+     * @param data The input byte array
+     * @return Compressed byte array
+     */
     public static byte[] compress(byte[] data) {
         byte[] output = new byte[0];
         Deflater compresser = new Deflater();
@@ -35,6 +44,12 @@ public abstract class ZlibUtils {
         compresser.end();
         return output;
     }
+    
+    /**
+     * Compress byte array using ZLIB and write to output stream
+     * @param data The input byte array
+     * @param os The output stream
+     */
     public static void compress(byte[] data, OutputStream os) {
         DeflaterOutputStream dos = new DeflaterOutputStream(os);
         try {
@@ -45,6 +60,12 @@ public abstract class ZlibUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Decompress ZLIB compressed byte array
+     * @param data The compressed byte array
+     * @return Decompressed byte array
+     */
     public static byte[] decompress(byte[] data) {
         byte[] output = new byte[0];
         Inflater decompresser = new Inflater();
@@ -71,6 +92,12 @@ public abstract class ZlibUtils {
         decompresser.end();
         return output;
     }
+    
+    /**
+     * Decompress ZLIB compressed input stream
+     * @param is The compressed input stream
+     * @return Decompressed byte array
+     */
     public static byte[] decompress(InputStream is) {
         InflaterInputStream iis = new InflaterInputStream(is);
         ByteArrayOutputStream o = new ByteArrayOutputStream(1024);
