@@ -489,37 +489,41 @@ public class PredictClient {
      * Decompress content based on manually set decompressor
      * @param content The compressed content
      * @param response HTTP response object
-     * @return Decompressed content
-     * @throws IOException
+     * @return Decompressed content or original content if decompression fails
      */
-    private byte[] decompressContent(byte[] content, HttpResponse response) throws IOException {
-        switch (decompressor) {
-            case Gzip:
-                return GzipUtils.decompressToBytes(content);
-            case Zlib:
-                return ZlibUtils.decompress(content);
-            case Snappy:
-                return SnappyUtils.decompressToBytes(content);
-            case LZ4:
-                Header lz4OriginalLength = response.getFirstHeader("X-LZ4-Original-Length");
-                if (lz4OriginalLength != null) {
-                    try {
-                        int originalLength = Integer.parseInt(lz4OriginalLength.getValue());
-                        return LZ4Utils.decompress(content, originalLength);
-                    } catch (NumberFormatException e) {
-                        log.warn("Failed to parse X-LZ4-Original-Length header: " + e.getMessage());
+    private byte[] decompressContent(byte[] content, HttpResponse response) {
+        try {
+            switch (decompressor) {
+                case Gzip:
+                    return GzipUtils.decompressToBytes(content);
+                case Zlib:
+                    return ZlibUtils.decompress(content);
+                case Snappy:
+                    return SnappyUtils.decompressToBytes(content);
+                case LZ4:
+                    Header lz4OriginalLength = response.getFirstHeader("X-LZ4-Original-Length");
+                    if (lz4OriginalLength != null) {
+                        try {
+                            int originalLength = Integer.parseInt(lz4OriginalLength.getValue());
+                            return LZ4Utils.decompress(content, originalLength);
+                        } catch (NumberFormatException e) {
+                            log.warn("Failed to parse X-LZ4-Original-Length header: " + e.getMessage());
+                        }
                     }
-                }
-                // If no original length header, return uncompressed content
-                return content;
-            case LZ4Frame:
-                return LZ4Utils.decompressFrame(content);
-            case Zstd:
-                return ZstdUtils.decompress(content);
-            case Auto:
-                return autoDecompressContent(content, response);
-            default:
-                return content;
+                    // If no original length header, return uncompressed content
+                    return content;
+                case LZ4Frame:
+                    return LZ4Utils.decompressFrame(content);
+                case Zstd:
+                    return ZstdUtils.decompress(content);
+                case Auto:
+                    return autoDecompressContent(content, response);
+                default:
+                    return content;
+            }
+        } catch (Exception e) {
+            log.warn("Decompression failed, returning original content. err: " + e.getMessage());
+            return content;
         }
     }
 
