@@ -6,17 +6,17 @@ package com.aliyun.openservices.eas.predict.proto;
 public final class TorchRecPredictProtos {
   private TorchRecPredictProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+      shade.protobuf.ExtensionRegistryLite registry) {
   }
 
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+      shade.protobuf.ExtensionRegistry registry) {
     registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+        (shade.protobuf.ExtensionRegistryLite) registry);
   }
   public interface LongStringMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongStringMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int64, string&gt; map_field = 1;</code>
@@ -60,33 +60,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongStringMap}
    */
   public  static final class LongStringMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongStringMap)
       LongStringMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongStringMap.newBuilder() to construct.
-    private LongStringMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongStringMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongStringMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongStringMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -104,11 +104,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.String>
+              shade.protobuf.MapEntry<java.lang.Long, java.lang.String>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -117,23 +117,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -143,7 +143,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongStringMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -152,22 +152,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Long, java.lang.String> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Long, java.lang.String>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongStringMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L,
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Long, java.lang.String> mapField_;
-    private com.google.protobuf.MapField<java.lang.Long, java.lang.String>
+    private shade.protobuf.MapField<java.lang.Long, java.lang.String>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -236,9 +236,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeLongMapTo(
           output,
           internalGetMapField(),
@@ -254,12 +254,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Long, java.lang.String> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, java.lang.String>
+        shade.protobuf.MapEntry<java.lang.Long, java.lang.String>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -302,71 +302,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -384,7 +384,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -396,16 +396,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongStringMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongStringMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -416,7 +416,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -426,7 +426,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongStringMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -439,12 +439,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -454,7 +454,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor;
       }
@@ -484,29 +484,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap)other);
         } else {
@@ -529,13 +529,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -547,21 +547,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Long, java.lang.String> mapField_;
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.String>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.String>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.String>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.String>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -670,12 +670,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -693,22 +693,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongStringMap>
-        PARSER = new com.google.protobuf.AbstractParser<LongStringMap>() {
+    private static final shade.protobuf.Parser<LongStringMap>
+        PARSER = new shade.protobuf.AbstractParser<LongStringMap>() {
       public LongStringMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongStringMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongStringMap> parser() {
+    public static shade.protobuf.Parser<LongStringMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongStringMap> getParserForType() {
+    public shade.protobuf.Parser<LongStringMap> getParserForType() {
       return PARSER;
     }
 
@@ -720,7 +720,7 @@ public final class TorchRecPredictProtos {
 
   public interface LongIntMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongIntMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int64, int32&gt; map_field = 1;</code>
@@ -760,33 +760,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongIntMap}
    */
   public  static final class LongIntMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongIntMap)
       LongIntMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongIntMap.newBuilder() to construct.
-    private LongIntMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongIntMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongIntMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongIntMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -804,11 +804,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.Integer>
+              shade.protobuf.MapEntry<java.lang.Long, java.lang.Integer>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -817,23 +817,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -843,7 +843,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongIntMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -852,22 +852,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Long, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Long, java.lang.Integer>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongIntMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L,
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Long, java.lang.Integer> mapField_;
-    private com.google.protobuf.MapField<java.lang.Long, java.lang.Integer>
+    private shade.protobuf.MapField<java.lang.Long, java.lang.Integer>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -936,9 +936,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeLongMapTo(
           output,
           internalGetMapField(),
@@ -954,12 +954,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Long, java.lang.Integer> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, java.lang.Integer>
+        shade.protobuf.MapEntry<java.lang.Long, java.lang.Integer>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -1002,71 +1002,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -1084,7 +1084,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1092,16 +1092,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongIntMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongIntMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -1112,7 +1112,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -1122,7 +1122,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongIntMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1135,12 +1135,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -1150,7 +1150,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor;
       }
@@ -1180,29 +1180,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap)other);
         } else {
@@ -1225,13 +1225,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -1243,21 +1243,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Long, java.lang.Integer> mapField_;
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Integer>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Integer>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Integer>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Integer>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -1366,12 +1366,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -1389,22 +1389,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongIntMap>
-        PARSER = new com.google.protobuf.AbstractParser<LongIntMap>() {
+    private static final shade.protobuf.Parser<LongIntMap>
+        PARSER = new shade.protobuf.AbstractParser<LongIntMap>() {
       public LongIntMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongIntMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongIntMap> parser() {
+    public static shade.protobuf.Parser<LongIntMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongIntMap> getParserForType() {
+    public shade.protobuf.Parser<LongIntMap> getParserForType() {
       return PARSER;
     }
 
@@ -1416,7 +1416,7 @@ public final class TorchRecPredictProtos {
 
   public interface LongLongMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongLongMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int64, int64&gt; map_field = 1;</code>
@@ -1456,33 +1456,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongLongMap}
    */
   public  static final class LongLongMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongLongMap)
       LongLongMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongLongMap.newBuilder() to construct.
-    private LongLongMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongLongMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongLongMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongLongMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1500,11 +1500,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
+              shade.protobuf.MapEntry<java.lang.Long, java.lang.Long>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -1513,23 +1513,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -1539,7 +1539,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLongMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1548,22 +1548,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Long, java.lang.Long> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Long, java.lang.Long>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLongMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L,
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Long, java.lang.Long> mapField_;
-    private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
+    private shade.protobuf.MapField<java.lang.Long, java.lang.Long>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -1632,9 +1632,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeLongMapTo(
           output,
           internalGetMapField(),
@@ -1650,12 +1650,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Long, java.lang.Long> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
+        shade.protobuf.MapEntry<java.lang.Long, java.lang.Long>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -1698,71 +1698,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -1780,7 +1780,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1788,16 +1788,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongLongMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongLongMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -1808,7 +1808,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -1818,7 +1818,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLongMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1831,12 +1831,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -1846,7 +1846,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor;
       }
@@ -1876,29 +1876,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap)other);
         } else {
@@ -1921,13 +1921,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -1939,21 +1939,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Long, java.lang.Long> mapField_;
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Long>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Long>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -2062,12 +2062,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -2085,22 +2085,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongLongMap>
-        PARSER = new com.google.protobuf.AbstractParser<LongLongMap>() {
+    private static final shade.protobuf.Parser<LongLongMap>
+        PARSER = new shade.protobuf.AbstractParser<LongLongMap>() {
       public LongLongMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongLongMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongLongMap> parser() {
+    public static shade.protobuf.Parser<LongLongMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongLongMap> getParserForType() {
+    public shade.protobuf.Parser<LongLongMap> getParserForType() {
       return PARSER;
     }
 
@@ -2112,7 +2112,7 @@ public final class TorchRecPredictProtos {
 
   public interface LongFloatMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongFloatMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int64, float&gt; map_field = 1;</code>
@@ -2152,33 +2152,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongFloatMap}
    */
   public  static final class LongFloatMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongFloatMap)
       LongFloatMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongFloatMap.newBuilder() to construct.
-    private LongFloatMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongFloatMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongFloatMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongFloatMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2196,11 +2196,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.Float>
+              shade.protobuf.MapEntry<java.lang.Long, java.lang.Float>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -2209,23 +2209,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -2235,7 +2235,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongFloatMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -2244,22 +2244,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Long, java.lang.Float> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Long, java.lang.Float>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongFloatMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L,
-                  com.google.protobuf.WireFormat.FieldType.FLOAT,
+                  shade.protobuf.WireFormat.FieldType.FLOAT,
                   0F);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Long, java.lang.Float> mapField_;
-    private com.google.protobuf.MapField<java.lang.Long, java.lang.Float>
+    private shade.protobuf.MapField<java.lang.Long, java.lang.Float>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -2328,9 +2328,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeLongMapTo(
           output,
           internalGetMapField(),
@@ -2346,12 +2346,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Long, java.lang.Float> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, java.lang.Float>
+        shade.protobuf.MapEntry<java.lang.Long, java.lang.Float>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -2394,71 +2394,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -2476,7 +2476,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2484,16 +2484,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongFloatMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongFloatMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -2504,7 +2504,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -2514,7 +2514,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongFloatMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2527,12 +2527,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -2542,7 +2542,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor;
       }
@@ -2572,29 +2572,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap)other);
         } else {
@@ -2617,13 +2617,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -2635,21 +2635,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Long, java.lang.Float> mapField_;
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Float>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Float>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Float>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Float>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -2758,12 +2758,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -2781,22 +2781,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongFloatMap>
-        PARSER = new com.google.protobuf.AbstractParser<LongFloatMap>() {
+    private static final shade.protobuf.Parser<LongFloatMap>
+        PARSER = new shade.protobuf.AbstractParser<LongFloatMap>() {
       public LongFloatMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongFloatMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongFloatMap> parser() {
+    public static shade.protobuf.Parser<LongFloatMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongFloatMap> getParserForType() {
+    public shade.protobuf.Parser<LongFloatMap> getParserForType() {
       return PARSER;
     }
 
@@ -2808,7 +2808,7 @@ public final class TorchRecPredictProtos {
 
   public interface LongDoubleMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongDoubleMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int64, double&gt; map_field = 1;</code>
@@ -2848,33 +2848,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongDoubleMap}
    */
   public  static final class LongDoubleMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongDoubleMap)
       LongDoubleMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongDoubleMap.newBuilder() to construct.
-    private LongDoubleMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongDoubleMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongDoubleMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongDoubleMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2892,11 +2892,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.Double>
+              shade.protobuf.MapEntry<java.lang.Long, java.lang.Double>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -2905,23 +2905,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -2931,7 +2931,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongDoubleMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -2940,22 +2940,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Long, java.lang.Double> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Long, java.lang.Double>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongDoubleMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L,
-                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
+                  shade.protobuf.WireFormat.FieldType.DOUBLE,
                   0D);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Long, java.lang.Double> mapField_;
-    private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+    private shade.protobuf.MapField<java.lang.Long, java.lang.Double>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -3024,9 +3024,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeLongMapTo(
           output,
           internalGetMapField(),
@@ -3042,12 +3042,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Long, java.lang.Double> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, java.lang.Double>
+        shade.protobuf.MapEntry<java.lang.Long, java.lang.Double>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -3090,71 +3090,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -3172,7 +3172,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3180,16 +3180,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongDoubleMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongDoubleMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -3200,7 +3200,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -3210,7 +3210,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongDoubleMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3223,12 +3223,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -3238,7 +3238,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor;
       }
@@ -3268,29 +3268,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap)other);
         } else {
@@ -3313,13 +3313,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -3331,21 +3331,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Long, java.lang.Double> mapField_;
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Double>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+      private shade.protobuf.MapField<java.lang.Long, java.lang.Double>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -3454,12 +3454,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -3477,22 +3477,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongDoubleMap>
-        PARSER = new com.google.protobuf.AbstractParser<LongDoubleMap>() {
+    private static final shade.protobuf.Parser<LongDoubleMap>
+        PARSER = new shade.protobuf.AbstractParser<LongDoubleMap>() {
       public LongDoubleMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongDoubleMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongDoubleMap> parser() {
+    public static shade.protobuf.Parser<LongDoubleMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongDoubleMap> getParserForType() {
+    public shade.protobuf.Parser<LongDoubleMap> getParserForType() {
       return PARSER;
     }
 
@@ -3504,7 +3504,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringStringMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringStringMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;string, string&gt; map_field = 1;</code>
@@ -3548,33 +3548,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.StringStringMap}
    */
   public  static final class StringStringMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringStringMap)
       StringStringMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringStringMap.newBuilder() to construct.
-    private StringStringMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringStringMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringStringMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringStringMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3592,11 +3592,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.String>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -3605,23 +3605,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -3631,7 +3631,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringStringMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -3640,22 +3640,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.String> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.String>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringStringMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.String> mapField_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+    private shade.protobuf.MapField<java.lang.String, java.lang.String>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -3724,9 +3724,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMapField(),
@@ -3742,12 +3742,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.String>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -3790,71 +3790,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -3872,7 +3872,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3884,16 +3884,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringStringMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringStringMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -3904,7 +3904,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -3914,7 +3914,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringStringMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3927,12 +3927,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -3942,7 +3942,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor;
       }
@@ -3972,29 +3972,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap)other);
         } else {
@@ -4017,13 +4017,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -4035,21 +4035,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.String> mapField_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -4158,12 +4158,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -4181,22 +4181,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringStringMap>
-        PARSER = new com.google.protobuf.AbstractParser<StringStringMap>() {
+    private static final shade.protobuf.Parser<StringStringMap>
+        PARSER = new shade.protobuf.AbstractParser<StringStringMap>() {
       public StringStringMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringStringMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringStringMap> parser() {
+    public static shade.protobuf.Parser<StringStringMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringStringMap> getParserForType() {
+    public shade.protobuf.Parser<StringStringMap> getParserForType() {
       return PARSER;
     }
 
@@ -4208,7 +4208,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringIntMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringIntMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;string, int32&gt; map_field = 1;</code>
@@ -4248,33 +4248,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.StringIntMap}
    */
   public  static final class StringIntMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringIntMap)
       StringIntMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringIntMap.newBuilder() to construct.
-    private StringIntMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringIntMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringIntMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringIntMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4292,11 +4292,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.Integer>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -4305,23 +4305,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -4331,7 +4331,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringIntMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -4340,22 +4340,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringIntMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.Integer> mapField_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    private shade.protobuf.MapField<java.lang.String, java.lang.Integer>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -4424,9 +4424,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMapField(),
@@ -4442,12 +4442,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.Integer>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -4490,71 +4490,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -4572,7 +4572,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -4580,16 +4580,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringIntMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringIntMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -4600,7 +4600,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -4610,7 +4610,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringIntMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -4623,12 +4623,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -4638,7 +4638,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor;
       }
@@ -4668,29 +4668,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap)other);
         } else {
@@ -4713,13 +4713,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -4731,21 +4731,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.Integer> mapField_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Integer>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Integer>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -4854,12 +4854,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -4877,22 +4877,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringIntMap>
-        PARSER = new com.google.protobuf.AbstractParser<StringIntMap>() {
+    private static final shade.protobuf.Parser<StringIntMap>
+        PARSER = new shade.protobuf.AbstractParser<StringIntMap>() {
       public StringIntMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringIntMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringIntMap> parser() {
+    public static shade.protobuf.Parser<StringIntMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringIntMap> getParserForType() {
+    public shade.protobuf.Parser<StringIntMap> getParserForType() {
       return PARSER;
     }
 
@@ -4904,7 +4904,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringLongMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringLongMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;string, int64&gt; map_field = 1;</code>
@@ -4944,33 +4944,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.StringLongMap}
    */
   public  static final class StringLongMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringLongMap)
       StringLongMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringLongMap.newBuilder() to construct.
-    private StringLongMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringLongMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringLongMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringLongMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4988,11 +4988,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.Long>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -5001,23 +5001,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -5027,7 +5027,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLongMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -5036,22 +5036,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.Long> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.Long>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLongMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.Long> mapField_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
+    private shade.protobuf.MapField<java.lang.String, java.lang.Long>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -5120,9 +5120,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMapField(),
@@ -5138,12 +5138,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, java.lang.Long> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.Long>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -5186,71 +5186,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -5268,7 +5268,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5276,16 +5276,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringLongMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringLongMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -5296,7 +5296,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -5306,7 +5306,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLongMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -5319,12 +5319,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -5334,7 +5334,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor;
       }
@@ -5364,29 +5364,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap)other);
         } else {
@@ -5409,13 +5409,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -5427,21 +5427,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.Long> mapField_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Long>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Long>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -5550,12 +5550,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -5573,22 +5573,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringLongMap>
-        PARSER = new com.google.protobuf.AbstractParser<StringLongMap>() {
+    private static final shade.protobuf.Parser<StringLongMap>
+        PARSER = new shade.protobuf.AbstractParser<StringLongMap>() {
       public StringLongMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringLongMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringLongMap> parser() {
+    public static shade.protobuf.Parser<StringLongMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringLongMap> getParserForType() {
+    public shade.protobuf.Parser<StringLongMap> getParserForType() {
       return PARSER;
     }
 
@@ -5600,7 +5600,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringFloatMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringFloatMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;string, float&gt; map_field = 1;</code>
@@ -5640,33 +5640,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.StringFloatMap}
    */
   public  static final class StringFloatMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringFloatMap)
       StringFloatMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringFloatMap.newBuilder() to construct.
-    private StringFloatMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringFloatMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringFloatMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringFloatMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5684,11 +5684,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Float>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.Float>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -5697,23 +5697,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -5723,7 +5723,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringFloatMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -5732,22 +5732,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.Float> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.Float>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringFloatMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.FLOAT,
+                  shade.protobuf.WireFormat.FieldType.FLOAT,
                   0F);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.Float> mapField_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Float>
+    private shade.protobuf.MapField<java.lang.String, java.lang.Float>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -5816,9 +5816,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMapField(),
@@ -5834,12 +5834,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, java.lang.Float> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Float>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.Float>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -5882,71 +5882,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -5964,7 +5964,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5972,16 +5972,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringFloatMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringFloatMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -5992,7 +5992,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -6002,7 +6002,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringFloatMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -6015,12 +6015,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -6030,7 +6030,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor;
       }
@@ -6060,29 +6060,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap)other);
         } else {
@@ -6105,13 +6105,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -6123,21 +6123,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.Float> mapField_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Float>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Float>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Float>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Float>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -6246,12 +6246,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -6269,22 +6269,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringFloatMap>
-        PARSER = new com.google.protobuf.AbstractParser<StringFloatMap>() {
+    private static final shade.protobuf.Parser<StringFloatMap>
+        PARSER = new shade.protobuf.AbstractParser<StringFloatMap>() {
       public StringFloatMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringFloatMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringFloatMap> parser() {
+    public static shade.protobuf.Parser<StringFloatMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringFloatMap> getParserForType() {
+    public shade.protobuf.Parser<StringFloatMap> getParserForType() {
       return PARSER;
     }
 
@@ -6296,7 +6296,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringDoubleMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringDoubleMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;string, double&gt; map_field = 1;</code>
@@ -6336,33 +6336,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.StringDoubleMap}
    */
   public  static final class StringDoubleMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringDoubleMap)
       StringDoubleMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringDoubleMap.newBuilder() to construct.
-    private StringDoubleMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringDoubleMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringDoubleMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringDoubleMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -6380,11 +6380,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Double>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.Double>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -6393,23 +6393,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -6419,7 +6419,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringDoubleMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -6428,22 +6428,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.Double> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.Double>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringDoubleMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
+                  shade.protobuf.WireFormat.FieldType.DOUBLE,
                   0D);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.Double> mapField_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
+    private shade.protobuf.MapField<java.lang.String, java.lang.Double>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -6512,9 +6512,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMapField(),
@@ -6530,12 +6530,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, java.lang.Double> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Double>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.Double>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -6578,71 +6578,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -6660,7 +6660,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -6668,16 +6668,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringDoubleMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringDoubleMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -6688,7 +6688,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -6698,7 +6698,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringDoubleMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -6711,12 +6711,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -6726,7 +6726,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor;
       }
@@ -6756,29 +6756,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap)other);
         } else {
@@ -6801,13 +6801,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -6819,21 +6819,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.Double> mapField_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Double>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
+      private shade.protobuf.MapField<java.lang.String, java.lang.Double>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -6942,12 +6942,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -6965,22 +6965,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringDoubleMap>
-        PARSER = new com.google.protobuf.AbstractParser<StringDoubleMap>() {
+    private static final shade.protobuf.Parser<StringDoubleMap>
+        PARSER = new shade.protobuf.AbstractParser<StringDoubleMap>() {
       public StringDoubleMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringDoubleMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringDoubleMap> parser() {
+    public static shade.protobuf.Parser<StringDoubleMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringDoubleMap> getParserForType() {
+    public shade.protobuf.Parser<StringDoubleMap> getParserForType() {
       return PARSER;
     }
 
@@ -6992,7 +6992,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntStringMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntStringMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int32, string&gt; map_field = 1;</code>
@@ -7036,33 +7036,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntStringMap}
    */
   public  static final class IntStringMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntStringMap)
       IntStringMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntStringMap.newBuilder() to construct.
-    private IntStringMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntStringMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntStringMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntStringMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7080,11 +7080,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
+              shade.protobuf.MapEntry<java.lang.Integer, java.lang.String>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -7093,23 +7093,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -7119,7 +7119,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntStringMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -7128,22 +7128,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Integer, java.lang.String> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Integer, java.lang.String>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntStringMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0,
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Integer, java.lang.String> mapField_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+    private shade.protobuf.MapField<java.lang.Integer, java.lang.String>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -7212,9 +7212,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetMapField(),
@@ -7230,12 +7230,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Integer, java.lang.String> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
+        shade.protobuf.MapEntry<java.lang.Integer, java.lang.String>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -7278,71 +7278,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -7360,7 +7360,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -7372,16 +7372,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntStringMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntStringMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -7392,7 +7392,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -7402,7 +7402,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntStringMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -7415,12 +7415,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -7430,7 +7430,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor;
       }
@@ -7460,29 +7460,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap)other);
         } else {
@@ -7505,13 +7505,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -7523,21 +7523,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Integer, java.lang.String> mapField_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.String>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.String>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -7646,12 +7646,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -7669,22 +7669,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntStringMap>
-        PARSER = new com.google.protobuf.AbstractParser<IntStringMap>() {
+    private static final shade.protobuf.Parser<IntStringMap>
+        PARSER = new shade.protobuf.AbstractParser<IntStringMap>() {
       public IntStringMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntStringMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntStringMap> parser() {
+    public static shade.protobuf.Parser<IntStringMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntStringMap> getParserForType() {
+    public shade.protobuf.Parser<IntStringMap> getParserForType() {
       return PARSER;
     }
 
@@ -7696,7 +7696,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntIntMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntIntMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int32, int32&gt; map_field = 1;</code>
@@ -7736,33 +7736,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntIntMap}
    */
   public  static final class IntIntMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntIntMap)
       IntIntMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntIntMap.newBuilder() to construct.
-    private IntIntMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntIntMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntIntMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntIntMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7780,11 +7780,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+              shade.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -7793,23 +7793,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -7819,7 +7819,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntIntMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -7828,22 +7828,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Integer, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntIntMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0,
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Integer, java.lang.Integer> mapField_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    private shade.protobuf.MapField<java.lang.Integer, java.lang.Integer>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -7912,9 +7912,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetMapField(),
@@ -7930,12 +7930,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+        shade.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -7978,71 +7978,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -8060,7 +8060,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -8068,16 +8068,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntIntMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntIntMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -8088,7 +8088,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -8098,7 +8098,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntIntMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -8111,12 +8111,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -8126,7 +8126,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor;
       }
@@ -8156,29 +8156,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap)other);
         } else {
@@ -8201,13 +8201,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -8219,21 +8219,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Integer, java.lang.Integer> mapField_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Integer>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Integer>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -8342,12 +8342,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -8365,22 +8365,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntIntMap>
-        PARSER = new com.google.protobuf.AbstractParser<IntIntMap>() {
+    private static final shade.protobuf.Parser<IntIntMap>
+        PARSER = new shade.protobuf.AbstractParser<IntIntMap>() {
       public IntIntMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntIntMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntIntMap> parser() {
+    public static shade.protobuf.Parser<IntIntMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntIntMap> getParserForType() {
+    public shade.protobuf.Parser<IntIntMap> getParserForType() {
       return PARSER;
     }
 
@@ -8392,7 +8392,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntLongMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntLongMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int32, int64&gt; map_field = 1;</code>
@@ -8432,33 +8432,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntLongMap}
    */
   public  static final class IntLongMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntLongMap)
       IntLongMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntLongMap.newBuilder() to construct.
-    private IntLongMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntLongMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntLongMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntLongMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -8476,11 +8476,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Long>
+              shade.protobuf.MapEntry<java.lang.Integer, java.lang.Long>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -8489,23 +8489,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -8515,7 +8515,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLongMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -8524,22 +8524,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Integer, java.lang.Long> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Integer, java.lang.Long>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLongMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0,
-                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  shade.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Integer, java.lang.Long> mapField_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Long>
+    private shade.protobuf.MapField<java.lang.Integer, java.lang.Long>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -8608,9 +8608,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetMapField(),
@@ -8626,12 +8626,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Integer, java.lang.Long> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Long>
+        shade.protobuf.MapEntry<java.lang.Integer, java.lang.Long>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -8674,71 +8674,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -8756,7 +8756,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -8764,16 +8764,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntLongMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntLongMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -8784,7 +8784,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -8794,7 +8794,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLongMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -8807,12 +8807,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -8822,7 +8822,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor;
       }
@@ -8852,29 +8852,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap)other);
         } else {
@@ -8897,13 +8897,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -8915,21 +8915,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Integer, java.lang.Long> mapField_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Long>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Long>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Long>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Long>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -9038,12 +9038,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -9061,22 +9061,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntLongMap>
-        PARSER = new com.google.protobuf.AbstractParser<IntLongMap>() {
+    private static final shade.protobuf.Parser<IntLongMap>
+        PARSER = new shade.protobuf.AbstractParser<IntLongMap>() {
       public IntLongMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntLongMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntLongMap> parser() {
+    public static shade.protobuf.Parser<IntLongMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntLongMap> getParserForType() {
+    public shade.protobuf.Parser<IntLongMap> getParserForType() {
       return PARSER;
     }
 
@@ -9088,7 +9088,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntFloatMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntFloatMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int32, float&gt; map_field = 1;</code>
@@ -9128,33 +9128,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntFloatMap}
    */
   public  static final class IntFloatMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntFloatMap)
       IntFloatMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntFloatMap.newBuilder() to construct.
-    private IntFloatMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntFloatMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntFloatMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntFloatMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -9172,11 +9172,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float>
+              shade.protobuf.MapEntry<java.lang.Integer, java.lang.Float>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -9185,23 +9185,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -9211,7 +9211,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntFloatMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -9220,22 +9220,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Integer, java.lang.Float> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Integer, java.lang.Float>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntFloatMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0,
-                  com.google.protobuf.WireFormat.FieldType.FLOAT,
+                  shade.protobuf.WireFormat.FieldType.FLOAT,
                   0F);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Integer, java.lang.Float> mapField_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+    private shade.protobuf.MapField<java.lang.Integer, java.lang.Float>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -9304,9 +9304,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetMapField(),
@@ -9322,12 +9322,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Integer, java.lang.Float> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float>
+        shade.protobuf.MapEntry<java.lang.Integer, java.lang.Float>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -9370,71 +9370,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -9452,7 +9452,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -9460,16 +9460,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntFloatMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntFloatMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -9480,7 +9480,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -9490,7 +9490,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntFloatMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -9503,12 +9503,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -9518,7 +9518,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor;
       }
@@ -9548,29 +9548,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap)other);
         } else {
@@ -9593,13 +9593,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -9611,21 +9611,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Integer, java.lang.Float> mapField_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Float>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Float>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -9734,12 +9734,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -9757,22 +9757,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntFloatMap>
-        PARSER = new com.google.protobuf.AbstractParser<IntFloatMap>() {
+    private static final shade.protobuf.Parser<IntFloatMap>
+        PARSER = new shade.protobuf.AbstractParser<IntFloatMap>() {
       public IntFloatMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntFloatMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntFloatMap> parser() {
+    public static shade.protobuf.Parser<IntFloatMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntFloatMap> getParserForType() {
+    public shade.protobuf.Parser<IntFloatMap> getParserForType() {
       return PARSER;
     }
 
@@ -9784,7 +9784,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntDoubleMapOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntDoubleMap)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>map&lt;int32, double&gt; map_field = 1;</code>
@@ -9824,33 +9824,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntDoubleMap}
    */
   public  static final class IntDoubleMap extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntDoubleMap)
       IntDoubleMapOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntDoubleMap.newBuilder() to construct.
-    private IntDoubleMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntDoubleMap(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntDoubleMap() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntDoubleMap(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -9868,11 +9868,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapField_ = com.google.protobuf.MapField.newMapField(
+                mapField_ = shade.protobuf.MapField.newMapField(
                     MapFieldDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Double>
+              shade.protobuf.MapEntry<java.lang.Integer, java.lang.Double>
               mapField__ = input.readMessage(
                   MapFieldDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapField_.getMutableMap().put(
@@ -9881,23 +9881,23 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -9907,7 +9907,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntDoubleMap_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -9916,22 +9916,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_FIELD_FIELD_NUMBER = 1;
     private static final class MapFieldDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.Integer, java.lang.Double> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.Integer, java.lang.Double>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntDoubleMap_MapFieldEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  shade.protobuf.WireFormat.FieldType.INT32,
                   0,
-                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
+                  shade.protobuf.WireFormat.FieldType.DOUBLE,
                   0D);
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.Integer, java.lang.Double> mapField_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Double>
+    private shade.protobuf.MapField<java.lang.Integer, java.lang.Double>
     internalGetMapField() {
       if (mapField_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapFieldDefaultEntryHolder.defaultEntry);
       }
       return mapField_;
@@ -10000,9 +10000,9 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetMapField(),
@@ -10018,12 +10018,12 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.Integer, java.lang.Double> entry
            : internalGetMapField().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Double>
+        shade.protobuf.MapEntry<java.lang.Integer, java.lang.Double>
         mapField__ = MapFieldDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapField__);
       }
       size += unknownFields.getSerializedSize();
@@ -10066,71 +10066,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -10148,7 +10148,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -10156,16 +10156,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntDoubleMap}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntDoubleMap)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMapOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -10176,7 +10176,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -10186,7 +10186,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntDoubleMap_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -10199,12 +10199,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -10214,7 +10214,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor;
       }
@@ -10244,29 +10244,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap)other);
         } else {
@@ -10289,13 +10289,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -10307,21 +10307,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.Integer, java.lang.Double> mapField_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Double>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Double>
       internalGetMapField() {
         if (mapField_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         return mapField_;
       }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Double>
+      private shade.protobuf.MapField<java.lang.Integer, java.lang.Double>
       internalGetMutableMapField() {
         onChanged();;
         if (mapField_ == null) {
-          mapField_ = com.google.protobuf.MapField.newMapField(
+          mapField_ = shade.protobuf.MapField.newMapField(
               MapFieldDefaultEntryHolder.defaultEntry);
         }
         if (!mapField_.isMutable()) {
@@ -10430,12 +10430,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -10453,22 +10453,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntDoubleMap>
-        PARSER = new com.google.protobuf.AbstractParser<IntDoubleMap>() {
+    private static final shade.protobuf.Parser<IntDoubleMap>
+        PARSER = new shade.protobuf.AbstractParser<IntDoubleMap>() {
       public IntDoubleMap parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntDoubleMap(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntDoubleMap> parser() {
+    public static shade.protobuf.Parser<IntDoubleMap> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntDoubleMap> getParserForType() {
+    public shade.protobuf.Parser<IntDoubleMap> getParserForType() {
       return PARSER;
     }
 
@@ -10480,7 +10480,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntList)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated int32 features = 1;</code>
@@ -10503,12 +10503,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntList}
    */
   public  static final class IntList extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntList)
       IntListOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntList.newBuilder() to construct.
-    private IntList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntList(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntList() {
@@ -10516,21 +10516,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -10569,10 +10569,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -10582,12 +10582,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntList_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -10627,7 +10627,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (getFeaturesList().size() > 0) {
@@ -10648,13 +10648,13 @@ public final class TorchRecPredictProtos {
       {
         int dataSize = 0;
         for (int i = 0; i < features_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
+          dataSize += shade.protobuf.CodedOutputStream
             .computeInt32SizeNoTag(features_.get(i));
         }
         size += dataSize;
         if (!getFeaturesList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         featuresMemoizedSerializedSize = dataSize;
@@ -10699,71 +10699,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -10781,7 +10781,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -10793,15 +10793,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntList}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntList)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntList_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -10814,12 +10814,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -10830,7 +10830,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntList_descriptor;
       }
@@ -10863,29 +10863,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList)other);
         } else {
@@ -10916,13 +10916,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -10985,7 +10985,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllFeatures(
           java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureFeaturesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, features_);
         onChanged();
         return this;
@@ -11000,12 +11000,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -11023,22 +11023,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntList>
-        PARSER = new com.google.protobuf.AbstractParser<IntList>() {
+    private static final shade.protobuf.Parser<IntList>
+        PARSER = new shade.protobuf.AbstractParser<IntList>() {
       public IntList parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntList> parser() {
+    public static shade.protobuf.Parser<IntList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntList> getParserForType() {
+    public shade.protobuf.Parser<IntList> getParserForType() {
       return PARSER;
     }
 
@@ -11050,7 +11050,7 @@ public final class TorchRecPredictProtos {
 
   public interface LongListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongList)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated int64 features = 1;</code>
@@ -11069,12 +11069,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongList}
    */
   public  static final class LongList extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongList)
       LongListOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongList.newBuilder() to construct.
-    private LongList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongList(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongList() {
@@ -11082,21 +11082,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -11135,10 +11135,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -11148,12 +11148,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongList_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -11193,7 +11193,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (getFeaturesList().size() > 0) {
@@ -11214,13 +11214,13 @@ public final class TorchRecPredictProtos {
       {
         int dataSize = 0;
         for (int i = 0; i < features_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
+          dataSize += shade.protobuf.CodedOutputStream
             .computeInt64SizeNoTag(features_.get(i));
         }
         size += dataSize;
         if (!getFeaturesList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         featuresMemoizedSerializedSize = dataSize;
@@ -11265,71 +11265,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -11347,7 +11347,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -11355,15 +11355,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongList}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongList)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongList_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -11376,12 +11376,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -11392,7 +11392,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongList_descriptor;
       }
@@ -11425,29 +11425,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList)other);
         } else {
@@ -11478,13 +11478,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -11547,7 +11547,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllFeatures(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureFeaturesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, features_);
         onChanged();
         return this;
@@ -11562,12 +11562,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -11585,22 +11585,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongList>
-        PARSER = new com.google.protobuf.AbstractParser<LongList>() {
+    private static final shade.protobuf.Parser<LongList>
+        PARSER = new shade.protobuf.AbstractParser<LongList>() {
       public LongList parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongList> parser() {
+    public static shade.protobuf.Parser<LongList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongList> getParserForType() {
+    public shade.protobuf.Parser<LongList> getParserForType() {
       return PARSER;
     }
 
@@ -11612,7 +11612,7 @@ public final class TorchRecPredictProtos {
 
   public interface FloatListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.FloatList)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated float features = 1;</code>
@@ -11631,12 +11631,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.FloatList}
    */
   public  static final class FloatList extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.FloatList)
       FloatListOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use FloatList.newBuilder() to construct.
-    private FloatList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private FloatList(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private FloatList() {
@@ -11644,21 +11644,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private FloatList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -11697,10 +11697,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -11710,12 +11710,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatList_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -11755,7 +11755,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (getFeaturesList().size() > 0) {
@@ -11779,7 +11779,7 @@ public final class TorchRecPredictProtos {
         size += dataSize;
         if (!getFeaturesList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         featuresMemoizedSerializedSize = dataSize;
@@ -11824,71 +11824,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -11906,7 +11906,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -11914,15 +11914,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.FloatList}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.FloatList)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatList_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -11935,12 +11935,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -11951,7 +11951,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatList_descriptor;
       }
@@ -11984,29 +11984,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList)other);
         } else {
@@ -12037,13 +12037,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -12106,7 +12106,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllFeatures(
           java.lang.Iterable<? extends java.lang.Float> values) {
         ensureFeaturesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, features_);
         onChanged();
         return this;
@@ -12121,12 +12121,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -12144,22 +12144,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FloatList>
-        PARSER = new com.google.protobuf.AbstractParser<FloatList>() {
+    private static final shade.protobuf.Parser<FloatList>
+        PARSER = new shade.protobuf.AbstractParser<FloatList>() {
       public FloatList parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new FloatList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FloatList> parser() {
+    public static shade.protobuf.Parser<FloatList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FloatList> getParserForType() {
+    public shade.protobuf.Parser<FloatList> getParserForType() {
       return PARSER;
     }
 
@@ -12171,7 +12171,7 @@ public final class TorchRecPredictProtos {
 
   public interface DoubleListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.DoubleList)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated double features = 1;</code>
@@ -12190,12 +12190,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.DoubleList}
    */
   public  static final class DoubleList extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.DoubleList)
       DoubleListOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use DoubleList.newBuilder() to construct.
-    private DoubleList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private DoubleList(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DoubleList() {
@@ -12203,21 +12203,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private DoubleList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12256,10 +12256,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -12269,12 +12269,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleList_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -12314,7 +12314,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (getFeaturesList().size() > 0) {
@@ -12338,7 +12338,7 @@ public final class TorchRecPredictProtos {
         size += dataSize;
         if (!getFeaturesList().isEmpty()) {
           size += 1;
-          size += com.google.protobuf.CodedOutputStream
+          size += shade.protobuf.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
         featuresMemoizedSerializedSize = dataSize;
@@ -12383,71 +12383,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -12465,7 +12465,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -12473,15 +12473,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.DoubleList}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.DoubleList)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleList_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -12494,12 +12494,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -12510,7 +12510,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleList_descriptor;
       }
@@ -12543,29 +12543,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList)other);
         } else {
@@ -12596,13 +12596,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -12665,7 +12665,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllFeatures(
           java.lang.Iterable<? extends java.lang.Double> values) {
         ensureFeaturesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, features_);
         onChanged();
         return this;
@@ -12680,12 +12680,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -12703,22 +12703,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DoubleList>
-        PARSER = new com.google.protobuf.AbstractParser<DoubleList>() {
+    private static final shade.protobuf.Parser<DoubleList>
+        PARSER = new shade.protobuf.AbstractParser<DoubleList>() {
       public DoubleList parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new DoubleList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<DoubleList> parser() {
+    public static shade.protobuf.Parser<DoubleList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<DoubleList> getParserForType() {
+    public shade.protobuf.Parser<DoubleList> getParserForType() {
       return PARSER;
     }
 
@@ -12730,7 +12730,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringList)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated string features = 1;</code>
@@ -12748,41 +12748,41 @@ public final class TorchRecPredictProtos {
     /**
      * <code>repeated string features = 1;</code>
      */
-    com.google.protobuf.ByteString
+    shade.protobuf.ByteString
         getFeaturesBytes(int index);
   }
   /**
    * Protobuf type {@code com.alibaba.pairec.processor.StringList}
    */
   public  static final class StringList extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringList)
       StringListOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringList.newBuilder() to construct.
-    private StringList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringList(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringList() {
-      features_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      features_ = shade.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -12801,7 +12801,7 @@ public final class TorchRecPredictProtos {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                features_ = new com.google.protobuf.LazyStringArrayList();
+                features_ = new shade.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000001;
               }
               features_.add(s);
@@ -12809,10 +12809,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -12822,12 +12822,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringList_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -12835,11 +12835,11 @@ public final class TorchRecPredictProtos {
     }
 
     public static final int FEATURES_FIELD_NUMBER = 1;
-    private com.google.protobuf.LazyStringList features_;
+    private shade.protobuf.LazyStringList features_;
     /**
      * <code>repeated string features = 1;</code>
      */
-    public com.google.protobuf.ProtocolStringList
+    public shade.protobuf.ProtocolStringList
         getFeaturesList() {
       return features_;
     }
@@ -12858,7 +12858,7 @@ public final class TorchRecPredictProtos {
     /**
      * <code>repeated string features = 1;</code>
      */
-    public com.google.protobuf.ByteString
+    public shade.protobuf.ByteString
         getFeaturesBytes(int index) {
       return features_.getByteString(index);
     }
@@ -12873,10 +12873,10 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < features_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, features_.getRaw(i));
+        shade.protobuf.GeneratedMessageV3.writeString(output, 1, features_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -12934,71 +12934,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -13016,7 +13016,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -13024,15 +13024,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringList}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringList)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringList_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -13045,23 +13045,23 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
         super.clear();
-        features_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        features_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringList_descriptor;
       }
@@ -13094,29 +13094,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList)other);
         } else {
@@ -13147,13 +13147,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -13165,17 +13165,17 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.LazyStringList features_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private shade.protobuf.LazyStringList features_ = shade.protobuf.LazyStringArrayList.EMPTY;
       private void ensureFeaturesIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          features_ = new com.google.protobuf.LazyStringArrayList(features_);
+          features_ = new shade.protobuf.LazyStringArrayList(features_);
           bitField0_ |= 0x00000001;
          }
       }
       /**
        * <code>repeated string features = 1;</code>
        */
-      public com.google.protobuf.ProtocolStringList
+      public shade.protobuf.ProtocolStringList
           getFeaturesList() {
         return features_.getUnmodifiableView();
       }
@@ -13194,7 +13194,7 @@ public final class TorchRecPredictProtos {
       /**
        * <code>repeated string features = 1;</code>
        */
-      public com.google.protobuf.ByteString
+      public shade.protobuf.ByteString
           getFeaturesBytes(int index) {
         return features_.getByteString(index);
       }
@@ -13230,7 +13230,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllFeatures(
           java.lang.Iterable<java.lang.String> values) {
         ensureFeaturesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, features_);
         onChanged();
         return this;
@@ -13239,7 +13239,7 @@ public final class TorchRecPredictProtos {
        * <code>repeated string features = 1;</code>
        */
       public Builder clearFeatures() {
-        features_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        features_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
@@ -13248,7 +13248,7 @@ public final class TorchRecPredictProtos {
        * <code>repeated string features = 1;</code>
        */
       public Builder addFeaturesBytes(
-          com.google.protobuf.ByteString value) {
+          shade.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -13259,12 +13259,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -13282,22 +13282,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringList>
-        PARSER = new com.google.protobuf.AbstractParser<StringList>() {
+    private static final shade.protobuf.Parser<StringList>
+        PARSER = new shade.protobuf.AbstractParser<StringList>() {
       public StringList parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringList> parser() {
+    public static shade.protobuf.Parser<StringList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringList> getParserForType() {
+    public shade.protobuf.Parser<StringList> getParserForType() {
       return PARSER;
     }
 
@@ -13309,7 +13309,7 @@ public final class TorchRecPredictProtos {
 
   public interface IntListsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.IntLists)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .com.alibaba.pairec.processor.IntList lists = 1;</code>
@@ -13343,12 +13343,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.IntLists}
    */
   public  static final class IntLists extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.IntLists)
       IntListsOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use IntLists.newBuilder() to construct.
-    private IntLists(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private IntLists(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private IntLists() {
@@ -13356,21 +13356,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private IntLists(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -13397,10 +13397,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -13410,12 +13410,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLists_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLists_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -13467,7 +13467,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < lists_.size(); i++) {
         output.writeMessage(1, lists_.get(i));
@@ -13481,7 +13481,7 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       for (int i = 0; i < lists_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(1, lists_.get(i));
       }
       size += unknownFields.getSerializedSize();
@@ -13524,71 +13524,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -13606,7 +13606,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -13618,15 +13618,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.IntLists}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.IntLists)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLists_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLists_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -13639,12 +13639,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getListsFieldBuilder();
         }
@@ -13660,7 +13660,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_IntLists_descriptor;
       }
@@ -13697,29 +13697,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists)other);
         } else {
@@ -13749,7 +13749,7 @@ public final class TorchRecPredictProtos {
               lists_ = other.lists_;
               bitField0_ = (bitField0_ & ~0x00000001);
               listsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getListsFieldBuilder() : null;
             } else {
               listsBuilder_.addAllMessages(other.lists_);
@@ -13766,13 +13766,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -13793,7 +13793,7 @@ public final class TorchRecPredictProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder> listsBuilder_;
 
       /**
@@ -13925,7 +13925,7 @@ public final class TorchRecPredictProtos {
           java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList> values) {
         if (listsBuilder_ == null) {
           ensureListsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
               values, lists_);
           onChanged();
         } else {
@@ -14009,11 +14009,11 @@ public final class TorchRecPredictProtos {
            getListsBuilderList() {
         return getListsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder> 
           getListsFieldBuilder() {
         if (listsBuilder_ == null) {
-          listsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          listsBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder>(
                   lists_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -14024,12 +14024,12 @@ public final class TorchRecPredictProtos {
         return listsBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -14047,22 +14047,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IntLists>
-        PARSER = new com.google.protobuf.AbstractParser<IntLists>() {
+    private static final shade.protobuf.Parser<IntLists>
+        PARSER = new shade.protobuf.AbstractParser<IntLists>() {
       public IntLists parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new IntLists(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<IntLists> parser() {
+    public static shade.protobuf.Parser<IntLists> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IntLists> getParserForType() {
+    public shade.protobuf.Parser<IntLists> getParserForType() {
       return PARSER;
     }
 
@@ -14074,7 +14074,7 @@ public final class TorchRecPredictProtos {
 
   public interface LongListsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.LongLists)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .com.alibaba.pairec.processor.LongList lists = 1;</code>
@@ -14104,12 +14104,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.LongLists}
    */
   public  static final class LongLists extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.LongLists)
       LongListsOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use LongLists.newBuilder() to construct.
-    private LongLists(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private LongLists(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private LongLists() {
@@ -14117,21 +14117,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LongLists(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -14158,10 +14158,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -14171,12 +14171,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLists_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLists_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -14228,7 +14228,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < lists_.size(); i++) {
         output.writeMessage(1, lists_.get(i));
@@ -14242,7 +14242,7 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       for (int i = 0; i < lists_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(1, lists_.get(i));
       }
       size += unknownFields.getSerializedSize();
@@ -14285,71 +14285,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -14367,7 +14367,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -14375,15 +14375,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.LongLists}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.LongLists)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLists_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLists_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -14396,12 +14396,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getListsFieldBuilder();
         }
@@ -14417,7 +14417,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_LongLists_descriptor;
       }
@@ -14454,29 +14454,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists)other);
         } else {
@@ -14506,7 +14506,7 @@ public final class TorchRecPredictProtos {
               lists_ = other.lists_;
               bitField0_ = (bitField0_ & ~0x00000001);
               listsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getListsFieldBuilder() : null;
             } else {
               listsBuilder_.addAllMessages(other.lists_);
@@ -14523,13 +14523,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -14550,7 +14550,7 @@ public final class TorchRecPredictProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder> listsBuilder_;
 
       /**
@@ -14682,7 +14682,7 @@ public final class TorchRecPredictProtos {
           java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList> values) {
         if (listsBuilder_ == null) {
           ensureListsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
               values, lists_);
           onChanged();
         } else {
@@ -14766,11 +14766,11 @@ public final class TorchRecPredictProtos {
            getListsBuilderList() {
         return getListsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder> 
           getListsFieldBuilder() {
         if (listsBuilder_ == null) {
-          listsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          listsBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder>(
                   lists_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -14781,12 +14781,12 @@ public final class TorchRecPredictProtos {
         return listsBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -14804,22 +14804,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LongLists>
-        PARSER = new com.google.protobuf.AbstractParser<LongLists>() {
+    private static final shade.protobuf.Parser<LongLists>
+        PARSER = new shade.protobuf.AbstractParser<LongLists>() {
       public LongLists parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new LongLists(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LongLists> parser() {
+    public static shade.protobuf.Parser<LongLists> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LongLists> getParserForType() {
+    public shade.protobuf.Parser<LongLists> getParserForType() {
       return PARSER;
     }
 
@@ -14831,7 +14831,7 @@ public final class TorchRecPredictProtos {
 
   public interface FloatListsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.FloatLists)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .com.alibaba.pairec.processor.FloatList lists = 1;</code>
@@ -14861,12 +14861,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.FloatLists}
    */
   public  static final class FloatLists extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.FloatLists)
       FloatListsOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use FloatLists.newBuilder() to construct.
-    private FloatLists(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private FloatLists(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private FloatLists() {
@@ -14874,21 +14874,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private FloatLists(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -14915,10 +14915,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -14928,12 +14928,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatLists_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatLists_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -14985,7 +14985,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < lists_.size(); i++) {
         output.writeMessage(1, lists_.get(i));
@@ -14999,7 +14999,7 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       for (int i = 0; i < lists_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(1, lists_.get(i));
       }
       size += unknownFields.getSerializedSize();
@@ -15042,71 +15042,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -15124,7 +15124,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -15132,15 +15132,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.FloatLists}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.FloatLists)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatLists_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatLists_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -15153,12 +15153,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getListsFieldBuilder();
         }
@@ -15174,7 +15174,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FloatLists_descriptor;
       }
@@ -15211,29 +15211,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists)other);
         } else {
@@ -15263,7 +15263,7 @@ public final class TorchRecPredictProtos {
               lists_ = other.lists_;
               bitField0_ = (bitField0_ & ~0x00000001);
               listsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getListsFieldBuilder() : null;
             } else {
               listsBuilder_.addAllMessages(other.lists_);
@@ -15280,13 +15280,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -15307,7 +15307,7 @@ public final class TorchRecPredictProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder> listsBuilder_;
 
       /**
@@ -15439,7 +15439,7 @@ public final class TorchRecPredictProtos {
           java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList> values) {
         if (listsBuilder_ == null) {
           ensureListsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
               values, lists_);
           onChanged();
         } else {
@@ -15523,11 +15523,11 @@ public final class TorchRecPredictProtos {
            getListsBuilderList() {
         return getListsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder> 
           getListsFieldBuilder() {
         if (listsBuilder_ == null) {
-          listsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          listsBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder>(
                   lists_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -15538,12 +15538,12 @@ public final class TorchRecPredictProtos {
         return listsBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -15561,22 +15561,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FloatLists>
-        PARSER = new com.google.protobuf.AbstractParser<FloatLists>() {
+    private static final shade.protobuf.Parser<FloatLists>
+        PARSER = new shade.protobuf.AbstractParser<FloatLists>() {
       public FloatLists parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new FloatLists(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FloatLists> parser() {
+    public static shade.protobuf.Parser<FloatLists> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FloatLists> getParserForType() {
+    public shade.protobuf.Parser<FloatLists> getParserForType() {
       return PARSER;
     }
 
@@ -15588,7 +15588,7 @@ public final class TorchRecPredictProtos {
 
   public interface DoubleListsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.DoubleLists)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .com.alibaba.pairec.processor.DoubleList lists = 1;</code>
@@ -15618,12 +15618,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.DoubleLists}
    */
   public  static final class DoubleLists extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.DoubleLists)
       DoubleListsOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use DoubleLists.newBuilder() to construct.
-    private DoubleLists(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private DoubleLists(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private DoubleLists() {
@@ -15631,21 +15631,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private DoubleLists(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -15672,10 +15672,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -15685,12 +15685,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleLists_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleLists_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -15742,7 +15742,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < lists_.size(); i++) {
         output.writeMessage(1, lists_.get(i));
@@ -15756,7 +15756,7 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       for (int i = 0; i < lists_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(1, lists_.get(i));
       }
       size += unknownFields.getSerializedSize();
@@ -15799,71 +15799,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -15881,7 +15881,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -15889,15 +15889,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.DoubleLists}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.DoubleLists)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleLists_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleLists_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -15910,12 +15910,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getListsFieldBuilder();
         }
@@ -15931,7 +15931,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_DoubleLists_descriptor;
       }
@@ -15968,29 +15968,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists)other);
         } else {
@@ -16020,7 +16020,7 @@ public final class TorchRecPredictProtos {
               lists_ = other.lists_;
               bitField0_ = (bitField0_ & ~0x00000001);
               listsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getListsFieldBuilder() : null;
             } else {
               listsBuilder_.addAllMessages(other.lists_);
@@ -16037,13 +16037,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -16064,7 +16064,7 @@ public final class TorchRecPredictProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder> listsBuilder_;
 
       /**
@@ -16196,7 +16196,7 @@ public final class TorchRecPredictProtos {
           java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList> values) {
         if (listsBuilder_ == null) {
           ensureListsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
               values, lists_);
           onChanged();
         } else {
@@ -16280,11 +16280,11 @@ public final class TorchRecPredictProtos {
            getListsBuilderList() {
         return getListsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder> 
           getListsFieldBuilder() {
         if (listsBuilder_ == null) {
-          listsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          listsBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder>(
                   lists_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -16295,12 +16295,12 @@ public final class TorchRecPredictProtos {
         return listsBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -16318,22 +16318,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DoubleLists>
-        PARSER = new com.google.protobuf.AbstractParser<DoubleLists>() {
+    private static final shade.protobuf.Parser<DoubleLists>
+        PARSER = new shade.protobuf.AbstractParser<DoubleLists>() {
       public DoubleLists parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new DoubleLists(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<DoubleLists> parser() {
+    public static shade.protobuf.Parser<DoubleLists> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<DoubleLists> getParserForType() {
+    public shade.protobuf.Parser<DoubleLists> getParserForType() {
       return PARSER;
     }
 
@@ -16345,7 +16345,7 @@ public final class TorchRecPredictProtos {
 
   public interface StringListsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.StringLists)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .com.alibaba.pairec.processor.StringList lists = 1;</code>
@@ -16375,12 +16375,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.StringLists}
    */
   public  static final class StringLists extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.StringLists)
       StringListsOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use StringLists.newBuilder() to construct.
-    private StringLists(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private StringLists(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private StringLists() {
@@ -16388,21 +16388,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private StringLists(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -16429,10 +16429,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -16442,12 +16442,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLists_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLists_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -16499,7 +16499,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < lists_.size(); i++) {
         output.writeMessage(1, lists_.get(i));
@@ -16513,7 +16513,7 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       for (int i = 0; i < lists_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(1, lists_.get(i));
       }
       size += unknownFields.getSerializedSize();
@@ -16556,71 +16556,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -16638,7 +16638,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -16646,15 +16646,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.StringLists}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.StringLists)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLists_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLists_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -16667,12 +16667,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getListsFieldBuilder();
         }
@@ -16688,7 +16688,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_StringLists_descriptor;
       }
@@ -16725,29 +16725,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists)other);
         } else {
@@ -16777,7 +16777,7 @@ public final class TorchRecPredictProtos {
               lists_ = other.lists_;
               bitField0_ = (bitField0_ & ~0x00000001);
               listsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getListsFieldBuilder() : null;
             } else {
               listsBuilder_.addAllMessages(other.lists_);
@@ -16794,13 +16794,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -16821,7 +16821,7 @@ public final class TorchRecPredictProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder> listsBuilder_;
 
       /**
@@ -16953,7 +16953,7 @@ public final class TorchRecPredictProtos {
           java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList> values) {
         if (listsBuilder_ == null) {
           ensureListsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
               values, lists_);
           onChanged();
         } else {
@@ -17037,11 +17037,11 @@ public final class TorchRecPredictProtos {
            getListsBuilderList() {
         return getListsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder> 
           getListsFieldBuilder() {
         if (listsBuilder_ == null) {
-          listsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          listsBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder>(
                   lists_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -17052,12 +17052,12 @@ public final class TorchRecPredictProtos {
         return listsBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -17075,22 +17075,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StringLists>
-        PARSER = new com.google.protobuf.AbstractParser<StringLists>() {
+    private static final shade.protobuf.Parser<StringLists>
+        PARSER = new shade.protobuf.AbstractParser<StringLists>() {
       public StringLists parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new StringLists(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StringLists> parser() {
+    public static shade.protobuf.Parser<StringLists> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StringLists> getParserForType() {
+    public shade.protobuf.Parser<StringLists> getParserForType() {
       return PARSER;
     }
 
@@ -17102,7 +17102,7 @@ public final class TorchRecPredictProtos {
 
   public interface PBFeatureOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.PBFeature)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>int32 int_feature = 1;</code>
@@ -17121,7 +17121,7 @@ public final class TorchRecPredictProtos {
     /**
      * <code>string string_feature = 3;</code>
      */
-    com.google.protobuf.ByteString
+    shade.protobuf.ByteString
         getStringFeatureBytes();
 
     /**
@@ -17465,33 +17465,33 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.PBFeature}
    */
   public  static final class PBFeature extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.PBFeature)
       PBFeatureOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use PBFeature.newBuilder() to construct.
-    private PBFeature(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private PBFeature(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private PBFeature() {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private PBFeature(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -17885,22 +17885,22 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBFeature_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBFeature_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -17910,7 +17910,7 @@ public final class TorchRecPredictProtos {
     private int valueCase_ = 0;
     private java.lang.Object value_;
     public enum ValueCase
-        implements com.google.protobuf.Internal.EnumLite {
+        implements shade.protobuf.Internal.EnumLite {
       INT_FEATURE(1),
       LONG_FEATURE(2),
       STRING_FEATURE(3),
@@ -18035,8 +18035,8 @@ public final class TorchRecPredictProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        shade.protobuf.ByteString bs = 
+            (shade.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (valueCase_ == 3) {
           value_ = s;
@@ -18047,22 +18047,22 @@ public final class TorchRecPredictProtos {
     /**
      * <code>string string_feature = 3;</code>
      */
-    public com.google.protobuf.ByteString
+    public shade.protobuf.ByteString
         getStringFeatureBytes() {
       java.lang.Object ref = "";
       if (valueCase_ == 3) {
         ref = value_;
       }
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
+        shade.protobuf.ByteString b = 
+            shade.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         if (valueCase_ == 3) {
           value_ = b;
         }
         return b;
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        return (shade.protobuf.ByteString) ref;
       }
     }
 
@@ -18748,7 +18748,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (valueCase_ == 1) {
         output.writeInt32(
@@ -18759,7 +18759,7 @@ public final class TorchRecPredictProtos {
             2, (long)((java.lang.Long) value_));
       }
       if (valueCase_ == 3) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
+        shade.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
       }
       if (valueCase_ == 4) {
         output.writeFloat(
@@ -18853,126 +18853,126 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       if (valueCase_ == 1) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeInt32Size(
               1, (int)((java.lang.Integer) value_));
       }
       if (valueCase_ == 2) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeInt64Size(
               2, (long)((java.lang.Long) value_));
       }
       if (valueCase_ == 3) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
+        size += shade.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
       }
       if (valueCase_ == 4) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeFloatSize(
               4, (float)((java.lang.Float) value_));
       }
       if (valueCase_ == 5) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeDoubleSize(
               5, (double)((java.lang.Double) value_));
       }
       if (valueCase_ == 6) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(6, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap) value_);
       }
       if (valueCase_ == 7) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(7, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap) value_);
       }
       if (valueCase_ == 8) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(8, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap) value_);
       }
       if (valueCase_ == 9) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(9, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap) value_);
       }
       if (valueCase_ == 10) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(10, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap) value_);
       }
       if (valueCase_ == 11) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(11, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap) value_);
       }
       if (valueCase_ == 12) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(12, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap) value_);
       }
       if (valueCase_ == 13) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(13, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap) value_);
       }
       if (valueCase_ == 14) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(14, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap) value_);
       }
       if (valueCase_ == 15) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(15, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap) value_);
       }
       if (valueCase_ == 16) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(16, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap) value_);
       }
       if (valueCase_ == 17) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(17, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap) value_);
       }
       if (valueCase_ == 18) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(18, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap) value_);
       }
       if (valueCase_ == 19) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(19, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap) value_);
       }
       if (valueCase_ == 20) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(20, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap) value_);
       }
       if (valueCase_ == 21) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(21, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList) value_);
       }
       if (valueCase_ == 22) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(22, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList) value_);
       }
       if (valueCase_ == 23) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(23, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList) value_);
       }
       if (valueCase_ == 24) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(24, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList) value_);
       }
       if (valueCase_ == 25) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(25, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList) value_);
       }
       if (valueCase_ == 26) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(26, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists) value_);
       }
       if (valueCase_ == 27) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(27, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists) value_);
       }
       if (valueCase_ == 28) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(28, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists) value_);
       }
       if (valueCase_ == 29) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(29, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists) value_);
       }
       if (valueCase_ == 30) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(30, (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists) value_);
       }
       size += unknownFields.getSerializedSize();
@@ -19140,7 +19140,7 @@ public final class TorchRecPredictProtos {
           break;
         case 2:
           hash = (37 * hash) + LONG_FEATURE_FIELD_NUMBER;
-          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          hash = (53 * hash) + shade.protobuf.Internal.hashLong(
               getLongFeature());
           break;
         case 3:
@@ -19154,7 +19154,7 @@ public final class TorchRecPredictProtos {
           break;
         case 5:
           hash = (37 * hash) + DOUBLE_FEATURE_FIELD_NUMBER;
-          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          hash = (53 * hash) + shade.protobuf.Internal.hashLong(
               java.lang.Double.doubleToLongBits(getDoubleFeature()));
           break;
         case 6:
@@ -19267,71 +19267,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -19349,7 +19349,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -19357,15 +19357,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.PBFeature}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.PBFeature)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBFeature_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBFeature_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -19378,12 +19378,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -19394,7 +19394,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBFeature_descriptor;
       }
@@ -19612,29 +19612,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature)other);
         } else {
@@ -19782,13 +19782,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -19883,8 +19883,8 @@ public final class TorchRecPredictProtos {
           ref = value_;
         }
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          shade.protobuf.ByteString bs =
+              (shade.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (valueCase_ == 3) {
             value_ = s;
@@ -19897,22 +19897,22 @@ public final class TorchRecPredictProtos {
       /**
        * <code>string string_feature = 3;</code>
        */
-      public com.google.protobuf.ByteString
+      public shade.protobuf.ByteString
           getStringFeatureBytes() {
         java.lang.Object ref = "";
         if (valueCase_ == 3) {
           ref = value_;
         }
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
+          shade.protobuf.ByteString b = 
+              shade.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           if (valueCase_ == 3) {
             value_ = b;
           }
           return b;
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          return (shade.protobuf.ByteString) ref;
         }
       }
       /**
@@ -19943,7 +19943,7 @@ public final class TorchRecPredictProtos {
        * <code>string string_feature = 3;</code>
        */
       public Builder setStringFeatureBytes(
-          com.google.protobuf.ByteString value) {
+          shade.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -20014,7 +20014,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMapOrBuilder> longStringMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongStringMap long_string_map = 6;</code>
@@ -20131,14 +20131,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongStringMap long_string_map = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMapOrBuilder> 
           getLongStringMapFieldBuilder() {
         if (longStringMapBuilder_ == null) {
           if (!(valueCase_ == 6)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap.getDefaultInstance();
           }
-          longStringMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longStringMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongStringMap) value_,
                   getParentForChildren(),
@@ -20150,7 +20150,7 @@ public final class TorchRecPredictProtos {
         return longStringMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMapOrBuilder> longIntMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongIntMap long_int_map = 7;</code>
@@ -20267,14 +20267,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongIntMap long_int_map = 7;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMapOrBuilder> 
           getLongIntMapFieldBuilder() {
         if (longIntMapBuilder_ == null) {
           if (!(valueCase_ == 7)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap.getDefaultInstance();
           }
-          longIntMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longIntMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongIntMap) value_,
                   getParentForChildren(),
@@ -20286,7 +20286,7 @@ public final class TorchRecPredictProtos {
         return longIntMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMapOrBuilder> longLongMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongLongMap long_long_map = 8;</code>
@@ -20403,14 +20403,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongLongMap long_long_map = 8;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMapOrBuilder> 
           getLongLongMapFieldBuilder() {
         if (longLongMapBuilder_ == null) {
           if (!(valueCase_ == 8)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap.getDefaultInstance();
           }
-          longLongMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longLongMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLongMap) value_,
                   getParentForChildren(),
@@ -20422,7 +20422,7 @@ public final class TorchRecPredictProtos {
         return longLongMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMapOrBuilder> longFloatMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongFloatMap long_float_map = 9;</code>
@@ -20539,14 +20539,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongFloatMap long_float_map = 9;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMapOrBuilder> 
           getLongFloatMapFieldBuilder() {
         if (longFloatMapBuilder_ == null) {
           if (!(valueCase_ == 9)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap.getDefaultInstance();
           }
-          longFloatMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longFloatMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongFloatMap) value_,
                   getParentForChildren(),
@@ -20558,7 +20558,7 @@ public final class TorchRecPredictProtos {
         return longFloatMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMapOrBuilder> longDoubleMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongDoubleMap long_double_map = 10;</code>
@@ -20675,14 +20675,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongDoubleMap long_double_map = 10;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMapOrBuilder> 
           getLongDoubleMapFieldBuilder() {
         if (longDoubleMapBuilder_ == null) {
           if (!(valueCase_ == 10)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap.getDefaultInstance();
           }
-          longDoubleMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longDoubleMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongDoubleMap) value_,
                   getParentForChildren(),
@@ -20694,7 +20694,7 @@ public final class TorchRecPredictProtos {
         return longDoubleMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMapOrBuilder> stringStringMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringStringMap string_string_map = 11;</code>
@@ -20811,14 +20811,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringStringMap string_string_map = 11;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMapOrBuilder> 
           getStringStringMapFieldBuilder() {
         if (stringStringMapBuilder_ == null) {
           if (!(valueCase_ == 11)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap.getDefaultInstance();
           }
-          stringStringMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringStringMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringStringMap) value_,
                   getParentForChildren(),
@@ -20830,7 +20830,7 @@ public final class TorchRecPredictProtos {
         return stringStringMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMapOrBuilder> stringIntMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringIntMap string_int_map = 12;</code>
@@ -20947,14 +20947,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringIntMap string_int_map = 12;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMapOrBuilder> 
           getStringIntMapFieldBuilder() {
         if (stringIntMapBuilder_ == null) {
           if (!(valueCase_ == 12)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap.getDefaultInstance();
           }
-          stringIntMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringIntMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringIntMap) value_,
                   getParentForChildren(),
@@ -20966,7 +20966,7 @@ public final class TorchRecPredictProtos {
         return stringIntMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMapOrBuilder> stringLongMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringLongMap string_long_map = 13;</code>
@@ -21083,14 +21083,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringLongMap string_long_map = 13;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMapOrBuilder> 
           getStringLongMapFieldBuilder() {
         if (stringLongMapBuilder_ == null) {
           if (!(valueCase_ == 13)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap.getDefaultInstance();
           }
-          stringLongMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringLongMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLongMap) value_,
                   getParentForChildren(),
@@ -21102,7 +21102,7 @@ public final class TorchRecPredictProtos {
         return stringLongMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMapOrBuilder> stringFloatMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringFloatMap string_float_map = 14;</code>
@@ -21219,14 +21219,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringFloatMap string_float_map = 14;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMapOrBuilder> 
           getStringFloatMapFieldBuilder() {
         if (stringFloatMapBuilder_ == null) {
           if (!(valueCase_ == 14)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap.getDefaultInstance();
           }
-          stringFloatMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringFloatMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringFloatMap) value_,
                   getParentForChildren(),
@@ -21238,7 +21238,7 @@ public final class TorchRecPredictProtos {
         return stringFloatMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMapOrBuilder> stringDoubleMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringDoubleMap string_double_map = 15;</code>
@@ -21355,14 +21355,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringDoubleMap string_double_map = 15;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMapOrBuilder> 
           getStringDoubleMapFieldBuilder() {
         if (stringDoubleMapBuilder_ == null) {
           if (!(valueCase_ == 15)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap.getDefaultInstance();
           }
-          stringDoubleMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringDoubleMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringDoubleMap) value_,
                   getParentForChildren(),
@@ -21374,7 +21374,7 @@ public final class TorchRecPredictProtos {
         return stringDoubleMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMapOrBuilder> intStringMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntStringMap int_string_map = 16;</code>
@@ -21491,14 +21491,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntStringMap int_string_map = 16;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMapOrBuilder> 
           getIntStringMapFieldBuilder() {
         if (intStringMapBuilder_ == null) {
           if (!(valueCase_ == 16)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap.getDefaultInstance();
           }
-          intStringMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intStringMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntStringMap) value_,
                   getParentForChildren(),
@@ -21510,7 +21510,7 @@ public final class TorchRecPredictProtos {
         return intStringMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMapOrBuilder> intIntMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntIntMap int_int_map = 17;</code>
@@ -21627,14 +21627,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntIntMap int_int_map = 17;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMapOrBuilder> 
           getIntIntMapFieldBuilder() {
         if (intIntMapBuilder_ == null) {
           if (!(valueCase_ == 17)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap.getDefaultInstance();
           }
-          intIntMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intIntMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntIntMap) value_,
                   getParentForChildren(),
@@ -21646,7 +21646,7 @@ public final class TorchRecPredictProtos {
         return intIntMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMapOrBuilder> intLongMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntLongMap int_long_map = 18;</code>
@@ -21763,14 +21763,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntLongMap int_long_map = 18;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMapOrBuilder> 
           getIntLongMapFieldBuilder() {
         if (intLongMapBuilder_ == null) {
           if (!(valueCase_ == 18)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap.getDefaultInstance();
           }
-          intLongMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intLongMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLongMap) value_,
                   getParentForChildren(),
@@ -21782,7 +21782,7 @@ public final class TorchRecPredictProtos {
         return intLongMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMapOrBuilder> intFloatMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntFloatMap int_float_map = 19;</code>
@@ -21899,14 +21899,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntFloatMap int_float_map = 19;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMapOrBuilder> 
           getIntFloatMapFieldBuilder() {
         if (intFloatMapBuilder_ == null) {
           if (!(valueCase_ == 19)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap.getDefaultInstance();
           }
-          intFloatMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intFloatMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntFloatMap) value_,
                   getParentForChildren(),
@@ -21918,7 +21918,7 @@ public final class TorchRecPredictProtos {
         return intFloatMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMapOrBuilder> intDoubleMapBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntDoubleMap int_double_map = 20;</code>
@@ -22035,14 +22035,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntDoubleMap int_double_map = 20;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMapOrBuilder> 
           getIntDoubleMapFieldBuilder() {
         if (intDoubleMapBuilder_ == null) {
           if (!(valueCase_ == 20)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap.getDefaultInstance();
           }
-          intDoubleMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intDoubleMapBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMapOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntDoubleMap) value_,
                   getParentForChildren(),
@@ -22054,7 +22054,7 @@ public final class TorchRecPredictProtos {
         return intDoubleMapBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder> intListBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntList int_list = 21;</code>
@@ -22171,14 +22171,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntList int_list = 21;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder> 
           getIntListFieldBuilder() {
         if (intListBuilder_ == null) {
           if (!(valueCase_ == 21)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.getDefaultInstance();
           }
-          intListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intListBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntList) value_,
                   getParentForChildren(),
@@ -22190,7 +22190,7 @@ public final class TorchRecPredictProtos {
         return intListBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder> longListBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongList long_list = 22;</code>
@@ -22307,14 +22307,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongList long_list = 22;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder> 
           getLongListFieldBuilder() {
         if (longListBuilder_ == null) {
           if (!(valueCase_ == 22)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.getDefaultInstance();
           }
-          longListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longListBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongList) value_,
                   getParentForChildren(),
@@ -22326,7 +22326,7 @@ public final class TorchRecPredictProtos {
         return longListBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder> stringListBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringList string_list = 23;</code>
@@ -22443,14 +22443,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringList string_list = 23;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder> 
           getStringListFieldBuilder() {
         if (stringListBuilder_ == null) {
           if (!(valueCase_ == 23)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.getDefaultInstance();
           }
-          stringListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringListBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringList) value_,
                   getParentForChildren(),
@@ -22462,7 +22462,7 @@ public final class TorchRecPredictProtos {
         return stringListBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder> floatListBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.FloatList float_list = 24;</code>
@@ -22579,14 +22579,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.FloatList float_list = 24;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder> 
           getFloatListFieldBuilder() {
         if (floatListBuilder_ == null) {
           if (!(valueCase_ == 24)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.getDefaultInstance();
           }
-          floatListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          floatListBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatList) value_,
                   getParentForChildren(),
@@ -22598,7 +22598,7 @@ public final class TorchRecPredictProtos {
         return floatListBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder> doubleListBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.DoubleList double_list = 25;</code>
@@ -22715,14 +22715,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.DoubleList double_list = 25;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder> 
           getDoubleListFieldBuilder() {
         if (doubleListBuilder_ == null) {
           if (!(valueCase_ == 25)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.getDefaultInstance();
           }
-          doubleListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          doubleListBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleList) value_,
                   getParentForChildren(),
@@ -22734,7 +22734,7 @@ public final class TorchRecPredictProtos {
         return doubleListBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListsOrBuilder> intListsBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.IntLists int_lists = 26;</code>
@@ -22851,14 +22851,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.IntLists int_lists = 26;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListsOrBuilder> 
           getIntListsFieldBuilder() {
         if (intListsBuilder_ == null) {
           if (!(valueCase_ == 26)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists.getDefaultInstance();
           }
-          intListsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          intListsBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntListsOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.IntLists) value_,
                   getParentForChildren(),
@@ -22870,7 +22870,7 @@ public final class TorchRecPredictProtos {
         return intListsBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListsOrBuilder> longListsBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.LongLists long_lists = 27;</code>
@@ -22987,14 +22987,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.LongLists long_lists = 27;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListsOrBuilder> 
           getLongListsFieldBuilder() {
         if (longListsBuilder_ == null) {
           if (!(valueCase_ == 27)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists.getDefaultInstance();
           }
-          longListsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          longListsBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongListsOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.LongLists) value_,
                   getParentForChildren(),
@@ -23006,7 +23006,7 @@ public final class TorchRecPredictProtos {
         return longListsBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListsOrBuilder> stringListsBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.StringLists string_lists = 28;</code>
@@ -23123,14 +23123,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.StringLists string_lists = 28;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListsOrBuilder> 
           getStringListsFieldBuilder() {
         if (stringListsBuilder_ == null) {
           if (!(valueCase_ == 28)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists.getDefaultInstance();
           }
-          stringListsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          stringListsBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringListsOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.StringLists) value_,
                   getParentForChildren(),
@@ -23142,7 +23142,7 @@ public final class TorchRecPredictProtos {
         return stringListsBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListsOrBuilder> floatListsBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.FloatLists float_lists = 29;</code>
@@ -23259,14 +23259,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.FloatLists float_lists = 29;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListsOrBuilder> 
           getFloatListsFieldBuilder() {
         if (floatListsBuilder_ == null) {
           if (!(valueCase_ == 29)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists.getDefaultInstance();
           }
-          floatListsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          floatListsBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatListsOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FloatLists) value_,
                   getParentForChildren(),
@@ -23278,7 +23278,7 @@ public final class TorchRecPredictProtos {
         return floatListsBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListsOrBuilder> doubleListsBuilder_;
       /**
        * <code>.com.alibaba.pairec.processor.DoubleLists double_lists = 30;</code>
@@ -23395,14 +23395,14 @@ public final class TorchRecPredictProtos {
       /**
        * <code>.com.alibaba.pairec.processor.DoubleLists double_lists = 30;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private shade.protobuf.SingleFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListsOrBuilder> 
           getDoubleListsFieldBuilder() {
         if (doubleListsBuilder_ == null) {
           if (!(valueCase_ == 30)) {
             value_ = com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists.getDefaultInstance();
           }
-          doubleListsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          doubleListsBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleListsOrBuilder>(
                   (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.DoubleLists) value_,
                   getParentForChildren(),
@@ -23414,12 +23414,12 @@ public final class TorchRecPredictProtos {
         return doubleListsBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -23437,22 +23437,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PBFeature>
-        PARSER = new com.google.protobuf.AbstractParser<PBFeature>() {
+    private static final shade.protobuf.Parser<PBFeature>
+        PARSER = new shade.protobuf.AbstractParser<PBFeature>() {
       public PBFeature parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new PBFeature(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PBFeature> parser() {
+    public static shade.protobuf.Parser<PBFeature> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PBFeature> getParserForType() {
+    public shade.protobuf.Parser<PBFeature> getParserForType() {
       return PARSER;
     }
 
@@ -23464,7 +23464,7 @@ public final class TorchRecPredictProtos {
 
   public interface ContextFeaturesOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.ContextFeatures)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
@@ -23498,12 +23498,12 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.ContextFeatures}
    */
   public  static final class ContextFeatures extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.ContextFeatures)
       ContextFeaturesOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use ContextFeatures.newBuilder() to construct.
-    private ContextFeatures(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ContextFeatures(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private ContextFeatures() {
@@ -23511,21 +23511,21 @@ public final class TorchRecPredictProtos {
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private ContextFeatures(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -23552,10 +23552,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -23565,12 +23565,12 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_ContextFeatures_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_ContextFeatures_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -23622,7 +23622,7 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < features_.size(); i++) {
         output.writeMessage(1, features_.get(i));
@@ -23636,7 +23636,7 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       for (int i = 0; i < features_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeMessageSize(1, features_.get(i));
       }
       size += unknownFields.getSerializedSize();
@@ -23679,71 +23679,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -23761,7 +23761,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -23773,15 +23773,15 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.ContextFeatures}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.ContextFeatures)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeaturesOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_ContextFeatures_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_ContextFeatures_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -23794,12 +23794,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getFeaturesFieldBuilder();
         }
@@ -23815,7 +23815,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_ContextFeatures_descriptor;
       }
@@ -23852,29 +23852,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures)other);
         } else {
@@ -23904,7 +23904,7 @@ public final class TorchRecPredictProtos {
               features_ = other.features_;
               bitField0_ = (bitField0_ & ~0x00000001);
               featuresBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getFeaturesFieldBuilder() : null;
             } else {
               featuresBuilder_.addAllMessages(other.features_);
@@ -23921,13 +23921,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -23948,7 +23948,7 @@ public final class TorchRecPredictProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> featuresBuilder_;
 
       /**
@@ -24080,7 +24080,7 @@ public final class TorchRecPredictProtos {
           java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> values) {
         if (featuresBuilder_ == null) {
           ensureFeaturesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
               values, features_);
           onChanged();
         } else {
@@ -24164,11 +24164,11 @@ public final class TorchRecPredictProtos {
            getFeaturesBuilderList() {
         return getFeaturesFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private shade.protobuf.RepeatedFieldBuilderV3<
           com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> 
           getFeaturesFieldBuilder() {
         if (featuresBuilder_ == null) {
-          featuresBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          featuresBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
               com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder>(
                   features_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -24179,12 +24179,12 @@ public final class TorchRecPredictProtos {
         return featuresBuilder_;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -24202,22 +24202,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ContextFeatures>
-        PARSER = new com.google.protobuf.AbstractParser<ContextFeatures>() {
+    private static final shade.protobuf.Parser<ContextFeatures>
+        PARSER = new shade.protobuf.AbstractParser<ContextFeatures>() {
       public ContextFeatures parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new ContextFeatures(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ContextFeatures> parser() {
+    public static shade.protobuf.Parser<ContextFeatures> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ContextFeatures> getParserForType() {
+    public shade.protobuf.Parser<ContextFeatures> getParserForType() {
       return PARSER;
     }
 
@@ -24229,7 +24229,7 @@ public final class TorchRecPredictProtos {
 
   public interface PBRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.PBRequest)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -24326,7 +24326,7 @@ public final class TorchRecPredictProtos {
      *
      * <code>repeated string item_ids = 3;</code>
      */
-    com.google.protobuf.ByteString
+    shade.protobuf.ByteString
         getItemIdsBytes(int index);
 
     /**
@@ -24509,36 +24509,36 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.PBRequest}
    */
   public  static final class PBRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.PBRequest)
       PBRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use PBRequest.newBuilder() to construct.
-    private PBRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private PBRequest(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private PBRequest() {
       debugLevel_ = 0;
-      itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
       faissNeighNum_ = 0;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private PBRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -24561,11 +24561,11 @@ public final class TorchRecPredictProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                userFeatures_ = com.google.protobuf.MapField.newMapField(
+                userFeatures_ = shade.protobuf.MapField.newMapField(
                     UserFeaturesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
               userFeatures__ = input.readMessage(
                   UserFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               userFeatures_.getMutableMap().put(
@@ -24575,7 +24575,7 @@ public final class TorchRecPredictProtos {
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                itemIds_ = new com.google.protobuf.LazyStringArrayList();
+                itemIds_ = new shade.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000004;
               }
               itemIds_.add(s);
@@ -24583,11 +24583,11 @@ public final class TorchRecPredictProtos {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                contextFeatures_ = com.google.protobuf.MapField.newMapField(
+                contextFeatures_ = shade.protobuf.MapField.newMapField(
                     ContextFeaturesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000008;
               }
-              com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
               contextFeatures__ = input.readMessage(
                   ContextFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               contextFeatures_.getMutableMap().put(
@@ -24601,11 +24601,11 @@ public final class TorchRecPredictProtos {
             }
             case 50: {
               if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                itemFeatures_ = com.google.protobuf.MapField.newMapField(
+                itemFeatures_ = shade.protobuf.MapField.newMapField(
                     ItemFeaturesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000020;
               }
-              com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
               itemFeatures__ = input.readMessage(
                   ItemFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               itemFeatures_.getMutableMap().put(
@@ -24614,11 +24614,11 @@ public final class TorchRecPredictProtos {
             }
             case 58: {
               if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                metaData_ = com.google.protobuf.MapField.newMapField(
+                metaData_ = shade.protobuf.MapField.newMapField(
                     MetaDataDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000040;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.String>
               metaData__ = input.readMessage(
                   MetaDataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               metaData_.getMutableMap().put(
@@ -24627,10 +24627,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
@@ -24640,13 +24640,13 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 2:
@@ -24662,7 +24662,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -24685,22 +24685,22 @@ public final class TorchRecPredictProtos {
 
     public static final int USER_FEATURES_FIELD_NUMBER = 2;
     private static final class UserFeaturesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_UserFeaturesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.getDefaultInstance());
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> userFeatures_;
-    private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
     internalGetUserFeatures() {
       if (userFeatures_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             UserFeaturesDefaultEntryHolder.defaultEntry);
       }
       return userFeatures_;
@@ -24776,7 +24776,7 @@ public final class TorchRecPredictProtos {
     }
 
     public static final int ITEM_IDS_FIELD_NUMBER = 3;
-    private com.google.protobuf.LazyStringList itemIds_;
+    private shade.protobuf.LazyStringList itemIds_;
     /**
      * <pre>
      * item ids
@@ -24784,7 +24784,7 @@ public final class TorchRecPredictProtos {
      *
      * <code>repeated string item_ids = 3;</code>
      */
-    public com.google.protobuf.ProtocolStringList
+    public shade.protobuf.ProtocolStringList
         getItemIdsList() {
       return itemIds_;
     }
@@ -24815,29 +24815,29 @@ public final class TorchRecPredictProtos {
      *
      * <code>repeated string item_ids = 3;</code>
      */
-    public com.google.protobuf.ByteString
+    public shade.protobuf.ByteString
         getItemIdsBytes(int index) {
       return itemIds_.getByteString(index);
     }
 
     public static final int CONTEXT_FEATURES_FIELD_NUMBER = 4;
     private static final class ContextFeaturesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_ContextFeaturesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures.getDefaultInstance());
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> contextFeatures_;
-    private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
     internalGetContextFeatures() {
       if (contextFeatures_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             ContextFeaturesDefaultEntryHolder.defaultEntry);
       }
       return contextFeatures_;
@@ -24928,22 +24928,22 @@ public final class TorchRecPredictProtos {
 
     public static final int ITEM_FEATURES_FIELD_NUMBER = 6;
     private static final class ItemFeaturesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_ItemFeaturesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures.getDefaultInstance());
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> itemFeatures_;
-    private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
     internalGetItemFeatures() {
       if (itemFeatures_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             ItemFeaturesDefaultEntryHolder.defaultEntry);
       }
       return itemFeatures_;
@@ -25020,22 +25020,22 @@ public final class TorchRecPredictProtos {
 
     public static final int META_DATA_FIELD_NUMBER = 7;
     private static final class MetaDataDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.String> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.String>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_MetaDataEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.String> metaData_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+    private shade.protobuf.MapField<java.lang.String, java.lang.String>
     internalGetMetaData() {
       if (metaData_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MetaDataDefaultEntryHolder.defaultEntry);
       }
       return metaData_;
@@ -25120,21 +25120,21 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (debugLevel_ != 0) {
         output.writeInt32(1, debugLevel_);
       }
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetUserFeatures(),
           UserFeaturesDefaultEntryHolder.defaultEntry,
           2);
       for (int i = 0; i < itemIds_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, itemIds_.getRaw(i));
+        shade.protobuf.GeneratedMessageV3.writeString(output, 3, itemIds_.getRaw(i));
       }
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetContextFeatures(),
@@ -25143,13 +25143,13 @@ public final class TorchRecPredictProtos {
       if (faissNeighNum_ != 0) {
         output.writeInt32(5, faissNeighNum_);
       }
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetItemFeatures(),
           ItemFeaturesDefaultEntryHolder.defaultEntry,
           6);
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMetaData(),
@@ -25164,17 +25164,17 @@ public final class TorchRecPredictProtos {
 
       size = 0;
       if (debugLevel_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeInt32Size(1, debugLevel_);
       }
       for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> entry
            : internalGetUserFeatures().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
         userFeatures__ = UserFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(2, userFeatures__);
       }
       {
@@ -25187,36 +25187,36 @@ public final class TorchRecPredictProtos {
       }
       for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> entry
            : internalGetContextFeatures().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
         contextFeatures__ = ContextFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(4, contextFeatures__);
       }
       if (faissNeighNum_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
           .computeInt32Size(5, faissNeighNum_);
       }
       for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> entry
            : internalGetItemFeatures().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
         itemFeatures__ = ItemFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(6, itemFeatures__);
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
            : internalGetMetaData().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.String>
         metaData__ = MetaDataDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(7, metaData__);
       }
       size += unknownFields.getSerializedSize();
@@ -25291,71 +25291,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -25373,7 +25373,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -25385,16 +25385,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.PBRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.PBRequest)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 2:
@@ -25411,7 +25411,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 2:
@@ -25427,7 +25427,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -25440,12 +25440,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -25454,7 +25454,7 @@ public final class TorchRecPredictProtos {
         debugLevel_ = 0;
 
         internalGetMutableUserFeatures().clear();
-        itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         internalGetMutableContextFeatures().clear();
         faissNeighNum_ = 0;
@@ -25464,7 +25464,7 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBRequest_descriptor;
       }
@@ -25509,29 +25509,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest)other);
         } else {
@@ -25576,13 +25576,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -25632,21 +25632,21 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> userFeatures_;
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
       internalGetUserFeatures() {
         if (userFeatures_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               UserFeaturesDefaultEntryHolder.defaultEntry);
         }
         return userFeatures_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>
       internalGetMutableUserFeatures() {
         onChanged();;
         if (userFeatures_ == null) {
-          userFeatures_ = com.google.protobuf.MapField.newMapField(
+          userFeatures_ = shade.protobuf.MapField.newMapField(
               UserFeaturesDefaultEntryHolder.defaultEntry);
         }
         if (!userFeatures_.isMutable()) {
@@ -25783,10 +25783,10 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.LazyStringList itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private shade.protobuf.LazyStringList itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
       private void ensureItemIdsIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          itemIds_ = new com.google.protobuf.LazyStringArrayList(itemIds_);
+          itemIds_ = new shade.protobuf.LazyStringArrayList(itemIds_);
           bitField0_ |= 0x00000004;
          }
       }
@@ -25797,7 +25797,7 @@ public final class TorchRecPredictProtos {
        *
        * <code>repeated string item_ids = 3;</code>
        */
-      public com.google.protobuf.ProtocolStringList
+      public shade.protobuf.ProtocolStringList
           getItemIdsList() {
         return itemIds_.getUnmodifiableView();
       }
@@ -25828,7 +25828,7 @@ public final class TorchRecPredictProtos {
        *
        * <code>repeated string item_ids = 3;</code>
        */
-      public com.google.protobuf.ByteString
+      public shade.protobuf.ByteString
           getItemIdsBytes(int index) {
         return itemIds_.getByteString(index);
       }
@@ -25876,7 +25876,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllItemIds(
           java.lang.Iterable<java.lang.String> values) {
         ensureItemIdsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, itemIds_);
         onChanged();
         return this;
@@ -25889,7 +25889,7 @@ public final class TorchRecPredictProtos {
        * <code>repeated string item_ids = 3;</code>
        */
       public Builder clearItemIds() {
-        itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
@@ -25902,7 +25902,7 @@ public final class TorchRecPredictProtos {
        * <code>repeated string item_ids = 3;</code>
        */
       public Builder addItemIdsBytes(
-          com.google.protobuf.ByteString value) {
+          shade.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -25913,21 +25913,21 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> contextFeatures_;
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
       internalGetContextFeatures() {
         if (contextFeatures_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               ContextFeaturesDefaultEntryHolder.defaultEntry);
         }
         return contextFeatures_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
       internalGetMutableContextFeatures() {
         onChanged();;
         if (contextFeatures_ == null) {
-          contextFeatures_ = com.google.protobuf.MapField.newMapField(
+          contextFeatures_ = shade.protobuf.MapField.newMapField(
               ContextFeaturesDefaultEntryHolder.defaultEntry);
         }
         if (!contextFeatures_.isMutable()) {
@@ -26105,21 +26105,21 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures> itemFeatures_;
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
       internalGetItemFeatures() {
         if (itemFeatures_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               ItemFeaturesDefaultEntryHolder.defaultEntry);
         }
         return itemFeatures_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.ContextFeatures>
       internalGetMutableItemFeatures() {
         onChanged();;
         if (itemFeatures_ == null) {
-          itemFeatures_ = com.google.protobuf.MapField.newMapField(
+          itemFeatures_ = shade.protobuf.MapField.newMapField(
               ItemFeaturesDefaultEntryHolder.defaultEntry);
         }
         if (!itemFeatures_.isMutable()) {
@@ -26256,21 +26256,21 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.String> metaData_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetMetaData() {
         if (metaData_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MetaDataDefaultEntryHolder.defaultEntry);
         }
         return metaData_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetMutableMetaData() {
         onChanged();;
         if (metaData_ == null) {
-          metaData_ = com.google.protobuf.MapField.newMapField(
+          metaData_ = shade.protobuf.MapField.newMapField(
               MetaDataDefaultEntryHolder.defaultEntry);
         }
         if (!metaData_.isMutable()) {
@@ -26407,12 +26407,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -26430,22 +26430,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PBRequest>
-        PARSER = new com.google.protobuf.AbstractParser<PBRequest>() {
+    private static final shade.protobuf.Parser<PBRequest>
+        PARSER = new shade.protobuf.AbstractParser<PBRequest>() {
       public PBRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new PBRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PBRequest> parser() {
+    public static shade.protobuf.Parser<PBRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PBRequest> getParserForType() {
+    public shade.protobuf.Parser<PBRequest> getParserForType() {
       return PARSER;
     }
 
@@ -26457,7 +26457,7 @@ public final class TorchRecPredictProtos {
 
   public interface PBResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.PBResponse)
-      com.google.protobuf.MessageOrBuilder {
+      shade.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -26653,7 +26653,7 @@ public final class TorchRecPredictProtos {
      *
      * <code>repeated string item_ids = 4;</code>
      */
-    com.google.protobuf.ByteString
+    shade.protobuf.ByteString
         getItemIdsBytes(int index);
   }
   /**
@@ -26664,34 +26664,34 @@ public final class TorchRecPredictProtos {
    * Protobuf type {@code com.alibaba.pairec.processor.PBResponse}
    */
   public  static final class PBResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      shade.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.PBResponse)
       PBResponseOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use PBResponse.newBuilder() to construct.
-    private PBResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private PBResponse(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private PBResponse() {
-      itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public final shade.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private PBResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -26709,11 +26709,11 @@ public final class TorchRecPredictProtos {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mapOutputs_ = com.google.protobuf.MapField.newMapField(
+                mapOutputs_ = shade.protobuf.MapField.newMapField(
                     MapOutputsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
               mapOutputs__ = input.readMessage(
                   MapOutputsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               mapOutputs_.getMutableMap().put(
@@ -26722,11 +26722,11 @@ public final class TorchRecPredictProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                generateFeatures_ = com.google.protobuf.MapField.newMapField(
+                generateFeatures_ = shade.protobuf.MapField.newMapField(
                     GenerateFeaturesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.String>
               generateFeatures__ = input.readMessage(
                   GenerateFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               generateFeatures_.getMutableMap().put(
@@ -26735,11 +26735,11 @@ public final class TorchRecPredictProtos {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                rawFeatures_ = com.google.protobuf.MapField.newMapField(
+                rawFeatures_ = shade.protobuf.MapField.newMapField(
                     RawFeaturesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000004;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              shade.protobuf.MapEntry<java.lang.String, java.lang.String>
               rawFeatures__ = input.readMessage(
                   RawFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               rawFeatures_.getMutableMap().put(
@@ -26749,7 +26749,7 @@ public final class TorchRecPredictProtos {
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                itemIds_ = new com.google.protobuf.LazyStringArrayList();
+                itemIds_ = new shade.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000008;
               }
               itemIds_.add(s);
@@ -26757,10 +26757,10 @@ public final class TorchRecPredictProtos {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new shade.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
@@ -26770,13 +26770,13 @@ public final class TorchRecPredictProtos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static final shade.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
+    protected shade.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
         case 1:
@@ -26790,7 +26790,7 @@ public final class TorchRecPredictProtos {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -26799,22 +26799,22 @@ public final class TorchRecPredictProtos {
 
     public static final int MAP_OUTPUTS_FIELD_NUMBER = 1;
     private static final class MapOutputsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
                   com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto.getDefaultInstance());
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto> mapOutputs_;
-    private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
     internalGetMapOutputs() {
       if (mapOutputs_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             MapOutputsDefaultEntryHolder.defaultEntry);
       }
       return mapOutputs_;
@@ -26891,22 +26891,22 @@ public final class TorchRecPredictProtos {
 
     public static final int GENERATE_FEATURES_FIELD_NUMBER = 2;
     private static final class GenerateFeaturesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.String> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.String>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_GenerateFeaturesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.String> generateFeatures_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+    private shade.protobuf.MapField<java.lang.String, java.lang.String>
     internalGetGenerateFeatures() {
       if (generateFeatures_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             GenerateFeaturesDefaultEntryHolder.defaultEntry);
       }
       return generateFeatures_;
@@ -26983,22 +26983,22 @@ public final class TorchRecPredictProtos {
 
     public static final int RAW_FEATURES_FIELD_NUMBER = 3;
     private static final class RawFeaturesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
+      static final shade.protobuf.MapEntry<
           java.lang.String, java.lang.String> defaultEntry =
-              com.google.protobuf.MapEntry
+              shade.protobuf.MapEntry
               .<java.lang.String, java.lang.String>newDefaultInstance(
                   com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  shade.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    private com.google.protobuf.MapField<
+    private shade.protobuf.MapField<
         java.lang.String, java.lang.String> rawFeatures_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+    private shade.protobuf.MapField<java.lang.String, java.lang.String>
     internalGetRawFeatures() {
       if (rawFeatures_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
+        return shade.protobuf.MapField.emptyMapField(
             RawFeaturesDefaultEntryHolder.defaultEntry);
       }
       return rawFeatures_;
@@ -27074,7 +27074,7 @@ public final class TorchRecPredictProtos {
     }
 
     public static final int ITEM_IDS_FIELD_NUMBER = 4;
-    private com.google.protobuf.LazyStringList itemIds_;
+    private shade.protobuf.LazyStringList itemIds_;
     /**
      * <pre>
      * item ids
@@ -27082,7 +27082,7 @@ public final class TorchRecPredictProtos {
      *
      * <code>repeated string item_ids = 4;</code>
      */
-    public com.google.protobuf.ProtocolStringList
+    public shade.protobuf.ProtocolStringList
         getItemIdsList() {
       return itemIds_;
     }
@@ -27113,7 +27113,7 @@ public final class TorchRecPredictProtos {
      *
      * <code>repeated string item_ids = 4;</code>
      */
-    public com.google.protobuf.ByteString
+    public shade.protobuf.ByteString
         getItemIdsBytes(int index) {
       return itemIds_.getByteString(index);
     }
@@ -27128,28 +27128,28 @@ public final class TorchRecPredictProtos {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
+    public void writeTo(shade.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetMapOutputs(),
           MapOutputsDefaultEntryHolder.defaultEntry,
           1);
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetGenerateFeatures(),
           GenerateFeaturesDefaultEntryHolder.defaultEntry,
           2);
-      com.google.protobuf.GeneratedMessageV3
+      shade.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetRawFeatures(),
           RawFeaturesDefaultEntryHolder.defaultEntry,
           3);
       for (int i = 0; i < itemIds_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, itemIds_.getRaw(i));
+        shade.protobuf.GeneratedMessageV3.writeString(output, 4, itemIds_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -27161,32 +27161,32 @@ public final class TorchRecPredictProtos {
       size = 0;
       for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto> entry
            : internalGetMapOutputs().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
         mapOutputs__ = MapOutputsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(1, mapOutputs__);
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
            : internalGetGenerateFeatures().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.String>
         generateFeatures__ = GenerateFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(2, generateFeatures__);
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
            : internalGetRawFeatures().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        shade.protobuf.MapEntry<java.lang.String, java.lang.String>
         rawFeatures__ = RawFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        size += com.google.protobuf.CodedOutputStream
+        size += shade.protobuf.CodedOutputStream
             .computeMessageSize(3, rawFeatures__);
       }
       {
@@ -27255,71 +27255,71 @@ public final class TorchRecPredictProtos {
 
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
         java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
         java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
         byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseDelimitedFrom(
         java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
+        shade.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
     public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return shade.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -27337,7 +27337,7 @@ public final class TorchRecPredictProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -27349,16 +27349,16 @@ public final class TorchRecPredictProtos {
      * Protobuf type {@code com.alibaba.pairec.processor.PBResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.PBResponse)
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static final shade.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
+      protected shade.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
           case 1:
@@ -27373,7 +27373,7 @@ public final class TorchRecPredictProtos {
         }
       }
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
+      protected shade.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
           case 1:
@@ -27387,7 +27387,7 @@ public final class TorchRecPredictProtos {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -27400,12 +27400,12 @@ public final class TorchRecPredictProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (shade.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -27414,12 +27414,12 @@ public final class TorchRecPredictProtos {
         internalGetMutableMapOutputs().clear();
         internalGetMutableGenerateFeatures().clear();
         internalGetMutableRawFeatures().clear();
-        itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor
+      public shade.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_descriptor;
       }
@@ -27458,29 +27458,29 @@ public final class TorchRecPredictProtos {
         return (Builder) super.clone();
       }
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          shade.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
+          shade.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(shade.protobuf.Message other) {
         if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse) {
           return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse)other);
         } else {
@@ -27517,13 +27517,13 @@ public final class TorchRecPredictProtos {
       }
 
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
@@ -27535,21 +27535,21 @@ public final class TorchRecPredictProtos {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto> mapOutputs_;
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
       internalGetMapOutputs() {
         if (mapOutputs_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               MapOutputsDefaultEntryHolder.defaultEntry);
         }
         return mapOutputs_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.ArrayProto>
       internalGetMutableMapOutputs() {
         onChanged();;
         if (mapOutputs_ == null) {
-          mapOutputs_ = com.google.protobuf.MapField.newMapField(
+          mapOutputs_ = shade.protobuf.MapField.newMapField(
               MapOutputsDefaultEntryHolder.defaultEntry);
         }
         if (!mapOutputs_.isMutable()) {
@@ -27686,21 +27686,21 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.String> generateFeatures_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetGenerateFeatures() {
         if (generateFeatures_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               GenerateFeaturesDefaultEntryHolder.defaultEntry);
         }
         return generateFeatures_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetMutableGenerateFeatures() {
         onChanged();;
         if (generateFeatures_ == null) {
-          generateFeatures_ = com.google.protobuf.MapField.newMapField(
+          generateFeatures_ = shade.protobuf.MapField.newMapField(
               GenerateFeaturesDefaultEntryHolder.defaultEntry);
         }
         if (!generateFeatures_.isMutable()) {
@@ -27837,21 +27837,21 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.MapField<
+      private shade.protobuf.MapField<
           java.lang.String, java.lang.String> rawFeatures_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetRawFeatures() {
         if (rawFeatures_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
+          return shade.protobuf.MapField.emptyMapField(
               RawFeaturesDefaultEntryHolder.defaultEntry);
         }
         return rawFeatures_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
       internalGetMutableRawFeatures() {
         onChanged();;
         if (rawFeatures_ == null) {
-          rawFeatures_ = com.google.protobuf.MapField.newMapField(
+          rawFeatures_ = shade.protobuf.MapField.newMapField(
               RawFeaturesDefaultEntryHolder.defaultEntry);
         }
         if (!rawFeatures_.isMutable()) {
@@ -27988,10 +27988,10 @@ public final class TorchRecPredictProtos {
         return this;
       }
 
-      private com.google.protobuf.LazyStringList itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private shade.protobuf.LazyStringList itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
       private void ensureItemIdsIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          itemIds_ = new com.google.protobuf.LazyStringArrayList(itemIds_);
+          itemIds_ = new shade.protobuf.LazyStringArrayList(itemIds_);
           bitField0_ |= 0x00000008;
          }
       }
@@ -28002,7 +28002,7 @@ public final class TorchRecPredictProtos {
        *
        * <code>repeated string item_ids = 4;</code>
        */
-      public com.google.protobuf.ProtocolStringList
+      public shade.protobuf.ProtocolStringList
           getItemIdsList() {
         return itemIds_.getUnmodifiableView();
       }
@@ -28033,7 +28033,7 @@ public final class TorchRecPredictProtos {
        *
        * <code>repeated string item_ids = 4;</code>
        */
-      public com.google.protobuf.ByteString
+      public shade.protobuf.ByteString
           getItemIdsBytes(int index) {
         return itemIds_.getByteString(index);
       }
@@ -28081,7 +28081,7 @@ public final class TorchRecPredictProtos {
       public Builder addAllItemIds(
           java.lang.Iterable<java.lang.String> values) {
         ensureItemIdsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
             values, itemIds_);
         onChanged();
         return this;
@@ -28094,7 +28094,7 @@ public final class TorchRecPredictProtos {
        * <code>repeated string item_ids = 4;</code>
        */
       public Builder clearItemIds() {
-        itemIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
@@ -28107,7 +28107,7 @@ public final class TorchRecPredictProtos {
        * <code>repeated string item_ids = 4;</code>
        */
       public Builder addItemIdsBytes(
-          com.google.protobuf.ByteString value) {
+          shade.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -28118,12 +28118,12 @@ public final class TorchRecPredictProtos {
         return this;
       }
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final shade.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -28141,22 +28141,22 @@ public final class TorchRecPredictProtos {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PBResponse>
-        PARSER = new com.google.protobuf.AbstractParser<PBResponse>() {
+    private static final shade.protobuf.Parser<PBResponse>
+        PARSER = new shade.protobuf.AbstractParser<PBResponse>() {
       public PBResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
         return new PBResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PBResponse> parser() {
+    public static shade.protobuf.Parser<PBResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PBResponse> getParserForType() {
+    public shade.protobuf.Parser<PBResponse> getParserForType() {
       return PARSER;
     }
 
@@ -28166,267 +28166,267 @@ public final class TorchRecPredictProtos {
 
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongStringMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongStringMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongStringMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongIntMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongIntMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongIntMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongLongMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongLongMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongLongMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongFloatMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongFloatMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongFloatMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongDoubleMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongDoubleMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongDoubleMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringStringMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringStringMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringStringMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringIntMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringIntMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringIntMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringLongMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringLongMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringLongMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringFloatMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringFloatMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringFloatMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringDoubleMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringDoubleMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringDoubleMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntStringMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntStringMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntStringMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntIntMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntIntMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntIntMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntLongMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntLongMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntLongMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntFloatMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntFloatMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntFloatMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntDoubleMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntDoubleMap_MapFieldEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntDoubleMap_MapFieldEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntList_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntList_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongList_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongList_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_FloatList_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_FloatList_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_DoubleList_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_DoubleList_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringList_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringList_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_IntLists_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_IntLists_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongLists_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_LongLists_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_FloatLists_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_FloatLists_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_DoubleLists_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_DoubleLists_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_StringLists_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_StringLists_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBFeature_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBFeature_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_ContextFeatures_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_ContextFeatures_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBRequest_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBRequest_UserFeaturesEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBRequest_UserFeaturesEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBRequest_ContextFeaturesEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBRequest_ContextFeaturesEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBRequest_ItemFeaturesEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBRequest_ItemFeaturesEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBRequest_MetaDataEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBRequest_MetaDataEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBResponse_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBResponse_GenerateFeaturesEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBResponse_GenerateFeaturesEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
+  public static shade.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static  shade.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -28581,323 +28581,323 @@ public final class TorchRecPredictProtos {
       "dictProtosZ\026.;torch_predict_protosb\006prot" +
       "o3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
+    shade.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new shade.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public shade.protobuf.ExtensionRegistry assignDescriptors(
+              shade.protobuf.Descriptors.FileDescriptor root) {
             descriptor = root;
             return null;
           }
         };
-    com.google.protobuf.Descriptors.FileDescriptor
+    shade.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        new shade.protobuf.Descriptors.FileDescriptor[] {
           com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.getDescriptor(),
         }, assigner);
     internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_alibaba_pairec_processor_LongStringMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_LongStringMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_LongStringMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongStringMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_alibaba_pairec_processor_LongIntMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_LongIntMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_LongIntMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_LongIntMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongIntMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_alibaba_pairec_processor_LongLongMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_LongLongMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_LongLongMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_LongLongMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongLongMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_alibaba_pairec_processor_LongFloatMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_LongFloatMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_LongFloatMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_LongFloatMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongFloatMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_com_alibaba_pairec_processor_LongDoubleMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_LongDoubleMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_LongDoubleMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_LongDoubleMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongDoubleMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_com_alibaba_pairec_processor_StringStringMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_StringStringMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_StringStringMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_StringStringMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringStringMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_com_alibaba_pairec_processor_StringIntMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_StringIntMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_StringIntMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_StringIntMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringIntMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_com_alibaba_pairec_processor_StringLongMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_StringLongMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_StringLongMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_StringLongMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringLongMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_com_alibaba_pairec_processor_StringFloatMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_StringFloatMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_StringFloatMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_StringFloatMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringFloatMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_com_alibaba_pairec_processor_StringDoubleMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_StringDoubleMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_StringDoubleMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_StringDoubleMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringDoubleMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_com_alibaba_pairec_processor_IntStringMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_IntStringMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_IntStringMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_IntStringMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntStringMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_com_alibaba_pairec_processor_IntIntMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_IntIntMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_IntIntMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_IntIntMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntIntMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_com_alibaba_pairec_processor_IntLongMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_IntLongMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_IntLongMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_IntLongMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntLongMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_com_alibaba_pairec_processor_IntFloatMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_IntFloatMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_IntFloatMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_IntFloatMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntFloatMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_com_alibaba_pairec_processor_IntDoubleMap_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor,
         new java.lang.String[] { "MapField", });
     internal_static_com_alibaba_pairec_processor_IntDoubleMap_MapFieldEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_IntDoubleMap_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_IntDoubleMap_MapFieldEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntDoubleMap_MapFieldEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_IntList_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_com_alibaba_pairec_processor_IntList_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntList_descriptor,
         new java.lang.String[] { "Features", });
     internal_static_com_alibaba_pairec_processor_LongList_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_com_alibaba_pairec_processor_LongList_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongList_descriptor,
         new java.lang.String[] { "Features", });
     internal_static_com_alibaba_pairec_processor_FloatList_descriptor =
       getDescriptor().getMessageTypes().get(17);
     internal_static_com_alibaba_pairec_processor_FloatList_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_FloatList_descriptor,
         new java.lang.String[] { "Features", });
     internal_static_com_alibaba_pairec_processor_DoubleList_descriptor =
       getDescriptor().getMessageTypes().get(18);
     internal_static_com_alibaba_pairec_processor_DoubleList_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_DoubleList_descriptor,
         new java.lang.String[] { "Features", });
     internal_static_com_alibaba_pairec_processor_StringList_descriptor =
       getDescriptor().getMessageTypes().get(19);
     internal_static_com_alibaba_pairec_processor_StringList_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringList_descriptor,
         new java.lang.String[] { "Features", });
     internal_static_com_alibaba_pairec_processor_IntLists_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_com_alibaba_pairec_processor_IntLists_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_IntLists_descriptor,
         new java.lang.String[] { "Lists", });
     internal_static_com_alibaba_pairec_processor_LongLists_descriptor =
       getDescriptor().getMessageTypes().get(21);
     internal_static_com_alibaba_pairec_processor_LongLists_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_LongLists_descriptor,
         new java.lang.String[] { "Lists", });
     internal_static_com_alibaba_pairec_processor_FloatLists_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_com_alibaba_pairec_processor_FloatLists_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_FloatLists_descriptor,
         new java.lang.String[] { "Lists", });
     internal_static_com_alibaba_pairec_processor_DoubleLists_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_com_alibaba_pairec_processor_DoubleLists_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_DoubleLists_descriptor,
         new java.lang.String[] { "Lists", });
     internal_static_com_alibaba_pairec_processor_StringLists_descriptor =
       getDescriptor().getMessageTypes().get(24);
     internal_static_com_alibaba_pairec_processor_StringLists_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_StringLists_descriptor,
         new java.lang.String[] { "Lists", });
     internal_static_com_alibaba_pairec_processor_PBFeature_descriptor =
       getDescriptor().getMessageTypes().get(25);
     internal_static_com_alibaba_pairec_processor_PBFeature_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBFeature_descriptor,
         new java.lang.String[] { "IntFeature", "LongFeature", "StringFeature", "FloatFeature", "DoubleFeature", "LongStringMap", "LongIntMap", "LongLongMap", "LongFloatMap", "LongDoubleMap", "StringStringMap", "StringIntMap", "StringLongMap", "StringFloatMap", "StringDoubleMap", "IntStringMap", "IntIntMap", "IntLongMap", "IntFloatMap", "IntDoubleMap", "IntList", "LongList", "StringList", "FloatList", "DoubleList", "IntLists", "LongLists", "StringLists", "FloatLists", "DoubleLists", "Value", });
     internal_static_com_alibaba_pairec_processor_ContextFeatures_descriptor =
       getDescriptor().getMessageTypes().get(26);
     internal_static_com_alibaba_pairec_processor_ContextFeatures_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_ContextFeatures_descriptor,
         new java.lang.String[] { "Features", });
     internal_static_com_alibaba_pairec_processor_PBRequest_descriptor =
       getDescriptor().getMessageTypes().get(27);
     internal_static_com_alibaba_pairec_processor_PBRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBRequest_descriptor,
         new java.lang.String[] { "DebugLevel", "UserFeatures", "ItemIds", "ContextFeatures", "FaissNeighNum", "ItemFeatures", "MetaData", });
     internal_static_com_alibaba_pairec_processor_PBRequest_UserFeaturesEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBRequest_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_PBRequest_UserFeaturesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBRequest_UserFeaturesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBRequest_ContextFeaturesEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBRequest_descriptor.getNestedTypes().get(1);
     internal_static_com_alibaba_pairec_processor_PBRequest_ContextFeaturesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBRequest_ContextFeaturesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBRequest_ItemFeaturesEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBRequest_descriptor.getNestedTypes().get(2);
     internal_static_com_alibaba_pairec_processor_PBRequest_ItemFeaturesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBRequest_ItemFeaturesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBRequest_MetaDataEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBRequest_descriptor.getNestedTypes().get(3);
     internal_static_com_alibaba_pairec_processor_PBRequest_MetaDataEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBRequest_MetaDataEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBResponse_descriptor =
       getDescriptor().getMessageTypes().get(28);
     internal_static_com_alibaba_pairec_processor_PBResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBResponse_descriptor,
         new java.lang.String[] { "MapOutputs", "GenerateFeatures", "RawFeatures", "ItemIds", });
     internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBResponse_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBResponse_GenerateFeaturesEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBResponse_descriptor.getNestedTypes().get(1);
     internal_static_com_alibaba_pairec_processor_PBResponse_GenerateFeaturesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBResponse_GenerateFeaturesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBResponse_descriptor.getNestedTypes().get(2);
     internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.getDescriptor();
