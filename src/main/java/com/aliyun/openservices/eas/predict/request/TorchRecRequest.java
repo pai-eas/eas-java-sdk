@@ -275,6 +275,11 @@ public class TorchRecRequest {
         request.putItemFeatures(key, ctxBuilder.build());
     }
 
+    public void addMetaData(String key, String value) {
+        if (key != null && value != null) {
+            request.putMetaData(key, value);
+        }
+    }
 
     public void appendItemId(String itemId) {
         request.addItemIds(itemId);

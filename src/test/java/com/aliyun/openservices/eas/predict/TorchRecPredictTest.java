@@ -54,6 +54,9 @@ public class TorchRecPredictTest {
         TorchRecRequest.addItemFeature("id_4", "a","string");
         TorchRecRequest.addItemFeature("id_4", "b","string");
 
+        TorchRecRequest.addMetaData("task_id", "task_id_123");
+        TorchRecRequest.addMetaData("request_id", "request_id_123");
+
         System.out.println(TorchRecRequest.request);
         return TorchRecRequest;
     }
