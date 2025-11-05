@@ -26,6 +26,13 @@ public class HttpConfig {
     private int idleConnectionTimeout;
 
     /**
+     * The time to live for persistent connections (in milliseconds).
+     * Connections whose time to live expires will be closed.
+     * Negative value disables the check.
+     */
+    private long connTimeToLive = -1L;
+
+    /**
      * Default constructor that initializes the default configuration.
      */
     public HttpConfig() {
@@ -158,8 +165,29 @@ public class HttpConfig {
     public void setIdleConnectionTimeout(int idleConnectionTimeout) {
         this.idleConnectionTimeout = idleConnectionTimeout;
 
-        if (this.connectionCleanupInterval == 0) {
-            this.connectionCleanupInterval = 30000;
+        if (this.connectionCleanupInterval <= 0) {
+            this.connectionCleanupInterval = Math.min(3000, idleConnectionTimeout);
+        }
+    }
+
+    /**
+     * Gets the time to live for persistent connections.
+     *
+     * @return connTimeToLive
+     */
+    public long getConnTimeToLive() {
+        return connTimeToLive;
+    }
+
+    /**
+     * Sets the time to live for persistent connections.
+     *
+     * @param connTimeToLive Time to live for persistent connections
+     */
+    public void setConnTimeToLive(long connTimeToLive) {
+        this.connTimeToLive = connTimeToLive;
+        if (this.connectionCleanupInterval <= 0) {
+            this.connectionCleanupInterval = Math.min(3000, (int)connTimeToLive);
         }
     }
 }
