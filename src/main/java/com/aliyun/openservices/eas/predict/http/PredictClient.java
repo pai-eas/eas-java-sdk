@@ -17,13 +17,21 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.conn.DnsResolver;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
 import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
 import org.apache.http.impl.nio.reactor.IOReactorConfig;
+import org.apache.http.nio.conn.NHttpConnectionFactory;
 import org.apache.http.nio.entity.NByteArrayEntity;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.nio.conn.SchemeIOSessionStrategy;
+import org.apache.http.nio.conn.ssl.SSLIOSessionStrategy;
+import org.apache.http.nio.conn.NoopIOSessionStrategy;
+import org.apache.http.conn.SchemePortResolver;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
@@ -140,10 +148,16 @@ public class PredictClient {
     public PredictClient(HttpConfig httpConfig) {
         try {
             ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor();
+            Registry<SchemeIOSessionStrategy> sessionStrategyRegistry = RegistryBuilder.<SchemeIOSessionStrategy>create()
+                    .register("http", NoopIOSessionStrategy.INSTANCE)
+                    .register("https", SSLIOSessionStrategy.getDefaultStrategy())
+                    .build();
             PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(
-                    ioReactor);
+                ioReactor, (NHttpConnectionFactory)null, sessionStrategyRegistry,(SchemePortResolver)null, (DnsResolver)null,
+                httpConfig.getConnTimeToLive(), TimeUnit.MILLISECONDS);
             cm.setMaxTotal(httpConfig.getMaxConnectionCount());
             cm.setDefaultMaxPerRoute(httpConfig.getMaxConnectionPerRoute());
+
             requestTimeout = httpConfig.getRequestTimeout();
             IOReactorConfig config = IOReactorConfig.custom()
                     .setTcpNoDelay(true)
