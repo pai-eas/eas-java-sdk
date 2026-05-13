@@ -26655,6 +26655,60 @@ public final class TorchRecPredictProtos {
      */
     shade.protobuf.ByteString
         getItemIdsBytes(int index);
+
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+    int getPassThroughDataCount();
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+    boolean containsPassThroughData(
+        java.lang.String key);
+    /**
+     * Use {@link #getPassThroughDataMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.String>
+    getPassThroughData();
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.String>
+    getPassThroughDataMap();
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+
+    java.lang.String getPassThroughDataOrDefault(
+        java.lang.String key,
+        java.lang.String defaultValue);
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+
+    java.lang.String getPassThroughDataOrThrow(
+        java.lang.String key);
   }
   /**
    * <pre>
@@ -26755,6 +26809,19 @@ public final class TorchRecPredictProtos {
               itemIds_.add(s);
               break;
             }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                passThroughData_ = shade.protobuf.MapField.newMapField(
+                    PassThroughDataDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000010;
+              }
+              shade.protobuf.MapEntry<java.lang.String, java.lang.String>
+              passThroughData__ = input.readMessage(
+                  PassThroughDataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              passThroughData_.getMutableMap().put(
+                  passThroughData__.getKey(), passThroughData__.getValue());
+              break;
+            }
           }
         }
       } catch (shade.protobuf.InvalidProtocolBufferException e) {
@@ -26785,6 +26852,8 @@ public final class TorchRecPredictProtos {
           return internalGetGenerateFeatures();
         case 3:
           return internalGetRawFeatures();
+        case 5:
+          return internalGetPassThroughData();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -27118,6 +27187,98 @@ public final class TorchRecPredictProtos {
       return itemIds_.getByteString(index);
     }
 
+    public static final int PASS_THROUGH_DATA_FIELD_NUMBER = 5;
+    private static final class PassThroughDataDefaultEntryHolder {
+      static final shade.protobuf.MapEntry<
+          java.lang.String, java.lang.String> defaultEntry =
+              shade.protobuf.MapEntry
+              .<java.lang.String, java.lang.String>newDefaultInstance(
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_PBResponse_PassThroughDataEntry_descriptor, 
+                  shade.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  shade.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    private shade.protobuf.MapField<
+        java.lang.String, java.lang.String> passThroughData_;
+    private shade.protobuf.MapField<java.lang.String, java.lang.String>
+    internalGetPassThroughData() {
+      if (passThroughData_ == null) {
+        return shade.protobuf.MapField.emptyMapField(
+            PassThroughDataDefaultEntryHolder.defaultEntry);
+      }
+      return passThroughData_;
+    }
+
+    public int getPassThroughDataCount() {
+      return internalGetPassThroughData().getMap().size();
+    }
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+
+    public boolean containsPassThroughData(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetPassThroughData().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getPassThroughDataMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getPassThroughData() {
+      return getPassThroughDataMap();
+    }
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+
+    public java.util.Map<java.lang.String, java.lang.String> getPassThroughDataMap() {
+      return internalGetPassThroughData().getMap();
+    }
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+
+    public java.lang.String getPassThroughDataOrDefault(
+        java.lang.String key,
+        java.lang.String defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetPassThroughData().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * model configured pass-through data
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+     */
+
+    public java.lang.String getPassThroughDataOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetPassThroughData().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -27151,6 +27312,12 @@ public final class TorchRecPredictProtos {
       for (int i = 0; i < itemIds_.size(); i++) {
         shade.protobuf.GeneratedMessageV3.writeString(output, 4, itemIds_.getRaw(i));
       }
+      shade.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetPassThroughData(),
+          PassThroughDataDefaultEntryHolder.defaultEntry,
+          5);
       unknownFields.writeTo(output);
     }
 
@@ -27197,6 +27364,16 @@ public final class TorchRecPredictProtos {
         size += dataSize;
         size += 1 * getItemIdsList().size();
       }
+      for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+           : internalGetPassThroughData().getMap().entrySet()) {
+        shade.protobuf.MapEntry<java.lang.String, java.lang.String>
+        passThroughData__ = PassThroughDataDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += shade.protobuf.CodedOutputStream
+            .computeMessageSize(5, passThroughData__);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -27221,6 +27398,8 @@ public final class TorchRecPredictProtos {
           other.internalGetRawFeatures());
       result = result && getItemIdsList()
           .equals(other.getItemIdsList());
+      result = result && internalGetPassThroughData().equals(
+          other.internalGetPassThroughData());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -27247,6 +27426,10 @@ public final class TorchRecPredictProtos {
       if (getItemIdsCount() > 0) {
         hash = (37 * hash) + ITEM_IDS_FIELD_NUMBER;
         hash = (53 * hash) + getItemIdsList().hashCode();
+      }
+      if (!internalGetPassThroughData().getMap().isEmpty()) {
+        hash = (37 * hash) + PASS_THROUGH_DATA_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetPassThroughData().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -27367,6 +27550,8 @@ public final class TorchRecPredictProtos {
             return internalGetGenerateFeatures();
           case 3:
             return internalGetRawFeatures();
+          case 5:
+            return internalGetPassThroughData();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -27382,6 +27567,8 @@ public final class TorchRecPredictProtos {
             return internalGetMutableGenerateFeatures();
           case 3:
             return internalGetMutableRawFeatures();
+          case 5:
+            return internalGetMutablePassThroughData();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -27416,6 +27603,7 @@ public final class TorchRecPredictProtos {
         internalGetMutableRawFeatures().clear();
         itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
+        internalGetMutablePassThroughData().clear();
         return this;
       }
 
@@ -27450,6 +27638,8 @@ public final class TorchRecPredictProtos {
           bitField0_ = (bitField0_ & ~0x00000008);
         }
         result.itemIds_ = itemIds_;
+        result.passThroughData_ = internalGetPassThroughData();
+        result.passThroughData_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -27507,6 +27697,8 @@ public final class TorchRecPredictProtos {
           }
           onChanged();
         }
+        internalGetMutablePassThroughData().mergeFrom(
+            other.internalGetPassThroughData());
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -28115,6 +28307,157 @@ public final class TorchRecPredictProtos {
         ensureItemIdsIsMutable();
         itemIds_.add(value);
         onChanged();
+        return this;
+      }
+
+      private shade.protobuf.MapField<
+          java.lang.String, java.lang.String> passThroughData_;
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetPassThroughData() {
+        if (passThroughData_ == null) {
+          return shade.protobuf.MapField.emptyMapField(
+              PassThroughDataDefaultEntryHolder.defaultEntry);
+        }
+        return passThroughData_;
+      }
+      private shade.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetMutablePassThroughData() {
+        onChanged();;
+        if (passThroughData_ == null) {
+          passThroughData_ = shade.protobuf.MapField.newMapField(
+              PassThroughDataDefaultEntryHolder.defaultEntry);
+        }
+        if (!passThroughData_.isMutable()) {
+          passThroughData_ = passThroughData_.copy();
+        }
+        return passThroughData_;
+      }
+
+      public int getPassThroughDataCount() {
+        return internalGetPassThroughData().getMap().size();
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+
+      public boolean containsPassThroughData(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetPassThroughData().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getPassThroughDataMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.String> getPassThroughData() {
+        return getPassThroughDataMap();
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+
+      public java.util.Map<java.lang.String, java.lang.String> getPassThroughDataMap() {
+        return internalGetPassThroughData().getMap();
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+
+      public java.lang.String getPassThroughDataOrDefault(
+          java.lang.String key,
+          java.lang.String defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.String> map =
+            internalGetPassThroughData().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+
+      public java.lang.String getPassThroughDataOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.String> map =
+            internalGetPassThroughData().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearPassThroughData() {
+        internalGetMutablePassThroughData().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+
+      public Builder removePassThroughData(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutablePassThroughData().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.String>
+      getMutablePassThroughData() {
+        return internalGetMutablePassThroughData().getMutableMap();
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+      public Builder putPassThroughData(
+          java.lang.String key,
+          java.lang.String value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutablePassThroughData().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * model configured pass-through data
+       * </pre>
+       *
+       * <code>map&lt;string, string&gt; pass_through_data = 5;</code>
+       */
+
+      public Builder putAllPassThroughData(
+          java.util.Map<java.lang.String, java.lang.String> values) {
+        internalGetMutablePassThroughData().getMutableMap()
+            .putAll(values);
         return this;
       }
       public final Builder setUnknownFields(
@@ -29602,6 +29945,11 @@ public final class TorchRecPredictProtos {
     shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_fieldAccessorTable;
   private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_PBResponse_PassThroughDataEntry_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_PBResponse_PassThroughDataEntry_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_PBLogData_descriptor;
   private static final 
     shade.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -29759,30 +30107,34 @@ public final class TorchRecPredictProtos {
       ":\0028\001\032b\n\021ItemFeaturesEntry\022\013\n\003key\030\001 \001(\t\022<" +
       "\n\005value\030\002 \001(\0132-.com.alibaba.pairec.proce" +
       "ssor.ContextFeatures:\0028\001\032/\n\rMetaDataEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\322\003\n\nPB" +
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\344\004\n\nPB" +
       "Response\022M\n\013map_outputs\030\001 \003(\01328.com.alib" +
       "aba.pairec.processor.PBResponse.MapOutpu" +
       "tsEntry\022Y\n\021generate_features\030\002 \003(\0132>.com" +
       ".alibaba.pairec.processor.PBResponse.Gen" +
       "erateFeaturesEntry\022O\n\014raw_features\030\003 \003(\013" +
       "29.com.alibaba.pairec.processor.PBRespon" +
-      "se.RawFeaturesEntry\022\020\n\010item_ids\030\004 \003(\t\032J\n" +
-      "\017MapOutputsEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002" +
-      " \001(\0132\027.pytorch.eas.ArrayProto:\0028\001\0327\n\025Gen" +
-      "erateFeaturesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\t:\0028\001\0322\n\020RawFeaturesEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\334\002\n\tPBLogData\0228\n\007" +
-      "request\030\001 \001(\0132\'.com.alibaba.pairec.proce" +
-      "ssor.PBRequest\022N\n\014raw_features\030\002 \003(\01328.c" +
-      "om.alibaba.pairec.processor.PBLogData.Ra" +
-      "wFeaturesEntry\022X\n\021generate_features\030\003 \003(" +
-      "\0132=.com.alibaba.pairec.processor.PBLogDa" +
-      "ta.GenerateFeaturesEntry\0322\n\020RawFeaturesE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0327\n\025" +
-      "GenerateFeaturesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va" +
-      "lue\030\002 \001(\t:\0028\001BZ\n)com.aliyun.openservices" +
-      ".eas.predict.protoB\025TorchRecPredictProto" +
-      "sZ\026.;torch_predict_protosb\006proto3"
+      "se.RawFeaturesEntry\022\020\n\010item_ids\030\004 \003(\t\022X\n" +
+      "\021pass_through_data\030\005 \003(\0132=.com.alibaba.p" +
+      "airec.processor.PBResponse.PassThroughDa" +
+      "taEntry\032J\n\017MapOutputsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "&\n\005value\030\002 \001(\0132\027.pytorch.eas.ArrayProto:" +
+      "\0028\001\0327\n\025GenerateFeaturesEntry\022\013\n\003key\030\001 \001(" +
+      "\t\022\r\n\005value\030\002 \001(\t:\0028\001\0322\n\020RawFeaturesEntry" +
+      "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0326\n\024Pass" +
+      "ThroughDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002" +
+      " \001(\t:\0028\001\"\334\002\n\tPBLogData\0228\n\007request\030\001 \001(\0132" +
+      "\'.com.alibaba.pairec.processor.PBRequest" +
+      "\022N\n\014raw_features\030\002 \003(\01328.com.alibaba.pai" +
+      "rec.processor.PBLogData.RawFeaturesEntry" +
+      "\022X\n\021generate_features\030\003 \003(\0132=.com.alibab" +
+      "a.pairec.processor.PBLogData.GenerateFea" +
+      "turesEntry\0322\n\020RawFeaturesEntry\022\013\n\003key\030\001 " +
+      "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0327\n\025GenerateFeatur" +
+      "esEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001B" +
+      "Z\n)com.aliyun.openservices.eas.predict.p" +
+      "rotoB\025TorchRecPredictProtosZ\026.;torch_pre" +
+      "dict_protosb\006proto3"
     };
     shade.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new shade.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -30084,7 +30436,7 @@ public final class TorchRecPredictProtos {
     internal_static_com_alibaba_pairec_processor_PBResponse_fieldAccessorTable = new
       shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBResponse_descriptor,
-        new java.lang.String[] { "MapOutputs", "GenerateFeatures", "RawFeatures", "ItemIds", });
+        new java.lang.String[] { "MapOutputs", "GenerateFeatures", "RawFeatures", "ItemIds", "PassThroughData", });
     internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_descriptor =
       internal_static_com_alibaba_pairec_processor_PBResponse_descriptor.getNestedTypes().get(0);
     internal_static_com_alibaba_pairec_processor_PBResponse_MapOutputsEntry_fieldAccessorTable = new
@@ -30102,6 +30454,12 @@ public final class TorchRecPredictProtos {
     internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_fieldAccessorTable = new
       shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBResponse_RawFeaturesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_com_alibaba_pairec_processor_PBResponse_PassThroughDataEntry_descriptor =
+      internal_static_com_alibaba_pairec_processor_PBResponse_descriptor.getNestedTypes().get(3);
+    internal_static_com_alibaba_pairec_processor_PBResponse_PassThroughDataEntry_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_PBResponse_PassThroughDataEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_alibaba_pairec_processor_PBLogData_descriptor =
       getDescriptor().getMessageTypes().get(29);
