@@ -6,7 +6,7 @@
 <dependency>
   <groupId>com.aliyun.openservices.eas</groupId>
   <artifactId>eas-sdk</artifactId>
-  <version>2.0.29</version>
+  <version>2.0.30</version>
 </dependency>
 ```
 
