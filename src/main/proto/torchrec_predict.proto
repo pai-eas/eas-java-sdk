@@ -183,7 +183,7 @@ message PBResponse {
 
 }
 
-// 保存请求日志， 包含原始请求、物品侧的原始特征和fg后特征
+// save request log, containing raw request,  features before fg and features after fg 
 message PBLogData {
   PBRequest request = 1;
   map<string, string> raw_features = 2;
