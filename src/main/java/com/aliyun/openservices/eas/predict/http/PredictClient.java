@@ -35,11 +35,9 @@ import org.apache.http.conn.SchemePortResolver;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
@@ -143,8 +141,8 @@ public class PredictClient {
     private Compressor compressor = null;
     private Compressor decompressor = null;
     private Map<String, String> extraHeaders = new HashMap<>();
-    private Map<String, String> queryParams = null;
-    private String queryString = "";
+
+    private static final CallConfig EMPTY_CALL_CONFIG = new CallConfig();
 
     public PredictClient() {
     }
@@ -298,29 +296,8 @@ public class PredictClient {
     }
 
     public PredictClient setRequestPath(String requestPath) {
-        if (requestPath == null) {
-            return this;
-        }
-        if (requestPath.length() > 0 && requestPath.charAt(0) != '/') {
-            requestPath = "/" + requestPath;
-        }
         this.requestPath = requestPath;
         return this;
-    }
-
-    public PredictClient setQueryParams(Map<String, String> queryParams) {
-        if (queryParams == null || queryParams.isEmpty()) {
-            this.queryParams = null;
-            this.queryString = "";
-        } else {
-            this.queryParams = new LinkedHashMap<>(queryParams);
-            this.queryString = buildQueryString(this.queryParams);
-        }
-        return this;
-    }
-
-    public Map<String, String> getQueryParams() {
-        return queryParams;
     }
 
     public PredictClient addExtraHeaders(Map<String, String> extraHeaders) {
@@ -377,7 +354,6 @@ public class PredictClient {
             .setContentType(this.contentType)
             .setRequestPath(this.requestPath)
             .setUrl(this.url)
-            .setQueryParams(this.queryParams)
             .addExtraHeaders(this.extraHeaders);
         if (this.vipSrvEndPoint != null) {
             client.setVIPServer(this.vipSrvEndPoint);
@@ -400,8 +376,8 @@ public class PredictClient {
         return createChildClient();
     }
 
-    private String getUrl(String lastUrl) throws Exception {
-        String pathWithQuery = this.requestPath + this.queryString;
+    private String getUrl(String lastUrl, CallConfig callConfig) throws Exception {
+        String pathWithQuery = callConfig.requestURI(this.requestPath);
         if (this.url != null) {
             return this.url + pathWithQuery;
         }
@@ -460,36 +436,8 @@ public class PredictClient {
         return url;
     }
 
-    private static String buildQueryString(Map<String, String> params) {
-        if (params == null || params.isEmpty()) {
-            return "";
-        }
-        StringBuilder sb = new StringBuilder("?");
-        boolean first = true;
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            if (!first) {
-                sb.append("&");
-            }
-            first = false;
-            sb.append(encodeParam(entry.getKey()));
-            String value = entry.getValue();
-            if (value != null) {
-                sb.append("=").append(encodeParam(value));
-            }
-        }
-        return sb.toString();
-    }
-
-    private static String encodeParam(String value) {
-        try {
-            return URLEncoder.encode(value, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            return value;
-        }
-    }
-
-    private HttpPost generateSignature(byte[] requestContent, String lastUrl) throws Exception {
-        HttpPost request = new HttpPost(getUrl(lastUrl));
+    private HttpPost generateSignature(byte[] requestContent, String lastUrl, CallConfig callConfig) throws Exception {
+        HttpPost request = new HttpPost(getUrl(lastUrl, callConfig));
         request.setEntity(new NByteArrayEntity(requestContent));
         if (isCompressed) {
             try {
@@ -518,12 +466,13 @@ public class PredictClient {
         }
 
         if (this.token != null) {
+            String pathWithQuery = callConfig.requestURI(this.requestPath);
             String authPath;
             if (this.url == null) {
-                authPath = "/api/predict/" + this.modelName + this.requestPath + this.queryString;
+                authPath = "/api/predict/" + this.modelName + pathWithQuery;
             } else {
                 URL u = new URL(this.url);
-                authPath = u.getPath() + this.requestPath + this.queryString;
+                authPath = u.getPath() + pathWithQuery;
             }
             String auth = "POST" + "\n" + md5Content + "\n"
                 + this.contentType + "\n" + currentTime + "\n" + authPath;
@@ -695,6 +644,10 @@ public class PredictClient {
     }
 
     public byte[] predict(byte[] requestContent) throws Exception {
+        return predict(requestContent, (CallConfig) null);
+    }
+
+    public byte[] predict(byte[] requestContent, CallConfig callConfig) throws Exception {
         if (compressor != null) {
             if (compressor == Compressor.Gzip) {
                 requestContent = GzipUtils.compress(requestContent);
@@ -712,11 +665,12 @@ public class PredictClient {
                 log.warn("Compressor are not supported!");
             }
         }
+        CallConfig config = callConfig != null ? callConfig : EMPTY_CALL_CONFIG;
         byte[] content = null;
         String lastUrl = "";
         for (int currentRetry = 0; currentRetry <= retryCount; currentRetry++) {
             try {
-                HttpPost request = generateSignature(requestContent, lastUrl);
+                HttpPost request = generateSignature(requestContent, lastUrl, config);
                 lastUrl = request.getURI().toString();
                 content = getContent(request);
                 break;
@@ -744,8 +698,12 @@ public class PredictClient {
     }
 
     public BladeResponse predict(BladeRequest runRequest) throws Exception {
+        return predict(runRequest, null);
+    }
+
+    public BladeResponse predict(BladeRequest runRequest, CallConfig callConfig) throws Exception {
         BladeResponse runResponse = new BladeResponse();
-        byte[] result = predict(runRequest.getRequest().toByteArray());
+        byte[] result = predict(runRequest.getRequest().toByteArray(), callConfig);
         if (result != null) {
             runResponse.setContentValues(result);
         }
@@ -753,8 +711,12 @@ public class PredictClient {
     }
 
     public TFResponse predict(TFRequest runRequest) throws Exception {
+        return predict(runRequest, null);
+    }
+
+    public TFResponse predict(TFRequest runRequest, CallConfig callConfig) throws Exception {
         TFResponse runResponse = new TFResponse();
-        byte[] result = predict(runRequest.getRequest().toByteArray());
+        byte[] result = predict(runRequest.getRequest().toByteArray(), callConfig);
         if (result != null) {
             runResponse.setContentValues(result);
         }
@@ -762,17 +724,24 @@ public class PredictClient {
     }
 
     public CaffeResponse predict(CaffeRequest runRequest) throws Exception {
+        return predict(runRequest, null);
+    }
+
+    public CaffeResponse predict(CaffeRequest runRequest, CallConfig callConfig) throws Exception {
         CaffeResponse runResponse = new CaffeResponse();
-        byte[] result = predict(runRequest.getRequest().toByteArray());
+        byte[] result = predict(runRequest.getRequest().toByteArray(), callConfig);
         if (result != null) {
             runResponse.setContentValues(result);
         }
         return runResponse;
     }
 
-    public JsonResponse predict(JsonRequest requestContent)
-            throws Exception {
-        byte[] result = predict(requestContent.getJSON().getBytes());
+    public JsonResponse predict(JsonRequest requestContent) throws Exception {
+        return predict(requestContent, null);
+    }
+
+    public JsonResponse predict(JsonRequest requestContent, CallConfig callConfig) throws Exception {
+        byte[] result = predict(requestContent.getJSON().getBytes(), callConfig);
         JsonResponse jsonResponse = new JsonResponse();
         if (result != null) {
             jsonResponse.setContentValues(result);
@@ -781,8 +750,12 @@ public class PredictClient {
     }
 
     public TorchResponse predict(TorchRequest runRequest) throws Exception {
+        return predict(runRequest, null);
+    }
+
+    public TorchResponse predict(TorchRequest runRequest, CallConfig callConfig) throws Exception {
         TorchResponse runResponse = new TorchResponse();
-        byte[] result = predict(runRequest.getRequest().toByteArray());
+        byte[] result = predict(runRequest.getRequest().toByteArray(), callConfig);
         if (result != null) {
             runResponse.setContentValues(result);
         }
@@ -790,10 +763,13 @@ public class PredictClient {
     }
 
 
-
     public EasyRecPredictProtos.PBResponse predict(EasyRecRequest runRequest) throws Exception {
+        return predict(runRequest, null);
+    }
+
+    public EasyRecPredictProtos.PBResponse predict(EasyRecRequest runRequest, CallConfig callConfig) throws Exception {
         EasyRecPredictProtos.PBResponse runResponse = null;
-        byte[] result = this.predict(runRequest.getRequest().toByteArray());
+        byte[] result = this.predict(runRequest.getRequest().toByteArray(), callConfig);
         if (result != null) {
             runResponse = EasyRecPredictProtos.PBResponse.parseFrom(result);
         }
@@ -802,8 +778,12 @@ public class PredictClient {
     }
 
     public TorchRecPredictProtos.PBResponse predict(TorchRecRequest runRequest) throws Exception {
+        return predict(runRequest, null);
+    }
+
+    public TorchRecPredictProtos.PBResponse predict(TorchRecRequest runRequest, CallConfig callConfig) throws Exception {
         TorchRecPredictProtos.PBResponse runResponse = null;
-        byte[] result = this.predict(runRequest.getRequest().toByteArray());
+        byte[] result = this.predict(runRequest.getRequest().toByteArray(), callConfig);
         if (result != null) {
             runResponse = TorchRecPredictProtos.PBResponse.parseFrom(result);
         }
@@ -812,7 +792,11 @@ public class PredictClient {
     }
 
     public String predict(String requestContent) throws Exception {
-        byte[] result = predict(requestContent.getBytes());
+        return predict(requestContent, null);
+    }
+
+    public String predict(String requestContent, CallConfig callConfig) throws Exception {
+        byte[] result = predict(requestContent.getBytes(), callConfig);
         if (result != null) {
             return new String(result);
         }
@@ -873,7 +857,7 @@ public class PredictClient {
         CompletableFuture<byte[]> futureResponse = new CompletableFuture<>();
         try {
             // Generate the HTTP POST request with signatures
-            HttpPost request = generateSignature(requestData, lastUrl);
+            HttpPost request = generateSignature(requestData, lastUrl, EMPTY_CALL_CONFIG);
             httpclient.execute(request, new FutureCallback<HttpResponse>() {
                 @Override
                 public void completed(HttpResponse response) {
