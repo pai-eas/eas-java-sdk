@@ -35,9 +35,11 @@ import org.apache.http.conn.SchemePortResolver;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
@@ -141,6 +143,8 @@ public class PredictClient {
     private Compressor compressor = null;
     private Compressor decompressor = null;
     private Map<String, String> extraHeaders = new HashMap<>();
+    private Map<String, String> queryParams = null;
+    private String queryString = "";
 
     public PredictClient() {
     }
@@ -304,6 +308,21 @@ public class PredictClient {
         return this;
     }
 
+    public PredictClient setQueryParams(Map<String, String> queryParams) {
+        if (queryParams == null || queryParams.isEmpty()) {
+            this.queryParams = null;
+            this.queryString = "";
+        } else {
+            this.queryParams = new LinkedHashMap<>(queryParams);
+            this.queryString = buildQueryString(this.queryParams);
+        }
+        return this;
+    }
+
+    public Map<String, String> getQueryParams() {
+        return queryParams;
+    }
+
     public PredictClient addExtraHeaders(Map<String, String> extraHeaders) {
         this.extraHeaders.putAll(extraHeaders);
         return this;
@@ -358,6 +377,7 @@ public class PredictClient {
             .setContentType(this.contentType)
             .setRequestPath(this.requestPath)
             .setUrl(this.url)
+            .setQueryParams(this.queryParams)
             .addExtraHeaders(this.extraHeaders);
         if (this.vipSrvEndPoint != null) {
             client.setVIPServer(this.vipSrvEndPoint);
@@ -381,9 +401,11 @@ public class PredictClient {
     }
 
     private String getUrl(String lastUrl) throws Exception {
+        String pathWithQuery = this.requestPath + this.queryString;
         if (this.url != null) {
-            return this.url + this.requestPath;
+            return this.url + pathWithQuery;
         }
+        String apiPath = "/api/predict/" + modelName + pathWithQuery;
         String endpoint = this.endpoint;
         String url = "";
         if (enableBlacklist) {
@@ -394,7 +416,7 @@ public class PredictClient {
             for (int i = 0; i < retryCount; i++) {
                 if (directEndPoint != null) {
                     endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
+                    url = "http://" + endpoint + apiPath;
                     // System.out.println("URL: " + url + " LastURL: " + lastUrl);
                     if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
                         return url;
@@ -412,7 +434,7 @@ public class PredictClient {
                         rwlock.readLock().unlock();
                     }
                 } else {
-                    url = endpoint + "/api/predict/" + modelName + requestPath;
+                    url = endpoint + apiPath;
                     break;
                 }
             }
@@ -420,7 +442,7 @@ public class PredictClient {
             for (int i = 0; i < endpointRetryCount; i++) {
                 if (directEndPoint != null) {
                     endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                    url = "http://" + endpoint + "/api/predict/" + modelName + requestPath;
+                    url = "http://" + endpoint + apiPath;
                     // System.out.println("URL: " + url + " LastURL: " + lastUrl);
                     if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
                         return url;
@@ -429,13 +451,41 @@ public class PredictClient {
                         return url;
                     }
                 } else {
-                    url = endpoint + "/api/predict/" + modelName + requestPath;
+                    url = endpoint + apiPath;
                     break;
                 }
             }
         }
 
         return url;
+    }
+
+    private static String buildQueryString(Map<String, String> params) {
+        if (params == null || params.isEmpty()) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder("?");
+        boolean first = true;
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            if (!first) {
+                sb.append("&");
+            }
+            first = false;
+            sb.append(encodeParam(entry.getKey()));
+            String value = entry.getValue();
+            if (value != null) {
+                sb.append("=").append(encodeParam(value));
+            }
+        }
+        return sb.toString();
+    }
+
+    private static String encodeParam(String value) {
+        try {
+            return URLEncoder.encode(value, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            return value;
+        }
     }
 
     private HttpPost generateSignature(byte[] requestContent, String lastUrl) throws Exception {
@@ -468,14 +518,15 @@ public class PredictClient {
         }
 
         if (this.token != null) {
-            String auth = "POST" + "\n" + md5Content + "\n"
-                + this.contentType + "\n" + currentTime + "\n";
+            String authPath;
             if (this.url == null) {
-                auth = auth + "/api/predict/" + this.modelName + this.requestPath;
+                authPath = "/api/predict/" + this.modelName + this.requestPath + this.queryString;
             } else {
                 URL u = new URL(this.url);
-                auth = auth + u.getPath() + this.requestPath;
+                authPath = u.getPath() + this.requestPath + this.queryString;
             }
+            String auth = "POST" + "\n" + md5Content + "\n"
+                + this.contentType + "\n" + currentTime + "\n" + authPath;
             request.addHeader(HttpHeaders.AUTHORIZATION,
                 "EAS " + signature.computeSignature(token, auth));
         }
