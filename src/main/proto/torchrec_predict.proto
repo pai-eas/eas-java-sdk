@@ -180,12 +180,37 @@ message PBResponse {
 
   // model configured pass-through data
   map<string, string> pass_through_data = 5;
-
 }
 
-// save request log, containing raw request,  features before fg and features after fg 
+// 保存请求日志， 包含原始请求、物品侧的原始特征和fg后特征
 message PBLogData {
   PBRequest request = 1;
   map<string, string> raw_features = 2;
   map<string, string> generate_features = 3;
+}
+
+// Values for one feature column. An unset PBFeature represents a missing value.
+message FeatureColumn {
+  repeated PBFeature features = 1;
+}
+
+// Columnar raw features keyed by FG input name. Rows align with item_ids;
+// a single value denotes a request-global column.
+message CompactRawFeatures {
+  // Request-global features with one value per column.
+  map<string, FeatureColumn> user_features = 1;
+
+  // Context features.
+  map<string, FeatureColumn> context_features = 2;
+
+  // Item features.
+  map<string, FeatureColumn> item_features = 3;
+}
+
+// Compact raw features persisted for one request.
+message CompactRawFeaturesRecord {
+  string request_id = 1;
+  // Row identifiers; candidate sequence primary keys for HSTU.
+  repeated string item_ids = 2;
+  CompactRawFeatures compact_raw_features = 3;
 }

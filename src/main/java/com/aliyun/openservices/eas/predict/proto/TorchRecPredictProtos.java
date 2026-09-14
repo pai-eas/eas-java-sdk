@@ -29689,6 +29689,3216 @@ public final class TorchRecPredictProtos {
 
   }
 
+  public interface FeatureColumnOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.FeatureColumn)
+      shade.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    java.util.List<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> 
+        getFeaturesList();
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature getFeatures(int index);
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    int getFeaturesCount();
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    java.util.List<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> 
+        getFeaturesOrBuilderList();
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder getFeaturesOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * Values for one feature column. An unset PBFeature represents a missing value.
+   * </pre>
+   *
+   * Protobuf type {@code com.alibaba.pairec.processor.FeatureColumn}
+   */
+  public  static final class FeatureColumn extends
+      shade.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.FeatureColumn)
+      FeatureColumnOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FeatureColumn.newBuilder() to construct.
+    private FeatureColumn(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FeatureColumn() {
+      features_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final shade.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FeatureColumn(
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                features_ = new java.util.ArrayList<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              features_.add(
+                  input.readMessage(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new shade.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          features_ = java.util.Collections.unmodifiableList(features_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final shade.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FeatureColumn_descriptor;
+    }
+
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FeatureColumn_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.class, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.Builder.class);
+    }
+
+    public static final int FEATURES_FIELD_NUMBER = 1;
+    private java.util.List<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> features_;
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    public java.util.List<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> getFeaturesList() {
+      return features_;
+    }
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    public java.util.List<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> 
+        getFeaturesOrBuilderList() {
+      return features_;
+    }
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    public int getFeaturesCount() {
+      return features_.size();
+    }
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature getFeatures(int index) {
+      return features_.get(index);
+    }
+    /**
+     * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+     */
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder getFeaturesOrBuilder(
+        int index) {
+      return features_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(shade.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < features_.size(); i++) {
+        output.writeMessage(1, features_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < features_.size(); i++) {
+        size += shade.protobuf.CodedOutputStream
+          .computeMessageSize(1, features_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn)) {
+        return super.equals(obj);
+      }
+      com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn other = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn) obj;
+
+      boolean result = true;
+      result = result && getFeaturesList()
+          .equals(other.getFeaturesList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getFeaturesCount() > 0) {
+        hash = (37 * hash) + FEATURES_FIELD_NUMBER;
+        hash = (53 * hash) + getFeaturesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        java.nio.ByteBuffer data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        java.nio.ByteBuffer data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(byte[] data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        byte[] data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        java.io.InputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseDelimitedFrom(
+        java.io.InputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        shade.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parseFrom(
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Values for one feature column. An unset PBFeature represents a missing value.
+     * </pre>
+     *
+     * Protobuf type {@code com.alibaba.pairec.processor.FeatureColumn}
+     */
+    public static final class Builder extends
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.FeatureColumn)
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumnOrBuilder {
+      public static final shade.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FeatureColumn_descriptor;
+      }
+
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FeatureColumn_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.class, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.Builder.class);
+      }
+
+      // Construct using com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (shade.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getFeaturesFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (featuresBuilder_ == null) {
+          features_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          featuresBuilder_.clear();
+        }
+        return this;
+      }
+
+      public shade.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_FeatureColumn_descriptor;
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getDefaultInstanceForType() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.getDefaultInstance();
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn build() {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn buildPartial() {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn result = new com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn(this);
+        int from_bitField0_ = bitField0_;
+        if (featuresBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            features_ = java.util.Collections.unmodifiableList(features_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.features_ = features_;
+        } else {
+          result.features_ = featuresBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          shade.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(shade.protobuf.Message other) {
+        if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn) {
+          return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn other) {
+        if (other == com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.getDefaultInstance()) return this;
+        if (featuresBuilder_ == null) {
+          if (!other.features_.isEmpty()) {
+            if (features_.isEmpty()) {
+              features_ = other.features_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureFeaturesIsMutable();
+              features_.addAll(other.features_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.features_.isEmpty()) {
+            if (featuresBuilder_.isEmpty()) {
+              featuresBuilder_.dispose();
+              featuresBuilder_ = null;
+              features_ = other.features_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              featuresBuilder_ = 
+                shade.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getFeaturesFieldBuilder() : null;
+            } else {
+              featuresBuilder_.addAllMessages(other.features_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> features_ =
+        java.util.Collections.emptyList();
+      private void ensureFeaturesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          features_ = new java.util.ArrayList<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature>(features_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private shade.protobuf.RepeatedFieldBuilderV3<
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> featuresBuilder_;
+
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public java.util.List<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> getFeaturesList() {
+        if (featuresBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(features_);
+        } else {
+          return featuresBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public int getFeaturesCount() {
+        if (featuresBuilder_ == null) {
+          return features_.size();
+        } else {
+          return featuresBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature getFeatures(int index) {
+        if (featuresBuilder_ == null) {
+          return features_.get(index);
+        } else {
+          return featuresBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder setFeatures(
+          int index, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature value) {
+        if (featuresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFeaturesIsMutable();
+          features_.set(index, value);
+          onChanged();
+        } else {
+          featuresBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder setFeatures(
+          int index, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder builderForValue) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          featuresBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder addFeatures(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature value) {
+        if (featuresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFeaturesIsMutable();
+          features_.add(value);
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder addFeatures(
+          int index, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature value) {
+        if (featuresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFeaturesIsMutable();
+          features_.add(index, value);
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder addFeatures(
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder builderForValue) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.add(builderForValue.build());
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder addFeatures(
+          int index, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder builderForValue) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder addAllFeatures(
+          java.lang.Iterable<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature> values) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          shade.protobuf.AbstractMessageLite.Builder.addAll(
+              values, features_);
+          onChanged();
+        } else {
+          featuresBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder clearFeatures() {
+        if (featuresBuilder_ == null) {
+          features_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          featuresBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public Builder removeFeatures(int index) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.remove(index);
+          onChanged();
+        } else {
+          featuresBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder getFeaturesBuilder(
+          int index) {
+        return getFeaturesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder getFeaturesOrBuilder(
+          int index) {
+        if (featuresBuilder_ == null) {
+          return features_.get(index);  } else {
+          return featuresBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public java.util.List<? extends com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> 
+           getFeaturesOrBuilderList() {
+        if (featuresBuilder_ != null) {
+          return featuresBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(features_);
+        }
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder addFeaturesBuilder() {
+        return getFeaturesFieldBuilder().addBuilder(
+            com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder addFeaturesBuilder(
+          int index) {
+        return getFeaturesFieldBuilder().addBuilder(
+            index, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.alibaba.pairec.processor.PBFeature features = 1;</code>
+       */
+      public java.util.List<com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder> 
+           getFeaturesBuilderList() {
+        return getFeaturesFieldBuilder().getBuilderList();
+      }
+      private shade.protobuf.RepeatedFieldBuilderV3<
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder> 
+          getFeaturesFieldBuilder() {
+        if (featuresBuilder_ == null) {
+          featuresBuilder_ = new shade.protobuf.RepeatedFieldBuilderV3<
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeature.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.PBFeatureOrBuilder>(
+                  features_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          features_ = null;
+        }
+        return featuresBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final shade.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final shade.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.alibaba.pairec.processor.FeatureColumn)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.FeatureColumn)
+    private static final com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn();
+    }
+
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final shade.protobuf.Parser<FeatureColumn>
+        PARSER = new shade.protobuf.AbstractParser<FeatureColumn>() {
+      public FeatureColumn parsePartialFrom(
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
+        return new FeatureColumn(input, extensionRegistry);
+      }
+    };
+
+    public static shade.protobuf.Parser<FeatureColumn> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public shade.protobuf.Parser<FeatureColumn> getParserForType() {
+      return PARSER;
+    }
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CompactRawFeaturesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.CompactRawFeatures)
+      shade.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+    int getUserFeaturesCount();
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+    boolean containsUserFeatures(
+        java.lang.String key);
+    /**
+     * Use {@link #getUserFeaturesMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    getUserFeatures();
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    getUserFeaturesMap();
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getUserFeaturesOrDefault(
+        java.lang.String key,
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue);
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getUserFeaturesOrThrow(
+        java.lang.String key);
+
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+    int getContextFeaturesCount();
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+    boolean containsContextFeatures(
+        java.lang.String key);
+    /**
+     * Use {@link #getContextFeaturesMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    getContextFeatures();
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    getContextFeaturesMap();
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getContextFeaturesOrDefault(
+        java.lang.String key,
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue);
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getContextFeaturesOrThrow(
+        java.lang.String key);
+
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+    int getItemFeaturesCount();
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+    boolean containsItemFeatures(
+        java.lang.String key);
+    /**
+     * Use {@link #getItemFeaturesMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    getItemFeatures();
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+    java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    getItemFeaturesMap();
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getItemFeaturesOrDefault(
+        java.lang.String key,
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue);
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getItemFeaturesOrThrow(
+        java.lang.String key);
+  }
+  /**
+   * <pre>
+   * Columnar raw features keyed by FG input name. Rows align with item_ids;
+   * a single value denotes a request-global column.
+   * </pre>
+   *
+   * Protobuf type {@code com.alibaba.pairec.processor.CompactRawFeatures}
+   */
+  public  static final class CompactRawFeatures extends
+      shade.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.CompactRawFeatures)
+      CompactRawFeaturesOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CompactRawFeatures.newBuilder() to construct.
+    private CompactRawFeatures(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CompactRawFeatures() {
+    }
+
+    @java.lang.Override
+    public final shade.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CompactRawFeatures(
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                userFeatures_ = shade.protobuf.MapField.newMapField(
+                    UserFeaturesDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000001;
+              }
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+              userFeatures__ = input.readMessage(
+                  UserFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              userFeatures_.getMutableMap().put(
+                  userFeatures__.getKey(), userFeatures__.getValue());
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                contextFeatures_ = shade.protobuf.MapField.newMapField(
+                    ContextFeaturesDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000002;
+              }
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+              contextFeatures__ = input.readMessage(
+                  ContextFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              contextFeatures_.getMutableMap().put(
+                  contextFeatures__.getKey(), contextFeatures__.getValue());
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                itemFeatures_ = shade.protobuf.MapField.newMapField(
+                    ItemFeaturesDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000004;
+              }
+              shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+              itemFeatures__ = input.readMessage(
+                  ItemFeaturesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              itemFeatures_.getMutableMap().put(
+                  itemFeatures__.getKey(), itemFeatures__.getValue());
+              break;
+            }
+          }
+        }
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new shade.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final shade.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor;
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    protected shade.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetUserFeatures();
+        case 2:
+          return internalGetContextFeatures();
+        case 3:
+          return internalGetItemFeatures();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.class, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder.class);
+    }
+
+    public static final int USER_FEATURES_FIELD_NUMBER = 1;
+    private static final class UserFeaturesDefaultEntryHolder {
+      static final shade.protobuf.MapEntry<
+          java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> defaultEntry =
+              shade.protobuf.MapEntry
+              .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>newDefaultInstance(
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_UserFeaturesEntry_descriptor, 
+                  shade.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.getDefaultInstance());
+    }
+    private shade.protobuf.MapField<
+        java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> userFeatures_;
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    internalGetUserFeatures() {
+      if (userFeatures_ == null) {
+        return shade.protobuf.MapField.emptyMapField(
+            UserFeaturesDefaultEntryHolder.defaultEntry);
+      }
+      return userFeatures_;
+    }
+
+    public int getUserFeaturesCount() {
+      return internalGetUserFeatures().getMap().size();
+    }
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+
+    public boolean containsUserFeatures(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetUserFeatures().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getUserFeaturesMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getUserFeatures() {
+      return getUserFeaturesMap();
+    }
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+
+    public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getUserFeaturesMap() {
+      return internalGetUserFeatures().getMap();
+    }
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getUserFeaturesOrDefault(
+        java.lang.String key,
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+          internalGetUserFeatures().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * Request-global features with one value per column.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+     */
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getUserFeaturesOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+          internalGetUserFeatures().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int CONTEXT_FEATURES_FIELD_NUMBER = 2;
+    private static final class ContextFeaturesDefaultEntryHolder {
+      static final shade.protobuf.MapEntry<
+          java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> defaultEntry =
+              shade.protobuf.MapEntry
+              .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>newDefaultInstance(
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ContextFeaturesEntry_descriptor, 
+                  shade.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.getDefaultInstance());
+    }
+    private shade.protobuf.MapField<
+        java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> contextFeatures_;
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    internalGetContextFeatures() {
+      if (contextFeatures_ == null) {
+        return shade.protobuf.MapField.emptyMapField(
+            ContextFeaturesDefaultEntryHolder.defaultEntry);
+      }
+      return contextFeatures_;
+    }
+
+    public int getContextFeaturesCount() {
+      return internalGetContextFeatures().getMap().size();
+    }
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+
+    public boolean containsContextFeatures(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetContextFeatures().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getContextFeaturesMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getContextFeatures() {
+      return getContextFeaturesMap();
+    }
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+
+    public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getContextFeaturesMap() {
+      return internalGetContextFeatures().getMap();
+    }
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getContextFeaturesOrDefault(
+        java.lang.String key,
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+          internalGetContextFeatures().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * Context features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+     */
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getContextFeaturesOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+          internalGetContextFeatures().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int ITEM_FEATURES_FIELD_NUMBER = 3;
+    private static final class ItemFeaturesDefaultEntryHolder {
+      static final shade.protobuf.MapEntry<
+          java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> defaultEntry =
+              shade.protobuf.MapEntry
+              .<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>newDefaultInstance(
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ItemFeaturesEntry_descriptor, 
+                  shade.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  shade.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn.getDefaultInstance());
+    }
+    private shade.protobuf.MapField<
+        java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> itemFeatures_;
+    private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+    internalGetItemFeatures() {
+      if (itemFeatures_ == null) {
+        return shade.protobuf.MapField.emptyMapField(
+            ItemFeaturesDefaultEntryHolder.defaultEntry);
+      }
+      return itemFeatures_;
+    }
+
+    public int getItemFeaturesCount() {
+      return internalGetItemFeatures().getMap().size();
+    }
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+
+    public boolean containsItemFeatures(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetItemFeatures().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getItemFeaturesMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getItemFeatures() {
+      return getItemFeaturesMap();
+    }
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+
+    public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getItemFeaturesMap() {
+      return internalGetItemFeatures().getMap();
+    }
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getItemFeaturesOrDefault(
+        java.lang.String key,
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+          internalGetItemFeatures().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * Item features.
+     * </pre>
+     *
+     * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+     */
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getItemFeaturesOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+          internalGetItemFeatures().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(shade.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      shade.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetUserFeatures(),
+          UserFeaturesDefaultEntryHolder.defaultEntry,
+          1);
+      shade.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetContextFeatures(),
+          ContextFeaturesDefaultEntryHolder.defaultEntry,
+          2);
+      shade.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetItemFeatures(),
+          ItemFeaturesDefaultEntryHolder.defaultEntry,
+          3);
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> entry
+           : internalGetUserFeatures().getMap().entrySet()) {
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+        userFeatures__ = UserFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += shade.protobuf.CodedOutputStream
+            .computeMessageSize(1, userFeatures__);
+      }
+      for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> entry
+           : internalGetContextFeatures().getMap().entrySet()) {
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+        contextFeatures__ = ContextFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += shade.protobuf.CodedOutputStream
+            .computeMessageSize(2, contextFeatures__);
+      }
+      for (java.util.Map.Entry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> entry
+           : internalGetItemFeatures().getMap().entrySet()) {
+        shade.protobuf.MapEntry<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+        itemFeatures__ = ItemFeaturesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += shade.protobuf.CodedOutputStream
+            .computeMessageSize(3, itemFeatures__);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures)) {
+        return super.equals(obj);
+      }
+      com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures other = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures) obj;
+
+      boolean result = true;
+      result = result && internalGetUserFeatures().equals(
+          other.internalGetUserFeatures());
+      result = result && internalGetContextFeatures().equals(
+          other.internalGetContextFeatures());
+      result = result && internalGetItemFeatures().equals(
+          other.internalGetItemFeatures());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (!internalGetUserFeatures().getMap().isEmpty()) {
+        hash = (37 * hash) + USER_FEATURES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetUserFeatures().hashCode();
+      }
+      if (!internalGetContextFeatures().getMap().isEmpty()) {
+        hash = (37 * hash) + CONTEXT_FEATURES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetContextFeatures().hashCode();
+      }
+      if (!internalGetItemFeatures().getMap().isEmpty()) {
+        hash = (37 * hash) + ITEM_FEATURES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetItemFeatures().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        java.nio.ByteBuffer data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        java.nio.ByteBuffer data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(byte[] data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        byte[] data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        java.io.InputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseDelimitedFrom(
+        java.io.InputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        shade.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parseFrom(
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Columnar raw features keyed by FG input name. Rows align with item_ids;
+     * a single value denotes a request-global column.
+     * </pre>
+     *
+     * Protobuf type {@code com.alibaba.pairec.processor.CompactRawFeatures}
+     */
+    public static final class Builder extends
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.CompactRawFeatures)
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder {
+      public static final shade.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor;
+      }
+
+      @SuppressWarnings({"rawtypes"})
+      protected shade.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetUserFeatures();
+          case 2:
+            return internalGetContextFeatures();
+          case 3:
+            return internalGetItemFeatures();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected shade.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableUserFeatures();
+          case 2:
+            return internalGetMutableContextFeatures();
+          case 3:
+            return internalGetMutableItemFeatures();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.class, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder.class);
+      }
+
+      // Construct using com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (shade.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        internalGetMutableUserFeatures().clear();
+        internalGetMutableContextFeatures().clear();
+        internalGetMutableItemFeatures().clear();
+        return this;
+      }
+
+      public shade.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor;
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures getDefaultInstanceForType() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.getDefaultInstance();
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures build() {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures buildPartial() {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures result = new com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures(this);
+        int from_bitField0_ = bitField0_;
+        result.userFeatures_ = internalGetUserFeatures();
+        result.userFeatures_.makeImmutable();
+        result.contextFeatures_ = internalGetContextFeatures();
+        result.contextFeatures_.makeImmutable();
+        result.itemFeatures_ = internalGetItemFeatures();
+        result.itemFeatures_.makeImmutable();
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          shade.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(shade.protobuf.Message other) {
+        if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures) {
+          return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures other) {
+        if (other == com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.getDefaultInstance()) return this;
+        internalGetMutableUserFeatures().mergeFrom(
+            other.internalGetUserFeatures());
+        internalGetMutableContextFeatures().mergeFrom(
+            other.internalGetContextFeatures());
+        internalGetMutableItemFeatures().mergeFrom(
+            other.internalGetItemFeatures());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private shade.protobuf.MapField<
+          java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> userFeatures_;
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      internalGetUserFeatures() {
+        if (userFeatures_ == null) {
+          return shade.protobuf.MapField.emptyMapField(
+              UserFeaturesDefaultEntryHolder.defaultEntry);
+        }
+        return userFeatures_;
+      }
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      internalGetMutableUserFeatures() {
+        onChanged();;
+        if (userFeatures_ == null) {
+          userFeatures_ = shade.protobuf.MapField.newMapField(
+              UserFeaturesDefaultEntryHolder.defaultEntry);
+        }
+        if (!userFeatures_.isMutable()) {
+          userFeatures_ = userFeatures_.copy();
+        }
+        return userFeatures_;
+      }
+
+      public int getUserFeaturesCount() {
+        return internalGetUserFeatures().getMap().size();
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+
+      public boolean containsUserFeatures(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetUserFeatures().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getUserFeaturesMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getUserFeatures() {
+        return getUserFeaturesMap();
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getUserFeaturesMap() {
+        return internalGetUserFeatures().getMap();
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getUserFeaturesOrDefault(
+          java.lang.String key,
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+            internalGetUserFeatures().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getUserFeaturesOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+            internalGetUserFeatures().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearUserFeatures() {
+        internalGetMutableUserFeatures().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+
+      public Builder removeUserFeatures(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableUserFeatures().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      getMutableUserFeatures() {
+        return internalGetMutableUserFeatures().getMutableMap();
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+      public Builder putUserFeatures(
+          java.lang.String key,
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableUserFeatures().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Request-global features with one value per column.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; user_features = 1;</code>
+       */
+
+      public Builder putAllUserFeatures(
+          java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> values) {
+        internalGetMutableUserFeatures().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private shade.protobuf.MapField<
+          java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> contextFeatures_;
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      internalGetContextFeatures() {
+        if (contextFeatures_ == null) {
+          return shade.protobuf.MapField.emptyMapField(
+              ContextFeaturesDefaultEntryHolder.defaultEntry);
+        }
+        return contextFeatures_;
+      }
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      internalGetMutableContextFeatures() {
+        onChanged();;
+        if (contextFeatures_ == null) {
+          contextFeatures_ = shade.protobuf.MapField.newMapField(
+              ContextFeaturesDefaultEntryHolder.defaultEntry);
+        }
+        if (!contextFeatures_.isMutable()) {
+          contextFeatures_ = contextFeatures_.copy();
+        }
+        return contextFeatures_;
+      }
+
+      public int getContextFeaturesCount() {
+        return internalGetContextFeatures().getMap().size();
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+
+      public boolean containsContextFeatures(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetContextFeatures().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getContextFeaturesMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getContextFeatures() {
+        return getContextFeaturesMap();
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getContextFeaturesMap() {
+        return internalGetContextFeatures().getMap();
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getContextFeaturesOrDefault(
+          java.lang.String key,
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+            internalGetContextFeatures().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getContextFeaturesOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+            internalGetContextFeatures().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearContextFeatures() {
+        internalGetMutableContextFeatures().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+
+      public Builder removeContextFeatures(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableContextFeatures().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      getMutableContextFeatures() {
+        return internalGetMutableContextFeatures().getMutableMap();
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+      public Builder putContextFeatures(
+          java.lang.String key,
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableContextFeatures().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Context features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; context_features = 2;</code>
+       */
+
+      public Builder putAllContextFeatures(
+          java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> values) {
+        internalGetMutableContextFeatures().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private shade.protobuf.MapField<
+          java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> itemFeatures_;
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      internalGetItemFeatures() {
+        if (itemFeatures_ == null) {
+          return shade.protobuf.MapField.emptyMapField(
+              ItemFeaturesDefaultEntryHolder.defaultEntry);
+        }
+        return itemFeatures_;
+      }
+      private shade.protobuf.MapField<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      internalGetMutableItemFeatures() {
+        onChanged();;
+        if (itemFeatures_ == null) {
+          itemFeatures_ = shade.protobuf.MapField.newMapField(
+              ItemFeaturesDefaultEntryHolder.defaultEntry);
+        }
+        if (!itemFeatures_.isMutable()) {
+          itemFeatures_ = itemFeatures_.copy();
+        }
+        return itemFeatures_;
+      }
+
+      public int getItemFeaturesCount() {
+        return internalGetItemFeatures().getMap().size();
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+
+      public boolean containsItemFeatures(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetItemFeatures().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getItemFeaturesMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getItemFeatures() {
+        return getItemFeaturesMap();
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> getItemFeaturesMap() {
+        return internalGetItemFeatures().getMap();
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getItemFeaturesOrDefault(
+          java.lang.String key,
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+            internalGetItemFeatures().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn getItemFeaturesOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> map =
+            internalGetItemFeatures().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearItemFeatures() {
+        internalGetMutableItemFeatures().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+
+      public Builder removeItemFeatures(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableItemFeatures().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn>
+      getMutableItemFeatures() {
+        return internalGetMutableItemFeatures().getMutableMap();
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+      public Builder putItemFeatures(
+          java.lang.String key,
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableItemFeatures().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Item features.
+       * </pre>
+       *
+       * <code>map&lt;string, .com.alibaba.pairec.processor.FeatureColumn&gt; item_features = 3;</code>
+       */
+
+      public Builder putAllItemFeatures(
+          java.util.Map<java.lang.String, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.FeatureColumn> values) {
+        internalGetMutableItemFeatures().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final shade.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final shade.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.alibaba.pairec.processor.CompactRawFeatures)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.CompactRawFeatures)
+    private static final com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures();
+    }
+
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final shade.protobuf.Parser<CompactRawFeatures>
+        PARSER = new shade.protobuf.AbstractParser<CompactRawFeatures>() {
+      public CompactRawFeatures parsePartialFrom(
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
+        return new CompactRawFeatures(input, extensionRegistry);
+      }
+    };
+
+    public static shade.protobuf.Parser<CompactRawFeatures> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public shade.protobuf.Parser<CompactRawFeatures> getParserForType() {
+      return PARSER;
+    }
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CompactRawFeaturesRecordOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.alibaba.pairec.processor.CompactRawFeaturesRecord)
+      shade.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string request_id = 1;</code>
+     */
+    java.lang.String getRequestId();
+    /**
+     * <code>string request_id = 1;</code>
+     */
+    shade.protobuf.ByteString
+        getRequestIdBytes();
+
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    java.util.List<java.lang.String>
+        getItemIdsList();
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    int getItemIdsCount();
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    java.lang.String getItemIds(int index);
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    shade.protobuf.ByteString
+        getItemIdsBytes(int index);
+
+    /**
+     * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+     */
+    boolean hasCompactRawFeatures();
+    /**
+     * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+     */
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures getCompactRawFeatures();
+    /**
+     * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+     */
+    com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder getCompactRawFeaturesOrBuilder();
+  }
+  /**
+   * <pre>
+   * Compact raw features persisted for one request.
+   * </pre>
+   *
+   * Protobuf type {@code com.alibaba.pairec.processor.CompactRawFeaturesRecord}
+   */
+  public  static final class CompactRawFeaturesRecord extends
+      shade.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.alibaba.pairec.processor.CompactRawFeaturesRecord)
+      CompactRawFeaturesRecordOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CompactRawFeaturesRecord.newBuilder() to construct.
+    private CompactRawFeaturesRecord(shade.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CompactRawFeaturesRecord() {
+      requestId_ = "";
+      itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    public final shade.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CompactRawFeaturesRecord(
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      shade.protobuf.UnknownFieldSet.Builder unknownFields =
+          shade.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              requestId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                itemIds_ = new shade.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              itemIds_.add(s);
+              break;
+            }
+            case 26: {
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder subBuilder = null;
+              if (compactRawFeatures_ != null) {
+                subBuilder = compactRawFeatures_.toBuilder();
+              }
+              compactRawFeatures_ = input.readMessage(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(compactRawFeatures_);
+                compactRawFeatures_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+          }
+        }
+      } catch (shade.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new shade.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          itemIds_ = itemIds_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final shade.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_descriptor;
+    }
+
+    protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.class, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int REQUEST_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object requestId_;
+    /**
+     * <code>string request_id = 1;</code>
+     */
+    public java.lang.String getRequestId() {
+      java.lang.Object ref = requestId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        shade.protobuf.ByteString bs = 
+            (shade.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        requestId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string request_id = 1;</code>
+     */
+    public shade.protobuf.ByteString
+        getRequestIdBytes() {
+      java.lang.Object ref = requestId_;
+      if (ref instanceof java.lang.String) {
+        shade.protobuf.ByteString b = 
+            shade.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        requestId_ = b;
+        return b;
+      } else {
+        return (shade.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ITEM_IDS_FIELD_NUMBER = 2;
+    private shade.protobuf.LazyStringList itemIds_;
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    public shade.protobuf.ProtocolStringList
+        getItemIdsList() {
+      return itemIds_;
+    }
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    public int getItemIdsCount() {
+      return itemIds_.size();
+    }
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    public java.lang.String getItemIds(int index) {
+      return itemIds_.get(index);
+    }
+    /**
+     * <pre>
+     * Row identifiers; candidate sequence primary keys for HSTU.
+     * </pre>
+     *
+     * <code>repeated string item_ids = 2;</code>
+     */
+    public shade.protobuf.ByteString
+        getItemIdsBytes(int index) {
+      return itemIds_.getByteString(index);
+    }
+
+    public static final int COMPACT_RAW_FEATURES_FIELD_NUMBER = 3;
+    private com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures compactRawFeatures_;
+    /**
+     * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+     */
+    public boolean hasCompactRawFeatures() {
+      return compactRawFeatures_ != null;
+    }
+    /**
+     * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+     */
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures getCompactRawFeatures() {
+      return compactRawFeatures_ == null ? com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.getDefaultInstance() : compactRawFeatures_;
+    }
+    /**
+     * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+     */
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder getCompactRawFeaturesOrBuilder() {
+      return getCompactRawFeatures();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(shade.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getRequestIdBytes().isEmpty()) {
+        shade.protobuf.GeneratedMessageV3.writeString(output, 1, requestId_);
+      }
+      for (int i = 0; i < itemIds_.size(); i++) {
+        shade.protobuf.GeneratedMessageV3.writeString(output, 2, itemIds_.getRaw(i));
+      }
+      if (compactRawFeatures_ != null) {
+        output.writeMessage(3, getCompactRawFeatures());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getRequestIdBytes().isEmpty()) {
+        size += shade.protobuf.GeneratedMessageV3.computeStringSize(1, requestId_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < itemIds_.size(); i++) {
+          dataSize += computeStringSizeNoTag(itemIds_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getItemIdsList().size();
+      }
+      if (compactRawFeatures_ != null) {
+        size += shade.protobuf.CodedOutputStream
+          .computeMessageSize(3, getCompactRawFeatures());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord)) {
+        return super.equals(obj);
+      }
+      com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord other = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord) obj;
+
+      boolean result = true;
+      result = result && getRequestId()
+          .equals(other.getRequestId());
+      result = result && getItemIdsList()
+          .equals(other.getItemIdsList());
+      result = result && (hasCompactRawFeatures() == other.hasCompactRawFeatures());
+      if (hasCompactRawFeatures()) {
+        result = result && getCompactRawFeatures()
+            .equals(other.getCompactRawFeatures());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + REQUEST_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestId().hashCode();
+      if (getItemIdsCount() > 0) {
+        hash = (37 * hash) + ITEM_IDS_FIELD_NUMBER;
+        hash = (53 * hash) + getItemIdsList().hashCode();
+      }
+      if (hasCompactRawFeatures()) {
+        hash = (37 * hash) + COMPACT_RAW_FEATURES_FIELD_NUMBER;
+        hash = (53 * hash) + getCompactRawFeatures().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        java.nio.ByteBuffer data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        java.nio.ByteBuffer data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        shade.protobuf.ByteString data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        shade.protobuf.ByteString data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(byte[] data)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        byte[] data,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws shade.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        java.io.InputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseDelimitedFrom(
+        java.io.InputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        shade.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parseFrom(
+        shade.protobuf.CodedInputStream input,
+        shade.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return shade.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Compact raw features persisted for one request.
+     * </pre>
+     *
+     * Protobuf type {@code com.alibaba.pairec.processor.CompactRawFeaturesRecord}
+     */
+    public static final class Builder extends
+        shade.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.alibaba.pairec.processor.CompactRawFeaturesRecord)
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecordOrBuilder {
+      public static final shade.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_descriptor;
+      }
+
+      protected shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.class, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.Builder.class);
+      }
+
+      // Construct using com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          shade.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (shade.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        requestId_ = "";
+
+        itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (compactRawFeaturesBuilder_ == null) {
+          compactRawFeatures_ = null;
+        } else {
+          compactRawFeatures_ = null;
+          compactRawFeaturesBuilder_ = null;
+        }
+        return this;
+      }
+
+      public shade.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_descriptor;
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord getDefaultInstanceForType() {
+        return com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.getDefaultInstance();
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord build() {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord buildPartial() {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord result = new com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.requestId_ = requestId_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          itemIds_ = itemIds_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.itemIds_ = itemIds_;
+        if (compactRawFeaturesBuilder_ == null) {
+          result.compactRawFeatures_ = compactRawFeatures_;
+        } else {
+          result.compactRawFeatures_ = compactRawFeaturesBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          shade.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          shade.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          shade.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(shade.protobuf.Message other) {
+        if (other instanceof com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord) {
+          return mergeFrom((com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord other) {
+        if (other == com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord.getDefaultInstance()) return this;
+        if (!other.getRequestId().isEmpty()) {
+          requestId_ = other.requestId_;
+          onChanged();
+        }
+        if (!other.itemIds_.isEmpty()) {
+          if (itemIds_.isEmpty()) {
+            itemIds_ = other.itemIds_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureItemIdsIsMutable();
+            itemIds_.addAll(other.itemIds_);
+          }
+          onChanged();
+        }
+        if (other.hasCompactRawFeatures()) {
+          mergeCompactRawFeatures(other.getCompactRawFeatures());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (shade.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object requestId_ = "";
+      /**
+       * <code>string request_id = 1;</code>
+       */
+      public java.lang.String getRequestId() {
+        java.lang.Object ref = requestId_;
+        if (!(ref instanceof java.lang.String)) {
+          shade.protobuf.ByteString bs =
+              (shade.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          requestId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string request_id = 1;</code>
+       */
+      public shade.protobuf.ByteString
+          getRequestIdBytes() {
+        java.lang.Object ref = requestId_;
+        if (ref instanceof String) {
+          shade.protobuf.ByteString b = 
+              shade.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          requestId_ = b;
+          return b;
+        } else {
+          return (shade.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string request_id = 1;</code>
+       */
+      public Builder setRequestId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        requestId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string request_id = 1;</code>
+       */
+      public Builder clearRequestId() {
+        
+        requestId_ = getDefaultInstance().getRequestId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string request_id = 1;</code>
+       */
+      public Builder setRequestIdBytes(
+          shade.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        requestId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private shade.protobuf.LazyStringList itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureItemIdsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          itemIds_ = new shade.protobuf.LazyStringArrayList(itemIds_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public shade.protobuf.ProtocolStringList
+          getItemIdsList() {
+        return itemIds_.getUnmodifiableView();
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public int getItemIdsCount() {
+        return itemIds_.size();
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public java.lang.String getItemIds(int index) {
+        return itemIds_.get(index);
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public shade.protobuf.ByteString
+          getItemIdsBytes(int index) {
+        return itemIds_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public Builder setItemIds(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureItemIdsIsMutable();
+        itemIds_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public Builder addItemIds(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureItemIdsIsMutable();
+        itemIds_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public Builder addAllItemIds(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureItemIdsIsMutable();
+        shade.protobuf.AbstractMessageLite.Builder.addAll(
+            values, itemIds_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public Builder clearItemIds() {
+        itemIds_ = shade.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Row identifiers; candidate sequence primary keys for HSTU.
+       * </pre>
+       *
+       * <code>repeated string item_ids = 2;</code>
+       */
+      public Builder addItemIdsBytes(
+          shade.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureItemIdsIsMutable();
+        itemIds_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures compactRawFeatures_ = null;
+      private shade.protobuf.SingleFieldBuilderV3<
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder> compactRawFeaturesBuilder_;
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public boolean hasCompactRawFeatures() {
+        return compactRawFeaturesBuilder_ != null || compactRawFeatures_ != null;
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures getCompactRawFeatures() {
+        if (compactRawFeaturesBuilder_ == null) {
+          return compactRawFeatures_ == null ? com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.getDefaultInstance() : compactRawFeatures_;
+        } else {
+          return compactRawFeaturesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public Builder setCompactRawFeatures(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures value) {
+        if (compactRawFeaturesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          compactRawFeatures_ = value;
+          onChanged();
+        } else {
+          compactRawFeaturesBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public Builder setCompactRawFeatures(
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder builderForValue) {
+        if (compactRawFeaturesBuilder_ == null) {
+          compactRawFeatures_ = builderForValue.build();
+          onChanged();
+        } else {
+          compactRawFeaturesBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public Builder mergeCompactRawFeatures(com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures value) {
+        if (compactRawFeaturesBuilder_ == null) {
+          if (compactRawFeatures_ != null) {
+            compactRawFeatures_ =
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.newBuilder(compactRawFeatures_).mergeFrom(value).buildPartial();
+          } else {
+            compactRawFeatures_ = value;
+          }
+          onChanged();
+        } else {
+          compactRawFeaturesBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public Builder clearCompactRawFeatures() {
+        if (compactRawFeaturesBuilder_ == null) {
+          compactRawFeatures_ = null;
+          onChanged();
+        } else {
+          compactRawFeatures_ = null;
+          compactRawFeaturesBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder getCompactRawFeaturesBuilder() {
+        
+        onChanged();
+        return getCompactRawFeaturesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder getCompactRawFeaturesOrBuilder() {
+        if (compactRawFeaturesBuilder_ != null) {
+          return compactRawFeaturesBuilder_.getMessageOrBuilder();
+        } else {
+          return compactRawFeatures_ == null ?
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.getDefaultInstance() : compactRawFeatures_;
+        }
+      }
+      /**
+       * <code>.com.alibaba.pairec.processor.CompactRawFeatures compact_raw_features = 3;</code>
+       */
+      private shade.protobuf.SingleFieldBuilderV3<
+          com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder> 
+          getCompactRawFeaturesFieldBuilder() {
+        if (compactRawFeaturesBuilder_ == null) {
+          compactRawFeaturesBuilder_ = new shade.protobuf.SingleFieldBuilderV3<
+              com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeatures.Builder, com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesOrBuilder>(
+                  getCompactRawFeatures(),
+                  getParentForChildren(),
+                  isClean());
+          compactRawFeatures_ = null;
+        }
+        return compactRawFeaturesBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final shade.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final shade.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.alibaba.pairec.processor.CompactRawFeaturesRecord)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.CompactRawFeaturesRecord)
+    private static final com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord();
+    }
+
+    public static com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final shade.protobuf.Parser<CompactRawFeaturesRecord>
+        PARSER = new shade.protobuf.AbstractParser<CompactRawFeaturesRecord>() {
+      public CompactRawFeaturesRecord parsePartialFrom(
+          shade.protobuf.CodedInputStream input,
+          shade.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws shade.protobuf.InvalidProtocolBufferException {
+        return new CompactRawFeaturesRecord(input, extensionRegistry);
+      }
+    };
+
+    public static shade.protobuf.Parser<CompactRawFeaturesRecord> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public shade.protobuf.Parser<CompactRawFeaturesRecord> getParserForType() {
+      return PARSER;
+    }
+
+    public com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos.CompactRawFeaturesRecord getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final shade.protobuf.Descriptors.Descriptor
     internal_static_com_alibaba_pairec_processor_LongStringMap_descriptor;
   private static final 
@@ -29964,6 +33174,36 @@ public final class TorchRecPredictProtos {
   private static final 
     shade.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_alibaba_pairec_processor_PBLogData_GenerateFeaturesEntry_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_FeatureColumn_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_FeatureColumn_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_UserFeaturesEntry_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_UserFeaturesEntry_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ContextFeaturesEntry_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ContextFeaturesEntry_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ItemFeaturesEntry_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ItemFeaturesEntry_fieldAccessorTable;
+  private static final shade.protobuf.Descriptors.Descriptor
+    internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_descriptor;
+  private static final 
+    shade.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_fieldAccessorTable;
 
   public static shade.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -30131,10 +33371,31 @@ public final class TorchRecPredictProtos {
       "a.pairec.processor.PBLogData.GenerateFea" +
       "turesEntry\0322\n\020RawFeaturesEntry\022\013\n\003key\030\001 " +
       "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0327\n\025GenerateFeatur" +
-      "esEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001B" +
-      "Z\n)com.aliyun.openservices.eas.predict.p" +
-      "rotoB\025TorchRecPredictProtosZ\026.;torch_pre" +
-      "dict_protosb\006proto3"
+      "esEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"" +
+      "J\n\rFeatureColumn\0229\n\010features\030\001 \003(\0132\'.com" +
+      ".alibaba.pairec.processor.PBFeature\"\324\004\n\022" +
+      "CompactRawFeatures\022Y\n\ruser_features\030\001 \003(" +
+      "\0132B.com.alibaba.pairec.processor.Compact" +
+      "RawFeatures.UserFeaturesEntry\022_\n\020context" +
+      "_features\030\002 \003(\0132E.com.alibaba.pairec.pro" +
+      "cessor.CompactRawFeatures.ContextFeature" +
+      "sEntry\022Y\n\ritem_features\030\003 \003(\0132B.com.alib" +
+      "aba.pairec.processor.CompactRawFeatures." +
+      "ItemFeaturesEntry\032`\n\021UserFeaturesEntry\022\013" +
+      "\n\003key\030\001 \001(\t\022:\n\005value\030\002 \001(\0132+.com.alibaba" +
+      ".pairec.processor.FeatureColumn:\0028\001\032c\n\024C" +
+      "ontextFeaturesEntry\022\013\n\003key\030\001 \001(\t\022:\n\005valu" +
+      "e\030\002 \001(\0132+.com.alibaba.pairec.processor.F" +
+      "eatureColumn:\0028\001\032`\n\021ItemFeaturesEntry\022\013\n" +
+      "\003key\030\001 \001(\t\022:\n\005value\030\002 \001(\0132+.com.alibaba." +
+      "pairec.processor.FeatureColumn:\0028\001\"\220\001\n\030C" +
+      "ompactRawFeaturesRecord\022\022\n\nrequest_id\030\001 " +
+      "\001(\t\022\020\n\010item_ids\030\002 \003(\t\022N\n\024compact_raw_fea" +
+      "tures\030\003 \001(\01320.com.alibaba.pairec.process" +
+      "or.CompactRawFeaturesBZ\n)com.aliyun.open" +
+      "services.eas.predict.protoB\025TorchRecPred" +
+      "ictProtosZ\026.;torch_predict_protosb\006proto" +
+      "3"
     };
     shade.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new shade.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -30479,6 +33740,42 @@ public final class TorchRecPredictProtos {
       shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_alibaba_pairec_processor_PBLogData_GenerateFeaturesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_com_alibaba_pairec_processor_FeatureColumn_descriptor =
+      getDescriptor().getMessageTypes().get(30);
+    internal_static_com_alibaba_pairec_processor_FeatureColumn_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_FeatureColumn_descriptor,
+        new java.lang.String[] { "Features", });
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor =
+      getDescriptor().getMessageTypes().get(31);
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor,
+        new java.lang.String[] { "UserFeatures", "ContextFeatures", "ItemFeatures", });
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_UserFeaturesEntry_descriptor =
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor.getNestedTypes().get(0);
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_UserFeaturesEntry_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_CompactRawFeatures_UserFeaturesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ContextFeaturesEntry_descriptor =
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor.getNestedTypes().get(1);
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ContextFeaturesEntry_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ContextFeaturesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ItemFeaturesEntry_descriptor =
+      internal_static_com_alibaba_pairec_processor_CompactRawFeatures_descriptor.getNestedTypes().get(2);
+    internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ItemFeaturesEntry_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_CompactRawFeatures_ItemFeaturesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_descriptor =
+      getDescriptor().getMessageTypes().get(32);
+    internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_fieldAccessorTable = new
+      shade.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_alibaba_pairec_processor_CompactRawFeaturesRecord_descriptor,
+        new java.lang.String[] { "RequestId", "ItemIds", "CompactRawFeatures", });
     com.aliyun.openservices.eas.predict.proto.TorchPredictProtos.getDescriptor();
   }
 
