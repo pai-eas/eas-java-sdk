@@ -4,24 +4,21 @@ public class WatchConfig {
     public static int DefaultReConnectCnt = 20;
     public static int DefaultReConnectInterval = 5;
 
-    private int reConCnt;
-    private int reConInterval;
+    private int reConCnt = DefaultReConnectCnt;
+    private int reConInterval = DefaultReConnectInterval;
     private boolean infinityReConnect;
 
     public WatchConfig() {
-        this.reConCnt = DefaultReConnectCnt;
-        this.reConInterval = DefaultReConnectInterval;
-        this.infinityReConnect = false;
     }
 
     public WatchConfig(int reConCnt, int reConInterval) {
-        this.reConCnt = reConCnt;
-        this.reConInterval = reConInterval;
+        setReConCnt(reConCnt);
+        setReConInterval(reConInterval);
     }
 
     public WatchConfig(boolean infinityReConnect, int reConInterval) {
         this.infinityReConnect = infinityReConnect;
-        this.reConInterval = reConInterval;
+        setReConInterval(reConInterval);
     }
 
     public int getReConCnt() {
@@ -29,7 +26,7 @@ public class WatchConfig {
     }
 
     public void setReConCnt(int reConCnt) {
-        this.reConCnt = reConCnt;
+        this.reConCnt = Math.max(0, reConCnt);
     }
 
     public int getReConInterval() {
@@ -37,7 +34,7 @@ public class WatchConfig {
     }
 
     public void setReConInterval(int reConInterval) {
-        this.reConInterval = reConInterval;
+        this.reConInterval = Math.max(1, reConInterval);
     }
 
     public boolean isUnLimitedReCon() {

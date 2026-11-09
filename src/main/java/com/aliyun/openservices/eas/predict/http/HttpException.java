@@ -1,7 +1,5 @@
 package com.aliyun.openservices.eas.predict.http;
 
-import org.apache.http.HttpResponse;
-
 import java.io.IOException;
 
 /**

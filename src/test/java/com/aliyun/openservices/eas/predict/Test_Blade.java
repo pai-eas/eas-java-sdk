@@ -32,8 +32,8 @@ public class Test_Blade {
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
         client.setToken("tokenGeneratedFromService");
-        client.setEndpoint("eas-shanghai.alibaba-inc.com");
-        client.setModelName("test_blade_java_client");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("test_blade_java_client");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1; i++) {

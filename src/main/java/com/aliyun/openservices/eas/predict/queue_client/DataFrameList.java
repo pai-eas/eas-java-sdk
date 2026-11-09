@@ -41,9 +41,10 @@ public class DataFrameList {
   }
 
   public DataFrameList decode(byte[] serialized_df_list_proto) {
+    if (serialized_df_list_proto == null) {
+      throw new IllegalArgumentException("DataFrameList protobuf bytes must not be null");
+    }
     try {
-      if (serialized_df_list_proto == null) {}
-
       DataFrameListProto df_list = DataFrameListProto.parseFrom(serialized_df_list_proto);
       this.df_list_prot.clear();
       this.df_list_prot.mergeFrom(df_list);
@@ -54,7 +55,7 @@ public class DataFrameList {
         ++i;
       }
     } catch (InvalidProtocolBufferException e) {
-      log.error("Invalid Protocol Buffer", e);
+      throw new IllegalArgumentException("Invalid DataFrameList protobuf", e);
     }
     return this;
   }

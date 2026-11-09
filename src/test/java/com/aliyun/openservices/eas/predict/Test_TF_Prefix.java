@@ -25,9 +25,9 @@ public class Test_TF_Prefix {
 
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
-        client.setToken("ZWQ0NTU0OTc1OWNhZjZlNjYzYjE1MjI1NGQ0YjQyZDA2MmY1ZGU5MQ==");
-        client.setEndpoint("eas-shanghai.alibaba-inc.com");
-        client.setModelName("tf_prefix");
+        client.setToken("<your-token>");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("tf_prefix");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {

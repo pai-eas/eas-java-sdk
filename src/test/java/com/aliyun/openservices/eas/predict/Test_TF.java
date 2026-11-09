@@ -25,9 +25,9 @@ public class Test_TF {
 
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
-        client.setToken("NGFmYzA1YTRlZmE0NDkwYjBmMGI1NjgxOGNmMzk4ODMyOGZhNjdkMg==");
-        client.setEndpoint("eas-shanghai.alibaba-inc.com");
-        client.setModelName("tf_timeout");
+        client.setToken("<your-token>");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("tf_timeout");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {

@@ -27,9 +27,9 @@ public class CaffePredictTest {
 
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
-        client.setToken("ZGI0MmQ3NjM1OTAwODMwZGIxMDkwMGQ4ZGE5NmM4NTVkM2E1Y2ZmNw==");
-        client.setEndpoint("eas-shanghai.alibaba-inc.com");
-        client.setModelName("caffe_serving");
+        client.setToken("<your-token>");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("caffe_serving");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 100; i++) {

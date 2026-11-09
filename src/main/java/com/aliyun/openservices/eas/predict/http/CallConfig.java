@@ -5,20 +5,22 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 /**
- * Per-call configuration that overrides {@link PredictClient}'s defaults
- * for a single predict invocation.
+ * Per-call configuration that overrides the client's defaults for a single
+ * invocation: request path, query parameters and custom HTTP headers.
  *
  * <p>Example:
  * <pre>{@code
  * CallConfig config = new CallConfig()
  *     .setRequestPath("/v2")
- *     .setQueryParams(Collections.singletonMap("uid", "1168XXXX"));
+ *     .setQueryParams(Collections.singletonMap("uid", "1168XXXX"))
+ *     .setHeaders(Collections.singletonMap("X-Trace-Tag", "demo"));
  * String result = client.predict(jsonStr, config);
  * }</pre>
  */
 public class CallConfig {
     private String requestPath = null;
     private Map<String, String> queryParams = null;
+    private Map<String, String> headers = null;
 
     public CallConfig() {
     }
@@ -38,6 +40,19 @@ public class CallConfig {
 
     public CallConfig setQueryParams(Map<String, String> queryParams) {
         this.queryParams = queryParams;
+        return this;
+    }
+
+    /**
+     * Per-call custom HTTP headers; applied last so they override the
+     * client-level headers ({@code addExtraHeaders}) for this request.
+     */
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public CallConfig setHeaders(Map<String, String> headers) {
+        this.headers = headers;
         return this;
     }
 

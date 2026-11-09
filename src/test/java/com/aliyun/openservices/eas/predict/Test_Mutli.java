@@ -12,14 +12,14 @@ import java.util.Map;
 class ThreadClient implements Runnable {
 	private int count;
     PredictClient client;
-    String model1_token = "MmYwMjMwZTc3MzI1NzU4ZDM2YTkxOGU2OWFjMGQ3YWU1MTBhNDE2OA==";
-	String model1_endpoint = "eas-shanghai.alibaba-inc.com";
+    String model1_token = "<your-token>";
+	String model1_endpoint = "your-endpoint";
 	String model1_name = "pai_demo_xp";
-	String model2_token = "NGNmNjQyZGJiYjQwNDliOTE1NTQ0ZGM1M2FjYjdjZWRlOGE2ZjRhZg==";
-	String model2_endpoint = "eas-shanghai.alibaba-inc.com";
+	String model2_token = "<your-token>";
+	String model2_endpoint = "your-endpoint";
 	String model2_name = "credit";
-	String model3_token = "Yzg4YWQ3ODRkMmY5NTA5MTJlZjlmOTVhYzNhMGEzZjI5MjQyZjI2MQ==";
-	String model3_endpoint = "eas-pre.alibaba-inc.com";
+	String model3_token = "<your-token>";
+	String model3_endpoint = "your-endpoint";
 	String model3_name = "tf_serving";
     
     public ThreadClient(int count, PredictClient client) {
@@ -61,14 +61,14 @@ class ThreadClient implements Runnable {
 		JsonResponse model1_response;
 		try {
 			model1_response = client
-								.createChlidClient(model1_token, model1_endpoint, model1_name)
+								.createChildClient(model1_token, model1_endpoint, model1_name)
 								.predict(model1_request);
 			String model2_response = client
-					.createChlidClient(model2_token, model2_endpoint, model2_name)
+					.createChildClient(model2_token, model2_endpoint, model2_name)
 					.predict(model2_request);
 
 			TFResponse model3_response = client
-					.createChlidClient(model3_token, model3_endpoint, model3_name)
+					.createChildClient(model3_token, model3_endpoint, model3_name)
 					.predict(model3_request);
 			System.out.println(count
 					+ " model1:" + model1_response.getOutputs().get(0).getOutputValue()

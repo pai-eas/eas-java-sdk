@@ -65,11 +65,15 @@ public final class JVMRandom extends Random {
      * <code>0</code> (inclusive) and the specified value (exclusive), from
      * the Math.random() sequence.</p>
      *
+     * <p>Kept as an instance method so it overrides
+     * {@code RandomGenerator.nextLong(long)} on JDK 17+ while remaining
+     * source-compatible with JDK 8.</p>
+     *
      * @param n the specified exclusive max-value
      * @return the random long
      * @throws IllegalArgumentException when <code>n &lt;= 0</code>
      */
-    public static long nextLong(long n) {
+    public long nextLong(long n) {
         if (n <= 0) {
             throw new IllegalArgumentException(
                     "Upper bound for nextInt must be positive"

@@ -24,9 +24,9 @@ public class EasyRecPredictTest {
 
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
-        client.setEndpoint("1466725745529307.ap-southeast-1.pai-eas.aliyuncs.com");
-        client.setModelName("tmp_ctr_deep_v1a");
-        client.setToken("N2U1MTU4N2E1NDZjYWJkODljZGM3ZTZmNmZkYWEyZGRkZjZhNzJhNw==");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("tmp_ctr_deep_v1a");
+        client.setToken("<your-token>");
         client.setRequestTimeout(100000);
 
         testInvoke(client);

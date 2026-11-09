@@ -27,9 +27,9 @@ public class Test_Torch {
 
     public static void main(String[] args) throws Exception {
         PredictClient client = InitClient();
-//        client.setToken("NGFmYzA1YTRlZmE0NDkwYjBmMGI1NjgxOGNmMzk4ODMyOGZhNjdkMg==");
-        client.setEndpoint("eas-beijing.alibaba-inc.com");
-        client.setModelName("testpytorch_sdk");
+//        client.setToken("<your-token>");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("testpytorch_sdk");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {

@@ -33,7 +33,7 @@ public class Test_CallConfig {
         PredictClient client = new PredictClient(new HttpConfig());
         client.setToken(TOKEN);
         client.setEndpoint(ENDPOINT);
-        client.setModelName(MODEL_NAME);
+        client.setServiceName(MODEL_NAME);
         client.setRequestPath("/infer");
 
         try {

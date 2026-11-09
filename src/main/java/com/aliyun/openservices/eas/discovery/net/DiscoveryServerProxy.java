@@ -32,7 +32,8 @@ public class DiscoveryServerProxy {
             }
         });
 
-        Thread getServiceThread = new Thread(futureTask);
+        Thread getServiceThread = new Thread(futureTask, "eas-discovery-request");
+        getServiceThread.setDaemon(true);
         getServiceThread.start();
 
         if (timeout <= 0) {
@@ -41,11 +42,16 @@ public class DiscoveryServerProxy {
 
         try {
             return futureTask.get(timeout, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+        } catch (InterruptedException e) {
+            futureTask.cancel(true);
+            Thread.currentThread().interrupt();
+            DiscoveryClient.LOG.error("[reqAPI]", "api:" + api + "params: " + JSON.toJSONString(params), e);
+        } catch (ExecutionException | TimeoutException e) {
+            futureTask.cancel(true);
             DiscoveryClient.LOG.error("[reqAPI]", "api:" + api + "params: " + JSON.toJSONString(params), e);
         }
 
-        throw new IllegalStateException("failed to req API:/api/" + api + " after " + UtilAndComs.SERVER_TIME_OUT_MILLIS + " ms.");
+        throw new IllegalStateException("failed to req API:/api/" + api + " after " + timeout + " ms.");
     }
 
     public static String reqAPI(String api, Map<String, String> params, long timeout) {
@@ -90,7 +96,9 @@ public class DiscoveryServerProxy {
                 "Connection", "Keep-Alive");
 
         String url;
-        if (curServer.contains(":")) {
+        if (curServer.startsWith("http://") || curServer.startsWith("https://")) {
+            url = curServer + api;
+        } else if (curServer.contains(":")) {
             url = HttpClient.getPrefix() + curServer + api;
         } else {
             url = HttpClient.getPrefix() + curServer + ":" + HttpClient.getServerPort() + api;
@@ -127,13 +135,22 @@ public class DiscoveryServerProxy {
     }
 
 
-    public static void InitDiscoveryServers() {
+    public static synchronized void InitDiscoveryServers() {
         String s = System.getProperty("com.aliyun.eas.discovery");
         if (StringUtils.isEmpty(s)) {
             throw new IllegalArgumentException("discovery server is not configured");
         }
 
-        EASDiscoveryServers.addAll(Arrays.asList(s.split(",")));
+        EASDiscoveryServers.clear();
+        for (String server : s.split(",")) {
+            String trimmed = server.trim();
+            if (!trimmed.isEmpty()) {
+                EASDiscoveryServers.add(trimmed);
+            }
+        }
+        if (EASDiscoveryServers.isEmpty()) {
+            throw new IllegalArgumentException("discovery server is not configured");
+        }
     }
 
     public static String reqAPI(String api, Map<String, String> params, List<String> servers) {

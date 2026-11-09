@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 
 public class HostReactor {
     public static final long DEFAULT_DELAY = 3000L;
-    private static final Map<String, ScheduledFuture<?>> futureMap = new HashMap<>();
+    private static final Set<String> scheduledTasks = ConcurrentHashMap.newKeySet();
     public static long updateHoldInterval = 5000L;
     private static Map<String, Service> cachedService = new ConcurrentHashMap<>(LocalCache.read());
     private static ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor(new ThreadFactory() {
@@ -64,6 +64,7 @@ public class HostReactor {
             if (oldDom.getLastRefTime() > service.getLastRefTime()) {
                 DiscoveryClient.LOG.warn("out of date data received, old-t: " + oldDom.getLastRefTime()
                         + ", new-t: " + service.getLastRefTime());
+                return oldDom;
             }
 
             cachedService.put(service.getKey(), service);
@@ -175,12 +176,27 @@ public class HostReactor {
         } else if (domObj.getEndpoints().isEmpty()) {
 
             if (updateHoldInterval > 0) {
-                // hold a moment waiting for update finish
+                // Hold a moment waiting for an update that may already be in
+                // flight. Poll in short slices so that a notification sent
+                // before this thread started waiting is not missed, and so an
+                // already completed update does not wait for the full interval.
+                long deadline = System.currentTimeMillis() + updateHoldInterval;
                 synchronized (domObj) {
-                    try {
-                        domObj.wait(updateHoldInterval);
-                    } catch (InterruptedException e) {
-                        DiscoveryClient.LOG.error("[getService]", "dom:" + dom + ", clusters:" + clusters + e);
+                    while (System.currentTimeMillis() < deadline) {
+                        Service latest = cachedService.get(key);
+                        if (latest != null && latest != domObj
+                                && !latest.getEndpoints().isEmpty()) {
+                            break;
+                        }
+                        long remaining = deadline - System.currentTimeMillis();
+                        try {
+                            domObj.wait(Math.max(1L, Math.min(100L, remaining)));
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            DiscoveryClient.LOG.error("[getService]",
+                                    "dom:" + dom + ", clusters:" + clusters, e);
+                            break;
+                        }
                     }
                 }
             }
@@ -192,17 +208,16 @@ public class HostReactor {
     }
 
     public static void scheduleUpdateIfAbsent(String dom, String clusters) {
-        if (futureMap.get(Service.getKey(dom, clusters)) != null) {
+        String key = Service.getKey(dom, clusters);
+        if (!scheduledTasks.add(key)) {
             return;
         }
-
-        synchronized (futureMap) {
-            if (futureMap.get(Service.getKey(dom, clusters)) != null) {
-                return;
-            }
-
-            ScheduledFuture<?> future = HostReactor.addTask(new UpdateTask(dom, clusters));
-            futureMap.put(Service.getKey(dom, clusters), future);
+        try {
+            HostReactor.addTask(new UpdateTask(dom, clusters));
+        } catch (RuntimeException e) {
+            // Allow a later call to retry if the executor rejected the task.
+            scheduledTasks.remove(key);
+            throw e;
         }
     }
 
@@ -258,7 +273,6 @@ public class HostReactor {
                 Service domObj = cachedService.get(Service.getKey(dom, clusters));
                 if (domObj == null) {
                     updateDomNow(dom, clusters);
-                    executor.schedule(this, DEFAULT_DELAY, TimeUnit.MILLISECONDS);
                     return;
                 }
 
@@ -266,11 +280,12 @@ public class HostReactor {
                 if (domObj.getLastRefTime() <= lastRefTime) {
                     updateDomNow(dom, clusters);
                     domObj = cachedService.get(Service.getKey(dom, clusters));
-
-
+                    if (domObj == null) {
+                        return;
+                    }
                 }
 
-                delay = domObj.getCacheMillis();
+                delay = Math.max(1L, domObj.getCacheMillis());
                 lastRefTime = domObj.getLastRefTime();
             } catch (Throwable e) {
                 DiscoveryClient.LOG.error("NA", "failed to update dom: " + dom, e);

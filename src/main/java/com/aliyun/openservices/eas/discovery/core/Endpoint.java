@@ -70,4 +70,30 @@ public class Endpoint {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Endpoint)) {
+            return false;
+        }
+        Endpoint other = (Endpoint) o;
+        return port == other.port
+                && weight == other.weight
+                && isValid == other.isValid
+                && (ip == null ? other.ip == null : ip.equals(other.ip))
+                && (app == null ? other.app == null : app.equals(other.app));
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ip == null ? 0 : ip.hashCode();
+        result = 31 * result + port;
+        result = 31 * result + weight;
+        result = 31 * result + (app == null ? 0 : app.hashCode());
+        result = 31 * result + (isValid ? 1 : 0);
+        return result;
+    }
 }

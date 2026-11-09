@@ -6,6 +6,7 @@ package com.aliyun.openservices.eas.predict.http;
 public class HttpConfig {
     private int ioThreadNum;
     private int readTimeout;
+    private boolean readTimeoutExplicitlySet;
     private int connectTimeout;
     private int requestTimeout;
     private int maxConnectionCount;
@@ -33,6 +34,14 @@ public class HttpConfig {
     private long connTimeToLive = -1L;
 
     /**
+     * Whether EAS server-side HTTP tracing is enabled. When enabled, each
+     * synchronous request attempt (including retries) sends the server
+     * activation header and emits a structured event with the server-side
+     * tracing phases when the server returns them. Disabled by default.
+     */
+    private boolean httpTracingEnabled = false;
+
+    /**
      * Default constructor that initializes the default configuration.
      */
     public HttpConfig() {
@@ -53,6 +62,7 @@ public class HttpConfig {
         super();
         this.ioThreadNum = ioThreadNum;
         this.readTimeout = readTimeout;
+        this.readTimeoutExplicitlySet = true;
         this.connectTimeout = connectTimeout;
         this.maxConnectionCount = maxConnectionCount;
         this.maxConnectionPerRoute = maxConnectionPerRoute;
@@ -78,8 +88,27 @@ public class HttpConfig {
         return readTimeout;
     }
 
+    /**
+     * Sets the socket read timeout in milliseconds.
+     *
+     * <p>When this method is not called and {@link #setRequestTimeout(int)} is
+     * set to a positive value, the SDK derives an effective read timeout that
+     * is larger than the request timeout, so that the SDK-level request
+     * timeout fires first. An explicit value always takes precedence.</p>
+     *
+     * @param readTimeout socket read timeout in milliseconds
+     */
     public void setReadTimeout(int readTimeout) {
         this.readTimeout = readTimeout;
+        this.readTimeoutExplicitlySet = true;
+    }
+
+    /**
+     * Returns whether {@link #setReadTimeout(int)} or a constructor with an
+     * explicit read timeout has been used.
+     */
+    boolean isReadTimeoutExplicitlySet() {
+        return readTimeoutExplicitlySet;
     }
 
     public int getConnectTimeout() {
@@ -110,8 +139,39 @@ public class HttpConfig {
         return requestTimeout;
     }
 
+    /**
+     * Sets the SDK-level wait limit for a single request attempt in
+     * milliseconds; 0 disables the limit.
+     *
+     * <p>If {@link #setReadTimeout(int)} has not been called, the transport
+     * read timeout is derived as
+     * {@code max(readTimeout, requestTimeout + connectTimeout)} so that the
+     * request timeout can fire first. This must be set before the client is
+     * constructed.</p>
+     *
+     * @param requestTimeout request timeout in milliseconds; 0 means unlimited
+     */
     public void setRequestTimeout(int requestTimeout) {
         this.requestTimeout = requestTimeout;
+    }
+
+    /**
+     * Returns the read timeout actually applied to the HTTP transport.
+     *
+     * <p>An explicitly configured read timeout is returned unchanged.
+     * Otherwise, when a positive request timeout is configured, the value is
+     * raised to {@code requestTimeout + connectTimeout} (keeping the default
+     * read timeout when it is already larger).</p>
+     */
+    int getEffectiveReadTimeout() {
+        if (requestTimeout <= 0 || readTimeoutExplicitlySet) {
+            return readTimeout;
+        }
+        long derived = (long) requestTimeout + Math.max(0, connectTimeout);
+        if (derived > Integer.MAX_VALUE) {
+            derived = Integer.MAX_VALUE;
+        }
+        return (int) Math.max(readTimeout, derived);
     }
 
     public boolean isKeepAlive() {
@@ -189,5 +249,24 @@ public class HttpConfig {
         if (this.connectionCleanupInterval <= 0) {
             this.connectionCleanupInterval = Math.min(3000, (int)connTimeToLive);
         }
+    }
+
+    /**
+     * Whether HTTP tracing is enabled.
+     *
+     * @return httpTracingEnabled
+     */
+    public boolean isHttpTracingEnabled() {
+        return httpTracingEnabled;
+    }
+
+    /**
+     * Enables or disables EAS server-side HTTP tracing. Must be set before the
+     * client is constructed.
+     *
+     * @param httpTracingEnabled whether to enable HTTP tracing
+     */
+    public void setHttpTracingEnabled(boolean httpTracingEnabled) {
+        this.httpTracingEnabled = httpTracingEnabled;
     }
 }

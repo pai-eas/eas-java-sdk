@@ -7,204 +7,82 @@ import com.aliyun.openservices.eas.predict.proto.TorchRecPredictProtos;
 import com.aliyun.openservices.eas.predict.request.*;
 import com.aliyun.openservices.eas.predict.response.*;
 import com.aliyun.openservices.eas.predict.utils.*;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.ConnectionClosedException;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.concurrent.FutureCallback;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.apache.http.conn.DnsResolver;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import org.apache.http.impl.nio.client.HttpAsyncClients;
-import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
-import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
-import org.apache.http.impl.nio.reactor.IOReactorConfig;
-import org.apache.http.nio.conn.NHttpConnectionFactory;
-import org.apache.http.nio.entity.NByteArrayEntity;
-import org.apache.http.nio.reactor.ConnectingIOReactor;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.nio.conn.SchemeIOSessionStrategy;
-import org.apache.http.nio.conn.ssl.SSLIOSessionStrategy;
-import org.apache.http.nio.conn.NoopIOSessionStrategy;
-import org.apache.http.conn.SchemePortResolver;
+import org.apache.hc.client5.http.ConnectTimeoutException;
+import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
+import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
+import org.apache.hc.core5.concurrent.FutureCallback;
+import org.apache.hc.core5.http.ConnectionClosedException;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.HttpResponse;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Created by xiping.zk on 2018/07/25.
  */
 
-class BlacklistData{
-    private long timestamp = 0L;
-    private int count = 0;
-
-    public BlacklistData(long timestamp, int count) {
-        this.timestamp = timestamp;
-        this.count = count;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getCount() {
-        return count;
-    }
-}
-
-// define blacklist task
-class BlacklistTask implements Runnable {
-    private Map<String, BlacklistData> blacklist = null;
-    private ReentrantReadWriteLock rwlock = null;
-    private int blacklistTimeout = 0;
-    private static Log log = LogFactory.getLog(BlacklistTask.class);
-
-    public BlacklistTask(Map<String, BlacklistData> blacklist,
-                         ReentrantReadWriteLock rwlock, int blacklistTimeout) {
-        this.blacklist = blacklist;
-        this.rwlock = rwlock;
-        this.blacklistTimeout = blacklistTimeout;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                rwlock.writeLock().lock();
-                Iterator<Map.Entry<String, BlacklistData>> it = blacklist.entrySet().iterator();
-                long currentTimestamp = System.currentTimeMillis();
-                while (it.hasNext()) {
-                    Map.Entry<String, BlacklistData> entry = it.next();
-                    if (entry.getValue().getTimestamp() <= currentTimestamp) {
-                        log.info("Remove [" + entry.getKey() + "] from blacklist");
-                        it.remove();
-                    }
-                }
-                rwlock.writeLock().unlock();
-                Thread.sleep(blacklistTimeout * 1000);
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-            }
-        }
-    }
-}
-
-public class PredictClient {
+public class PredictClient extends AbstractEasClient<PredictClient> {
     private static Log log = LogFactory.getLog(PredictClient.class);
     final private int endpointRetryCount = 10;
-    private HashMap<String, String> mapHeader = null;
-    private CloseableHttpAsyncClient httpclient = null;
-    private PoolingNHttpClientConnectionManager cm = null;
-    private ScheduledExecutorService scheduler = null;
+    private Map<String, String> mapHeader = null;
+    private boolean httpTracingEnabled = false;
 
     private String token = null;
-    private String modelName = null;
-    private String requestPath = "";
+    private String serviceName = null;
     private String endpoint = null;
     private String url = null;
     private boolean isCompressed = false;
-    private int retryCount = 3;
-    private EnumSet<RetryCondition> retryConditions = EnumSet.noneOf(RetryCondition.class);
+    private volatile EnumSet<RetryCondition> retryConditions = EnumSet.noneOf(RetryCondition.class);
     private String contentType = "application/octet-stream";
-    private int errorCode = 400;
-    private String errorMessage;
-    private String vipSrvEndPoint = null;
+    private volatile int errorCode = 200;
+    private volatile String errorMessage;
     private String directEndPoint = null;
     private int requestTimeout = 0;
-    private boolean enableBlacklist = false;
-    private int blacklistSize = 10;
-    private int blacklistTimeout = 30;
-    private int blacklistTimeoutCount = 10;
-    private Map<String, BlacklistData> blacklist = null;
-    private ReentrantReadWriteLock rwlock = new ReentrantReadWriteLock();
     private Compressor compressor = null;
     private Compressor decompressor = null;
-    private Map<String, String> extraHeaders = new HashMap<>();
 
     private static final CallConfig EMPTY_CALL_CONFIG = new CallConfig();
 
     public PredictClient() {
+        this(new HttpConfig());
     }
 
     public PredictClient(HttpConfig httpConfig) {
-        try {
-            ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor();
-            Registry<SchemeIOSessionStrategy> sessionStrategyRegistry = RegistryBuilder.<SchemeIOSessionStrategy>create()
-                    .register("http", NoopIOSessionStrategy.INSTANCE)
-                    .register("https", SSLIOSessionStrategy.getDefaultStrategy())
-                    .build();
-            PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(
-                ioReactor, (NHttpConnectionFactory)null, sessionStrategyRegistry,(SchemePortResolver)null, (DnsResolver)null,
-                httpConfig.getConnTimeToLive(), TimeUnit.MILLISECONDS);
-            cm.setMaxTotal(httpConfig.getMaxConnectionCount());
-            cm.setDefaultMaxPerRoute(httpConfig.getMaxConnectionPerRoute());
-
-            requestTimeout = httpConfig.getRequestTimeout();
-            IOReactorConfig config = IOReactorConfig.custom()
-                    .setTcpNoDelay(true)
-                    .setSoTimeout(httpConfig.getReadTimeout())
-                    .setSoReuseAddress(true)
-                    .setConnectTimeout(httpConfig.getConnectTimeout())
-                    .setIoThreadCount(httpConfig.getIoThreadNum())
-                    .setSoKeepAlive(httpConfig.isKeepAlive())
-                    .build();
-            final RequestConfig requestConfig = RequestConfig.custom()
-                    .setRedirectsEnabled(httpConfig.getRedirectsEnabled())
-                    .setConnectTimeout(httpConfig.getConnectTimeout())
-                    .setSocketTimeout(httpConfig.getReadTimeout())
-                    .build();
-
-            httpclient = HttpAsyncClients.custom()
-                .setConnectionManager(cm)
-                .setDefaultIOReactorConfig(config)
-                .setDefaultRequestConfig(requestConfig)
-                .build();
-            httpclient.start();
-
-            int cleanupInterval = httpConfig.getConnectionCleanupInterval();
-            int idleTimeout = httpConfig.getIdleConnectionTimeout();
-            if (cleanupInterval > 0) {
-                scheduler = Executors.newSingleThreadScheduledExecutor();
-                scheduler.scheduleAtFixedRate(() -> {
-                    // Close all expired connections
-                    cm.closeExpiredConnections();
-                    if (idleTimeout > 0) {
-                        // Close all connections idle for longer than idleTimeout milliseconds
-                        cm.closeIdleConnections(idleTimeout, TimeUnit.MILLISECONDS);
-                    }
-                }, cleanupInterval, cleanupInterval, TimeUnit.MILLISECONDS);
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException("Error initializing PredictClient", e);
-        }
+        this.httpConfig = httpConfig != null ? httpConfig : new HttpConfig();
+        this.retryCount = 3;
+        this.httpTracingEnabled = this.httpConfig.isHttpTracingEnabled();
+        this.requestTimeout = this.httpConfig.getRequestTimeout();
+        this.httpSupport = HttpClientSupport.create(this.httpConfig);
     }
 
-    private PredictClient setHttp(CloseableHttpAsyncClient httpclient) {
-        this.httpclient = httpclient;
-        return this;
+    /**
+     * Creates a client using an externally built HttpClient 5 async client.
+     * The provided client is used as-is: the SDK neither starts nor closes it,
+     * and the connection-related settings of {@code httpConfig} are ignored
+     * (configure timeouts, pooling, TLS and proxies directly on the client).
+     *
+     * @param httpConfig SDK-level configuration (retry, compression, content type, ...)
+     * @param httpClient externally built and started client; must not be null
+     */
+    public PredictClient(HttpConfig httpConfig, CloseableHttpAsyncClient httpClient) {
+        this.httpConfig = httpConfig != null ? httpConfig : new HttpConfig();
+        this.retryCount = 3;
+        this.httpTracingEnabled = this.httpConfig.isHttpTracingEnabled();
+        this.requestTimeout = this.httpConfig.getRequestTimeout();
+        this.httpSupport = HttpClientSupport.withExternalClient(this.httpConfig, httpClient);
     }
+
 
     public PredictClient setToken(String token) {
         if (token == null || token.length() > 0) {
@@ -213,19 +91,47 @@ public class PredictClient {
         return this;
     }
 
+    /**
+     * Sets the SDK-level wait limit for a single request attempt in
+     * milliseconds; 0 disables the limit.
+     *
+     * <p>To let the SDK derive a compatible transport read timeout
+     * automatically, set the request timeout on {@link HttpConfig} before
+     * constructing the client.</p>
+     *
+     * @param requestTimeout request timeout in milliseconds; 0 means unlimited
+     */
     public PredictClient setRequestTimeout(int requestTimeout) {
         this.requestTimeout = requestTimeout;
         return this;
     }
 
-    public PredictClient setModelName(String modelName) {
-        this.modelName = modelName;
+    /**
+     * Sets the name of the online prediction service. It is used as the path
+     * segment after {@code /api/predict/}.
+     */
+    public PredictClient setServiceName(String serviceName) {
+        this.serviceName = serviceName;
         return this;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    /**
+     * @deprecated use {@link #setServiceName(String)}; "model name" is the
+     *             legacy name of the service name and may be misleading for
+     *             services that do not serve a model.
+     */
+    @Deprecated
+    public PredictClient setModelName(String modelName) {
+        return setServiceName(modelName);
     }
 
     public PredictClient setEndpoint(String endpoint) {
         if (endpoint != null && !endpoint.startsWith("http://") && !endpoint.startsWith("https://")){
-            this.endpoint = "http://" + endpoint;
+            this.endpoint = "https://" + endpoint;
         } else {
             this.endpoint = endpoint;
         }
@@ -237,18 +143,19 @@ public class PredictClient {
         return this;
     }
 
+    /**
+     * @deprecated VIPServer-based discovery is no longer supported by the SDK.
+     *             Use {@link #setDirectEndpoint(String)} for the VPC direct
+     *             channel, or set a normal {@link #setEndpoint(String)}.
+     */
+    @Deprecated
     public PredictClient setVIPServer(String vipSrvEndPoint) {
-        if (vipSrvEndPoint == null || vipSrvEndPoint.length() > 0) {
-            this.vipSrvEndPoint = vipSrvEndPoint;
-        }
+        log.warn("setVIPServer is deprecated and has no effect; use setDirectEndpoint or setEndpoint instead.");
         return this;
     }
 
     public PredictClient setDirectEndpoint(String directEndpoint) {
-        if (directEndPoint == null || directEndPoint.length() > 0) {
-            this.directEndPoint = directEndpoint;
-            System.setProperty("com.aliyun.eas.discovery", directEndpoint);
-        }
+        this.directEndPoint = directEndpoint;
         return this;
     }
 
@@ -271,13 +178,11 @@ public class PredictClient {
         return this;
     }
 
-    public PredictClient setRetryCount(int retryCount) {
-        this.retryCount = retryCount;
-        return this;
-    }
 
     public PredictClient setRetryConditions(EnumSet<RetryCondition> retryConditions) {
-        this.retryConditions = retryConditions;
+        this.retryConditions = (retryConditions == null || retryConditions.isEmpty())
+                ? EnumSet.noneOf(RetryCondition.class)
+                : EnumSet.copyOf(retryConditions);
         return this;
     }
 
@@ -291,32 +196,16 @@ public class PredictClient {
         return this;
     }
 
-    public String getRequestPath() {
-        return requestPath;
-    }
-
-    public PredictClient setRequestPath(String requestPath) {
-        this.requestPath = requestPath;
-        return this;
-    }
-
-    public PredictClient addExtraHeaders(Map<String, String> extraHeaders) {
-        this.extraHeaders.putAll(extraHeaders);
-        return this;
-    }
-
+    /**
+     * @deprecated the instance blacklist mechanism was never wired into the
+     *             request path and has been removed. Endpoint health is handled
+     *             by the underlying HTTP connection pool and retry policy.
+     */
+    @Deprecated
     public PredictClient startBlacklistMechanism(int blacklistSize,
                                                  int blacklistTimeout,
                                                  int blacklistTimeoutCount) {
-        this.enableBlacklist = true;
-        this.blacklistSize = blacklistSize;
-        this.blacklistTimeout = blacklistTimeout;
-        this.blacklistTimeoutCount = blacklistTimeoutCount;
-        this.blacklist = new HashMap<String, BlacklistData>();
-        BlacklistTask task = new BlacklistTask(this.blacklist,
-                this.rwlock, this.blacklistTimeout);
-        Thread t = new Thread(task);
-        t.start();
+        log.warn("startBlacklistMechanism is deprecated and has no effect.");
         return this;
     }
 
@@ -328,25 +217,36 @@ public class PredictClient {
         return errorMessage;
     }
 
+    /**
+     * Creates a child client for another service while sharing the parent's
+     * connection pool. The child inherits the parent's request configuration
+     * (retry, timeout, compression, tracing and headers).
+     */
     public PredictClient createChildClient(String token, String endPoint,
-                                           String modelName) {
+                                           String serviceName) {
         PredictClient client = new PredictClient();
-        client.setHttp(this.httpclient).setToken(token).setEndpoint(endPoint)
-                .setModelName(modelName);
+        client.httpSupport = this.httpSupport.shareForChild();
+        copyConfigurationTo(client);
+        client.setToken(token).setEndpoint(endPoint).setServiceName(serviceName);
         return client;
-    }
-
-    // to be compatible with old version typo
-    public PredictClient createChlidClient(String token, String endPoint,
-                                           String modelName) {
-        return createChildClient(token, endpoint, modelName);
     }
 
     public PredictClient createChildClient() {
         PredictClient client = new PredictClient();
-        client.setHttp(this.httpclient)
-            .setToken(this.token)
-            .setModelName(this.modelName)
+        client.httpSupport = this.httpSupport.shareForChild();
+        copyConfigurationTo(client);
+        if (this.directEndPoint != null) {
+            client.setDirectEndpoint(this.directEndPoint);
+        } else {
+            client.setEndpoint(this.endpoint);
+        }
+        return client;
+    }
+
+    private void copyConfigurationTo(PredictClient client) {
+        client.setToken(this.token)
+            .setServiceName(this.serviceName)
+            .setTraceId(this.traceId)
             .setRetryCount(this.retryCount)
             .setRetryConditions(this.retryConditions)
             .setRequestTimeout(this.requestTimeout)
@@ -355,25 +255,13 @@ public class PredictClient {
             .setRequestPath(this.requestPath)
             .setUrl(this.url)
             .addExtraHeaders(this.extraHeaders);
-        if (this.vipSrvEndPoint != null) {
-            client.setVIPServer(this.vipSrvEndPoint);
-        } else if (this.directEndPoint != null) {
-            client.setDirectEndpoint(this.directEndPoint);
-        } else {
-            client.setEndpoint(this.endpoint);
-        }
+        client.httpTracingEnabled = this.httpTracingEnabled;
         if (this.compressor != null) {
             client.setCompressor(this.compressor);
         }
         if (this.decompressor != null) {
             client.setDecompressor(this.decompressor);
         }
-        return client;
-    }
-
-    // to be compatible with old version typo
-    public PredictClient createChlidClient() {
-        return createChildClient();
     }
 
     private String getUrl(String lastUrl, CallConfig callConfig) throws Exception {
@@ -381,87 +269,52 @@ public class PredictClient {
         if (this.url != null) {
             return this.url + pathWithQuery;
         }
-        String apiPath = "/api/predict/" + modelName + pathWithQuery;
-        String endpoint = this.endpoint;
-        String url = "";
-        if (enableBlacklist) {
-            int retryCount = endpointRetryCount;
-            if (blacklistSize * 2 > endpointRetryCount) {
-                retryCount = blacklistSize * 2;
-            }
-            for (int i = 0; i < retryCount; i++) {
-                if (directEndPoint != null) {
-                    endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                    url = "http://" + endpoint + apiPath;
-                    // System.out.println("URL: " + url + " LastURL: " + lastUrl);
-                    if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
-                        return url;
-                    }
-                    try {
-                        rwlock.readLock().lock();
-                        if (!url.equals(lastUrl)) {
-                            if (!blacklist.containsKey(url)) {
-                                return url;
-                            } else if (blacklist.get(url).getCount() < blacklistTimeoutCount) {
-                                return url;
-                            }
-                        }
-                    } finally {
-                        rwlock.readLock().unlock();
-                    }
-                } else {
-                    url = endpoint + apiPath;
-                    break;
-                }
-            }
-        } else {
+        String apiPath = "/api/predict/" + serviceName + pathWithQuery;
+        if (directEndPoint != null) {
             for (int i = 0; i < endpointRetryCount; i++) {
-                if (directEndPoint != null) {
-                    endpoint = DiscoveryClient.srvHost(this.modelName).toInetAddr();
-                    url = "http://" + endpoint + apiPath;
-                    // System.out.println("URL: " + url + " LastURL: " + lastUrl);
-                    if (DiscoveryClient.getHosts(this.modelName).size() < 2) {
-                        return url;
-                    }
-                    if (!url.equals(lastUrl)) {
-                        return url;
-                    }
-                } else {
-                    url = endpoint + apiPath;
+                com.aliyun.openservices.eas.discovery.core.Endpoint host =
+                        DiscoveryClient.srvHost(this.serviceName);
+                if (host == null) {
                     break;
                 }
+                String url = "https://" + host.toInetAddr() + apiPath;
+                if (DiscoveryClient.getHosts(this.serviceName).size() < 2 || !url.equals(lastUrl)) {
+                    return url;
+                }
             }
+            throw new IllegalStateException("no available EAS instance for service: " + serviceName);
         }
-
-        return url;
+        if (this.endpoint == null) {
+            throw new IllegalStateException("endpoint is not configured; call setEndpoint, setUrl or setDirectEndpoint first");
+        }
+        return this.endpoint + apiPath;
     }
 
-    private HttpPost generateSignature(byte[] requestContent, String lastUrl, CallConfig callConfig) throws Exception {
-        HttpPost request = new HttpPost(getUrl(lastUrl, callConfig));
-        request.setEntity(new NByteArrayEntity(requestContent));
-        if (isCompressed) {
-            try {
-                requestContent = Snappy.compress(requestContent);
-            } catch (IOException e) {
-                log.error("Compress Error", e);
-            }
-        }
+    private SimpleHttpRequest generateSignature(byte[] requestContent, String lastUrl, CallConfig callConfig,
+                                                boolean tracingEnabled) throws Exception {
+        SimpleHttpRequest request = SimpleHttpRequest.create("POST", getUrl(lastUrl, callConfig));
+        request.setBody(requestContent, null);
         HmacSha1Signature signature = new HmacSha1Signature();
         String md5Content = signature.getMD5(requestContent);
         for (Map.Entry<String, String> entry : this.extraHeaders.entrySet()) {
             request.addHeader(entry.getKey(), entry.getValue());
         }
-        request.addHeader(HttpHeaders.CONTENT_MD5, md5Content);
+        if (traceId != null && !traceId.isEmpty()) {
+            request.setHeader(TRACE_ID_HEADER, traceId);
+        }
+        request.setHeader(HttpHeaders.CONTENT_MD5, md5Content);
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "EEE, dd MMM yyyy HH:mm:ss", Locale.ENGLISH);
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         String currentTime = dateFormat.format(now) + " GMT";
-        request.addHeader(HttpHeaders.DATE, currentTime);
-        request.addHeader(HttpHeaders.CONTENT_TYPE, contentType);
+        request.setHeader(HttpHeaders.DATE, currentTime);
+        request.setHeader(HttpHeaders.CONTENT_TYPE, contentType);
 
-        if (mapHeader != null) {
-            request.addHeader("Client-Timestamp",
+        if (mapHeader != null || tracingEnabled) {
+            // Client-Timestamp activates the EAS server-side HTTP tracing,
+            // which reports its phase timestamps back in the response headers.
+            request.setHeader("Client-Timestamp",
                     String.valueOf(System.currentTimeMillis()));
         }
 
@@ -469,43 +322,84 @@ public class PredictClient {
             String pathWithQuery = callConfig.requestURI(this.requestPath);
             String authPath;
             if (this.url == null) {
-                authPath = "/api/predict/" + this.modelName + pathWithQuery;
+                authPath = "/api/predict/" + this.serviceName + pathWithQuery;
             } else {
                 URL u = new URL(this.url);
                 authPath = u.getPath() + pathWithQuery;
             }
             String auth = "POST" + "\n" + md5Content + "\n"
                 + this.contentType + "\n" + currentTime + "\n" + authPath;
-            request.addHeader(HttpHeaders.AUTHORIZATION,
+            request.setHeader(HttpHeaders.AUTHORIZATION,
                 "EAS " + signature.computeSignature(token, auth));
+        }
+
+        if (callConfig != null && callConfig.getHeaders() != null) {
+            for (Map.Entry<String, String> entry : callConfig.getHeaders().entrySet()) {
+                request.setHeader(entry.getKey(), entry.getValue());
+            }
         }
         return request;
     }
 
-    private byte[] handleResponse(HttpResponse response) throws IOException, HttpException {
+    /**
+     * Applies the configured compression to the request body. The returned
+     * bytes are the exact bytes that must be signed and transmitted.
+     */
+    private byte[] prepareRequestBody(byte[] requestContent) throws IOException {
+        if (compressor != null) {
+            switch (compressor) {
+                case Gzip:
+                    return GzipUtils.compress(requestContent);
+                case Zlib:
+                    return ZlibUtils.compress(requestContent);
+                case Snappy:
+                    return SnappyUtils.compress(requestContent);
+                case LZ4:
+                    return LZ4Utils.compress(requestContent);
+                case LZ4Frame:
+                    return LZ4Utils.compressFrame(requestContent);
+                case Zstd:
+                    return ZstdUtils.compress(requestContent);
+                default:
+                    log.warn("Compressor is not supported: " + compressor);
+                    return requestContent;
+            }
+        }
+        if (isCompressed) {
+            return Snappy.compress(requestContent);
+        }
+        return requestContent;
+    }
+
+    private byte[] handleResponse(SimpleHttpResponse response) throws IOException, HttpException {
         byte[] content;
-        int statusCode = response.getStatusLine().getStatusCode();
+        int statusCode = response.getCode();
         if (statusCode == 200) {
-            content = IOUtils.toByteArray(response.getEntity().getContent());
+            content = response.getBodyBytes();
+            if (content == null) {
+                content = new byte[0];
+            }
             if (isCompressed) {
                 content = Snappy.uncompress(content);
             } else if (decompressor != null) {
                 content = decompressContent(content, response);
             }
         } else {
-            String errorMsg = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+            byte[] body = response.getBodyBytes();
+            String errorMsg = body == null ? "" : new String(body, StandardCharsets.UTF_8);
             throw new HttpException(statusCode, errorMsg);
         }
         return content;
     }
 
     /**
-     * Decompress content based on manually set decompressor
-     * @param content The compressed content
-     * @param response HTTP response object
-     * @return Decompressed content or original content if decompression fails
+     * Decompresses content based on the configured decompressor.
+     *
+     * @throws IOException when the payload cannot be decompressed; returning
+     *                     the still-compressed bytes would hand corrupt data to
+     *                     the caller.
      */
-    private byte[] decompressContent(byte[] content, HttpResponse response) {
+    private byte[] decompressContent(byte[] content, HttpResponse response) throws IOException {
         try {
             switch (decompressor) {
                 case Gzip:
@@ -516,16 +410,17 @@ public class PredictClient {
                     return SnappyUtils.decompressToBytes(content);
                 case LZ4:
                     Header lz4OriginalLength = response.getFirstHeader("X-LZ4-Original-Length");
-                    if (lz4OriginalLength != null) {
-                        try {
-                            int originalLength = Integer.parseInt(lz4OriginalLength.getValue());
-                            return LZ4Utils.decompress(content, originalLength);
-                        } catch (NumberFormatException e) {
-                            log.warn("Failed to parse X-LZ4-Original-Length header: " + e.getMessage());
-                        }
+                    if (lz4OriginalLength == null) {
+                        throw new IOException("Missing X-LZ4-Original-Length header for LZ4 response");
                     }
-                    // If no original length header, return uncompressed content
-                    return content;
+                    int originalLength;
+                    try {
+                        originalLength = Integer.parseInt(lz4OriginalLength.getValue().trim());
+                    } catch (NumberFormatException e) {
+                        throw new IOException("Invalid X-LZ4-Original-Length header: "
+                                + lz4OriginalLength.getValue(), e);
+                    }
+                    return LZ4Utils.decompress(content, originalLength);
                 case LZ4Frame:
                     return LZ4Utils.decompressFrame(content);
                 case Zstd:
@@ -535,9 +430,10 @@ public class PredictClient {
                 default:
                     return content;
             }
+        } catch (IOException e) {
+            throw e;
         } catch (Exception e) {
-            log.warn("Decompression failed, returning original content. err: " + e.getMessage());
-            return content;
+            throw new IOException("Decompression failed: " + e.getMessage(), e);
         }
     }
 
@@ -554,7 +450,7 @@ public class PredictClient {
             return content;
         }
 
-        String contentEncoding = contentEncodingHeader.getValue().toLowerCase();
+        String contentEncoding = contentEncodingHeader.getValue().toLowerCase(Locale.ROOT);
         switch (contentEncoding) {
             case "gzip":
                 return GzipUtils.decompressToBytes(content);
@@ -573,43 +469,41 @@ public class PredictClient {
         }
     }
 
-    private byte[] getContent(HttpPost request) throws IOException,
+    private byte[] getContent(SimpleHttpRequest request, int attempt, String url) throws IOException,
             InterruptedException, ExecutionException, TimeoutException {
-        byte[] content = null;
-        HttpResponse response = null;
-
-        Future<HttpResponse> future = httpclient.execute(request, null);
+        Future<SimpleHttpResponse> future =
+                httpSupport.getClient().execute(request, (FutureCallback<SimpleHttpResponse>) null);
+        SimpleHttpResponse response;
         try {
             if (requestTimeout > 0) {
                 response = future.get(requestTimeout, TimeUnit.MILLISECONDS);
             } else {
                 response = future.get();
             }
-        } catch (ExecutionException e) {
+        } catch (TimeoutException e) {
+            // Do not leave the request running in the background: it would
+            // keep a connection and a server-side model execution alive.
+            future.cancel(true);
+            throw e;
+        } catch (InterruptedException e) {
+            future.cancel(true);
+            Thread.currentThread().interrupt();
             throw e;
         }
 
         if (mapHeader != null) {
-            Header[] header = response.getAllHeaders();
-            for (int i = 0; i < header.length; i++) {
-                mapHeader.put(header[i].getName(), header[i].getValue());
+            synchronized (mapHeader) {
+                Header[] header = response.getHeaders();
+                for (int i = 0; i < header.length; i++) {
+                    mapHeader.put(header[i].getName(), header[i].getValue());
+                }
             }
         }
-        if (future.isDone()) {
-            try {
-                content = handleResponse(response);
-            } catch (HttpException e) {
-                throw e;
-            } catch (Exception e) {
-                log.error("handle response error:", e);
-                throw e;
-            }
-        } else if (future.isCancelled()) {
-            log.error("request cancelled!", new Exception("Request cancelled"));
-        } else {
-            throw new HttpException(-1, "request failed!");
+        if (httpTracingEnabled) {
+            // Emit before handleResponse so error responses are traced too.
+            ServerTracing.logIfPresent(url, attempt, response.getCode(), response);
         }
-        return content;
+        return handleResponse(response);
     }
 
 
@@ -648,35 +542,23 @@ public class PredictClient {
     }
 
     public byte[] predict(byte[] requestContent, CallConfig callConfig) throws Exception {
-        if (compressor != null) {
-            if (compressor == Compressor.Gzip) {
-                requestContent = GzipUtils.compress(requestContent);
-            } else if (compressor == Compressor.Zlib) {
-                requestContent = ZlibUtils.compress(requestContent);
-            }  else if (compressor == Compressor.Snappy) {
-                requestContent = SnappyUtils.compress(requestContent);
-            }  else if (compressor == Compressor.LZ4) {
-                requestContent = LZ4Utils.compress(requestContent);
-            }   else if (compressor == Compressor.LZ4Frame) {
-                requestContent = LZ4Utils.compressFrame(requestContent);
-            }  else if (compressor == Compressor.Zstd) {
-                requestContent = ZstdUtils.compress(requestContent);
-            } else {
-                log.warn("Compressor are not supported!");
-            }
-        }
+        requestContent = prepareRequestBody(requestContent);
         CallConfig config = callConfig != null ? callConfig : EMPTY_CALL_CONFIG;
         byte[] content = null;
         String lastUrl = "";
-        for (int currentRetry = 0; currentRetry <= retryCount; currentRetry++) {
+        for (int currentRetry = 0; currentRetry <= Math.max(0, retryCount); currentRetry++) {
             try {
-                HttpPost request = generateSignature(requestContent, lastUrl, config);
-                lastUrl = request.getURI().toString();
-                content = getContent(request);
+                SimpleHttpRequest request = generateSignature(requestContent, lastUrl, config, httpTracingEnabled);
+                lastUrl = request.getUri().toString();
+                content = getContent(request, currentRetry + 1, lastUrl);
+                this.errorCode = 200;
+                this.errorMessage = null;
                 break;
             } catch (HttpException e) {
                 int statusCode = e.getCode();
+                this.errorCode = statusCode;
                 String errorMessage = String.format("URL: %s, Status Code:: %d, Message: %s", lastUrl, statusCode, e.getMessage());
+                this.errorMessage = errorMessage;
                 if (shouldRetry(e) && currentRetry < retryCount) {
                     log.warn(String.format("Predict failed on %dth retry, %s", currentRetry + 1, errorMessage));
                 } else {
@@ -684,7 +566,9 @@ public class PredictClient {
                     throw new HttpException(statusCode, errorMessage);
                 }
             } catch (Exception e) {
+                this.errorCode = -1;
                 String errorMessage = String.format("URL: %s, Message: %s", lastUrl, (e.getMessage() == null) ? e : e.getMessage());
+                this.errorMessage = errorMessage;
                 if (shouldRetry(e) && currentRetry < retryCount) {
                     log.warn(String.format("Predict failed on %dth retry, %s", currentRetry + 1, errorMessage));
                 } else {
@@ -741,7 +625,7 @@ public class PredictClient {
     }
 
     public JsonResponse predict(JsonRequest requestContent, CallConfig callConfig) throws Exception {
-        byte[] result = predict(requestContent.getJSON().getBytes(), callConfig);
+        byte[] result = predict(requestContent.getJSON().getBytes(StandardCharsets.UTF_8), callConfig);
         JsonResponse jsonResponse = new JsonResponse();
         if (result != null) {
             jsonResponse.setContentValues(result);
@@ -796,46 +680,25 @@ public class PredictClient {
     }
 
     public String predict(String requestContent, CallConfig callConfig) throws Exception {
-        byte[] result = predict(requestContent.getBytes(), callConfig);
+        byte[] result = predict(requestContent.getBytes(StandardCharsets.UTF_8), callConfig);
         if (result != null) {
-            return new String(result);
+            return new String(result, StandardCharsets.UTF_8);
         }
         return null;
     }
 
-    private void handleBlacklist(String key) {
-        if (blacklist.containsKey(key)) {
-            int timeoutCount = blacklist.get(key).getCount();
-            if (timeoutCount < blacklistTimeoutCount) {
-                blacklist.get(key).setCount(timeoutCount + 1);
-                log.info("Set [" + key + "] timeoutCount:"
-                        + blacklist.get(key).getCount());
-            } else {
-                long expirationTimestamp =
-                        System.currentTimeMillis() + blacklistTimeout * 1000;
-                blacklist.get(key).setTimestamp(expirationTimestamp);
-                log.info("Set [" + key + "] timestamp: " +
-                        blacklist.get(key).getTimestamp()
-                        + " timeoutCount: " + blacklist.get(key).getCount());
-            }
-        } else {
-            if (blacklist.size() < blacklistSize) {
-                long expirationTimestamp =
-                        System.currentTimeMillis() + blacklistTimeout * 1000;
-                blacklist.put(key, new BlacklistData(expirationTimestamp, 1));
-                log.info("Put [" + key + "] into blacklist");
-            }
-        }
-    }
-
-    private void handleRetryOrFailure(CompletableFuture<byte[]> futureResponse, Exception exception, int currentRetry, String url, byte[] requestData) {
+    private void handleRetryOrFailure(CompletableFuture<byte[]> futureResponse, Exception exception,
+                                      int currentRetry, String url, byte[] requestData) {
         String errorMessage;
         if (exception instanceof HttpException) {
             int statusCode = ((HttpException) exception).getCode();
+            this.errorCode = statusCode;
             errorMessage = String.format("URL: %s, Status Code:: %d, Message: %s", url, statusCode, exception.getMessage());
         } else {
+            this.errorCode = -1;
             errorMessage = String.format("URL: %s, Message: %s", url, (exception.getMessage() == null) ? exception : exception.getMessage());
         }
+        this.errorMessage = errorMessage;
 
         if (currentRetry < retryCount && shouldRetry(exception)) {
             log.warn(String.format("PredictAsync failed on %dth retry, %s", currentRetry + 1, errorMessage));
@@ -853,34 +716,57 @@ public class PredictClient {
         }
     }
 
+    /**
+     * HTTP Tracing only instruments the synchronous {@link #predict(byte[])}
+     * path; predictAsync does not create timeline events.
+     */
     private CompletableFuture<byte[]> predictAsyncInternal(byte[] requestData, int currentRetry, String lastUrl) {
         CompletableFuture<byte[]> futureResponse = new CompletableFuture<>();
         try {
-            // Generate the HTTP POST request with signatures
-            HttpPost request = generateSignature(requestData, lastUrl, EMPTY_CALL_CONFIG);
-            httpclient.execute(request, new FutureCallback<HttpResponse>() {
+            // Generate the HTTP POST request with signatures. The body has
+            // already been compressed by predictAsync(byte[]).
+            final SimpleHttpRequest request = generateSignature(requestData, lastUrl, EMPTY_CALL_CONFIG, false);
+            final String requestUri = request.getUri().toString();
+            FutureCallback<SimpleHttpResponse> retryCallback = new FutureCallback<SimpleHttpResponse>() {
                 @Override
-                public void completed(HttpResponse response) {
-                    try {
-                        byte[] responseContent = handleResponse(response);
-                        futureResponse.complete(responseContent);
-                    } catch (HttpException e) {
-                        handleRetryOrFailure(futureResponse, e, currentRetry, request.getURI().toString(), requestData);
-                    } catch (Exception e) {
-                        handleRetryOrFailure(futureResponse, e, currentRetry, request.getURI().toString(), requestData);
-                    }
+                public void completed(SimpleHttpResponse response) {
+                    // Response decompression must not run on the HttpClient
+                    // reactor thread: a large body would stall all in-flight
+                    // requests of this client.
+                    CompletableFuture.supplyAsync(() -> {
+                        try {
+                            return handleResponse(response);
+                        } catch (Exception e) {
+                            throw new CompletionException(e);
+                        }
+                    }).whenComplete((responseContent, ex) -> {
+                        if (ex == null) {
+                            errorCode = 200;
+                            errorMessage = null;
+                            futureResponse.complete(responseContent);
+                            return;
+                        }
+                        Throwable cause = (ex instanceof CompletionException && ex.getCause() != null)
+                                ? ex.getCause() : ex;
+                        Exception failure = (cause instanceof Exception)
+                                ? (Exception) cause : new RuntimeException(cause);
+                        CompletableFuture.runAsync(() -> handleRetryOrFailure(
+                                futureResponse, failure, currentRetry, requestUri, requestData));
+                    });
                 }
 
                 @Override
                 public void failed(Exception ex) {
-                    handleRetryOrFailure(futureResponse, ex, currentRetry, request.getURI().toString(), requestData);
+                    CompletableFuture.runAsync(() -> handleRetryOrFailure(
+                            futureResponse, ex, currentRetry, requestUri, requestData));
                 }
 
                 @Override
                 public void cancelled() {
                     futureResponse.cancel(true);
                 }
-            });
+            };
+            httpSupport.getClient().execute(request, retryCallback);
         } catch (Exception ex) {
             futureResponse.completeExceptionally(ex);
         }
@@ -888,8 +774,13 @@ public class PredictClient {
     }
 
     public CompletableFuture<byte[]> predictAsync(byte[] requestContent) {
-        // Start the asynchronous prediction with initial retry parameters
-        return predictAsyncInternal(requestContent, 0, "");
+        try {
+            return predictAsyncInternal(prepareRequestBody(requestContent), 0, "");
+        } catch (Exception e) {
+            CompletableFuture<byte[]> failed = new CompletableFuture<>();
+            failed.completeExceptionally(e);
+            return failed;
+        }
     }
 
     public CompletableFuture<BladeResponse> predictAsync(BladeRequest runRequest) {
@@ -957,7 +848,7 @@ public class PredictClient {
 
         byte[] requestData;
         try {
-            requestData = requestContent.getJSON().getBytes();
+            requestData = requestContent.getJSON().getBytes(StandardCharsets.UTF_8);
         } catch (IOException ex) {
             futureResponse.completeExceptionally(ex);
             return futureResponse;
@@ -1008,9 +899,9 @@ public class PredictClient {
     public CompletableFuture<String> predictAsync(String requestContent) {
         CompletableFuture<String> futureResponse = new CompletableFuture<>();
 
-        predictAsync(requestContent.getBytes())
+        predictAsync(requestContent.getBytes(StandardCharsets.UTF_8))
             .thenApply(result -> {
-                return new String(result);
+                return new String(result, StandardCharsets.UTF_8);
             })
             .whenComplete((res, ex) -> {
                 if (ex != null) {
@@ -1023,24 +914,29 @@ public class PredictClient {
         return futureResponse;
     }
 
+
+    @Override
+    protected PredictClient self() {
+        return this;
+    }
+
+    @Override
+    public PredictClient setRetryCount(int retryCount) {
+        return super.setRetryCount(retryCount);
+    }
+
+    @Override
+    public PredictClient addExtraHeaders(Map<String, String> extraHeaders) {
+        return super.addExtraHeaders(extraHeaders);
+    }
+
+    @Override
+    public PredictClient setHttpClient(CloseableHttpAsyncClient httpClient) {
+        return super.setHttpClient(httpClient);
+    }
+
+    @Override
     public void shutdown() {
-        try {
-            if (scheduler != null && !scheduler.isShutdown()) {
-                scheduler.shutdown();
-                if (!scheduler.awaitTermination(5, TimeUnit.SECONDS)) {
-                    scheduler.shutdownNow();
-                }
-            }
-
-            if (httpclient != null) {
-                httpclient.close();
-            }
-
-            if (cm != null) {
-                cm.shutdown();
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        super.shutdown();
     }
 }

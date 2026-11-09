@@ -2,38 +2,33 @@ package com.aliyun.openservices.eas.predict.http;
 
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.openservices.eas.predict.queue_client.*;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.*;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import org.apache.http.impl.nio.client.HttpAsyncClients;
-import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
-import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
-import org.apache.http.impl.nio.reactor.IOReactorConfig;
-import org.apache.http.nio.entity.NByteArrayEntity;
-import org.apache.http.nio.reactor.ConnectingIOReactor;
+import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
+import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
+import org.apache.hc.core5.concurrent.FutureCallback;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.net.URIBuilder;
 import org.java_websocket.client.WebSocketClient;
 
-import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Client for accessing prediction service by creating a fixed size connection pool to perform the
  * request through established persistent connections.
  */
-public class QueueClient {
+public class QueueClient extends AbstractEasClient<QueueClient> {
     public static String HeaderRequestId = "X-Eas-Queueservice-Request-Id";
     public static String HeaderAuthorization = "Authorization";
     public static String HeaderRedisUid = "X-EAS-QueueService-Redis-Uid";
@@ -42,16 +37,19 @@ public class QueueClient {
 
     private static Log log = LogFactory.getLog(QueueClient.class);
     public ReentrantLock lock = new ReentrantLock();
-    public WebSocketClient webSocketClient = null;
+    public volatile WebSocketClient webSocketClient = null;
     private String baseUrl = "";
     private QueueUser user = null;
-    private CloseableHttpAsyncClient httpclient = null;
-    private int retryCount = 5;
-    private boolean websocketWatch = false;
-    private String prioHeader = null;
-    private Map<String, String> extraHeaders = new HashMap<>();
+    private volatile String prioHeader = null;
+    private volatile WebSocketWatcher activeWatcher = null;
+    private int requestTimeout = 0;
 
     public QueueClient() {
+        this.httpConfig = new HttpConfig();
+        this.httpSupport = HttpClientSupport.create(this.httpConfig);
+        this.retryCount = 5;
+        this.requestTimeout = this.httpConfig.getRequestTimeout();
+        this.user = new QueueUser();
     }
 
     public QueueClient(
@@ -60,56 +58,46 @@ public class QueueClient {
     }
 
     public QueueClient(
+        String endpoint, String queueName, String token, HttpConfig httpConfig, QueueUser user,
+        CloseableHttpAsyncClient httpClient) {
+        this(String.format("%s/api/predict/%s", endpoint, queueName), token, httpConfig, user, httpClient);
+    }
+
+    public QueueClient(
         String url, String token, HttpConfig httpConfig, QueueUser user) {
-        baseUrl = url;
-        if (!(baseUrl.startsWith("http://") || baseUrl.startsWith("https://"))) {
-            baseUrl = String.join("", "http://", baseUrl);
-        }
+        this(url, token, httpConfig, user, null);
+    }
 
-        try {
-            ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor();
-            PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(ioReactor);
-            cm.setMaxTotal(httpConfig.getMaxConnectionCount());
-            cm.setDefaultMaxPerRoute(httpConfig.getMaxConnectionPerRoute());
-            IOReactorConfig config =
-                IOReactorConfig.custom()
-                    .setTcpNoDelay(true)
-                    .setSoTimeout(httpConfig.getReadTimeout())
-                    .setSoReuseAddress(true)
-                    .setConnectTimeout(httpConfig.getConnectTimeout())
-                    .setIoThreadCount(httpConfig.getIoThreadNum())
-                    .setSoKeepAlive(httpConfig.isKeepAlive())
-                    .build();
-            final RequestConfig requestConfig =
-                RequestConfig.custom()
-                    .setRedirectsEnabled(httpConfig.getRedirectsEnabled())
-                    .setConnectTimeout(httpConfig.getConnectTimeout())
-                    .setSocketTimeout(httpConfig.getReadTimeout())
-                    .build();
-            httpclient =
-                HttpAsyncClients.custom()
-                    .setConnectionManager(cm)
-                    .setDefaultIOReactorConfig(config)
-                    .setDefaultRequestConfig(requestConfig)
-                    .build();
-            httpclient.start();
-        } catch (IOException e) {
-            e.printStackTrace();
+    /**
+     * Creates a queue client using an externally built HttpClient 5 async
+     * client. The provided client is used as-is: the SDK neither starts nor
+     * closes it, and the connection-related settings of {@code httpConfig}
+     * are ignored.
+     */
+    public QueueClient(
+        String url, String token, HttpConfig httpConfig, QueueUser user,
+        CloseableHttpAsyncClient httpClient) {
+        this.httpConfig = httpConfig != null ? httpConfig : new HttpConfig();
+        this.retryCount = 5;
+        this.requestTimeout = this.httpConfig.getRequestTimeout();
+        baseUrl = url == null ? "" : url;
+        if (!baseUrl.isEmpty()
+                && !(baseUrl.startsWith("http://") || baseUrl.startsWith("https://"))) {
+            baseUrl = "https://" + baseUrl;
         }
-        this.user = user;
+        this.httpSupport = httpClient != null
+                ? HttpClientSupport.withExternalClient(this.httpConfig, httpClient)
+                : HttpClientSupport.create(this.httpConfig);
+        // Copy the caller-provided identity so that reusing one QueueUser for
+        // multiple clients (with different tokens) cannot overwrite another
+        // client's credentials.
+        QueueUser source = user != null ? user : new QueueUser();
+        this.user = new QueueUser(source.getUid(), source.getGid());
         this.user.setToken(token);
-        websocketWatch = true;
     }
 
-    public QueueClient setRetryCount(int retryCount) {
-        this.retryCount = retryCount;
-        return this;
-    }
 
-    public QueueClient addExtraHeaders(Map<String, String> extraHeaders) {
-        this.extraHeaders.putAll(extraHeaders);
-        return this;
-    }
+
 
     /**
      * add identity info into headers
@@ -118,8 +106,9 @@ public class QueueClient {
      * @return headers with identity
      */
     private Map<String, String> withIdentity(Map<String, String> headers) {
-        for (Map.Entry<String, String> entry : this.extraHeaders.entrySet()) {
-            headers.put(entry.getKey(), entry.getValue());
+        headers.putAll(this.extraHeaders);
+        if (traceId != null && !traceId.isEmpty()) {
+            headers.put(TRACE_ID_HEADER, traceId);
         }
         headers.put(HeaderAuthorization, user.getToken());
         headers.put(HeaderRedisUid, user.getUid());
@@ -127,10 +116,32 @@ public class QueueClient {
         return headers;
     }
 
-    private void withPriority(HttpUriRequest request, Long priority) throws Exception {
+    /**
+     * Adds user tags while never allowing them to overwrite the reserved
+     * queue-service control parameters (keys starting with underscore).
+     */
+    private static void putUserParams(Map<String, String> target, Map<String, String> tags) {
+        if (tags == null || tags.isEmpty()) {
+            return;
+        }
+        for (Map.Entry<String, String> entry : tags.entrySet()) {
+            String key = entry.getKey();
+            if (key != null && key.startsWith("_")) {
+                log.warn("Ignoring reserved queue parameter from user tags: " + key);
+                continue;
+            }
+            target.put(key, entry.getValue());
+        }
+    }
+
+    private void withPriority(SimpleHttpRequest request, Long priority) throws Exception {
         if (priority > 0) {
             if (prioHeader == null) {
-                prioHeader = attributes().getString("meta.header.priority");
+                synchronized (this) {
+                    if (prioHeader == null) {
+                        prioHeader = attributes().getString("meta.header.priority");
+                    }
+                }
             }
             if (prioHeader != null) {
                 request.setHeader(prioHeader, Long.toString(priority));
@@ -138,24 +149,11 @@ public class QueueClient {
         }
     }
 
-    private HttpUriRequest buildRequest(String method, Map<String, String> queryParams)
+    private SimpleHttpRequest buildRequest(String method, Map<String, String> queryParams)
         throws Exception {
-        String uri = createURI(baseUrl, queryParams);
+        String uri = createURI(baseUri(), queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
-        HttpUriRequest request = null;
-        if (method.equals("DELETE")) {
-            // create HttpDelete
-            request = new HttpDelete(uri);
-        } else if (method.equals("POST")) {
-            // create HttpPost
-            request = new HttpPost(uri);
-        } else if (method.equals("PUT")) {
-            // create HttpPut
-            request = new HttpPut(uri);
-        } else if (method.equals("GET")) {
-            // create HttpGet
-            request = new HttpGet(uri);
-        }
+        SimpleHttpRequest request = SimpleHttpRequest.create(method, uri);
         headers.forEach(request::setHeader);
         return request;
     }
@@ -166,57 +164,129 @@ public class QueueClient {
      * @param request http request
      * @return HttpResponse
      */
-    private HttpResponse doRequest(HttpUriRequest request) throws Exception {
-        String uri = request.getURI().toString();
+    private SimpleHttpResponse doRequest(SimpleHttpRequest request) throws Exception {
+        Future<SimpleHttpResponse> future = httpSupport.getClient()
+                .execute(request, (FutureCallback<SimpleHttpResponse>) null);
         try {
-            Future<HttpResponse> future = httpclient.execute(request, null);
-            HttpResponse response = future.get();
-            if (future.isDone()) {
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode < 200 && statusCode >= 300) {
-                    String errorMessage = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-                    throw new HttpException(
-                        statusCode,
-                        String.format(
-                            "visiting: %s, unexpected status code: %d, message: %s",
-                            uri, statusCode, errorMessage));
-                }
-                return response;
-            } else {
-                throw new HttpException(-1, "request failed!");
+            if (requestTimeout > 0) {
+                return future.get(requestTimeout, TimeUnit.MILLISECONDS);
             }
-        } catch (Exception e) {
-            log.debug(e.getMessage());
+            return future.get();
+        } catch (TimeoutException e) {
+            future.cancel(true);
+            throw new HttpException(-1, "queue request timed out after " + requestTimeout + " ms");
+        } catch (InterruptedException e) {
+            future.cancel(true);
+            Thread.currentThread().interrupt();
             throw e;
         }
     }
 
-    private HttpResponse retryRequest(HttpUriRequest request) throws Exception {
+    /**
+     * Executes the request and returns a 2xx response. Non-2xx responses are
+     * thrown as {@link HttpException}; they must never be converted into an
+     * empty result by the caller. All failures are retried, matching the
+     * default retry behavior of the client.
+     */
+    private SimpleHttpResponse retryRequest(SimpleHttpRequest request) throws Exception {
+        Exception lastFailure = null;
         for (int i = 0; i <= retryCount; ++i) {
+            SimpleHttpResponse response;
             try {
-                HttpResponse response = doRequest(request);
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    return response;
-                } else if (i == retryCount && response != null && response.getEntity() != null) {
-                    log.warn(IOUtils.toString(response.getEntity().getContent(), "UTF-8"));
+                response = doRequest(request);
+            } catch (HttpException e) {
+                if (i == retryCount) {
+                    log.warn("Queue request failed with status " + e.getCode()
+                            + " on attempt " + (i + 1) + ": " + e.getMessage());
+                    throw e;
                 }
+                lastFailure = e;
+                log.warn("Queue request failed with status " + e.getCode()
+                        + " on attempt " + (i + 1) + ": " + e.getMessage());
+                continue;
             } catch (Exception e) {
                 if (i == retryCount) {
-                    log.warn(e.getMessage());
+                    log.warn("Queue request failed on attempt " + (i + 1) + ": " + e.getMessage());
                     throw e;
-                } else {
-                    log.debug(e.getMessage());
                 }
+                lastFailure = e;
+                log.debug("Queue request failed on attempt " + (i + 1) + ": " + e.getMessage());
+                continue;
             }
+
+            int statusCode = response.getCode();
+            if (statusCode / 100 == 2) {
+                return response;
+            }
+            String body = responseBody(response);
+            HttpException failure = new HttpException(statusCode, body);
+            if (i == retryCount) {
+                log.warn("Queue request failed with status " + statusCode
+                        + " on attempt " + (i + 1) + ": " + body);
+                throw failure;
+            }
+            lastFailure = failure;
+            log.warn("Queue request failed with status " + statusCode
+                    + " on attempt " + (i + 1) + ": " + body);
         }
-        return null;
+        throw lastFailure != null ? lastFailure : new HttpException(-1, "queue request failed");
+    }
+
+    private static String responseBody(SimpleHttpResponse response) {
+        byte[] body = response == null ? null : response.getBodyBytes();
+        return body == null ? "" : new String(body, StandardCharsets.UTF_8);
+    }
+
+    private static void requireBody(SimpleHttpResponse response) throws HttpException {
+        if (response == null || response.getBodyBytes() == null) {
+            throw new HttpException(-1, "queue service returned an empty response body");
+        }
     }
 
     private String createURI(String baseUrl, Map<String, String> queryParams) throws Exception {
         URIBuilder ub = new URIBuilder(baseUrl);
         queryParams.forEach(ub::addParameter);
         return ub.build().toString();
+    }
+
+    /**
+     * Effective base URI: baseUrl plus the client-level request path (for
+     * queue services exposed under a custom path).
+     */
+    private String baseUri() {
+        ensureConfigured();
+        return baseUrl + normalizeRequestPath(requestPath);
+    }
+
+    /**
+     * Effective base URI for one call: the per-call path (CallConfig) takes
+     * precedence over the client-level request path.
+     */
+    private String baseUri(CallConfig callConfig) {
+        ensureConfigured();
+        String path = callConfig != null && callConfig.getRequestPath() != null
+                ? callConfig.getRequestPath() : requestPath;
+        return baseUrl + normalizeRequestPath(path);
+    }
+
+    private void ensureConfigured() {
+        if (baseUrl == null || baseUrl.isEmpty()) {
+            throw new IllegalStateException(
+                    "queue endpoint is not configured; use the QueueClient(endpoint, queueName, ...) constructor");
+        }
+    }
+
+    private static String normalizeRequestPath(String path) {
+        if (path == null || path.isEmpty()) {
+            return "";
+        }
+        return path.charAt(0) == '/' ? path : "/" + path;
+    }
+
+    private static void validateIndexes(long[] indexes) {
+        if (indexes == null || indexes.length == 0) {
+            throw new IllegalArgumentException("indexes must not be null or empty");
+        }
     }
 
     /**
@@ -227,17 +297,15 @@ public class QueueClient {
      * @return content of httpResponse body
      */
     private String processIndexes(long[] indexes, String method) throws Exception {
+        validateIndexes(indexes);
         Map<String, String> queryParams =
             new HashMap<String, String>() {
                 {
                     put("_indexes_", StringUtils.join(ArrayUtils.toObject(indexes), ","));
                 }
             };
-        HttpResponse response = retryRequest(buildRequest(method, queryParams));
-        if (response != null && response.getEntity() != null) {
-            return IOUtils.toString(response.getEntity().getContent());
-        }
-        return "";
+        SimpleHttpResponse response = retryRequest(buildRequest(method, queryParams));
+        return responseBody(response);
     }
 
     /**
@@ -253,12 +321,13 @@ public class QueueClient {
                 }
             };
 
-        HttpResponse response = retryRequest(buildRequest("GET", queryParams));
-        if (response != null) {
-            String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-            return JSONObject.parseObject(content.trim());
+        SimpleHttpResponse response = retryRequest(buildRequest("GET", queryParams));
+        requireBody(response);
+        String content = responseBody(response).trim();
+        if (content.isEmpty()) {
+            throw new HttpException(-1, "queue service returned an empty attributes body");
         }
-        return JSONObject.parseObject("{}");
+        return JSONObject.parseObject(content);
     }
 
     /**
@@ -288,19 +357,21 @@ public class QueueClient {
         if (priority > 0) {
             queryParams.put("_priority_", Long.toString(priority));
         } else if (priority < 0) {
-            log.warn("Invalid value of priority, should be a non-negative number");
-            return -1L;
+            throw new IllegalArgumentException("priority must be a non-negative number");
         }
-        if (tags != null && !tags.isEmpty()) {
-            queryParams.putAll(tags);
-        }
+        putUserParams(queryParams, tags);
 
-        HttpResponse response = retryRequest(buildRequest("GET", queryParams));
-        if (response != null) {
-            String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-            return Long.parseLong(content.trim());
+        SimpleHttpResponse response = retryRequest(buildRequest("GET", queryParams));
+        requireBody(response);
+        String content = responseBody(response).trim();
+        if (content.isEmpty()) {
+            throw new HttpException(-1, "queue service returned an empty count body");
         }
-        return -1L;
+        try {
+            return Long.parseLong(content);
+        } catch (NumberFormatException e) {
+            throw new HttpException(-1, "invalid count body: " + content);
+        }
     }
 
     /**
@@ -322,12 +393,13 @@ public class QueueClient {
                 }
             };
 
-        HttpResponse response = retryRequest(buildRequest("GET", queryParams));
-        if (response != null) {
-            String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-            return JSONObject.parseObject(content.trim());
+        SimpleHttpResponse response = retryRequest(buildRequest("GET", queryParams));
+        requireBody(response);
+        String content = responseBody(response).trim();
+        if (content.isEmpty()) {
+            throw new HttpException(-1, "queue service returned an empty search body");
         }
-        return JSONObject.parseObject("{}");
+        return JSONObject.parseObject(content);
     }
 
     /**
@@ -343,7 +415,7 @@ public class QueueClient {
                     put("_trunc_", Boolean.toString(true));
                 }
             };
-        doRequest(buildRequest("DELETE", queryParams));
+        retryRequest(buildRequest("DELETE", queryParams));
     }
 
     public void end(boolean force) throws Exception {
@@ -356,7 +428,7 @@ public class QueueClient {
         if (force) {
             queryParams.put("_force_", Boolean.toString(true));
         }
-        doRequest(buildRequest("POST", queryParams));
+        retryRequest(buildRequest("POST", queryParams));
     }
 
     /**
@@ -369,62 +441,70 @@ public class QueueClient {
      */
     public Pair<Long, String> put(byte[] data, long priority, Map<String, String> tags)
         throws Exception {
+        return put(data, priority, tags, null);
+    }
+
+    /**
+     * put data into queue service, with per-call configuration.
+     *
+     * @param data       data of byte array
+     * @param priority   data priority
+     * @param tags       customized queryParams
+     * @param callConfig per-call overrides: request path (for queue services
+     *                   exposed under a custom path), extra query params and
+     *                   custom HTTP headers; the per-call path takes
+     *                   precedence over the client-level request path
+     * @return index, requestId
+     */
+    public Pair<Long, String> put(byte[] data, long priority, Map<String, String> tags,
+        CallConfig callConfig) throws Exception {
         Map<String, String> queryParams = new HashMap<String, String>();
         if (priority > 0) {
             queryParams.put("_priority_", Long.toString(priority));
         } else if (priority < 0) {
             log.warn("Invalid value of priority, should be a non-negative number, now set to normal priority: 0");
         }
-        if (tags != null && !tags.isEmpty()) {
-            tags.forEach(
-                (key, value) -> {
-                    queryParams.put(key, value);
-                });
+        putUserParams(queryParams, tags);
+        if (callConfig != null) {
+            putUserParams(queryParams, callConfig.getQueryParams());
         }
-        String uri = createURI(baseUrl, queryParams);
+        String uri = createURI(baseUri(callConfig), queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
-
-        // create HttpPost
-        HttpPost request = new HttpPost(uri);
-        headers.forEach(request::setHeader);
-        request.setEntity(new NByteArrayEntity(data));
-        withPriority(request, priority);
-
-        for (int i = 0; i <= retryCount; ++i) {
-            try {
-                HttpResponse response = doRequest(request);
-                // check response statusCode
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode == 200) {
-                    String content = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-                    // get requestId from response header
-                    Header[] headerOfRequestId = response.getHeaders(HeaderRequestId);
-                    if (headerOfRequestId == null || headerOfRequestId.length < 1) {
-                        Header[] all_headers = response.getAllHeaders();
-                        log.error("Failed to get Header with Request-Id, all headers of response are:");
-                        for (Header header : all_headers) {
-                            log.error(header.getName() + ": " + header.getValue());
-                        }
-                        String errorMessage = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-                        throw new HttpException(500, errorMessage);
-                    }
-                    String requestId = headerOfRequestId[0].getValue();
-
-                    return Pair.of(Long.valueOf(content), requestId);
-                } else {
-                    String errorMessage = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-                    throw new HttpException(statusCode, errorMessage);
-                }
-            } catch (Exception e) {
-                if (i == retryCount) {
-                    log.error(e.getMessage());
-                    throw e;
-                } else {
-                    log.debug(e.getMessage());
-                }
+        if (callConfig != null && callConfig.getHeaders() != null) {
+            for (Map.Entry<String, String> entry : callConfig.getHeaders().entrySet()) {
+                headers.put(entry.getKey(), entry.getValue());
             }
         }
-        return Pair.of(0L, "");
+
+        SimpleHttpRequest request = SimpleHttpRequest.create("POST", uri);
+        headers.forEach(request::setHeader);
+        request.setBody(data, null);
+        withPriority(request, priority);
+
+        // A put is not idempotent. Retrying after the request has been sent
+        // can enqueue the same payload multiple times, so a single attempt is
+        // made and every failure is surfaced to the caller.
+        SimpleHttpResponse response = doRequest(request);
+        int statusCode = response.getCode();
+        if (statusCode / 100 != 2) {
+            throw new HttpException(statusCode, responseBody(response));
+        }
+        String content = responseBody(response).trim();
+        Header[] headerOfRequestId = response.getHeaders(HeaderRequestId);
+        if (headerOfRequestId == null || headerOfRequestId.length < 1) {
+            throw new HttpException(statusCode,
+                    "response is missing " + HeaderRequestId + " header");
+        }
+        if (content.isEmpty()) {
+            throw new HttpException(statusCode, "queue service returned an empty index body");
+        }
+        long index;
+        try {
+            index = Long.parseLong(content);
+        } catch (NumberFormatException e) {
+            throw new HttpException(statusCode, "invalid queue index body: " + content);
+        }
+        return Pair.of(index, headerOfRequestId[0].getValue());
     }
 
     /**
@@ -446,7 +526,34 @@ public class QueueClient {
      * @return index, requestId
      */
     public Pair<Long, String> put(String data, Map<String, String> tags) throws Exception {
-        return put(data.getBytes(), tags);
+        return put(data.getBytes(StandardCharsets.UTF_8), tags);
+    }
+
+    /**
+     * put data into a queue service with priority
+     *
+     * @param data     data of String
+     * @param priority data priority
+     * @param tags     customized queryParams
+     * @return index, requestId
+     */
+    public Pair<Long, String> put(String data, long priority, Map<String, String> tags)
+        throws Exception {
+        return put(data.getBytes(StandardCharsets.UTF_8), priority, tags);
+    }
+
+    /**
+     * put data into a queue service with priority and per-call configuration
+     *
+     * @param data       data of String
+     * @param priority   data priority
+     * @param tags       customized queryParams
+     * @param callConfig per-call overrides
+     * @return index, requestId
+     */
+    public Pair<Long, String> put(String data, long priority, Map<String, String> tags,
+        CallConfig callConfig) throws Exception {
+        return put(data.getBytes(StandardCharsets.UTF_8), priority, tags, callConfig);
     }
 
     /**
@@ -462,6 +569,12 @@ public class QueueClient {
     public DataFrame[] get(
         long index, long length, int timeout, boolean autoDelete, Map<String, String> tags)
         throws Exception {
+        if (length <= 0) {
+            throw new IllegalArgumentException("length must be greater than 0");
+        }
+        if (timeout < 0) {
+            throw new IllegalArgumentException("timeout must be a non-negative number");
+        }
         Map<String, String> queryParams =
             new HashMap<String, String>() {
                 {
@@ -469,53 +582,66 @@ public class QueueClient {
                     put("_length_", Long.toString(length));
                     put("_timeout_", String.format("%ds", timeout));
                     put("_raw_", Boolean.toString(false));
-                    put("_auto_delete_", Boolean.toString(autoDelete));
+                    // Never let the server delete before the response has been
+                    // decoded successfully; delete explicitly below.
+                    put("_auto_delete_", Boolean.toString(false));
                 }
             };
-        if (tags != null && !tags.isEmpty()) {
-            queryParams.putAll(tags);
-        }
-        String uri = createURI(baseUrl, queryParams);
+        putUserParams(queryParams, tags);
+        String uri = createURI(baseUri(), queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Accept", "application/vnd.google.protobuf");
 
-        // create HttpGet
-        HttpGet request = new HttpGet(uri);
+        SimpleHttpRequest request = SimpleHttpRequest.create("GET", uri);
         headers.forEach(request::setHeader);
 
-        HttpResponse response = retryRequest(request);
-        if (response != null) {
-            byte[] content = IOUtils.toByteArray(response.getEntity().getContent());
-            return new DataFrameList().decode(content).getList();
-        } else {
-            return new DataFrame[0];
+        SimpleHttpResponse response = retryRequest(request);
+        requireBody(response);
+        DataFrame[] frames = new DataFrameList().decode(response.getBodyBytes()).getList();
+        if (autoDelete && frames.length > 0) {
+            for (DataFrame frame : frames) {
+                delete(frame.getIndex());
+            }
         }
+        return frames;
     }
 
     /**
-     * get the data in queue service by index
+     * get the data in queue service by index. The returned data is verified to
+     * have the requested index before it is deleted.
      *
      * @param index data index of long
-     * @return DataFrame array
+     * @return DataFrame array containing at most one exact match
      */
     public DataFrame[] getByIndex(long index) throws Exception {
-        return get(index, 1L, 0, true, null);
+        DataFrame[] frames = get(index, 1L, 0, false, null);
+        for (DataFrame frame : frames) {
+            if (frame.getIndex() == index) {
+                delete(index);
+                return new DataFrame[]{frame};
+            }
+        }
+        return new DataFrame[0];
     }
 
     /**
-     * get the data in queue service by index
+     * get the data in queue service by requestId. The returned data is
+     * verified to carry the requested requestId tag before it is deleted.
      *
      * @param requestId requestId
-     * @return DataFrame array
+     * @return DataFrame array containing at most one exact match
      */
     public DataFrame[] getByRequestId(String requestId) throws Exception {
-        Map<String, String> tags =
-            new HashMap<String, String>() {
-                {
-                    put("requestId", requestId);
-                }
-            };
-        return get(0L, 1L, 0, true, tags);
+        Map<String, String> tags = new HashMap<String, String>();
+        tags.put("requestId", requestId);
+        DataFrame[] frames = get(0L, 1L, 0, false, tags);
+        for (DataFrame frame : frames) {
+            if (frame.getTags() != null && requestId.equals(frame.getTags().get("requestId"))) {
+                delete(frame.getIndex());
+                return new DataFrame[]{frame};
+            }
+        }
+        return new DataFrame[0];
     }
 
     /**
@@ -553,7 +679,7 @@ public class QueueClient {
     public WebSocketWatcher watch(
         long index, long window, boolean indexOnly, boolean autoCommit, Map<String, String> tags)
         throws Exception {
-        WatchConfig watchConfig = new WatchConfig(true, 5);
+        WatchConfig watchConfig = new WatchConfig(true, WatchConfig.DefaultReConnectInterval);
         return watch(index, window, indexOnly, autoCommit, tags, watchConfig);
     }
 
@@ -571,6 +697,9 @@ public class QueueClient {
     public WebSocketWatcher watch(
         long index, long window, boolean indexOnly, boolean autoCommit, Map<String, String> queueTags, WatchConfig watchConfig)
         throws Exception {
+        if (watchConfig == null) {
+            watchConfig = new WatchConfig();
+        }
         Map<String, String> queryParams =
             new HashMap<String, String>() {
                 {
@@ -581,23 +710,50 @@ public class QueueClient {
                     put("_auto_commit_", Boolean.toString(autoCommit));
                 }
             };
-        if (queueTags != null && !queueTags.isEmpty()) {
-            queryParams.putAll(queueTags);
-        }
-        String uri = createURI(baseUrl, queryParams);
+        putUserParams(queryParams, queueTags);
+        String uri = createURI(baseUri(), queryParams);
         uri = uri.replaceFirst("http", "ws");
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Accept", "application/vnd.google.protobuf");
 
-        if (watchConfig.getReConInterval() < 0) {
-            log.warn("Invalid value of reConnect interval. The value should be a non-negative number, set as default value: " + watchConfig.DefaultReConnectInterval);
-            watchConfig.setReConInterval(watchConfig.DefaultReConnectInterval);
+        if (watchConfig.getReConInterval() <= 0) {
+            log.warn("Invalid reConnect interval, using default: " + WatchConfig.DefaultReConnectInterval);
+            watchConfig.setReConInterval(WatchConfig.DefaultReConnectInterval);
         }
         if (!watchConfig.isInfinityReConnect() && watchConfig.getReConCnt() < 0) {
-            log.warn("Invalid value of reConnect count. The value should be a non-negative number, set as default value: " + watchConfig.DefaultReConnectCnt);
-            watchConfig.setReConCnt(watchConfig.DefaultReConnectCnt);
+            log.warn("Invalid reConnect count, using default: " + WatchConfig.DefaultReConnectCnt);
+            watchConfig.setReConCnt(WatchConfig.DefaultReConnectCnt);
         }
         return new WebSocketWatcher(this, new URI(uri), headers, watchConfig);
+    }
+
+    /**
+     * Registers the single active watcher of this client.
+     */
+    public void registerWatcher(WebSocketWatcher watcher) {
+        lock.lock();
+        try {
+            if (activeWatcher != null) {
+                throw new IllegalStateException("Another watcher is already running");
+            }
+            activeWatcher = watcher;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
+     * Removes the active watcher if it is the given one.
+     */
+    public void unregisterWatcher(WebSocketWatcher watcher) {
+        lock.lock();
+        try {
+            if (activeWatcher == watcher) {
+                activeWatcher = null;
+            }
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -643,6 +799,7 @@ public class QueueClient {
      * @return the result of negative commit ,OK or other
      */
     public String negative(long[] indexes, String code, String reason) throws Exception {
+        validateIndexes(indexes);
         Map<String, String> queryParams =
             new HashMap<String, String>() {
                 {
@@ -660,22 +817,19 @@ public class QueueClient {
         }
         String formData = createURI("", dataParams);
         if (formData.length() > 0) {
-            formData = formData.substring(1, formData.length());
+            formData = formData.substring(1);
         }
 
-        String uri = createURI(baseUrl, queryParams);
+        String uri = createURI(baseUri(), queryParams);
         Map<String, String> headers = withIdentity(new HashMap<String, String>());
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 
-        HttpPut request = new HttpPut(uri);
+        SimpleHttpRequest request = SimpleHttpRequest.create("PUT", uri);
         headers.forEach(request::setHeader);
-        request.setEntity(new NByteArrayEntity(formData.getBytes()));
+        request.setBody(formData.getBytes(StandardCharsets.UTF_8), null);
 
-        HttpResponse response = retryRequest(request);
-        if (response != null && response.getEntity() != null) {
-            return IOUtils.toString(response.getEntity().getContent());
-        }
-        return "";
+        SimpleHttpResponse response = retryRequest(request);
+        return responseBody(response);
     }
 
     /**
@@ -683,21 +837,41 @@ public class QueueClient {
      */
     public void clear() throws Exception {
         JSONObject attrs = this.attributes();
-        if (attrs.containsKey("stream.lastEntry")) {
-            this.truncate(Long.parseLong(attrs.getString("stream.lastEntry")) + 1);
+        String lastEntry = attrs.getString("stream.lastEntry");
+        if (lastEntry != null) {
+            this.truncate(Long.parseLong(lastEntry) + 1);
         }
     }
 
     /**
-     * close QueueClient
+     * close QueueClient, including an active watcher.
      */
+    @Override
+    protected QueueClient self() {
+        return this;
+    }
+
+    @Override
+    public QueueClient setRetryCount(int retryCount) {
+        return super.setRetryCount(retryCount);
+    }
+
+    @Override
+    public QueueClient addExtraHeaders(Map<String, String> extraHeaders) {
+        return super.addExtraHeaders(extraHeaders);
+    }
+
+    @Override
+    public QueueClient setHttpClient(CloseableHttpAsyncClient httpClient) {
+        return super.setHttpClient(httpClient);
+    }
+
+    @Override
     public void shutdown() {
-        try {
-            if (httpclient != null) {
-                httpclient.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        WebSocketWatcher watcher = activeWatcher;
+        if (watcher != null) {
+            watcher.close();
         }
+        super.shutdown();
     }
 }

@@ -3,13 +3,13 @@ package com.aliyun.openservices.eas.discovery.cache;
 import com.aliyun.openservices.eas.discovery.core.DiscoveryClient;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.nio.channels.OverlappingFileLockException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
@@ -50,15 +50,34 @@ public class ConcurrentDiskUtil {
 
             int count = 0;
             do {
-                try (FileLock ignored = fcin.tryLock(0L, Long.MAX_VALUE, true)) {
-                    ByteBuffer byteBuffer = ByteBuffer.allocate((int) fcin.size());
-                    fcin.read(byteBuffer);
+                FileLock lock = null;
+                try {
+                    lock = fcin.tryLock(0L, Long.MAX_VALUE, true);
+                    if (lock == null) {
+                        throw new IOException("file lock is held by another process");
+                    }
+                    long size = fcin.size();
+                    if (size > Integer.MAX_VALUE) {
+                        throw new IOException("cache file is too large: " + size);
+                    }
+                    ByteBuffer byteBuffer = ByteBuffer.allocate((int) size);
+                    while (byteBuffer.hasRemaining()) {
+                        int read = fcin.read(byteBuffer);
+                        if (read < 0) {
+                            break;
+                        }
+                    }
                     byteBuffer.flip();
                     return byteBufferToString(byteBuffer, charsetName);
 
+                } catch (OverlappingFileLockException e) {
+                    sleep(SLEEP_BASETIME * count);
+                    log.warn("read " + file.getName() + " conflict;retry time: " + count, e);
                 } catch (IOException e) {
                     sleep(SLEEP_BASETIME * count);
-                    log.warn("read " + file.getName() + " conflict;retry time: " + count);
+                    log.warn("read " + file.getName() + " conflict;retry time: " + count, e);
+                } finally {
+                    releaseQuietly(lock, file);
                 }
             } while (++count < RETRY_COUNT);
 
@@ -94,29 +113,47 @@ public class ConcurrentDiskUtil {
      */
     public static Boolean writeFileContent(File file, String content,
                                            String charsetName) throws IOException {
-        if (!file.exists()) {
-            if (!file.createNewFile()) {
-                throw new IOException(String.format("unable to find target file:%s and failed to create this file again", file.getName()));
-            }
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists() && !parent.mkdirs() && !parent.exists()) {
+            throw new IOException("failed to create parent directory for " + file.getAbsolutePath());
+        }
+        if (!file.exists() && !file.createNewFile() && !file.exists()) {
+            throw new IOException(String.format(
+                    "unable to find target file:%s and failed to create this file again", file.getName()));
         }
 
+        byte[] bytes = content.getBytes(charsetName);
         try (RandomAccessFile raf = new RandomAccessFile(file, "rw");
              FileChannel channel = raf.getChannel()) {
 
             int i = 0;
             do {
-                try (FileLock ignored = channel.tryLock()) {
-                    ByteBuffer sendBuffer = ByteBuffer.wrap(content
-                            .getBytes(charsetName));
+                FileLock lock = null;
+                try {
+                    lock = channel.tryLock();
+                    if (lock == null) {
+                        throw new IOException("file lock is held by another process");
+                    }
+                    channel.truncate(0L);
+                    channel.position(0L);
+                    ByteBuffer sendBuffer = ByteBuffer.wrap(bytes);
                     while (sendBuffer.hasRemaining()) {
                         channel.write(sendBuffer);
                     }
-                    channel.truncate(content.length());
+                    // Truncate by the number of encoded bytes, not by the
+                    // number of characters in the String.
+                    channel.truncate(bytes.length);
+                    channel.force(false);
                     return true;
 
+                } catch (OverlappingFileLockException e) {
+                    sleep(SLEEP_BASETIME * i);
+                    log.warn("write " + file.getName() + " conflict;retry time: " + i, e);
                 } catch (IOException e) {
                     sleep(SLEEP_BASETIME * i);
-                    log.warn("write " + file.getName() + " conflict;retry time: " + i);
+                    log.warn("write " + file.getName() + " conflict;retry time: " + i, e);
+                } finally {
+                    releaseQuietly(lock, file);
                 }
             } while (++i < RETRY_COUNT);
 
@@ -124,6 +161,17 @@ public class ConcurrentDiskUtil {
             throw new IOException("write " + file.getAbsolutePath()
                     + " conflict");
 
+        }
+    }
+
+    private static void releaseQuietly(FileLock lock, File file) {
+        if (lock == null) {
+            return;
+        }
+        try {
+            lock.release();
+        } catch (IOException e) {
+            log.warn("failed to release lock for " + file.getName(), e);
         }
     }
 
@@ -150,22 +198,8 @@ public class ConcurrentDiskUtil {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             log.warn("sleep wrong", e);
-        }
-    }
-
-    public static void main(String[] args) {
-        try {
-            for (int i = 0; i < 10000; i++) {
-                writeFileContent("D:/test.txt", "test\r\ntest1", "GBK");
-                String abc = getFileContent("D:/test.txt", "GBK");
-                if (!"test\r\ntest1".equals(abc)) {
-                    System.out.println(abc);
-                    System.out.println("diff");
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

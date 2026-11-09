@@ -7,14 +7,13 @@ public class Test_String {
     		//启动并初始化客户端
         PredictClient client = new PredictClient(new HttpConfig());
         /*
-         * 如果Internet Endpoint为http://eas-shanghai.alibaba-inc.com/api/predict/credit
-         * 则client.setEndpoint("eas-shanghai.alibaba-inc.com");
-         * client.setModelName("credit")
+         * client.setEndpoint("your-endpoint");
+         * client.setServiceName("credit")
          * client.setToken需要根据服务具体生成的token设置
          */
-        client.setToken("NGNmNjQyZGJiYjQwNDliOTE1NTQ0ZGM1M2FjYjdjZWRlOGE2ZjRhZg==");
-        client.setEndpoint("eas-shanghai.alibaba-inc.com");
-        client.setModelName("credit");
+        client.setToken("<your-token>");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("credit");
 
         //输入字符串定义
         String request = "[{\"money_credit\": 3000000}, {\"money_credit\": 10000}]";

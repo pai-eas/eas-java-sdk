@@ -53,14 +53,13 @@ public class Test_PAI {
 		//启动并初始化客户端
 		PredictClient client = new PredictClient(new HttpConfig());
 		 /*
-         * 如果Internet Endpoint为http://eas-shanghai.alibaba-inc.com/api/predict/credit
-         * 则client.setEndpoint("eas-shanghai.alibaba-inc.com");
-         * client.setModelName("credit")
+         * client.setEndpoint("your-endpoint");
+         * client.setServiceName("credit")
          * client.setToken需要根据服务具体生成的token设置
          */
 
-		client.setEndpoint("eas-shanghai.alibaba-inc.com")
-				.setModelName("pai_model_test");
+		client.setEndpoint("your-endpoint")
+				.setServiceName("pai_model_test");
 		
 		/*
 		String[] inputKey = { "featrue_1", "featrue_2", "featrue_3" };	//输入表的列名

@@ -1,15 +1,12 @@
 package com.aliyun.openservices.eas.predict.queue_client;
 
 import com.aliyun.openservices.eas.predict.proto.QueueServiceProtos.DataFrameProto;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import shade.protobuf.InvalidProtocolBufferException;
 
 import java.nio.ByteBuffer;
 import java.util.Map;
 
 public class DataFrame {
-    private static Log log = LogFactory.getLog(DataFrame.class);
     private DataFrameProto.Builder data_frame = DataFrameProto.newBuilder();
     private Exception error;
 
@@ -77,17 +74,23 @@ public class DataFrame {
     }
 
     public DataFrame decode(byte[] dfProtoBytes) {
+        if (dfProtoBytes == null) {
+            throw new IllegalArgumentException("DataFrame protobuf bytes must not be null");
+        }
         try {
             DataFrameProto df = DataFrameProto.parseFrom(dfProtoBytes);
             this.data_frame.clear();
             this.data_frame.mergeFrom(df);
         } catch (InvalidProtocolBufferException e) {
-            log.error("Invalid Protocol Buffer", e);
+            throw new IllegalArgumentException("Invalid DataFrame protobuf", e);
         }
         return this;
     }
 
     public DataFrame decode(ByteBuffer dfProtoByteBuffer) {
+        if (dfProtoByteBuffer == null) {
+            throw new IllegalArgumentException("DataFrame protobuf buffer must not be null");
+        }
         byte[] dfProtoBytes = new byte[dfProtoByteBuffer.remaining()];
         dfProtoByteBuffer.get(dfProtoBytes);
         return decode(dfProtoBytes);

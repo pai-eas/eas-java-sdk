@@ -64,8 +64,8 @@ public class TorchRecPredictTest {
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
         client.setToken("tokenGeneratedFromService");
-        client.setEndpoint("cn-beijing.pai-eas.aliyuncs.com");
-        client.setModelName("test_torch_rec_multi_tower_din_gpu");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("test_torch_rec_multi_tower_din_gpu");
         client.setRequestTimeout(100000);
 
 

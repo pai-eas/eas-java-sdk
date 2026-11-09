@@ -35,7 +35,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * may not otherwise be modified. When applicable, use of {@code ThreadLocalRandom} rather than shared {@code Random}
  * objects in concurrent programs will typically encounter much less overhead and contention. Use of
  * {@code ThreadLocalRandom} is particularly appropriate when multiple tasks (for example, each a
- * {@link io.netty.util.internal.chmv8.ForkJoinTask}) use random numbers in parallel in thread pools.
+ * {@link java.util.concurrent.ForkJoinTask}) use random numbers in parallel in thread pools.
  *
  * <p>
  * Usages of this class should typically be of the form: {@code ThreadLocalRandom.current().nextX(...)} (where {@code X}

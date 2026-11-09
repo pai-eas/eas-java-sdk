@@ -4,8 +4,8 @@ import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,16 +15,15 @@ import java.security.NoSuchAlgorithmException;
  */
 public class HmacSha1Signature {
     private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
-    private static final String DEFAULT_ENCODING = "UTF-8";
 
     public String computeSignature(String key, String data) {
         try {
-            SecretKeySpec signingKey = new SecretKeySpec(key.getBytes(DEFAULT_ENCODING), HMAC_SHA1_ALGORITHM);
+            SecretKeySpec signingKey = new SecretKeySpec(
+                    key.getBytes(StandardCharsets.UTF_8), HMAC_SHA1_ALGORITHM);
             Mac mac = Mac.getInstance(HMAC_SHA1_ALGORITHM);
             mac.init(signingKey);
-            return new String(Base64.encodeBase64(mac.doFinal(data.getBytes(DEFAULT_ENCODING))));
-        } catch (UnsupportedEncodingException ex) {
-            throw new RuntimeException("not supported encode: " + DEFAULT_ENCODING);
+            return new String(Base64.encodeBase64(
+                    mac.doFinal(data.getBytes(StandardCharsets.UTF_8))), StandardCharsets.US_ASCII);
         } catch (NoSuchAlgorithmException ex) {
             throw new RuntimeException("not supported algorithm: " + HMAC_SHA1_ALGORITHM);
         } catch (InvalidKeyException ex) {
@@ -36,7 +35,9 @@ public class HmacSha1Signature {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(content);
-            return new BigInteger(1, md.digest()).toString(16);
+            // BigInteger.toString(16) drops leading zero nibbles; the digest
+            // must always be a fixed 32-character hex string.
+            return String.format("%032x", new BigInteger(1, md.digest()));
         } catch (Exception e) {
             throw new RuntimeException("MD5 encoder error");
         }

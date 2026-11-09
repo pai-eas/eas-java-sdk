@@ -13,8 +13,8 @@ public class Test_Merge {
 		PredictClient client = new PredictClient(new HttpConfig());
  
 		// model1 配置 JSON
-		String model1_token = "MmYwMjMwZTc3MzI1NzU4ZDM2YTkxOGU2OWFjMGQ3YWU1MTBhNDE2OA==";
-		String model1_endpoint = "eas-shanghai.alibaba-inc.com";
+		String model1_token = "<your-token>";
+		String model1_endpoint = "your-endpoint";
 		String model1_name = "pai_demo_xp";
 
 		String[] inputKey = { "featrue_1", "featrue_2", "featrue_3" }; // 输入表的列名
@@ -28,8 +28,8 @@ public class Test_Merge {
 		}
 
 		// model2 配置 String
-		String model2_token = "NGNmNjQyZGJiYjQwNDliOTE1NTQ0ZGM1M2FjYjdjZWRlOGE2ZjRhZg==";
-		String model2_endpoint = "eas-shanghai.alibaba-inc.com";
+		String model2_token = "<your-token>";
+		String model2_endpoint = "your-endpoint";
 		String model2_name = "credit";
 
 		String model2_request = "[{\"money_credit\": 3000000}, {\"money_credit\": 10000}]";
@@ -40,11 +40,11 @@ public class Test_Merge {
 
 		/*
 		JsonResponse model1_response = client
-								.createChlidClient(model1_token, model1_endpoint, model1_name)
+								.createChildClient(model1_token, model1_endpoint, model1_name)
 								.predict(model1_request);
 
 		String model2_response = client
-								.createChlidClient(model2_token, model2_endpoint, model2_name)
+								.createChildClient(model2_token, model2_endpoint, model2_name)
 								.predict(model2_request);
 		
 		System.out.println("model1的输出："

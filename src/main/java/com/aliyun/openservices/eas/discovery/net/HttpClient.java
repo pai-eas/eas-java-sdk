@@ -50,7 +50,9 @@ public class HttpClient {
         HttpURLConnection conn = null;
         try {
             String encodedContent = encodingParams(paramValues, encoding);
-            url += (null == encodedContent) ? "" : ("?" + encodedContent);
+            if (encodedContent != null && !encodedContent.isEmpty()) {
+                url += (url.indexOf('?') >= 0 ? "&" : "?") + encodedContent;
+            }
 
             conn = (HttpURLConnection) new URL(url).openConnection();
 
@@ -105,6 +107,9 @@ public class HttpClient {
             }
         }
 
+        if (inputStream == null) {
+            return new HttpResult(respCode, StringUtils.EMPTY, respHeaders);
+        }
         if ("gzip".equals(respHeaders.get("content-encoding"))) {
             inputStream = new GZIPInputStream(inputStream);
         }
@@ -154,9 +159,11 @@ public class HttpClient {
             return null;
         }
 
-        params.put("encoding", encoding);
+        // Do not mutate the caller's parameter map.
+        Map<String, String> allParams = new HashMap<String, String>(params);
+        allParams.put("encoding", encoding);
 
-        for (Map.Entry<String, String> entry : params.entrySet()) {
+        for (Map.Entry<String, String> entry : allParams.entrySet()) {
             if (StringUtils.isEmpty(entry.getValue())) {
                 continue;
             }
@@ -171,7 +178,7 @@ public class HttpClient {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("s", "Wms+rkGG8jlaBBbpl8FIDxxNQGA=");
+        params.put("encoding", "utf-8");
         System.out.println(encodingParams(params, "utf-8"));
     }
 

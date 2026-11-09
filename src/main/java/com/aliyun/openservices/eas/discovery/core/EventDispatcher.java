@@ -11,12 +11,12 @@ import java.util.concurrent.*;
 
 
 public class EventDispatcher {
-    private static ExecutorService executor = null;
+    private static volatile ExecutorService executor = null;
     private static BlockingQueue<Service> mailbox = new LinkedBlockingQueue<Service>();
     private static ConcurrentMap<String, List<Listener>> observerMap = new ConcurrentHashMap<String, List<Listener>>();
 
     static {
-        EventDispatcher.executor = Executors.newSingleThreadExecutor(new ThreadFactory() {
+        ExecutorService initialExecutor = Executors.newSingleThreadExecutor(new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
                 Thread thread = new Thread(r, "DISCOVERY-CLIENT-LISTENER");
@@ -25,8 +25,8 @@ public class EventDispatcher {
                 return thread;
             }
         });
-
-        EventDispatcher.executor.execute(new Notifier());
+        executor = initialExecutor;
+        initialExecutor.execute(new Notifier(initialExecutor));
     }
 
     public static void addListener(String dom, String clusters, Listener listener) {
@@ -54,11 +54,13 @@ public class EventDispatcher {
     public static void removeListener(String dom, String clusters, Listener listener) {
         List<Listener> observers = observerMap.get(Service.getKey(dom, clusters));
         if (observers != null) {
-            Iterator<Listener> iter = observers.iterator();
-            while (iter.hasNext()) {
-                Listener oldListener = iter.next();
-                if (oldListener.equals(listener)) {
-                    iter.remove();
+            synchronized (observers) {
+                Iterator<Listener> iter = observers.iterator();
+                while (iter.hasNext()) {
+                    Listener oldListener = iter.next();
+                    if (oldListener.equals(listener)) {
+                        iter.remove();
+                    }
                 }
             }
         }
@@ -74,19 +76,34 @@ public class EventDispatcher {
     }
 
     public static void setExecutor(ExecutorService executor) {
+        if (executor == null) {
+            throw new IllegalArgumentException("executor must not be null");
+        }
         ExecutorService oldExecutor = EventDispatcher.executor;
+        if (oldExecutor == executor) {
+            return;
+        }
         EventDispatcher.executor = executor;
-
-        oldExecutor.shutdown();
+        executor.execute(new Notifier(executor));
+        oldExecutor.shutdownNow();
     }
 
     private static class Notifier implements Runnable {
+        private final ExecutorService owner;
+
+        Notifier(ExecutorService owner) {
+            this.owner = owner;
+        }
+
         @Override
         public void run() {
-            while (true) {
+            while (executor == owner) {
                 Service dom = null;
                 try {
                     dom = mailbox.poll(5, TimeUnit.MINUTES);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return;
                 } catch (Exception ignore) {
                 }
 
@@ -96,14 +113,24 @@ public class EventDispatcher {
 
                 try {
                     List<Listener> listeners = observerMap.get(dom.getKey());
-
                     if (!CollectionUtils.isEmpty(listeners)) {
-                        for (Listener listener : listeners) {
-                            List<Endpoint> endpoints = Collections.unmodifiableList(dom.getEndpoints());
-                            if (!CollectionUtils.isEmpty(endpoints)) {
-                                listener.onChange(endpoints);
-                                DiscoveryClient.LOG.info("NOTIFY", "finish notifying Listener, dom: "
-                                        + dom.getKey() + ", endpoints size: " + endpoints.size());
+                        List<Listener> snapshot;
+                        synchronized (listeners) {
+                            snapshot = new ArrayList<Listener>(listeners);
+                        }
+                        List<Endpoint> endpoints = Collections.unmodifiableList(dom.getEndpoints());
+                        if (!CollectionUtils.isEmpty(endpoints)) {
+                            for (Listener listener : snapshot) {
+                                try {
+                                    listener.onChange(endpoints);
+                                    DiscoveryClient.LOG.info("NOTIFY", "finish notifying Listener, dom: "
+                                            + dom.getKey() + ", endpoints size: " + endpoints.size());
+                                } catch (Exception e) {
+                                    // A broken listener must not prevent the
+                                    // remaining listeners from being notified.
+                                    DiscoveryClient.LOG.error("NA", "listener notify error for dom: "
+                                            + dom.getName() + ", clusters: " + dom.getClusters(), e);
+                                }
                             }
                         }
                     }

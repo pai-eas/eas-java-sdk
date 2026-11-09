@@ -66,9 +66,9 @@ public class Test_Mutli_TF {
 
     public static void main(String[] args) throws Exception{
         PredictClient client = InitClient();
-        client.setToken("Yzg4YWQ3ODRkMmY5NTA5MTJlZjlmOTVhYzNhMGEzZjI5MjQyZjI2MQ==");
-        client.setEndpoint("eas-pre.alibaba-inc.com");
-        client.setModelName("tf_serving");
+        client.setToken("<your-token>");
+        client.setEndpoint("your-endpoint");
+        client.setServiceName("tf_serving");
         client.setIsCompressed(false);
         long startTime = System.currentTimeMillis();
 

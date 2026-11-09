@@ -19,7 +19,7 @@ import java.util.concurrent.*;
 
 
 public class FailoverReactor {
-    private Map<String, Service> domainMap = new ConcurrentHashMap<>();
+    private volatile Map<String, Service> domainMap = new ConcurrentHashMap<>();
     private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor(new ThreadFactory() {
         @Override
         public Thread newThread(Runnable r) {
