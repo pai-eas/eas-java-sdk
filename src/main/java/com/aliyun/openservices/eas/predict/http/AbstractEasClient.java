@@ -35,11 +35,8 @@ public abstract class AbstractEasClient<T extends AbstractEasClient<T>> {
     /** Client-level request path appended after the service/queue segment; "" by default. */
     protected volatile String requestPath = "";
 
-    /** Request header carrying the caller-provided trace id. */
+    /** Request header carrying the per-call trace id. */
     protected static final String TRACE_ID_HEADER = "x-eas-trace-id";
-
-    /** Trace id sent with every request; null (header omitted) by default. */
-    protected volatile String traceId = null;
 
     protected final Map<String, String> extraHeaders = new ConcurrentHashMap<String, String>();
 
@@ -79,23 +76,6 @@ public abstract class AbstractEasClient<T extends AbstractEasClient<T>> {
      */
     public String getRequestPath() {
         return requestPath;
-    }
-
-    /**
-     * Sets the trace id sent in the {@code x-eas-trace-id} request header.
-     * The value is only transported to the service; it does not enable HTTP
-     * tracing. A null or empty value disables the header.
-     *
-     * @param traceId caller-defined trace id
-     * @return this client
-     */
-    public T setTraceId(String traceId) {
-        this.traceId = traceId;
-        return self();
-    }
-
-    public String getTraceId() {
-        return traceId;
     }
 
     /**

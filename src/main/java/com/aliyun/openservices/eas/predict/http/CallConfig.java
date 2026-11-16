@@ -6,14 +6,15 @@ import java.util.Map;
 
 /**
  * Per-call configuration that overrides the client's defaults for a single
- * invocation: request path, query parameters and custom HTTP headers.
+ * invocation: request path, query parameters, custom HTTP headers and trace id.
  *
  * <p>Example:
  * <pre>{@code
  * CallConfig config = new CallConfig()
  *     .setRequestPath("/v2")
  *     .setQueryParams(Collections.singletonMap("uid", "1168XXXX"))
- *     .setHeaders(Collections.singletonMap("X-Trace-Tag", "demo"));
+ *     .setHeaders(Collections.singletonMap("X-Trace-Tag", "demo"))
+ *     .setTraceId("trace-123");
  * String result = client.predict(jsonStr, config);
  * }</pre>
  */
@@ -21,6 +22,7 @@ public class CallConfig {
     private String requestPath = null;
     private Map<String, String> queryParams = null;
     private Map<String, String> headers = null;
+    private String traceId = null;
 
     public CallConfig() {
     }
@@ -53,6 +55,33 @@ public class CallConfig {
 
     public CallConfig setHeaders(Map<String, String> headers) {
         this.headers = headers;
+        return this;
+    }
+
+    /**
+     * Trace id sent in the {@code x-eas-trace-id} header for this call.
+     *
+     * <p>A non-empty value also overrides a same-named entry configured with
+     * {@link #setHeaders(Map)}. When it is {@code null} or empty, no dedicated
+     * trace id is added; a same-named entry from {@link #setHeaders(Map)} is
+     * left untouched.</p>
+     *
+     * @return per-call trace id
+     */
+    public String getTraceId() {
+        return traceId;
+    }
+
+    /**
+     * Sets the trace id sent in the {@code x-eas-trace-id} header for this
+     * call. This takes precedence over a same-named header configured with
+     * {@link #setHeaders(Map)}.
+     *
+     * @param traceId caller-defined trace id; null or empty adds no dedicated
+     *                trace id for this call
+     */
+    public CallConfig setTraceId(String traceId) {
+        this.traceId = traceId;
         return this;
     }
 

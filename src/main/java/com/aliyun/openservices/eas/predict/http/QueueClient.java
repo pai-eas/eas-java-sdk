@@ -107,9 +107,6 @@ public class QueueClient extends AbstractEasClient<QueueClient> {
      */
     private Map<String, String> withIdentity(Map<String, String> headers) {
         headers.putAll(this.extraHeaders);
-        if (traceId != null && !traceId.isEmpty()) {
-            headers.put(TRACE_ID_HEADER, traceId);
-        }
         headers.put(HeaderAuthorization, user.getToken());
         headers.put(HeaderRedisUid, user.getUid());
         headers.put(HeaderRedisGid, user.getGid());
@@ -451,9 +448,9 @@ public class QueueClient extends AbstractEasClient<QueueClient> {
      * @param priority   data priority
      * @param tags       customized queryParams
      * @param callConfig per-call overrides: request path (for queue services
-     *                   exposed under a custom path), extra query params and
-     *                   custom HTTP headers; the per-call path takes
-     *                   precedence over the client-level request path
+     *                   exposed under a custom path), extra query params,
+     *                   custom HTTP headers and trace id; the per-call path
+     *                   takes precedence over the client-level request path
      * @return index, requestId
      */
     public Pair<Long, String> put(byte[] data, long priority, Map<String, String> tags,
@@ -474,6 +471,10 @@ public class QueueClient extends AbstractEasClient<QueueClient> {
             for (Map.Entry<String, String> entry : callConfig.getHeaders().entrySet()) {
                 headers.put(entry.getKey(), entry.getValue());
             }
+        }
+        if (callConfig != null && callConfig.getTraceId() != null
+                && !callConfig.getTraceId().isEmpty()) {
+            headers.put(TRACE_ID_HEADER, callConfig.getTraceId());
         }
 
         SimpleHttpRequest request = SimpleHttpRequest.create("POST", uri);

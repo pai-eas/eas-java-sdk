@@ -59,7 +59,7 @@ public class Test_QueueClient {
         requests.add(method + " " + exchange.getRequestURI().getPath() + " " + query + " "
                 + requestHeaders.getFirst("Authorization") + " "
                 + requestHeaders.getFirst(QueueClient.HeaderRedisUid) + " "
-                + requestHeaders.getFirst("x-eas-trace-id") + " " + body);
+                + body);
         Headers headers = exchange.getResponseHeaders();
 
         if (query != null && query.contains("_attrs_=true")) {
@@ -114,16 +114,12 @@ public class Test_QueueClient {
         QueueClient client = newClient();
         try {
             requests.clear();
-            client.setTraceId("trace-queue-1");
-            client.addExtraHeaders(Collections.<String, String>singletonMap("x-eas-trace-id", "from-extra"));
             assertEquals("X-Priority", client.attributes().getString("meta.header.priority"));
             String last = requests.get(requests.size() - 1);
             assertTrue("GET with _attrs_ expected: " + last, last.startsWith("GET "));
             assertTrue("_attrs_ expected: " + last, last.contains("_attrs_=true"));
             assertTrue("Authorization header expected: " + last, last.contains("my-token"));
             assertTrue("uid header expected: " + last, last.contains("uid-1"));
-            // the explicit trace id wins over a same-named extra header
-            assertTrue("trace id header expected: " + last, last.contains(" trace-queue-1 "));
         } finally {
             client.shutdown();
         }

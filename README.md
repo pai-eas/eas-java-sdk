@@ -95,7 +95,7 @@ HTTP 底层由 Apache HttpClient 4.x（已 EOL）升级为 Apache HttpClient 5.3
 |              | long count(Map&lt;String, String&gt; tags)<br />long count(long priority, Map&lt;String, String&gt; tags) | 查询未消费数据的个数，可按自定义 tag 或优先级过滤 [示例 9](#9-队列信息查询) |
 |              | JSONObject search(long index) | 查询数据的排队信息：IsPending（是否正被处理）、WaitCount（前方还有多少数据在排队，仅 IsPending 为 False 时有效）[示例 9](#9-队列信息查询) |
 |              | Pair&lt;Long, String&gt; put(byte[] data, long priority, Map&lt;String, String&gt; tags)<br />put(String data, long priority, Map&lt;String, String&gt; tags)<br />put(byte[] data, Map&lt;String, String&gt; tags)<br />put(String data, Map&lt;String, String&gt; tags) | 将数据写入队列。[priority]: 优先级，0 为普通，1 为高优先级（高优先级优先被消费）；[tags]: 自定义查询参数。返回 &lt;输入队列数据 index, 服务端生成的 requestId&gt;。requestId 由服务端通过响应头 `X-Eas-Queueservice-Request-Id` 返回，SDK 解析后放在 `Pair.getRight()` 中 [示例 10](#10-写入请求put) |
-|              | put(byte[] data, long priority, Map&lt;String, String&gt; tags, CallConfig callConfig)<br />put(String data, long priority, Map&lt;String, String&gt; tags, CallConfig callConfig) | put 的 CallConfig 重载：请求级路径、追加查询参数与自定义 Header（复用 CallConfig 的三个配置项）[示例 10](#10-写入请求put) |
+|              | put(byte[] data, long priority, Map&lt;String, String&gt; tags, CallConfig callConfig)<br />put(String data, long priority, Map&lt;String, String&gt; tags, CallConfig callConfig) | put 的 CallConfig 重载：请求级路径、追加查询参数与自定义 Header（复用 CallConfig 的配置项）[示例 10](#10-写入请求put) |
 |              | DataFrame[] get(long index, long length, int timeout, boolean autoDelete, Map&lt;String, String&gt; tags) | 获取队列数据。[index]: 起始 index；[length]: 个数；[timeout]: 长轮询超时（秒），无数据时服务端会挂起等待，**HttpConfig 读超时必须大于该值**；[autoDelete]: 取后是否自动删除；[tags]: 过滤参数，如 requestId（使用 put 返回的值）[示例 12](#12-场景二请求与-get-循环)、[示例 13](#13-数据管理) |
 |              | DataFrame[] getByIndex(long index) | 按 index 获取单条数据（取后自动删除）[示例 13](#13-数据管理) |
 |              | DataFrame[] getByRequestId(String requestId) | 按 put 返回的 requestId 获取结果（输出队列数据自动携带该 tag，取后自动删除）[示例 13](#13-数据管理) |
@@ -487,7 +487,7 @@ Pair<Long, String> r3 = inputQueue.put(
         /* tags= */ tags);
 System.out.println("index = " + r3.getLeft() + ", requestId = " + r3.getRight());
 
-// 4) 单次调用覆盖路径、追加查询参数与自定义 Header（优先于 client 级 setRequestPath）
+// 4) 单次调用覆盖路径、追加查询参数与自定义 Header（优先于 client 级设置）
 CallConfig callConfig = new CallConfig()
         .setRequestPath("/submit")
         .setQueryParams(Collections.singletonMap("source", "demo"))

@@ -246,7 +246,6 @@ public class PredictClient extends AbstractEasClient<PredictClient> {
     private void copyConfigurationTo(PredictClient client) {
         client.setToken(this.token)
             .setServiceName(this.serviceName)
-            .setTraceId(this.traceId)
             .setRetryCount(this.retryCount)
             .setRetryConditions(this.retryConditions)
             .setRequestTimeout(this.requestTimeout)
@@ -299,9 +298,6 @@ public class PredictClient extends AbstractEasClient<PredictClient> {
         for (Map.Entry<String, String> entry : this.extraHeaders.entrySet()) {
             request.addHeader(entry.getKey(), entry.getValue());
         }
-        if (traceId != null && !traceId.isEmpty()) {
-            request.setHeader(TRACE_ID_HEADER, traceId);
-        }
         request.setHeader(HttpHeaders.CONTENT_MD5, md5Content);
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -337,6 +333,10 @@ public class PredictClient extends AbstractEasClient<PredictClient> {
             for (Map.Entry<String, String> entry : callConfig.getHeaders().entrySet()) {
                 request.setHeader(entry.getKey(), entry.getValue());
             }
+        }
+        if (callConfig != null && callConfig.getTraceId() != null
+                && !callConfig.getTraceId().isEmpty()) {
+            request.setHeader(TRACE_ID_HEADER, callConfig.getTraceId());
         }
         return request;
     }

@@ -35,7 +35,6 @@ public class Test_HttpClientInjection {
         server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
         server.createContext("/api/predict/m", Test_HttpClientInjection::handle);
         server.createContext("/api/predict/echo", Test_HttpClientInjection::handleEcho);
-        server.createContext("/api/predict/trace", Test_HttpClientInjection::handleTrace);
         server.start();
         endpoint = "http://127.0.0.1:" + server.getAddress().getPort();
     }
@@ -80,20 +79,6 @@ public class Test_HttpClientInjection {
         exchange.close();
     }
 
-    /** echoes the x-eas-trace-id request header into the response body */
-    private static void handleTrace(HttpExchange exchange) throws IOException {
-        String traceId = exchange.getRequestHeaders().getFirst("x-eas-trace-id");
-        InputStream in = exchange.getRequestBody();
-        while (in.read(new byte[1024]) > 0) {
-            // drain the request body
-        }
-        in.close();
-        byte[] body = (traceId != null ? traceId : "<missing>").getBytes("UTF-8");
-        exchange.sendResponseHeaders(200, body.length);
-        exchange.getResponseBody().write(body);
-        exchange.close();
-    }
-
     private PredictClient newClient(CloseableHttpAsyncClient client) {
         HttpConfig config = new HttpConfig();
         config.setConnectTimeout(2000);
@@ -123,39 +108,6 @@ public class Test_HttpClientInjection {
             second.shutdown();
             assertTrue("external client must still be running",
                     external.getStatus() == IOReactorStatus.ACTIVE);
-        } finally {
-            external.close();
-        }
-    }
-
-    @Test
-    public void testTraceIdHeader() throws Exception {
-        CloseableHttpAsyncClient external = HttpAsyncClients.custom().build();
-        external.start();
-        try {
-            HttpConfig config = new HttpConfig();
-            config.setConnectTimeout(2000);
-            config.setReadTimeout(5000);
-            PredictClient client = new PredictClient(config, external);
-            client.setEndpoint(endpoint);
-            client.setServiceName("trace");
-            client.setRetryCount(0);
-            try {
-                client.setTraceId("trace-123");
-                assertEquals("trace-123", new String(client.predict("hello".getBytes())));
-                assertEquals("trace-123", client.getTraceId());
-
-                // null/empty disables the header
-                client.setTraceId("");
-                assertEquals("<missing>", new String(client.predict("hello".getBytes())));
-
-                // an explicit trace id wins over a same-named extra header
-                client.setTraceId("trace-123");
-                client.addExtraHeaders(java.util.Collections.singletonMap("x-eas-trace-id", "from-extra"));
-                assertEquals("trace-123", new String(client.predict("hello".getBytes())));
-            } finally {
-                client.shutdown();
-            }
         } finally {
             external.close();
         }
